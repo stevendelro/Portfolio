@@ -1,7 +1,6 @@
 import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
 import IconButton from '@material-ui/core/IconButton'
@@ -11,7 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import Logo from '../../public/logo/jsx/Logo'
+import Logo from '../../public/Logo'
 import DrawerMenu from './DrawerMenu'
 
 const drawerWidth = 90
