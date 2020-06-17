@@ -1,7 +1,6 @@
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import Divider from '@material-ui/core/Divider'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
@@ -10,7 +9,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function DrawerMenu() {
+function HomeList() {
   const classes = useStyles()
   return (
     <>
@@ -32,7 +31,7 @@ function DrawerMenu() {
   )
 }
 
-export default DrawerMenu
+export default HomeList
 
 // <ListItem className={classes.listItem} button key='Github'>
 // <ListItemText primary='Github' />

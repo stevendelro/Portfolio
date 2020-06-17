@@ -1,14 +1,33 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from '../components/styles/theme'
+import { makeStyles } from '@material-ui/core/styles'
+import MyAppBar from '../components/layout/MyAppBar'
+import MainDrawer from '../components/layout/MainDrawer'
 
-import Nav from '../components/layout/Nav'
-import Footer from '../components/layout/Footer'
+const drawerWidth = 90
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+  },
+  // necessary for content to be below app bar
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+}))
 
 export default function MyApp(props) {
+  const classes = useStyles()
   const { Component, pageProps } = props
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen)
+  }
 
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -28,9 +47,22 @@ export default function MyApp(props) {
         />
       </Head>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Nav />
-          <Component {...pageProps} />
+        <div className={classes.root}>
+          <CssBaseline />
+          <MyAppBar
+            drawerWidth={drawerWidth}
+            handleDrawerToggle={handleDrawerToggle}
+          />
+          <MainDrawer
+            drawerWidth={drawerWidth}
+            handleDrawerToggle={handleDrawerToggle}
+            mobileOpen={mobileOpen}
+          />
+          <main className={classes.content}>
+            <div className={classes.toolbar} />
+            <Component {...pageProps} />
+          </main>
+        </div>
       </ThemeProvider>
     </React.Fragment>
   )
