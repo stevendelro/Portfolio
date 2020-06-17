@@ -24,6 +24,7 @@ export default function MyApp(props) {
   const classes = useStyles()
   const { Component, pageProps } = props
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [appBarTitle, setAppBarTitle] = useState('Steven\'s Portfolio')
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -52,6 +53,7 @@ export default function MyApp(props) {
           <MyAppBar
             drawerWidth={drawerWidth}
             handleDrawerToggle={handleDrawerToggle}
+            appBarTitle={appBarTitle}
           />
           <MainDrawer
             drawerWidth={drawerWidth}
@@ -60,7 +62,7 @@ export default function MyApp(props) {
           />
           <main className={classes.content}>
             <div className={classes.toolbar} />
-            <Component {...pageProps} />
+            <Component {...pageProps} setAppBarTitle={setAppBarTitle} />
           </main>
         </div>
       </ThemeProvider>
