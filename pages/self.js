@@ -4,9 +4,8 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Link from '../components/Link';
-import Copyright from '../components/Copyright';
 
-export default function About() {
+export default function Self() {
   return (
     <Container maxWidth="sm">
       <Box my={4}>
@@ -16,7 +15,6 @@ export default function About() {
         <Button variant="contained" color="primary" component={Link} naked href="/">
           Go to the main page
         </Button>
-        <Copyright />
       </Box>
     </Container>
   );
