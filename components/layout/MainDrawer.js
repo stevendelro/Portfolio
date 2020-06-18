@@ -1,34 +1,7 @@
-import HomeList from './drawerLists/HomeList'
-import Grid from '@material-ui/core/Grid'
 import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import Logo from '../../public/Logo'
-
-const logoColor = '#144d53'
-
-const useDrawerMenuStyles = makeStyles(theme => ({
-  toolbar: theme.mixins.toolbar,
-  drawerLogo: {
-    marginBottom: '-64px',
-  },
-}))
-
-// Dynamically change the drawer list on page change.
-function DrawerMenu() {
-  const classes = useDrawerMenuStyles()
-  return (
-    <>
-      <Grid container direction='row' justify='center' alignItems='center'>
-        <Grid item className={classes.drawerLogo}>
-          <Logo height='30px' width='30px' color={logoColor} />
-        </Grid>
-      </Grid>
-      <div className={classes.toolbar} />
-      <HomeList />
-    </>
-  )
-}
+import HomeMenu from './menus/HomeMenu'
 
 function MainDrawer(props) {
   const { drawerWidth, handleDrawerToggle, mobileOpen, window } = props
@@ -36,7 +9,7 @@ function MainDrawer(props) {
   const container =
     window !== undefined ? () => window().document.body : undefined
 
-  const useMainDrawerStyles = makeStyles(theme => ({
+  const useStyles = makeStyles(theme => ({
     drawer: {
       [theme.breakpoints.up('sm')]: {
         width: drawerWidth,
@@ -47,7 +20,7 @@ function MainDrawer(props) {
       width: drawerWidth,
     },
   }))
-  const classes = useMainDrawerStyles()
+  const classes = useStyles()
   return (
     <nav className={classes.drawer} aria-label='main navigation'>
       {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -64,7 +37,7 @@ function MainDrawer(props) {
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}>
-          {<DrawerMenu />}
+          {<HomeMenu />}
         </Drawer>
       </Hidden>
       <Hidden xsDown implementation='css'>
@@ -74,7 +47,7 @@ function MainDrawer(props) {
           }}
           variant='permanent'
           open>
-          {<DrawerMenu />}
+          {<HomeMenu />}
         </Drawer>
       </Hidden>
     </nav>
