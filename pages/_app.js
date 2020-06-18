@@ -58,11 +58,12 @@ export default function MyApp(props) {
           <MainDrawer
             drawerWidth={drawerWidth}
             handleDrawerToggle={handleDrawerToggle}
+            setAppBarTitle={setAppBarTitle}
             mobileOpen={mobileOpen}
           />
           <main className={classes.content}>
             <div className={classes.toolbar} />
-            <Component {...pageProps} setAppBarTitle={setAppBarTitle} />
+            <Component {...pageProps} />
           </main>
         </div>
       </ThemeProvider>

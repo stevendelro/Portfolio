@@ -1,12 +1,10 @@
 import { useState } from 'react'
-import Router from 'next/router'
+import { useRouter } from 'next/router'
 import NextLink from 'next/link'
+import Divider from '@material-ui/core/Divider'
 import Grid from '@material-ui/core/Grid'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import { makeStyles } from '@material-ui/core/styles'
 import Logo from '../Logo'
@@ -18,13 +16,12 @@ function a11yProps(index) {
   }
 }
 
-
-
 const logoColor = '#144d53'
 
-function HomeMenu({drawerWidth}) {
+function HomeMenu({ drawerWidth, setAppBarTitle }) {
   const [value, setValue] = useState(0)
-
+  const [subMenu, setSubMenu] = useState(null)
+  const router = useRouter()
   const handleChange = (event, newValue) => {
     event.preventDefault()
     setValue(newValue)
@@ -33,18 +30,35 @@ function HomeMenu({drawerWidth}) {
   function LinkTab(props) {
     return (
       <Tab
-        component="a"
-        onClick={(event) => {
+        component='a'
+        onClick={event => {
           event.preventDefault()
-          if (props.label === 'home') {
-            Router.push(`/`)
-          } else {
-          Router.push(`/${props.label}`)
+          switch (props.label) {
+            case 'home':
+              setAppBarTitle("Steven's Portfolio  ")
+              router.push(`/`)
+              break
+            case 'work':
+              setAppBarTitle('Projects')
+              router.push(`/${props.label}`)
+              break
+            case 'blog':
+              setAppBarTitle('Thoughts')
+              router.push(`/${props.label}`)
+              break
+            case 'self':
+              setAppBarTitle('About')
+              router.push(`/${props.label}`)
+              break
+            case 'mail':
+              setAppBarTitle('Contact')
+              router.push(`/${props.label}`)
+              break
           }
         }}
         {...props}
       />
-    );
+    )
   }
 
   const useStyles = makeStyles(theme => ({
@@ -59,8 +73,8 @@ function HomeMenu({drawerWidth}) {
       borderRight: `1px solid ${theme.palette.divider}`,
     },
     tab: {
-      minWidth: drawerWidth
-    }
+      minWidth: drawerWidth,
+    },
   }))
   const classes = useStyles()
   return (
@@ -76,18 +90,18 @@ function HomeMenu({drawerWidth}) {
       </Grid>
       <div className={classes.toolbar} />
       <Tabs
-        orientation="vertical"
+        orientation='vertical'
         value={value}
         onChange={handleChange}
-        aria-label="home menu tabs"
-        className={classes.tabs}
-      >
-        <LinkTab className={classes.tab} label="home" {...a11yProps(0)} />
-        <LinkTab className={classes.tab} label="work" {...a11yProps(0)} />
-        <LinkTab className={classes.tab} label="blog" {...a11yProps(1)} />
-        <LinkTab className={classes.tab} label="self" {...a11yProps(2)} />
-        <LinkTab className={classes.tab} label="mail" {...a11yProps(3)} />
+        aria-label='home menu tabs'
+        className={classes.tabs}>
+        <LinkTab className={classes.tab} label='home' {...a11yProps(0)} />
+        <LinkTab className={classes.tab} label='work' {...a11yProps(1)} />
+        <LinkTab className={classes.tab} label='blog' {...a11yProps(2)} />
+        <LinkTab className={classes.tab} label='self' {...a11yProps(3)} />
+        <LinkTab className={classes.tab} label='mail' {...a11yProps(4)} />
       </Tabs>
+      <Divider />
     </>
   )
 }

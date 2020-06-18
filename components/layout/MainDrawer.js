@@ -4,7 +4,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import HomeMenu from './menus/HomeMenu'
 
 function MainDrawer(props) {
-  const { drawerWidth, handleDrawerToggle, mobileOpen, window } = props
+  const { drawerWidth, handleDrawerToggle, setAppBarTitle, mobileOpen, window } = props
   const theme = useTheme()
   const container =
     window !== undefined ? () => window().document.body : undefined
@@ -37,7 +37,7 @@ function MainDrawer(props) {
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}>
-          {<HomeMenu drawerWidth={drawerWidth} />}
+          {<HomeMenu drawerWidth={drawerWidth} setAppBarTitle={setAppBarTitle} />}
         </Drawer>
       </Hidden>
       <Hidden xsDown implementation='css'>
@@ -47,7 +47,7 @@ function MainDrawer(props) {
           }}
           variant='permanent'
           open>
-          {<HomeMenu drawerWidth={drawerWidth} />}
+          {<HomeMenu drawerWidth={drawerWidth} setAppBarTitle={setAppBarTitle} />}
         </Drawer>
       </Hidden>
     </nav>
