@@ -29,6 +29,7 @@ function MyAppBar(props) {
         width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: drawerWidth,
       },
+      backgroundColor: '#f9f9f9'
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -40,7 +41,7 @@ function MyAppBar(props) {
   const classes = useStyles()
   return (
     <ElevationScroll {...props}>
-      <AppBar position='fixed' className={classes.appBar}>
+      <AppBar position='fixed' color='inherit' className={classes.appBar}>
         <Toolbar>
           <Grid
             container
