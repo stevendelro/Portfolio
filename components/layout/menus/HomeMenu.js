@@ -1,5 +1,9 @@
+import { useState } from 'react'
+import Router from 'next/router'
 import NextLink from 'next/link'
 import Grid from '@material-ui/core/Grid'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -7,19 +11,57 @@ import ButtonBase from '@material-ui/core/ButtonBase'
 import { makeStyles } from '@material-ui/core/styles'
 import Logo from '../Logo'
 
-const useStyles = makeStyles(theme => ({
-  listItem: {
-    textAlign: 'center',
-  },
-  toolbar: theme.mixins.toolbar,
-  drawerLogo: {
-    marginBottom: '-64px',
-  },
-}))
+function a11yProps(index) {
+  return {
+    id: `vertical-tab-${index}`,
+    'aria-controls': `vertical-tabpanel-${index}`,
+  }
+}
+
+
 
 const logoColor = '#144d53'
 
-function HomeMenu() {
+function HomeMenu({drawerWidth}) {
+  const [value, setValue] = useState(0)
+
+  const handleChange = (event, newValue) => {
+    event.preventDefault()
+    setValue(newValue)
+  }
+
+  function LinkTab(props) {
+    return (
+      <Tab
+        component="a"
+        onClick={(event) => {
+          event.preventDefault()
+          if (props.label === 'home') {
+            Router.push(`/`)
+          } else {
+          Router.push(`/${props.label}`)
+          }
+        }}
+        {...props}
+      />
+    );
+  }
+
+  const useStyles = makeStyles(theme => ({
+    listItem: {
+      textAlign: 'center',
+    },
+    toolbar: theme.mixins.toolbar,
+    drawerLogo: {
+      marginBottom: '-64px',
+    },
+    tabs: {
+      borderRight: `1px solid ${theme.palette.divider}`,
+    },
+    tab: {
+      minWidth: drawerWidth
+    }
+  }))
   const classes = useStyles()
   return (
     <>
@@ -33,47 +75,19 @@ function HomeMenu() {
         </Grid>
       </Grid>
       <div className={classes.toolbar} />
-      <List>
-        <NextLink href='/work'>
-          <ListItem
-            className={classes.listItem}
-            component='a'
-            button
-            key='Work'>
-            <ListItemText primary='Work' />
-          </ListItem>
-        </NextLink>
-
-        <NextLink href='/blog'>
-          <ListItem
-            className={classes.listItem}
-            component='a'
-            button
-            key='Blog'>
-            <ListItemText primary='Blog' />
-          </ListItem>
-        </NextLink>
-
-        <NextLink href='/self'>
-          <ListItem
-            className={classes.listItem}
-            component='a'
-            button
-            key='Self'>
-            <ListItemText primary='Self' />
-          </ListItem>
-        </NextLink>
-
-        <NextLink href='/mail'>
-          <ListItem
-            className={classes.listItem}
-            component='a'
-            button
-            key='Mail'>
-            <ListItemText primary='Mail' />
-          </ListItem>
-        </NextLink>
-      </List>
+      <Tabs
+        orientation="vertical"
+        value={value}
+        onChange={handleChange}
+        aria-label="home menu tabs"
+        className={classes.tabs}
+      >
+        <LinkTab className={classes.tab} label="home" {...a11yProps(0)} />
+        <LinkTab className={classes.tab} label="work" {...a11yProps(0)} />
+        <LinkTab className={classes.tab} label="blog" {...a11yProps(1)} />
+        <LinkTab className={classes.tab} label="self" {...a11yProps(2)} />
+        <LinkTab className={classes.tab} label="mail" {...a11yProps(3)} />
+      </Tabs>
     </>
   )
 }

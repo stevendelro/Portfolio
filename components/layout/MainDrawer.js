@@ -37,7 +37,7 @@ function MainDrawer(props) {
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}>
-          {<HomeMenu />}
+          {<HomeMenu drawerWidth={drawerWidth} />}
         </Drawer>
       </Hidden>
       <Hidden xsDown implementation='css'>
@@ -47,7 +47,7 @@ function MainDrawer(props) {
           }}
           variant='permanent'
           open>
-          {<HomeMenu />}
+          {<HomeMenu drawerWidth={drawerWidth} />}
         </Drawer>
       </Hidden>
     </nav>
