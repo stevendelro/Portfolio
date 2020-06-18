@@ -1,7 +1,7 @@
 import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import HomeMenu from './menus/HomeMenu'
+import HomeMenu from './HomeMenu'
 
 function MainDrawer(props) {
   const { drawerWidth, handleDrawerToggle, setAppBarTitle, mobileOpen, window } = props

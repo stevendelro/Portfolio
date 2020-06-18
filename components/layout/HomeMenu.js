@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import NextLink from 'next/link'
-import Divider from '@material-ui/core/Divider'
 import Grid from '@material-ui/core/Grid'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import { makeStyles } from '@material-ui/core/styles'
-import Logo from '../Logo'
+import Logo from './Logo'
 
 function a11yProps(index) {
   return {
@@ -20,7 +19,6 @@ const logoColor = '#144d53'
 
 function HomeMenu({ drawerWidth, setAppBarTitle }) {
   const [value, setValue] = useState(0)
-  const [subMenu, setSubMenu] = useState(null)
   const router = useRouter()
   const handleChange = (event, newValue) => {
     event.preventDefault()
@@ -44,10 +42,6 @@ function HomeMenu({ drawerWidth, setAppBarTitle }) {
               break
             case 'blog':
               setAppBarTitle('Thoughts')
-              router.push(`/${props.label}`)
-              break
-            case 'self':
-              setAppBarTitle('About')
               router.push(`/${props.label}`)
               break
             case 'mail':
@@ -98,22 +92,11 @@ function HomeMenu({ drawerWidth, setAppBarTitle }) {
         <LinkTab className={classes.tab} label='home' {...a11yProps(0)} />
         <LinkTab className={classes.tab} label='work' {...a11yProps(1)} />
         <LinkTab className={classes.tab} label='blog' {...a11yProps(2)} />
-        <LinkTab className={classes.tab} label='self' {...a11yProps(3)} />
-        <LinkTab className={classes.tab} label='mail' {...a11yProps(4)} />
+        <LinkTab className={classes.tab} label='mail' {...a11yProps(3)} />
       </Tabs>
-      <Divider />
+
     </>
   )
 }
 
 export default HomeMenu
-
-// <ListItem className={classes.listItem} button key='Github'>
-// <ListItemText primary='Github' />
-// </ListItem>
-// <ListItem className={classes.listItem} button key='NextLinkedIn'>
-// <ListItemText primary='NextLinkedIn' />
-// </ListItem>
-// <ListItem className={classes.listItem} button key='Resume'>
-// <ListItemText primary='Resume' />
-// </ListItem>

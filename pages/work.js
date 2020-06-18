@@ -64,7 +64,7 @@ export default function Album() {
                   </Button>
                 </Grid>
                 <Grid item>
-                  <Button variant="outlined" color="primary">
+                  <Button variant="outlined" color="secondary">
                     Secondary action
                   </Button>
                 </Grid>
