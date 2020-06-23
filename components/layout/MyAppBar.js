@@ -29,12 +29,17 @@ function MyAppBar(props) {
         width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: drawerWidth,
       },
-      backgroundColor: '#f9f9f9'
+      backgroundColor: '#f9f9f9',
     },
     menuButton: {
       marginRight: theme.spacing(2),
       [theme.breakpoints.up('sm')]: {
         display: 'none',
+      },
+    },
+    appBarTitle: {
+      [theme.breakpoints.between(200, 400)]: {
+        marginRight: '56px',
       },
     },
   }))
@@ -59,7 +64,7 @@ function MyAppBar(props) {
               </IconButton>
             </Grid>
             <Grid item>
-              <Typography variant='h6' noWrap>
+              <Typography className={classes.appBarTitle} variant='h6' noWrap>
                 {appBarTitle}
               </Typography>
             </Grid>
