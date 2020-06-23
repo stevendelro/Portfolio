@@ -32,12 +32,14 @@ function MyAppBar(props) {
       backgroundColor: '#f9f9f9',
     },
     menuButton: {
+      color: theme.palette.primary.main,
       marginRight: theme.spacing(2),
       [theme.breakpoints.up('sm')]: {
         display: 'none',
       },
     },
     appBarTitle: {
+      color: theme.palette.primary.main,
       [theme.breakpoints.between(200, 400)]: {
         marginRight: '56px',
       },

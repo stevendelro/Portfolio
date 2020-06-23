@@ -17,7 +17,12 @@ function a11yProps(index) {
 
 const logoColor = '#144d53'
 
-function HomeMenu({ drawerWidth, setAppBarTitle, mobileOpen, handleDrawerToggle }) {
+function HomeMenu({
+  drawerWidth,
+  setAppBarTitle,
+  mobileOpen,
+  handleDrawerToggle,
+}) {
   const [value, setValue] = useState(0)
   const router = useRouter()
   const handleChange = (event, newValue) => {
@@ -72,6 +77,10 @@ function HomeMenu({ drawerWidth, setAppBarTitle, mobileOpen, handleDrawerToggle 
     },
     tab: {
       minWidth: drawerWidth,
+      '& > span': {
+        transition: 'all .2s ease-in-out',
+        '&:hover': { transform: 'scale(1.1)' },
+      },
     },
   }))
   const classes = useStyles()
@@ -98,7 +107,6 @@ function HomeMenu({ drawerWidth, setAppBarTitle, mobileOpen, handleDrawerToggle 
         <LinkTab className={classes.tab} label='blog' {...a11yProps(2)} />
         <LinkTab className={classes.tab} label='mail' {...a11yProps(3)} />
       </Tabs>
-
     </>
   )
 }
