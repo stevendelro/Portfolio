@@ -17,7 +17,7 @@ function a11yProps(index) {
 
 const logoColor = '#144d53'
 
-function HomeMenu({ drawerWidth, setAppBarTitle }) {
+function HomeMenu({ drawerWidth, setAppBarTitle, mobileOpen, handleDrawerToggle }) {
   const [value, setValue] = useState(0)
   const router = useRouter()
   const handleChange = (event, newValue) => {
@@ -33,20 +33,24 @@ function HomeMenu({ drawerWidth, setAppBarTitle }) {
           event.preventDefault()
           switch (props.label) {
             case 'home':
-              setAppBarTitle("Steven's Portfolio  ")
               router.push(`/`)
+              mobileOpen && handleDrawerToggle()
+              setAppBarTitle("Steven's Portfolio  ")
               break
             case 'work':
-              setAppBarTitle('Projects')
               router.push(`/${props.label}`)
+              mobileOpen && handleDrawerToggle()
+              setAppBarTitle('Projects')
               break
             case 'blog':
-              setAppBarTitle('Thoughts')
               router.push(`/${props.label}`)
+              mobileOpen && handleDrawerToggle()
+              setAppBarTitle('Thoughts')
               break
             case 'mail':
-              setAppBarTitle('Contact')
               router.push(`/${props.label}`)
+              mobileOpen && handleDrawerToggle()
+              setAppBarTitle('Contact')
               break
           }
         }}
