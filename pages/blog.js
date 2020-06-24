@@ -1,7 +1,21 @@
-import React from 'react'
+import { getPosts } from '../pages/api/posts'
 
-function blog() {
-  return <h1>BLOG JS</h1>
+const Blog = props => {
+  const { posts } = props
+  return (
+    <ul>
+      {posts.map(post => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </ul>
+  )
 }
 
-export default blog
+export async function getStaticProps(ctx) {
+  
+  const posts = await getPosts()
+  console.log('posts', posts)
+  return { props: { posts } }
+}
+
+export default Blog
