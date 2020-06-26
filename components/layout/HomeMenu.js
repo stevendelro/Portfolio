@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import NextLink from 'next/link'
 import Grid from '@material-ui/core/Grid'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
-import ButtonBase from '@material-ui/core/ButtonBase'
 import { makeStyles } from '@material-ui/core/styles'
 import Logo from './Logo'
 
@@ -88,11 +86,7 @@ function HomeMenu({
     <>
       <Grid container direction='row' justify='center' alignItems='center'>
         <Grid item className={classes.drawerLogo}>
-          <NextLink href='/'>
-            <ButtonBase component='a' disableRipple>
-              <Logo height='30px' width='30px' color={logoColor} />
-            </ButtonBase>
-          </NextLink>
+          <Logo height='30px' width='30px' color={logoColor} />
         </Grid>
       </Grid>
       <div className={classes.toolbar} />
