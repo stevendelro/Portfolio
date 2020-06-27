@@ -2,10 +2,11 @@ import moment from 'moment'
 import Grid from '@material-ui/core/Grid'
 import { getPosts } from '../api/blog'
 import Post from '../../components/blog/Post'
+import useSWR from 'swr'
 
 const Posts = props => {
-  const { posts } = props
-
+  const initialData = props.posts
+  const { data: posts } = useSWR('/api/blog', getPosts, { initialData })
   return (
     <Grid
       container
@@ -41,7 +42,11 @@ const Posts = props => {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ res }) {
+  if (res) {
+    const cacheAge = 60 * 60 * 12
+    res.setHeader('Cache-Control', `public,s-maxage=${cacheAge}`)
+  }
   const posts = await getPosts()
   return { props: { posts } }
 }

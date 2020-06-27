@@ -13,7 +13,8 @@
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-icons": "^3.10.0"
+    "react-icons": "^3.10.0",
+    "swr": "^0.2.3"
   },
   "scripts": {
     "dev": "next",
