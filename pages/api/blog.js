@@ -9,7 +9,6 @@ const api = new GhostContentAPI({
 export async function getPosts() {
   return await api.posts
     .browse({
-      filter: ,
       limit: "all"
     })
     .catch(err => {

@@ -1,9 +1,10 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
+import Container from '@material-ui/core/Container'
 
 export default function Index() {
   return (
-    <>
+    <Container fixed maxWidth='sm'>
       <Typography paragraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus
@@ -32,6 +33,6 @@ export default function Index() {
         maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
         aliquam ultrices sagittis orci a.
       </Typography>
-    </>
+    </Container>
   )
 }

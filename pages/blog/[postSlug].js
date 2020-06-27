@@ -3,10 +3,9 @@ import Container from '@material-ui/core/Container'
 import parse from 'html-react-parser';
 
 export default function PostDetail({post}) {
-  console.log('post',post)
   return (
-    <Container>
-      {parse(post.html)}
+    <Container fixed maxWidth='sm'>
+      {parse(`${post.html}`)}
     </Container>
   )
 }
