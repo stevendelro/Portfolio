@@ -5,6 +5,6 @@ const palette = {
   primary: { main: '#144d53' },
   secondary: { main: '#ff9100' }
 };
-const themeName = 'Elephant Pizazz Sand Dollar';
+const themeName = 'greenOrange';
 
 export default createMuiTheme({ palette, themeName });
