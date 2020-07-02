@@ -32,7 +32,7 @@ export default function PostPreview({
     <Paper elevation={0}>
       <div>
         {slug ? (
-          <Link as={`/posts/${slug}`} href='/posts/[slug]'>
+          <Link as={`/blog/${slug}`} href='/blog/[slug]'>
             <a aria-label={title}>{image}</a>
           </Link>
         ) : (

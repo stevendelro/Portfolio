@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Paper from '@material-ui/core/Paper'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
 import CustomDate from '../../components/blog/CustomDate'
 
 const useStyles = makeStyles({
@@ -21,7 +22,7 @@ function HeroPost({ title, coverImage, date, excerpt, author, slug }) {
       />
       <CustomDate dateString={date} />
       <p>{excerpt}</p>
-      <p>{author}</p>
+      <p>{author.name}</p>
       <Link as={`/blog/${slug}`} href='/blog/[slug]'>
         <a>{title}</a>
       </Link>

@@ -4,7 +4,6 @@ import ErrorPage from 'next/error'
 import Container from '@material-ui/core/Container'
 import Divider from '@material-ui/core/Divider'
 import {
-  getStaticProps,
   getPostAndMorePosts,
   getAllPostsWithSlug,
 } from '../../contentful/api'
@@ -62,7 +61,7 @@ export async function getStaticProps({ params, preview = false }) {
 export async function getStaticPaths() {
   const allPosts = await getAllPostsWithSlug()
   return {
-    paths: allPosts?.map(({ slug }) => `/posts/${slug}`) ?? [],
+    paths: allPosts?.map(({ slug }) => `/blog/${slug}`) ?? [],
     fallback: true,
   }
 }

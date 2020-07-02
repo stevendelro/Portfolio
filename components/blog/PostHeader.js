@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar'
 import CustomDate from './CustomDate'
-import PostTitle from '../components/post-title'
+import PostTitle from './PostTitle'
 
 const useStyles = makeStyles(theme => ({
   largeAvatar: {
@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function PostHeader({ title, coverImage, date, author }) {
+  const classes = useStyles()
   return (
     <>
       <PostTitle>{title}</PostTitle>
@@ -34,7 +35,7 @@ export default function PostHeader({ title, coverImage, date, author }) {
         )}
       </div>
       <CardMedia
-        className={classNames.media}
+        className={classes.media}
         title={title}
         image={coverImage.url}
       />

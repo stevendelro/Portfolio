@@ -1,11 +1,13 @@
+import Container from '@material-ui/core/Container'
 import { getAllPostsForHome } from '../../contentful/api'
 import HeroPost from '../../components/blog/HeroPost'
+import MoreStories from '../../components/blog/MoreStories'
 
 export default function BlogIndex({ preview, allPosts }) {
   const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1)
   return (
-    <div>
+    <Container>
       <h1>BlogIndex.js</h1>
       {heroPost && (
         <HeroPost
@@ -18,7 +20,7 @@ export default function BlogIndex({ preview, allPosts }) {
         />
       )}
       {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-    </div>
+    </Container>
   )
 }
 

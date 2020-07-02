@@ -1,5 +1,6 @@
+import PostPreview from './PostPreview'
 
-function MoreStories() {
+function MoreStories({posts}) {
   return (
     <section>
       <h2>
