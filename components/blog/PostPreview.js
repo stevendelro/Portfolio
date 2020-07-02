@@ -26,7 +26,7 @@ export default function PostPreview({
 }) {
   const classes = useStyles()
   const image = (
-    <CardMedia className={classes.media} title={title} image={coverImage.url} />
+    <CardMedia className={classes.media} title={title} image={coverImage} />
   )
   return (
     <Paper elevation={0}>
@@ -55,7 +55,7 @@ export default function PostPreview({
           <Avatar
             className={classes.largeAvatar}
             alt={author.name}
-            src={author.picture}
+            src={author.picture.url}
           />
           <Typography variant='h4' gutterBottom>
             {author.name}

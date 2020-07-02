@@ -26,7 +26,7 @@ export default function PostHeader({ title, coverImage, date, author }) {
             <Avatar
               className={classes.largeAvatar}
               alt={author.name}
-              src={author.picture}
+              src={author.picture.url}
             />
             <Typography variant='h4' gutterBottom>
               {author.name}
