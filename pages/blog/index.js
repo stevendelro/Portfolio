@@ -6,11 +6,11 @@ export default function BlogIndex({ preview, allPosts }) {
   const morePosts = allPosts.slice(1)
   return (
     <div>
-      BlogIndex.js
+      <h1>BlogIndex.js</h1>
       {heroPost && (
         <HeroPost
           title={heroPost.title}
-          coverImage={heroPost.coverImage}
+          coverImage={heroPost.coverImage.url}
           date={heroPost.date}
           author={heroPost.author}
           slug={heroPost.slug}
