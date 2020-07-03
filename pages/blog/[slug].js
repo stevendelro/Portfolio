@@ -19,14 +19,13 @@ export default function PostDetail({ post, morePosts, preview }) {
   }
   return (
     <Container>
-      <h1>PostDetail.js</h1>
       {router.isFallback ? (
         <PostTitle>Loading…</PostTitle>
       ) : (
         <>
           <article>
             <Head>
-              <title>{post.title} | Steven's Blog</title>
+              <title>Blog | {post.title}</title>
               <meta property='og:image' content={post.coverImage.url} />
             </Head>
             <PostHeader
