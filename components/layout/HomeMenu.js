@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useRouter } from 'next/router'
+import Router, { useRouter } from 'next/router'
 import NextLink from 'next/link'
 import Grid from '@material-ui/core/Grid'
 import Tabs from '@material-ui/core/Tabs'
@@ -8,10 +8,10 @@ import ButtonBase from '@material-ui/core/ButtonBase'
 import { makeStyles } from '@material-ui/core/styles'
 import Logo from './Logo'
 
-function a11yProps(index) {
+function a11yProps(tabIndex) {
   return {
-    id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`,
+    id: `vertical-tab-${tabIndex}`,
+    'aria-controls': `vertical-tabpanel-${tabIndex}`,
   }
 }
 
@@ -23,11 +23,27 @@ function HomeMenu({
   mobileOpen,
   handleDrawerToggle,
 }) {
-  const [value, setValue] = useState(0)
   const router = useRouter()
-  const handleChange = (event, newValue) => {
+  const [activeTabIndex, setActiveTabIndex] = useState(0)
+
+  const handleTabSwitch = (event, selectedTabIndex) => {
     event.preventDefault()
-    setValue(newValue)
+    setActiveTabIndex(selectedTabIndex)
+  }
+
+  // Ensure the current viewed page has the correct tab active
+  // Without these statements, on refresh the active tab will always be 0.
+  if (router.pathname === '/' && activeTabIndex !== 0) {
+    setActiveTabIndex(0)
+  }
+  if (router.pathname === '/work' && activeTabIndex !== 1) {
+    setActiveTabIndex(1)
+  }
+  if (router.pathname === '/blog' && activeTabIndex !== 2) {
+    setActiveTabIndex(2)
+  }
+  if (router.pathname === '/mail' && activeTabIndex !== 3) {
+    setActiveTabIndex(3)
   }
 
   function LinkTab(props) {
@@ -98,8 +114,8 @@ function HomeMenu({
       <div className={classes.toolbar} />
       <Tabs
         orientation='vertical'
-        value={value}
-        onChange={handleChange}
+        value={activeTabIndex}
+        onChange={handleTabSwitch}
         aria-label='home menu tabs'
         className={classes.tabs}>
         <LinkTab className={classes.tab} label='home' {...a11yProps(0)} />
