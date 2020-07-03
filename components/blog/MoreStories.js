@@ -1,12 +1,12 @@
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
 import PostPreview from './PostPreview'
 
-function MoreStories({posts}) {
+function MoreStories({ posts }) {
   return (
-    <section>
-      <h2>
-        More Stories
-      </h2>
-      <div>
+    <Grid container direction='row' justify='center' alignItems='center'>
+      <Grid item xs={12} sm={11} lg={10} xl={8}>
+
         {posts.map(post => {
           return (
             <PostPreview
@@ -20,8 +20,8 @@ function MoreStories({posts}) {
             />
           )
         })}
-      </div>
-    </section>
+      </Grid>
+    </Grid>
   )
 }
 
