@@ -4,7 +4,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
-import TitleBox from './shared/TitleBox'
+import TitleBox from './ExcerptViews/TitleBox'
 
 const useStyles = makeStyles(theme => ({
   image: {

@@ -1,5 +1,5 @@
 import Grid from '@material-ui/core/Grid'
-import MediaLeft from './MediaLeft'
+import MediaLeft from './ExcerptViews/MediaLeft'
 
 function MoreStories({ posts }) {
   return (

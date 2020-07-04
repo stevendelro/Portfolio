@@ -1,7 +1,7 @@
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import MuiLink from '../../MuiLink'
-import CustomDate from '../CustomDate'
+import CustomDate from './CustomDate'
 
 function TitleBox({ title, author, date, slug, variant }) {
   return (
