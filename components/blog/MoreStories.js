@@ -1,6 +1,5 @@
-import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
-import PostPreview from './PostPreview'
+import MediaLeft from './MediaLeft'
 
 function MoreStories({ posts }) {
   return (
@@ -9,7 +8,7 @@ function MoreStories({ posts }) {
 
         {posts.map(post => {
           return (
-            <PostPreview
+            <MediaLeft
               key={post.slug}
               title={post.title}
               coverImage={post.coverImage.url}

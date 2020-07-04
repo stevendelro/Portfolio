@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function PostPreview({
+export default function MediaLeft({
   title,
   coverImage,
   date,
