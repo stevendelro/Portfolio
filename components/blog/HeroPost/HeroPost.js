@@ -37,14 +37,74 @@ function HeroPost({
   excerpt,
   author,
   slug,
-  // titlePosition,
+  titlePosition = 'left' // if not declared, default to left.
 }) {
   const classes = useStyles()
   const theme = useTheme()
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
-  // if (titlePosition === 'right') {
+  const isTinyScreen = useMediaQuery(theme.breakpoints.down('xs'))
+  let composableTextArea
 
-  // }
+  /*
+  Larger screens will display content based on what side you prefer
+  to have the blog post title.
+  */
+
+  if (titlePosition === 'right' && !isTinyScreen) {
+    composableTextArea = (
+      <>
+        <Excerpt titlePosition={titlePosition} excerpt={excerpt} />
+        <TitleDateAuthor
+          slug={slug}
+          title={title}
+          date={date}
+          author={author}
+        />
+      </>
+    )
+  } else if (titlePosition === 'left' && !isTinyScreen) {
+    composableTextArea = (
+      <>
+        <TitleDateAuthor
+          slug={slug}
+          title={title}
+          date={date}
+          author={author}
+        />
+        <Excerpt titlePosition={titlePosition} excerpt={excerpt} />
+      </>
+    )
+
+      /*
+      Smaller screens will display the title above the excerpt,
+      independent of whatever side was initially chosen.
+      */
+  } else if (titlePosition === 'right' && isTinyScreen) {
+    composableTextArea = (
+      <>
+        <TitleDateAuthor
+          slug={slug}
+          title={title}
+          date={date}
+          author={author}
+        />
+        <Excerpt titlePosition={titlePosition} excerpt={excerpt} />
+      </>
+    )
+  } else if (titlePosition === 'left' && isTinyScreen) {
+    composableTextArea = (
+      <>
+        <Excerpt titlePosition={titlePosition} excerpt={excerpt} />
+        <TitleDateAuthor
+          slug={slug}
+          title={title}
+          date={date}
+          author={author}
+        />
+      </>
+    )
+  }
+
+
   return (
     <>
       <Grid container direction='row' justify='center' alignItems='center'>
@@ -56,14 +116,8 @@ function HeroPost({
             direction='row'
             justify='space-between'
             alignItems='flex-start'>
-            <Excerpt excerpt={excerpt} />
-            <TitleDateAuthor
-              slug={slug}
-              title={title}
-              date={date}
-              author={author}
-            />
-          </Grid>
+              {composableTextArea}
+            </Grid>
         </Grid>
       </Grid>
     </>

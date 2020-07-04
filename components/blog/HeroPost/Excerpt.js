@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Excerpt({excerpt}) {
+export default function Excerpt({titlePosition, excerpt}) {
   const classes = useStyles()
   return (
     <Grid item sm={7}>
@@ -19,7 +19,7 @@ export default function Excerpt({excerpt}) {
       className={classes.excerpt}
       variant='body1'
       color='textSecondary'
-      align='right'
+      align={titlePosition}
       gutterBottom>
       {excerpt}
     </Typography>
