@@ -2,7 +2,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar'
-import CustomDate from './CustomDate'
+import CustomDate from '../CustomDate'
 import PostTitle from './PostTitle'
 
 const useStyles = makeStyles(theme => ({

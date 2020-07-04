@@ -7,9 +7,9 @@ import {
   getPostAndMorePosts,
   getAllPostsWithSlug,
 } from '../../contentful/api'
-import PostTitle from '../../components/blog/PostTitle'
-import PostHeader from '../../components/blog/PostHeader'
-import PostBody from '../../components/blog/PostBody'
+import PostTitle from '../../components/blog/PostDetail/PostTitle'
+import PostHeader from '../../components/blog/PostDetail/PostHeader'
+import PostBody from '../../components/blog/PostDetail/PostBody'
 import MoreStories from '../../components/blog/MoreStories'
 
 export default function PostDetail({ post, morePosts, preview }) {

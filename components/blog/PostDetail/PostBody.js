@@ -1,6 +1,5 @@
-import Container from '@material-ui/core/Container'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import MarkdownElement from '../Markdown'
+import MarkdownElement from '../../Markdown'
 
 function PostBody({ content }) {
   return <MarkdownElement children={documentToReactComponents(content)} />
