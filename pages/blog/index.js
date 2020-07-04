@@ -35,7 +35,6 @@ export default function BlogIndex({ preview, allPosts }) {
           titlePosition='right'
         />
       )}
-      {isSmallScreen && <Divider style={{ margin: '2rem' }} />}
       {morePosts.length > 0 && <MoreStories posts={morePosts} />}
     </>
   )

@@ -44,11 +44,10 @@ function HeroPost({
   const isTinyScreen = useMediaQuery(theme.breakpoints.down('xs'))
   let composableTextArea
 
-  /*
+    /*
   Larger screens will display content based on what side you prefer
-  to have the blog post title.
-  */
-
+  to have the blog post title (via the "titlePosition" prop)
+*/
   if (titlePosition === 'right' && !isTinyScreen) {
     composableTextArea = (
       <>
@@ -74,10 +73,10 @@ function HeroPost({
       </>
     )
 
-      /*
-      Smaller screens will display the title above the excerpt,
-      independent of whatever side was initially chosen.
-      */
+  /*
+  Smaller screens will display the title above the excerpt,
+  independent of whatever side was initially chosen.
+*/
   } else if (titlePosition === 'right' && isTinyScreen) {
     composableTextArea = (
       <>

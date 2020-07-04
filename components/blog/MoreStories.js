@@ -1,14 +1,21 @@
 import Grid from '@material-ui/core/Grid'
-import MediaLeft from './PostPreview/MediaLeft'
+import HorizontalPreview from './PostPreview/horizontal/HorizontalPreview'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles(theme => ({
+  moreStories: {
+    marginTop: theme.spacing(3),
+  },
+}))
 
 function MoreStories({ posts }) {
+  const classes = useStyles()
   return (
-    <Grid container direction='row' justify='center' alignItems='center'>
-      <Grid item xs={12} sm={11} lg={10} xl={8}>
-
+    <Grid className={classes.moreStories} container direction='row' justify='center' alignItems='center'>
+      <Grid item xs={12} sm={11} lg={10} xl={6}>
         {posts.map(post => {
           return (
-            <MediaLeft
+            <HorizontalPreview
               key={post.slug}
               title={post.title}
               coverImage={post.coverImage.url}
