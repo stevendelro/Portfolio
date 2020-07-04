@@ -12,7 +12,7 @@ function MoreStories({ posts }) {
   const classes = useStyles()
   return (
     <Grid className={classes.moreStories} container direction='row' justify='center' alignItems='center'>
-      <Grid item xs={12} sm={11} lg={10} xl={6}>
+      <Grid item xs={12} sm={10} lg={8} xl={6}>
         {posts.map(post => {
           return (
             <HorizontalPreview

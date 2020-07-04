@@ -57,7 +57,7 @@ export default function PageIntro({ title, paragraph }) {
 
   return (
     <Grid container direction='row' justify='center' alignItems='center'>
-      <Grid item xs={12} sm={11} lg={9} xl={6}>
+      <Grid item xs={12} sm={10} lg={8} xl={6}>
         <Grid
           container
           className={classes.notSmallScreen}
