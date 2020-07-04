@@ -5,7 +5,8 @@ import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Divider from '@material-ui/core/Divider'
 import CardMedia from '@material-ui/core/CardMedia'
-import TitleBox from './shared/TitleBox'
+import MuiLink from '../../MuiLink'
+import CustomDate from '../CustomDate'
 
 const useStyles = makeStyles(theme => ({
   postContent: {
@@ -73,22 +74,27 @@ export default function MediaLeft({
             direction='column'
             justify='space-around'
             alignItems='flex-start'>
-              <TitleBox
-                title={title}
-                author={author}
-                date={date}
-                slug={slug}
-                variant='h4'
-              />
+            <Grid item>
+              <MuiLink
+                as={`/blog/${slug}`}
+                href='/blog/[slug]'
+                underline='none'>
+                <Typography variant='h4'>{title}</Typography>
+              </MuiLink>
+            </Grid>
+            <Grid item>
+              <Typography variant='overline' display='block' gutterBottom>
+                <CustomDate dateString={date} /> — {author.name}
+              </Typography>
+            </Grid>
             <Grid item>
               <Typography variant='body1' gutterBottom>
                 {excerpt}
               </Typography>
             </Grid>
           </Grid>
-              <Divider style={{ margin: '2rem 6rem'}}/>
+          <Divider style={{ margin: '2rem 6rem' }} />
         </Grid>
-
       </Grid>
     </>
   )

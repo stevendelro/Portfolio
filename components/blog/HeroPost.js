@@ -1,10 +1,11 @@
 import Link from 'next/link'
+import MuiLink from '../MuiLink'
 import Paper from '@material-ui/core/Paper'
 import CardMedia from '@material-ui/core/CardMedia'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
-import TitleBox from './ExcerptViews/TitleBox'
+import CustomDate from './CustomDate'
 
 const useStyles = makeStyles(theme => ({
   image: {
@@ -58,11 +59,25 @@ function HeroPost({ title, coverImage, date, excerpt, author, slug }) {
                 direction='column'
                 justify='space-evenly'
                 alignItems='flex-start'>
-                <TitleBox title={title} author={author} date={date} slug={slug} variant='h3' />
+                <Grid item>
+                  <MuiLink
+                    as={`/blog/${slug}`}
+                    href='/blog/[slug]'
+                    underline='none'>
+                    <Typography variant='h3'>{title}</Typography>
+                  </MuiLink>
+                </Grid>
+                <Grid item>
+                  <Typography variant='overline' display='block' gutterBottom>
+                    <CustomDate dateString={date} /> — {author.name}
+                  </Typography>
+                </Grid>
               </Grid>
             </Grid>
             <Grid item sm={6}>
-            <Typography variant="body1" gutterBottom>{excerpt}</Typography>
+              <Typography variant='body1' gutterBottom>
+                {excerpt}
+              </Typography>
             </Grid>
           </Grid>
         </Grid>
