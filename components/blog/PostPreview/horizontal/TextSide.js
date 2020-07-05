@@ -51,7 +51,12 @@ export default function TextSide({ title, date, slug, excerpt, readingTime }) {
             className={classes.dateReadingTime}
             variant='overline'
             display='block'>
-            <CustomDate dateString={date} /> • {readingTime}
+            <CustomDate dateString={date} />
+            <Typography
+            variant='overline'
+            color='textSecondary'
+            display='span'
+            gutterBottom> • {readingTime}</Typography>
           </Typography>
         </Grid>
         <Grid item>

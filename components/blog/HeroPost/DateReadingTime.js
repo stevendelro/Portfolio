@@ -50,7 +50,12 @@ export default function DateReadingTime({
             variant='overline'
             display='block'
             gutterBottom>
-            <CustomDate dateString={date} /> • {readingTime}
+            <CustomDate dateString={date} />
+            <Typography
+            variant='overline'
+            color='textSecondary'
+            display='span'
+            gutterBottom> • {readingTime}</Typography>
           </Typography>
         </Grid>
       </Grid>
