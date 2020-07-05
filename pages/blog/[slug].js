@@ -6,6 +6,7 @@ import Container from '@material-ui/core/Container'
 import Divider from '@material-ui/core/Divider'
 import PostTitle from '../../components/blog/PostDetail/PostTitle'
 import PostHeader from '../../components/blog/PostDetail/PostHeader'
+import PostImage from '../../components/blog/PostDetail/PostImage'
 import PostBody from '../../components/blog/PostDetail/PostBody'
 import MoreStories from '../../components/blog/MoreStories'
 import { getPostAndMorePosts, getAllPostsWithSlug } from '../../contentful/api'
@@ -16,34 +17,47 @@ export default function PostDetail({ post, morePosts, preview }) {
     return <ErrorPage statusCode={404} />
   }
   return (
-    <Container>
+    <>
       {router.isFallback ? (
         <PostTitle>Loading…</PostTitle>
       ) : (
         <>
+          <Head>
+            <title>Blog | {post.title}</title>
+            <meta property='og:image' content={post.coverImage.url} />
+          </Head>
           <article>
-            <Head>
-              <title>Blog | {post.title}</title>
-              <meta property='og:image' content={post.coverImage.url} />
-            </Head>
             <Grid
               container
-              direction='row'
+              direction='column'
               justify='center'
               alignItems='center'>
-              <Grid item xs={12} sm={10} lg={8} xl={6}>
+              <Grid item xs={12} sm={8} lg={6} xl={4}>
                 <PostHeader
                   title={post.title}
-                  coverImage={post.coverImage}
                   date={post.date}
                   author={post.author}
                   excerpt={post.excerpt}
                   readingTime={post.stats.text}
                 />
-
               </Grid>
-              <Grid item xs={12} sm={10} lg={8} xl={6}>
-              <PostBody content={post.content} />
+            </Grid>
+            <Grid
+              container
+              direction='column'
+              justify='center'
+              alignItems='center'>
+              <Grid item>
+                <PostImage title={post.title} coverImage={post.coverImage} />
+              </Grid>
+            </Grid>
+            <Grid
+              container
+              direction='column'
+              justify='center'
+              alignItems='center'>
+              <Grid item xs={12} sm={8} lg={6} xl={4}>
+                <PostBody content={post.content} />
               </Grid>
             </Grid>
           </article>
@@ -53,7 +67,7 @@ export default function PostDetail({ post, morePosts, preview }) {
           )}
         </>
       )}
-    </Container>
+    </>
   )
 }
 
