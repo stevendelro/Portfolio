@@ -6,17 +6,26 @@ import CustomDate from '../CustomDate'
 import MuiLink from '../../MuiLink'
 
 const useStyles = makeStyles(theme => ({
-  titleDateAuthor: {
+  dateReadingTime: {
     padding: theme.spacing(2),
   },
-  dateAuthor: {
+  dateReadingTime: {
     [theme.breakpoints.down('sm')]: {
       fontSize: '.7rem',
     },
   },
+  readingTime: {
+    lineHeight: '.1rem',
+    textAlign: 'center',
+  },
 }))
 
-export default function TitleDateAuthor({slug, title, author, date}) {
+export default function DateReadingTime({
+  slug,
+  title,
+  date,
+  readingTime,
+}) {
   const classes = useStyles()
   const theme = useTheme()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
@@ -24,7 +33,7 @@ export default function TitleDateAuthor({slug, title, author, date}) {
     <Grid item sm={5}>
       <Grid
         container
-        className={classes.titleDateAuthor}
+        className={classes.dateReadingTime}
         direction='row'
         justify='space-evenly'
         alignItems='center'>
@@ -37,11 +46,11 @@ export default function TitleDateAuthor({slug, title, author, date}) {
         </Grid>
         <Grid item>
           <Typography
-            className={classes.dateAuthor}
+            className={classes.dateReadingTime}
             variant='overline'
             display='block'
             gutterBottom>
-            <CustomDate dateString={date} /> — {author.name}
+            <CustomDate dateString={date} /> • {readingTime}
           </Typography>
         </Grid>
       </Grid>

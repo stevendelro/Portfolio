@@ -9,14 +9,17 @@ const useStyles = makeStyles(theme => ({
   root: {
     marginBottom: theme.spacing(3),
   },
+  divider: {
+    margin: theme.spacing(5, 0)
+  },
 }))
 
-export default function MediaLeft({
+export default function HorizontalPreview({
   title,
   coverImage,
   date,
   excerpt,
-  author,
+  readingTime,
   slug,
 }) {
   const classes = useStyles()
@@ -30,10 +33,10 @@ export default function MediaLeft({
         <ImageSide coverImage={coverImage} title={title} slug={slug} />
         <TextSide
           title={title}
-          author={author}
           date={date}
           slug={slug}
           excerpt={excerpt}
+          readingTime={readingTime}
         />
       </>
     )
@@ -43,10 +46,10 @@ export default function MediaLeft({
       <>
         <TextSide
           title={title}
-          author={author}
           date={date}
           slug={slug}
           excerpt={excerpt}
+          readingTime={readingTime}
         />
         <ImageSide coverImage={coverImage} title={title} slug={slug} />
       </>
@@ -54,7 +57,7 @@ export default function MediaLeft({
   }
   return (
     <>
-      <Divider style={{ margin: '2rem 0' }} />
+      <Divider className={classes.divider} />
       <Grid
         container
         className={classes.root}

@@ -15,15 +15,19 @@ const useStyles = makeStyles(theme => ({
       paddingRight: theme.spacing(3),
     },
   },
-  dateAuthor: {
+  dateReadingTime: {
     marginBottom: theme.spacing(3),
     [theme.breakpoints.down('sm')]: {
       fontSize: '.65rem',
     },
   },
+  readingTime: {
+    textAlign: 'center',
+    lineHeight: '.1rem',
+  },
 }))
 
-export default function TextSide({ title, author, date, slug, excerpt }) {
+export default function TextSide({ title, date, slug, excerpt, readingTime }) {
   const classes = useStyles()
   const theme = useTheme()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
@@ -44,10 +48,10 @@ export default function TextSide({ title, author, date, slug, excerpt }) {
         </Grid>
         <Grid item>
           <Typography
-            className={classes.dateAuthor}
+            className={classes.dateReadingTime}
             variant='overline'
             display='block'>
-            <CustomDate dateString={date} /> — {author.name}
+            <CustomDate dateString={date} /> • {readingTime}
           </Typography>
         </Grid>
         <Grid item>

@@ -1,7 +1,7 @@
 import Grid from '@material-ui/core/Grid'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import TitleDateAuthor from './TitleDateAuthor'
+import TitleDateAuthor from './DateReadingTime'
 import Excerpt from './Excerpt'
 import Image from './Image'
 
@@ -37,6 +37,7 @@ function HeroPost({
   excerpt,
   author,
   slug,
+  readingTime,
   titlePosition = 'left' // if not declared, default to left.
 }) {
   const classes = useStyles()
@@ -57,6 +58,7 @@ function HeroPost({
           title={title}
           date={date}
           author={author}
+          readingTime={readingTime}
         />
       </>
     )
@@ -68,6 +70,7 @@ function HeroPost({
           title={title}
           date={date}
           author={author}
+          readingTime={readingTime}
         />
         <Excerpt titlePosition={titlePosition} excerpt={excerpt} />
       </>
@@ -85,6 +88,7 @@ function HeroPost({
           title={title}
           date={date}
           author={author}
+          readingTime={readingTime}
         />
         <Excerpt titlePosition={titlePosition} excerpt={excerpt} />
       </>
@@ -98,11 +102,11 @@ function HeroPost({
           title={title}
           date={date}
           author={author}
+          readingTime={readingTime}
         />
       </>
     )
   }
-
 
   return (
     <>

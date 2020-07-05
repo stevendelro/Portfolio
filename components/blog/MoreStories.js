@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function MoreStories({ posts }) {
+export default function MoreStories({ posts }) {
   const classes = useStyles()
   return (
     <Grid className={classes.moreStories} container direction='row' justify='center' alignItems='center'>
@@ -20,9 +20,9 @@ function MoreStories({ posts }) {
               title={post.title}
               coverImage={post.coverImage.url}
               date={post.date}
-              author={post.author}
               slug={post.slug}
               excerpt={post.excerpt}
+              readingTime={post.stats.text}
             />
           )
         })}
@@ -30,5 +30,3 @@ function MoreStories({ posts }) {
     </Grid>
   )
 }
-
-export default MoreStories

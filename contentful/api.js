@@ -1,4 +1,8 @@
 import { createClient } from 'contentful'
+import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer'
+import readingTime from 'reading-time'
+
+
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -21,6 +25,7 @@ function parseAuthor({ fields }) {
 }
 
 function parsePost({ fields }) {
+const plainString = documentToPlainTextString(fields.content)
   return {
     title: fields.title,
     slug: fields.slug,
@@ -29,6 +34,7 @@ function parsePost({ fields }) {
     excerpt: fields.excerpt,
     coverImage: fields.coverImage.fields.file,
     author: parseAuthor(fields.author),
+    stats: readingTime(plainString)
   }
 }
 
