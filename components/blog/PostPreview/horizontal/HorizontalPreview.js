@@ -2,8 +2,8 @@ import Grid from '@material-ui/core/Grid'
 import Divider from '@material-ui/core/Divider'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import ImageSide from './ImageSide'
-import TextSide from './TextSide'
+import ImageArea from './ImageArea'
+import TextArea from './TextArea'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,8 +30,8 @@ export default function HorizontalPreview({
   if (isTinyScreen) {
     adjustedForSmallScreens = (
       <>
-        <ImageSide coverImage={coverImage} title={title} slug={slug} />
-        <TextSide
+        <ImageArea coverImage={coverImage} title={title} slug={slug} />
+        <TextArea
           title={title}
           date={date}
           slug={slug}
@@ -44,14 +44,14 @@ export default function HorizontalPreview({
   if (!isTinyScreen) {
     adjustedForSmallScreens = (
       <>
-        <TextSide
+        <TextArea
           title={title}
           date={date}
           slug={slug}
           excerpt={excerpt}
           readingTime={readingTime}
         />
-        <ImageSide coverImage={coverImage} title={title} slug={slug} />
+        <ImageArea coverImage={coverImage} title={title} slug={slug} />
       </>
     )
   }

@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function TextSide({ title, date, slug, excerpt, readingTime }) {
+export default function TextArea({ title, date, slug, excerpt, readingTime }) {
   const classes = useStyles()
   const theme = useTheme()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
