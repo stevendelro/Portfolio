@@ -51,7 +51,7 @@ export default function TextSide({ title, author, date, slug, excerpt }) {
           </Typography>
         </Grid>
         <Grid item>
-          <Typography variant='body1' color='textSecondary' align='center'>
+          <Typography variant='body2' color='textSecondary' align='center'>
             {excerpt}
           </Typography>
         </Grid>

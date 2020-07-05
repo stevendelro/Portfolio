@@ -22,6 +22,7 @@ const useStyles = makeStyles(theme => ({
       margin: theme.spacing(0, 1, 0, 1),
     },
     margin: theme.spacing(0, 5, 0, 5),
+    fontSize: '1.3rem',
   },
 }))
 
@@ -44,7 +45,7 @@ export default function PageIntro({ title, paragraph }) {
           </Typography>
           <Typography
             className={classes.paragraph}
-            variant='h5'
+            variant='body2'
             align='center'
             color='textSecondary'
             paragraph>
@@ -78,7 +79,7 @@ export default function PageIntro({ title, paragraph }) {
           <Grid item sm={9}>
             <Typography
               className={classes.paragraph}
-              variant='h5'
+              variant='body2'
               align='center'
               color='textSecondary'
               paragraph>
