@@ -1,63 +1,57 @@
-import CardMedia from '@material-ui/core/CardMedia'
+import Divider from '@material-ui/core/Divider'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
-import Avatar from '@material-ui/core/Avatar'
-import CustomDate from '../CustomDate'
-import PostTitle from './PostTitle'
+import AvatarStamp from '../AvatarStamp'
 
 const useStyles = makeStyles(theme => ({
-  largeAvatar: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
+  root: {
+    marginBottom: theme.spacing(10),
   },
-  media: {
-    height: 200,
+  title: {
+    marginTop: theme.spacing(2),
+    [theme.breakpoints.down('xs')]: {
+      fontWeight: 500,
+    },
+  },
+  excerpt: {
+    marginBottom: theme.spacing(3),
+    fontSize: '1.2rem',
+  },
+  divider: {
+    margin: theme.spacing(1, 0),
   },
 }))
 
-export default function PostHeader({ title, coverImage, date, author }) {
+export default function PostHeader({
+  title,
+  date,
+  author,
+  excerpt,
+  readingTime,
+}) {
   const classes = useStyles()
   return (
-    <>
-      <PostTitle>{title}</PostTitle>
-      <div className='hidden md:block md:mb-12'>
-        {author && (
-          <>
-            <Avatar
-              className={classes.largeAvatar}
-              alt={author.name}
-              src={author.picture.url}
-            />
-            <Typography variant='h4' gutterBottom>
-              {author.name}
-            </Typography>
-          </>
-        )}
-      </div>
-      <CardMedia
-        className={classes.media}
-        title={title}
-        image={coverImage.url}
+    <div className={classes.root}>
+      <Typography
+        className={classes.title}
+        variant='h3'
+        component='h1'
+        gutterBottom>
+        {title}
+      </Typography>
+      <Typography
+        className={classes.excerpt}
+        color='textSecondary'
+        variant='body2'
+        component='p'>
+        {excerpt}
+      </Typography>
+      <Divider className={classes.divider} />
+      <AvatarStamp
+        author={author}
+        date={date}
+        readingTime={readingTime}
       />
-      <div className='max-w-2xl mx-auto'>
-        {/* <div className='block md:hidden mb-6'>
-          {author && (
-            <>
-              <Avatar
-                className={classes.largeAvatar}
-                alt={author.name}
-                src={author.picture}
-              />
-              <Typography variant='h4' gutterBottom>
-                {author.name}
-              </Typography>
-            </>
-          )}
-        </div> */}
-        <Typography variant='h1' component='h2' gutterBottom>
-          <CustomDate dateString={date} />
-        </Typography>
-      </div>
-    </>
+    </div>
   )
 }
