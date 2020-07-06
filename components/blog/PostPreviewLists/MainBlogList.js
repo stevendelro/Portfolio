@@ -1,5 +1,5 @@
 import Grid from '@material-ui/core/Grid'
-import HorizontalPreview from './PostPreview/horizontal/HorizontalPreview'
+import HorizontalPreview from './MainBlogList/HorizontalPreview'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function MoreStories({ posts }) {
+export default function MainBlogList({ posts }) {
   const classes = useStyles()
   return (
     <Grid className={classes.moreStories} container direction='row' justify='center' alignItems='center'>

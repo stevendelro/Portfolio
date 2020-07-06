@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import PageIntro from '../../components/PageIntro'
 import HeroPost from '../../components/blog/HeroPost/HeroPost'
-import MoreStories from '../../components/blog/MoreStories'
+import MainBlogList from '../../components/blog/PostPreviewLists/MainBlogList'
 import { getAllPostsForHome } from '../../contentful/api'
 //
 
@@ -30,7 +30,7 @@ export default function BlogIndex({ preview, allPosts }) {
           titlePosition='right'
         />
       )}
-      {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+      {morePosts.length > 0 && <MainBlogList posts={morePosts} />}
     </>
   )
 }
