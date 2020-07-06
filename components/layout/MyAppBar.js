@@ -1,12 +1,36 @@
-import React from 'react'
+import { useState, cloneElement } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
-import Grid from '@material-ui/core/Grid'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/icons/Menu'
+import Switch from '@material-ui/core/Switch'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormGroup from '@material-ui/core/FormGroup'
+import MenuItem from '@material-ui/core/MenuItem'
+import Menu from '@material-ui/core/Menu'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
-import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  appBar: {
+    backgroundColor: '#f9f9f9'
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    color: theme.palette.primary.main
+  },
+  title: {
+    flexGrow: 1,
+    color: theme.palette.primary.main
+  },
+  toggleLabel: {
+    color: theme.palette.primary.main
+  },
+}))
 
 // AppBar will cast a box shadow when content scrolls under it
 function ElevationScroll(props) {
@@ -16,66 +40,54 @@ function ElevationScroll(props) {
     threshold: 0,
     target: window ? window() : undefined,
   })
-  return React.cloneElement(children, {
+  return cloneElement(children, {
     elevation: trigger ? 4 : 0,
   })
 }
 
-function MyAppBar(props) {
-  const { drawerWidth, handleDrawerToggle, appBarTitle } = props
-  const useStyles = makeStyles(theme => ({
-    appBar: {
-      [theme.breakpoints.up('sm')]: {
-        width: `calc(100% - ${drawerWidth}px)`,
-        marginLeft: drawerWidth,
-      },
-      backgroundColor: '#f9f9f9',
-    },
-    menuButton: {
-      color: theme.palette.primary.main,
-      marginRight: theme.spacing(2),
-      [theme.breakpoints.up('sm')]: {
-        display: 'none',
-      },
-    },
-    appBarTitle: {
-      color: theme.palette.primary.main,
-      [theme.breakpoints.between(200, 400)]: {
-        marginRight: '56px',
-      },
-    },
-  }))
+export default function MenuAppBar(props) {
+  const {toggleShowDrawer} = props
   const classes = useStyles()
+  const [darkMode, setDarkMode] = useState(false)
+
+  const toggleThemeColorChange = event => {
+    setDarkMode(event.target.checked)
+  }
+
   return (
-    <ElevationScroll {...props}>
-      <AppBar position='fixed' color='inherit' className={classes.appBar}>
-        <Toolbar>
-          <Grid
-            container
-            direction='row'
-            justify='space-between'
-            alignItems='center'>
-            <Grid item>
-              <IconButton
-                color='inherit'
-                aria-label='open drawer'
-                edge='start'
-                onClick={handleDrawerToggle}
-                className={classes.menuButton}>
-                <MenuIcon />
-              </IconButton>
-            </Grid>
-            <Grid item>
-              <Typography className={classes.appBarTitle} variant='h6' noWrap>
-                {appBarTitle}
-              </Typography>
-            </Grid>
-            <Grid item></Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
-    </ElevationScroll>
+    <div className={classes.root}>
+      <ElevationScroll {...props}>
+        <AppBar className={classes.appBar} position='fixed'>
+          <Toolbar>
+            <IconButton
+              edge='start'
+              className={classes.menuButton}
+              onClick={toggleShowDrawer()}
+              color='inherit'
+              aria-haspopup='true'
+              aria-label='main-menu'>
+              <MenuIcon />
+            </IconButton>
+
+            <Typography variant='h6' className={classes.title}>
+              Home
+            </Typography>
+            <FormGroup>
+              <FormControlLabel
+              className={classes.toggleLabel}
+                control={
+                  <Switch
+                    checked={darkMode}
+                    onChange={toggleThemeColorChange}
+                    aria-label='dark mode switch'
+                  />
+                }
+                label={darkMode ? 'Dark' : 'Light'}
+              />
+            </FormGroup>
+          </Toolbar>
+        </AppBar>
+      </ElevationScroll>
+    </div>
   )
 }
-
-export default MyAppBar

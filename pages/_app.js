@@ -22,11 +22,17 @@ const useStyles = makeStyles(theme => ({
 export default function MyApp(props) {
   const classes = useStyles()
   const { Component, pageProps } = props
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [openDrawer, setOpenDrawer] = useState(false)
   const [appBarTitle, setAppBarTitle] = useState('Steven\'s Portfolio')
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen)
+  const toggleShowDrawer = () => event => {
+    if (
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
+      return
+    }
+    setOpenDrawer(!openDrawer)
   }
 
   useEffect(() => {
@@ -50,15 +56,12 @@ export default function MyApp(props) {
         <div className={classes.root}>
           <CssBaseline />
           <MyAppBar
-            drawerWidth={drawerWidth}
-            handleDrawerToggle={handleDrawerToggle}
-            appBarTitle={appBarTitle}
+            toggleShowDrawer={toggleShowDrawer}
           />
           <MainDrawer
-            drawerWidth={drawerWidth}
-            handleDrawerToggle={handleDrawerToggle}
+            toggleShowDrawer={toggleShowDrawer}
             setAppBarTitle={setAppBarTitle}
-            mobileOpen={mobileOpen}
+            openDrawer={openDrawer}
           />
           <main className={classes.content}>
             <div className={classes.toolbar} />
