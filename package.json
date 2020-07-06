@@ -20,7 +20,8 @@
     "react": "latest",
     "react-dom": "latest",
     "react-icons": "^3.10.0",
-    "reading-time": "^1.2.0"
+    "reading-time": "^1.2.0",
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "contentful-import": "^7.7.12"
