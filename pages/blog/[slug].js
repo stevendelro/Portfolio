@@ -2,13 +2,12 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import ErrorPage from 'next/error'
 import Grid from '@material-ui/core/Grid'
-import Container from '@material-ui/core/Container'
 import Divider from '@material-ui/core/Divider'
-import PostTitle from '../../components/blog/PostDetail/PostTitle'
-import PostHeader from '../../components/blog/PostDetail/PostHeader'
-import PostImage from '../../components/blog/PostDetail/PostImage'
-import PostBody from '../../components/blog/PostDetail/PostBody'
-import MoreStories from '../../components/blog/MoreStories'
+import PostTitle from '../../components/blog/PostDetailPage/PostTitle'
+import PostHeader from '../../components/blog/PostDetailPage/PostHeader'
+import PostImage from '../../components/blog/PostDetailPage/PostImage'
+import PostBody from '../../components/blog/PostDetailPage/PostBody'
+import PostDetailList from '../../components/blog/PostPreviewLists/PostDetailList'
 import { getPostAndMorePosts, getAllPostsWithSlug } from '../../contentful/api'
 
 export default function PostDetail({ post, morePosts, preview }) {
@@ -63,7 +62,7 @@ export default function PostDetail({ post, morePosts, preview }) {
           </article>
           <Divider />
           {morePosts && morePosts.length > 0 && (
-            <MoreStories posts={morePosts} />
+            <PostDetailList posts={morePosts} />
           )}
         </>
       )}
