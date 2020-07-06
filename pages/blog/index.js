@@ -1,54 +1,43 @@
-import moment from 'moment'
-import Grid from '@material-ui/core/Grid'
-import { getPosts } from '../api/blog'
-import Post from '../../components/blog/Post'
-import useSWR from 'swr'
+import Head from 'next/head'
+import PageIntro from '../../components/PageIntro'
+import HeroPost from '../../components/blog/HeroPost/HeroPost'
+import MainBlogList from '../../components/blog/PostPreviewLists/MainBlogList'
+import { getAllPostsForHome } from '../../contentful/api'
+//
 
-const Posts = props => {
-  const initialData = props.posts
-  const { data: posts } = useSWR('/api/blog', getPosts, { initialData })
+export default function BlogIndex({ preview, allPosts }) {
+  const heroPost = allPosts[0]
+  const morePosts = allPosts.slice(1)
+  const heroParagraph = `I'm an avid writer. Below, you'll find a few
+  pieces that I'm particularly proud of. If you care to understand my
+  thought process, check out a few posts and let me know what you think.`
   return (
-    <Grid
-      container
-      direction='column'
-      justify='center'
-      alignItems='center'
-      spacing={3}>
-      {posts.map(post => (
-        <Post
-          key={post.uuid}
-          title={post.title}
-          slug={post.slug}
-          image={post.feature_image}
-          excerpt={post.excerpt}
-          customExcerpt={post.custom_excerpt}
-          html={post.html}
-          readingTime={post.reading_time}
-          created={{
-            raw: post.created_at,
-            formatted: moment(post.created_at).format('h:mma - M/DD/YY'),
-          }}
-          updated={{
-            far: post.updated_at,
-            formatted: moment(post.updated_at).format('h:mma - M/DD/YY'),
-          }}
-          published={{
-            raw: post.published_at,
-            formatted: moment(post.published_at).format('h:mma - M/DD/YY'),
-          }}
+    <>
+      <Head>
+        <title>Steven's Blog</title>
+        <meta property='og:title' content="Steven's Blog" />
+      </Head>
+      <PageIntro title='Blog' paragraph={heroParagraph} />
+      {heroPost && (
+        <HeroPost
+          title={heroPost.title}
+          coverImage={heroPost.coverImage.url}
+          date={heroPost.date}
+          author={heroPost.author}
+          slug={heroPost.slug}
+          excerpt={heroPost.excerpt}
+          readingTime={heroPost.stats.text}
+          titlePosition='right'
         />
-      ))}
-    </Grid>
+      )}
+      {morePosts.length > 0 && <MainBlogList posts={morePosts} />}
+    </>
   )
 }
 
-export async function getStaticProps({ res }) {
-  if (res) {
-    const cacheAge = 60 * 60 * 12
-    res.setHeader('Cache-Control', `public,s-maxage=${cacheAge}`)
+export async function getStaticProps({ preview = false }) {
+  const allPosts = await getAllPostsForHome(preview)
+  return {
+    props: { preview, allPosts },
   }
-  const posts = await getPosts()
-  return { props: { posts } }
 }
-
-export default Posts

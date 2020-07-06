@@ -1,25 +1,29 @@
 {
-  "name": "nextjs",
-  "version": "4.0.0",
+  "name": "nextjs-contentful",
+  "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "@material-ui/core": "latest",
-    "@material-ui/icons": "^4.9.1",
-    "@tryghost/content-api": "^1.4.1",
-    "clsx": "latest",
-    "html-react-parser": "^0.13.0",
-    "moment": "^2.27.0",
-    "next": "latest",
-    "prop-types": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "react-icons": "^3.10.0",
-    "swr": "^0.2.3"
-  },
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+    "setup": "node ./contentful/setup.js $CONTENTFUL_SPACE_ID $CONTENTFUL_MANAGEMENT_TOKEN"
+  },
+  "dependencies": {
+    "@contentful/rich-text-plain-text-renderer": "^14.1.1",
+    "@contentful/rich-text-react-renderer": "^14.1.1",
+    "@material-ui/core": "latest",
+    "@material-ui/icons": "^4.9.1",
+    "@tryghost/content-api": "^1.4.1",
+    "clsx": "latest",
+    "contentful": "^7.14.5",
+    "date-fns": "^2.14.0",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-icons": "^3.10.0",
+    "reading-time": "^1.2.0"
+  },
+  "devDependencies": {
+    "contentful-import": "^7.7.12"
   }
 }
