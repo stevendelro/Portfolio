@@ -61,9 +61,17 @@ export default function PostDetail({ post, morePosts, preview }) {
             </Grid>
           </article>
           <Divider />
-          {morePosts && morePosts.length > 0 && (
-            <PostDetailList posts={morePosts} />
-          )}
+          <Grid
+            container
+            direction='column'
+            justify='center'
+            alignItems='center'>
+            <Grid item xs={12} sm={8} xl={4}>
+              {morePosts && morePosts.length > 0 && (
+                <PostDetailList posts={morePosts} />
+              )}
+            </Grid>
+          </Grid>
         </>
       )}
     </>

@@ -1,44 +1,41 @@
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
-// import VerticalPreview from './'
+import VerticalPreview from './PostDetailList/VerticalPreview'
 
-// const useStyles = makeStyles(theme => ({
-//   moreStories: {
-//     marginTop: theme.spacing(3),
-//   },
-// }))
+const useStyles = makeStyles(theme => ({
+  topGrid: {
+    marginTop: theme.spacing(3),
+    [theme.breakpoints.up('sm')]: {
+      padding: theme.spacing(2),
+    },
+  },
+}))
 
-// export default function VerticalPreview({ posts }) {
-//   const classes = useStyles()
-//   return (
-//     <Grid className={classes.moreStories} container direction='row' justify='center' alignItems='center'>
-//       <Grid item xs={12} sm={10} lg={8} xl={6}>
-//         {posts.map(post => {
-//           return (
-//             <HorizontalPreview
-//               key={post.slug}
-//               title={post.title}
-//               coverImage={post.coverImage.url}
-//               date={post.date}
-//               slug={post.slug}
-//               excerpt={post.excerpt}
-//               readingTime={post.stats.text}
-//             />
-//           )
-//         })}
-//       </Grid>
-//     </Grid>
-//   )
-// }
-
-
-function PostDetailList({posts}) {
+export default function PostDetailList({ posts }) {
+  const classes = useStyles()
   return (
-    <div>
-      POST DETAIL LIST
-    </div>
+    <Grid
+      className={classes.topGrid}
+      container
+      spacing={3}
+      direction='row'
+      justify='center'
+      alignItems='flex-start'>
+      {posts.map(post => {
+        return (
+          <Grid item key={post.id} xs={12} sm={6}>
+            <VerticalPreview
+              key={post.slug}
+              title={post.title}
+              coverImage={post.coverImage.url}
+              date={post.date}
+              slug={post.slug}
+              excerpt={post.excerpt}
+              readingTime={post.stats.text}
+            />
+          </Grid>
+        )
+      })}
+    </Grid>
   )
 }
-
-export default PostDetailList
-
