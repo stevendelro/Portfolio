@@ -6,16 +6,15 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const useStyles = makeStyles(theme => ({
   smallScreen: {
-    backgroundColor: '#f9f9f9',
+    backgroundColor: theme.palette.grey[100],
     padding: theme.spacing(8, 0, 6),
     [theme.breakpoints.up('md')]: {
       marginBottom: '3rem',
     },
   },
   notSmallScreen: {
-    backgroundColor: '#f9f9f9',
+    backgroundColor: theme.palette.grey[100],
     margin: theme.spacing(5, 0, 5, 0),
-
   },
   paragraph: {
     [theme.breakpoints.down('sm')]: {

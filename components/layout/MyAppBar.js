@@ -17,18 +17,18 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   appBar: {
-    backgroundColor: '#f9f9f9'
+    backgroundColor: theme.palette.grey[100],
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
   },
   title: {
     flexGrow: 1,
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
   },
   toggleLabel: {
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
   },
 }))
 
@@ -46,9 +46,8 @@ function ElevationScroll(props) {
 }
 
 export default function MenuAppBar(props) {
-  const {toggleShowDrawer} = props
+  const { toggleShowDrawer, darkMode, setDarkMode } = props
   const classes = useStyles()
-  const [darkMode, setDarkMode] = useState(false)
 
   const toggleThemeColorChange = event => {
     setDarkMode(event.target.checked)
@@ -74,7 +73,7 @@ export default function MenuAppBar(props) {
             </Typography>
             <FormGroup>
               <FormControlLabel
-              className={classes.toggleLabel}
+                className={classes.toggleLabel}
                 control={
                   <Switch
                     checked={darkMode}
