@@ -1,6 +1,6 @@
 import React from "react";
 
-function Logo({height = '64px', width = '64px', color = '#000'}) {
+export default function Logo({height = '64px', width = '64px', color = '#144d53'}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,4 +23,3 @@ function Logo({height = '64px', width = '64px', color = '#000'}) {
   );
 }
 
-export default Logo;

@@ -1,9 +1,6 @@
-import Link from 'next/link'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
 import Drawer from '@material-ui/core/Drawer'
 import { makeStyles } from '@material-ui/core/styles'
+import HomeMenu from './HomeMenu'
 
 const useStyles = makeStyles({
   list: {
@@ -19,7 +16,7 @@ export default function TemporaryDrawer({ toggleShowDrawer, openDrawer }) {
   return (
     <>
       <Drawer
-        anchor='top'
+        anchor='left'
         variant='temporary'
         open={openDrawer}
         onClose={toggleShowDrawer()}>
@@ -28,15 +25,7 @@ export default function TemporaryDrawer({ toggleShowDrawer, openDrawer }) {
           role='presentation'
           onClick={toggleShowDrawer()}
           onKeyDown={toggleShowDrawer()}>
-          <List>
-            {['HOME', 'WORK', 'BLOG', 'MAIL'].map((text, index) => (
-              <ListItem key={index} className={classes.listItem} button>
-                <Link href={`/${text === 'HOME' ? '' : text.toLowerCase()}`}>
-                  <ListItemText primary={text} component='a' />
-                </Link>
-              </ListItem>
-            ))}
-          </List>
+          <HomeMenu />
         </div>
       </Drawer>
     </>

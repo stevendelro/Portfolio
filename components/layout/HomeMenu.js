@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import Router, { useRouter } from 'next/router'
-import NextLink from 'next/link'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 import Grid from '@material-ui/core/Grid'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
@@ -15,100 +15,66 @@ function a11yProps(tabIndex) {
   }
 }
 
-const logoColor = '#144d53'
+const useStyles = makeStyles(theme => ({
+  toolbar: theme.mixins.toolbar,
+  drawerLogo: {
+    marginBottom: '-64px',
+  },
+  tabs: {
+    borderRight: `1px solid ${theme.palette.divider}`,
+  },
+  tab: {
+    fontSize: '1.5rem',
+    '& > span': {
+      transition: 'all .2s ease-in-out',
+      '&:hover': { transform: 'scale(1.1)' },
+    },
+  },
+}))
 
-function HomeMenu({
-  drawerWidth,
-  setAppBarTitle,
-  mobileOpen,
-  handleDrawerToggle,
-}) {
+function HomeMenu() {
+  const classes = useStyles()
   const router = useRouter()
+  const { pathname } = router
   const [activeTabIndex, setActiveTabIndex] = useState(0)
+
+  // Ensure proper tag is active on page refresh
+  pathname === '/' && activeTabIndex !== 0 && setActiveTabIndex(0)
+  pathname === '/work' && activeTabIndex !== 1 && setActiveTabIndex(1)
+  pathname === '/blog' && activeTabIndex !== 2 && setActiveTabIndex(2)
+  pathname === '/mail' && activeTabIndex !== 3 && setActiveTabIndex(3)
 
   const handleTabSwitch = (event, selectedTabIndex) => {
     event.preventDefault()
     setActiveTabIndex(selectedTabIndex)
   }
 
-  // Ensure the current viewed page has the correct tab active
-  // Without these statements, on refresh the active tab will always be 0.
-  if (router.pathname === '/' && activeTabIndex !== 0) {
-    setActiveTabIndex(0)
-  }
-  if (router.pathname === '/work' && activeTabIndex !== 1) {
-    setActiveTabIndex(1)
-  }
-  if (router.pathname === '/blog' && activeTabIndex !== 2) {
-    setActiveTabIndex(2)
-  }
-  if (router.pathname === '/mail' && activeTabIndex !== 3) {
-    setActiveTabIndex(3)
-  }
-
-  function LinkTab(props) {
+  const LinkTab = (label, index) => {
+    const lowerCased = label.toLowerCase()
     return (
       <Tab
+        key={index}
         component='a'
+        className={classes.tab}
+        label={label}
         onClick={event => {
           event.preventDefault()
-          switch (props.label) {
-            case 'home':
-              router.push(`/`)
-              mobileOpen && handleDrawerToggle()
-              setAppBarTitle("Steven's Portfolio  ")
-              break
-            case 'work':
-              router.push(`/${props.label}`)
-              mobileOpen && handleDrawerToggle()
-              setAppBarTitle('Projects')
-              break
-            case 'blog':
-              router.push(`/${props.label}`)
-              mobileOpen && handleDrawerToggle()
-              setAppBarTitle('Thoughts')
-              break
-            case 'mail':
-              router.push(`/${props.label}`)
-              mobileOpen && handleDrawerToggle()
-              setAppBarTitle('Contact')
-              break
-          }
+          router.push(`/${lowerCased === 'home' ? '' : lowerCased}`)
         }}
-        {...props}
+        {...a11yProps(index)}
       />
     )
   }
 
-  const useStyles = makeStyles(theme => ({
-    listItem: {
-      textAlign: 'center',
-    },
-    toolbar: theme.mixins.toolbar,
-    drawerLogo: {
-      marginBottom: '-64px',
-    },
-    tabs: {
-      borderRight: `1px solid ${theme.palette.divider}`,
-    },
-    tab: {
-      minWidth: drawerWidth,
-      '& > span': {
-        transition: 'all .2s ease-in-out',
-        '&:hover': { transform: 'scale(1.1)' },
-      },
-    },
-  }))
-  const classes = useStyles()
   return (
     <>
       <Grid container direction='row' justify='center' alignItems='center'>
         <Grid item className={classes.drawerLogo}>
-          <NextLink href='/'>
-            <ButtonBase component='a' disableRipple>
-              <Logo height='30px' width='30px' color={logoColor} />
+          <Link href='/'>
+            <ButtonBase disableRipple>
+              <Logo height='30px' width='30px' />
             </ButtonBase>
-          </NextLink>
+          </Link>
         </Grid>
       </Grid>
       <div className={classes.toolbar} />
@@ -117,11 +83,11 @@ function HomeMenu({
         value={activeTabIndex}
         onChange={handleTabSwitch}
         aria-label='home menu tabs'
-        className={classes.tabs}>
-        <LinkTab className={classes.tab} label='home' {...a11yProps(0)} />
-        <LinkTab className={classes.tab} label='work' {...a11yProps(1)} />
-        <LinkTab className={classes.tab} label='blog' {...a11yProps(2)} />
-        <LinkTab className={classes.tab} label='mail' {...a11yProps(3)} />
+        className={classes.tabs}
+        centered>
+        {['HOME', 'WORK', 'BLOG', 'MAIL'].map((arrayItem, index) =>
+          LinkTab(arrayItem, index)
+        )}
       </Tabs>
     </>
   )
