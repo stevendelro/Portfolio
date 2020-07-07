@@ -53,10 +53,13 @@ export default function TextArea({ title, date, slug, excerpt, readingTime }) {
             display='block'>
             <CustomDate dateString={date} />
             <Typography
-            variant='overline'
-            color='textSecondary'
-            display='span'
-            gutterBottom> • {readingTime}</Typography>
+              variant='overline'
+              color='textSecondary'
+              display='inline'
+              gutterBottom>
+              {' '}
+              • {readingTime}
+            </Typography>
           </Typography>
         </Grid>
         <Grid item>

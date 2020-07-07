@@ -20,12 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function DateReadingTime({
-  slug,
-  title,
-  date,
-  readingTime,
-}) {
+export default function DateReadingTime({ slug, title, date, readingTime }) {
   const classes = useStyles()
   const theme = useTheme()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
@@ -52,10 +47,13 @@ export default function DateReadingTime({
             gutterBottom>
             <CustomDate dateString={date} />
             <Typography
-            variant='overline'
-            color='textSecondary'
-            display='span'
-            gutterBottom> • {readingTime}</Typography>
+              variant='overline'
+              color='textSecondary'
+              display='inline'
+              gutterBottom>
+              {' '}
+              • {readingTime}
+            </Typography>
           </Typography>
         </Grid>
       </Grid>

@@ -3,7 +3,6 @@ import PageIntro from '../../components/PageIntro'
 import HeroPost from '../../components/blog/HeroPost/HeroPost'
 import MainBlogList from '../../components/blog/PostPreviewLists/MainBlogList'
 import { getAllPostsForHome } from '../../contentful/api'
-//
 
 export default function BlogIndex({ preview, allPosts }) {
   const heroPost = allPosts[0]

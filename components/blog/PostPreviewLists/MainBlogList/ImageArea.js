@@ -19,10 +19,9 @@ const useStyles = makeStyles(theme => ({
       height: 250,
     },
   },
-
 }))
 
-export default function ImageArea({coverImage, title, slug}) {
+export default function ImageArea({ coverImage, title, slug }) {
   const classes = useStyles()
   return (
     <Grid item xs={12} sm={7}>
@@ -38,4 +37,3 @@ export default function ImageArea({coverImage, title, slug}) {
     </Grid>
   )
 }
-
