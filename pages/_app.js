@@ -6,7 +6,6 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Hidden from '@material-ui/core/Hidden'
 import { makeStyles } from '@material-ui/core/styles'
 import MyAppBar from '../components/layout/MyAppBar'
-import MainDrawer from '../components/layout/MainDrawer'
 import MobileNav from '../components/layout/MobileNav'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
@@ -25,21 +24,10 @@ const useStyles = makeStyles(theme => ({
 export default function MyApp(props) {
   const classes = useStyles()
   const { Component, pageProps } = props
-  const [openDrawer, setOpenDrawer] = useState(false)
   const [darkMode, setDarkMode] = useState(
     // This will check the user/system settings to see if dark mode is preferred.
     useMediaQuery('(prefers-color-scheme: dark)')
   )
-
-  const toggleShowDrawer = () => event => {
-    if (
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
-    ) {
-      return
-    }
-    setOpenDrawer(!openDrawer)
-  }
 
   const theme = useMemo(
     () =>
@@ -83,20 +71,17 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         <div className={classes.root}>
           <CssBaseline />
-          <MyAppBar
-            darkMode={darkMode}
-            setDarkMode={setDarkMode}
-            toggleShowDrawer={toggleShowDrawer}
-          />
-          {/* Hide Drawer on large screens */}
+          {/* Hide Top AppBar on mobile screens */}
           <Hidden xsDown>
-            <MainDrawer
-              toggleShowDrawer={toggleShowDrawer}
-              openDrawer={openDrawer}
+            <MyAppBar
+              darkMode={darkMode}
+              setDarkMode={setDarkMode}
             />
           </Hidden>
           <main className={classes.content}>
-            <div className={classes.toolbar} />
+            <Hidden xsDown>
+              <div className={classes.toolbar} />
+            </Hidden>
             <Component {...pageProps} />
             {/* Display bottom AppBar for a better mobile experience */}
             <Hidden smUp>
