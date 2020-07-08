@@ -14,7 +14,9 @@ export const removeDashesAndUppercaseFirstLetter = slug => {
 export const createCrumbLink = string => {
   const lowerCased = string.toLowerCase()
   return (
-    <MuiLink color='inherit' href={`/${lowerCased}`}>
+    <MuiLink
+      color='inherit'
+      href={`/${lowerCased === 'home' ? '' : lowerCased}`}>
       <Typography variant='caption' display='block'>
         {string}
       </Typography>
@@ -28,5 +30,3 @@ export const createSecondLevelCrumb = route => {
   if (route === '/blog/[slug]') return createCrumbLink('Blog')
   if (route === '/mail') return createCrumbLink('Mail')
 }
-
-
