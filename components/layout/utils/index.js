@@ -25,8 +25,7 @@ export const createCrumbLink = string => {
 }
 
 export const createSecondLevelCrumb = route => {
+  if (route === '/blog' || '/blog/[slug]') return createCrumbLink('Blog')
   if (route === '/work') return createCrumbLink('Work')
-  if (route === '/blog') return createCrumbLink('Blog')
-  if (route === '/blog/[slug]') return createCrumbLink('Blog')
   if (route === '/mail') return createCrumbLink('Mail')
 }

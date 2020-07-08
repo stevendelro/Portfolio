@@ -83,20 +83,18 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         <div className={classes.root}>
           <CssBaseline />
-          <MyAppBar
-            darkMode={darkMode}
-            setDarkMode={setDarkMode}
-            toggleShowDrawer={toggleShowDrawer}
-          />
-          {/* Hide Drawer on large screens */}
+          {/* Hide Top AppBar on mobile screens */}
           <Hidden xsDown>
-            <MainDrawer
+            <MyAppBar
+              darkMode={darkMode}
+              setDarkMode={setDarkMode}
               toggleShowDrawer={toggleShowDrawer}
-              openDrawer={openDrawer}
             />
           </Hidden>
           <main className={classes.content}>
-            <div className={classes.toolbar} />
+            <Hidden xsDown>
+              <div className={classes.toolbar} />
+            </Hidden>
             <Component {...pageProps} />
             {/* Display bottom AppBar for a better mobile experience */}
             <Hidden smUp>
