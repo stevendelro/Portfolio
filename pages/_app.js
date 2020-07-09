@@ -41,24 +41,28 @@ export default function MyApp(props) {
         typography: {
           // Overide `body2` to use a serif font.
           h1: {
+            fontFamily: 'Calistoga',
             color:
               darkMode
                 ? '#ff9100'
                 : '#144d53'
           },
           h2: {
+            fontFamily: 'Calistoga',
             color:
               darkMode
                 ? '#ff9100'
                 : '#144d53'
           },
           h3: {
+            fontFamily: 'Calistoga',
             color:
               darkMode
                 ? '#ff9100'
                 : '#144d53'
           },
           h4: {
+            fontFamily: 'Calistoga',
             color:
               darkMode
                 ? '#ff9100'
