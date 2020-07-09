@@ -1,6 +1,3 @@
-import Typography from '@material-ui/core/Typography'
-import MuiLink from '../../MuiLink'
-
 export const removeDashesAndUppercaseFirstLetter = slug => {
   const replacedDashesWithSpaces = slug.replace(/-/g, ' ')
   const upperCasedFirstLetters = replacedDashesWithSpaces
@@ -11,21 +8,13 @@ export const removeDashesAndUppercaseFirstLetter = slug => {
   return upperCasedFirstLetters
 }
 
-export const createCrumbLink = string => {
-  const lowerCased = string.toLowerCase()
-  return (
-    <MuiLink
-      color='inherit'
-      href={`/${lowerCased === 'home' ? '' : lowerCased}`}>
-      <Typography variant='caption' display='block'>
-        {string}
-      </Typography>
-    </MuiLink>
-  )
-}
-
-export const createSecondLevelCrumb = route => {
-  if (route === '/blog' || '/blog/[slug]') return createCrumbLink('Blog')
-  if (route === '/work') return createCrumbLink('Work')
-  if (route === '/mail') return createCrumbLink('Mail')
+export function truncate(phrase, numberToKeep) {
+  let array, keptWords
+  array = phrase.split(' ')
+  if (array.length < numberToKeep) return phrase
+  keptWords = array
+    .slice(0, array.length - (numberToKeep + 2))
+    .toString()
+    .replace(/,/g, ' ')
+  return `${keptWords}...`
 }
