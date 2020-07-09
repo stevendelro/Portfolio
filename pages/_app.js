@@ -40,6 +40,30 @@ export default function MyApp(props) {
         },
         typography: {
           // Overide `body2` to use a serif font.
+          h1: {
+            color:
+              darkMode
+                ? '#ff9100'
+                : '#144d53'
+          },
+          h2: {
+            color:
+              darkMode
+                ? '#ff9100'
+                : '#144d53'
+          },
+          h3: {
+            color:
+              darkMode
+                ? '#ff9100'
+                : '#144d53'
+          },
+          h4: {
+            color:
+              darkMode
+                ? '#ff9100'
+                : '#144d53'
+          },
           body2: {
             fontFamily: '"Roboto Slab", "Courier New", "serif"',
             fontSize: '1rem',
@@ -73,10 +97,7 @@ export default function MyApp(props) {
           <CssBaseline />
           {/* Hide Top AppBar on mobile screens */}
           <Hidden xsDown>
-            <MyAppBar
-              darkMode={darkMode}
-              setDarkMode={setDarkMode}
-            />
+            <MyAppBar darkMode={darkMode} setDarkMode={setDarkMode} />
           </Hidden>
           <main className={classes.content}>
             <Hidden xsDown>

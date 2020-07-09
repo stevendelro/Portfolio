@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { useTheme } from '@material-ui/core/styles'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs'
 import Typography from '@material-ui/core/Typography'
 import MuiLink from '../MuiLink'
 import { removeDashesAndUppercaseFirstLetter, truncate } from './utils/index'
 
 export default function NavBreadCrumbs() {
+  const theme = useTheme()
+  const darkMode = theme.palette.type
   const { route, query } = useRouter()
   const [secondCrumb, setSecondCrumb] = useState(null)
   const [thirdCrumb, setThirdCrumb] = useState(null)
@@ -20,7 +23,7 @@ export default function NavBreadCrumbs() {
     const lowerCased = string.toLowerCase()
     return (
       <MuiLink
-        color='inherit'
+        color={darkMode === 'light' ? 'primary' : 'secondary' }
         href={`/${lowerCased === 'home' ? '' : lowerCased}`}>
         <Typography variant='caption' display='block'>
           {string}
@@ -43,7 +46,6 @@ export default function NavBreadCrumbs() {
       }
     }
   }, [route, query])
-
   return (
     <Breadcrumbs aria-label='breadcrumb'>
       {createCrumbLink('Home')}

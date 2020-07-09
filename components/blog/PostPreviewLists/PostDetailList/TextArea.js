@@ -37,7 +37,7 @@ function TextArea({ date, readingTime, excerpt, slug, title }) {
       alignItems='flex-start'>
       <Grid item>
         <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
-          <Typography align='left' variant='h4'>
+          <Typography align='left' component='h2' variant='h4'>
             {title}
           </Typography>
         </MuiLink>

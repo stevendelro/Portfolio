@@ -6,14 +6,12 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const useStyles = makeStyles(theme => ({
   smallScreen: {
-    backgroundColor: theme.palette.grey[100],
     padding: theme.spacing(8, 0, 6),
     [theme.breakpoints.up('md')]: {
       marginBottom: '3rem',
     },
   },
   notSmallScreen: {
-    backgroundColor: theme.palette.grey[100],
     margin: theme.spacing(5, 0, 5, 0),
   },
   paragraph: {
@@ -38,7 +36,6 @@ export default function PageIntro({ title, paragraph }) {
             component='h1'
             variant='h1'
             align='center'
-            color='primary'
             gutterBottom>
             {title}
           </Typography>
@@ -69,7 +66,6 @@ export default function PageIntro({ title, paragraph }) {
               component='h1'
               variant='h1'
               align='center'
-              color='primary'
               gutterBottom>
               {title}
             </Typography>

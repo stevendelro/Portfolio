@@ -41,7 +41,7 @@ export default function TextArea({ title, date, slug, excerpt, readingTime }) {
         alignItems='center'>
         <Grid item>
           <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
-            <Typography align='center' variant={isSmallScreen ? 'h4' : 'h3'}>
+            <Typography align='center' component='h2' variant={isSmallScreen ? 'h4' : 'h3'}>
               {title}
             </Typography>
           </MuiLink>
