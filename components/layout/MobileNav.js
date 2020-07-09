@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
@@ -11,17 +11,53 @@ import SubjectOutlinedIcon from '@material-ui/icons/SubjectOutlined'
 import WbIncandescentOutlinedIcon from '@material-ui/icons/WbIncandescentOutlined'
 import WbIncandescentIcon from '@material-ui/icons/WbIncandescent'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
-    color: theme.palette.primary.main,
     width: '100vw',
     top: 'auto',
     bottom: 0,
   },
-  navOptions: {
+})
+
+// Custom bottom nav button styles to make darkMode look how I want.
+const MyBottomNavAction = withStyles(theme => ({
+  root: {
+    transition: theme.transitions.create(['color', 'padding-top'], {
+      duration: theme.transitions.duration.short,
+    }),
+    padding: '6px 12px 8px',
     minWidth: 64,
+    color: theme.palette.text.secondary,
+    '&$selected': {
+      paddingTop: 6,
+      color:
+        theme.palette.type === 'dark'
+          ? theme.palette.secondary.main
+          : theme.palette.primary.main,
+    },
   },
-}))
+  /* Pseudo-class applied to the root element if selected. */
+  selected: {
+    color:
+      theme.palette.type === 'dark'
+        ? theme.palette.secondary.main
+        : theme.palette.primary.main,
+  },
+  /* Pseudo-class applied to the root element if `showLabel={false}` and not selected. */
+  iconOnly: {},
+  /* Styles applied to the label's span element. */
+  label: {
+    fontFamily: theme.typography.fontFamily,
+    fontSize: theme.typography.pxToRem(12),
+    '&$selected': {
+      fontSize: theme.typography.pxToRem(14),
+      color:
+        theme.palette.type === 'dark'
+          ? theme.palette.secondary.main
+          : theme.palette.primary.main,
+    },
+  },
+}))(props => <BottomNavigationAction {...props} />)
 
 export default function MobileNav({ darkMode, setDarkMode }) {
   const classes = useStyles()
@@ -65,10 +101,9 @@ export default function MobileNav({ darkMode, setDarkMode }) {
     pathname === '/mail' && activeTabIndex !== 4 && setActiveTabIndex(4)
 
     return (
-      <BottomNavigationAction
+      <MyBottomNavAction
         key={index}
         component='a'
-        className={classes.navOptions}
         label={label}
         icon={icon}
         onClick={event => {
@@ -88,7 +123,7 @@ export default function MobileNav({ darkMode, setDarkMode }) {
   }
 
   return (
-    <AppBar className={classes.root} position='fixed' color='primary'>
+    <AppBar className={classes.root} position='fixed'>
       <BottomNavigation
         value={activeTabIndex}
         onChange={(event, selectedOption) => {

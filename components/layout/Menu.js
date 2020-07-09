@@ -1,12 +1,8 @@
-import { useState } from 'react'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
-import Grid from '@material-ui/core/Grid'
+import { useState } from 'react'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
-import ButtonBase from '@material-ui/core/ButtonBase'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
-import Logo from './Logo'
 
 function a11yProps(tabIndex) {
   return {
@@ -16,46 +12,56 @@ function a11yProps(tabIndex) {
 }
 
 const MyTabs = withStyles({
-  flexGrow: 1,
   indicator: {
-    backgroundColor: '#ffffff00',
+    backgroundColor: '#ffffff00', // remove active tab indicator
   },
-})(Tabs);
+})(Tabs)
 
-const MyTab = withStyles((theme) => ({
+const MyTab = withStyles(theme => ({
   root: {
-    textTransform: 'none',
     minWidth: 90,
+    textTransform: 'none',
+    fontWeight: theme.typography.fontWeightLight,
     margin: theme.spacing(0, 4),
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       margin: theme.spacing(0, 2),
+      padding: theme.spacing(2, 0),
     },
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: theme.spacing(0, 1),
     },
-    fontWeight: theme.typography.fontWeightLight,
-
+    [theme.breakpoints.down('sm')]: {
+      margin: 0,
+    },
     '&:hover': {
-      color: theme.palette.primary.light,
+      color:
+        theme.palette.type === 'dark'
+          ? theme.palette.secondary.light
+          : theme.palette.primary.light,
       opacity: 1,
     },
     '&$selected': {
-      color: theme.palette.primary.main,
+      color:
+        theme.palette.type === 'dark'
+          ? theme.palette.secondary.main
+          : theme.palette.primary.main,
       fontWeight: theme.typography.fontWeightMedium,
     },
     '&:focus': {
-      color: theme.palette.primary.light,
+      color:
+        theme.palette.type === 'dark'
+          ? theme.palette.secondary.light
+          : theme.palette.primary.light,
     },
   },
   selected: {},
-}))((props) => <Tab disableRipple {...props} />);
+}))(props => <Tab disableRipple {...props} />)
 
 const useStyles = makeStyles(theme => ({
   tab: {
     fontSize: '1.5rem',
     [theme.breakpoints.down('md')]: {
       fontSize: '1.2rem',
-      // width:
     },
     '& > span': {
       transition: 'all .2s ease-in-out',
@@ -64,7 +70,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function HomeMenu() {
+function Menu() {
   const classes = useStyles()
   const router = useRouter()
   const { pathname } = router
@@ -97,24 +103,19 @@ function HomeMenu() {
       />
     )
   }
-
   return (
-    <div className={classes.root}>
-
+    <>
       <MyTabs
         orientation='horizontal'
         value={activeTabIndex}
         onChange={handleTabSwitch}
-        aria-label='home menu tabs'
-        className={classes.tabs}
-        >
+        aria-label='home menu tabs'>
         {['HOME', 'WORK', 'BLOG', 'MAIL'].map((arrayItem, index) =>
           LinkTab(arrayItem, index)
         )}
       </MyTabs>
-
-    </div>
+    </>
   )
 }
 
-export default HomeMenu
+export default Menu
