@@ -25,6 +25,15 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     lineHeight: '.1rem',
   },
+  links: {
+    '&:hover': {
+      textDecoration: 'none',
+      color:
+        theme.palette.type === 'dark'
+          ? theme.palette.common.white
+          : theme.palette.secondary.main,
+    },
+  },
 }))
 
 export default function TextArea({ title, date, slug, excerpt, readingTime }) {
@@ -41,7 +50,7 @@ export default function TextArea({ title, date, slug, excerpt, readingTime }) {
         alignItems='center'>
         <Grid item>
           <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
-            <Typography align='center' component='h2' variant={isSmallScreen ? 'h4' : 'h3'}>
+            <Typography className={classes.links} align='center' component='h2' variant={isSmallScreen ? 'h4' : 'h3'}>
               {title}
             </Typography>
           </MuiLink>

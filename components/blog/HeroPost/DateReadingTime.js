@@ -18,6 +18,15 @@ const useStyles = makeStyles(theme => ({
     lineHeight: '.1rem',
     textAlign: 'center',
   },
+  links: {
+    '&:hover': {
+      textDecoration: 'none',
+      color:
+        theme.palette.type === 'dark'
+          ? theme.palette.common.white
+          : theme.palette.secondary.main,
+    },
+  },
 }))
 
 export default function DateReadingTime({ slug, title, date, readingTime }) {
@@ -34,7 +43,7 @@ export default function DateReadingTime({ slug, title, date, readingTime }) {
         alignItems='center'>
         <Grid item>
           <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
-            <Typography variant={isSmallScreen ? 'h4' : 'h3'}>
+            <Typography className={classes.links} variant={isSmallScreen ? 'h4' : 'h3'}>
               {title}
             </Typography>
           </MuiLink>

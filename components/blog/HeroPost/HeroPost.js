@@ -1,7 +1,7 @@
 import Grid from '@material-ui/core/Grid'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import TitleDateAuthor from './DateReadingTime'
+import DateReadingTime from './DateReadingTime'
 import Excerpt from './Excerpt'
 import Image from './Image'
 
@@ -53,7 +53,7 @@ function HeroPost({
     composableTextArea = (
       <>
         <Excerpt titlePosition={titlePosition} excerpt={excerpt} />
-        <TitleDateAuthor
+        <DateReadingTime
           slug={slug}
           title={title}
           date={date}
@@ -65,7 +65,7 @@ function HeroPost({
   } else if (titlePosition === 'left' && !isTinyScreen) {
     composableTextArea = (
       <>
-        <TitleDateAuthor
+        <DateReadingTime
           slug={slug}
           title={title}
           date={date}
@@ -83,7 +83,7 @@ function HeroPost({
   } else if (titlePosition === 'right' && isTinyScreen) {
     composableTextArea = (
       <>
-        <TitleDateAuthor
+        <DateReadingTime
           slug={slug}
           title={title}
           date={date}
@@ -97,7 +97,7 @@ function HeroPost({
     composableTextArea = (
       <>
         <Excerpt titlePosition={titlePosition} excerpt={excerpt} />
-        <TitleDateAuthor
+        <DateReadingTime
           slug={slug}
           title={title}
           date={date}

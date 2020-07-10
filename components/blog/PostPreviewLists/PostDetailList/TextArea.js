@@ -13,6 +13,15 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(1),
     },
   },
+  links: {
+    '&:hover': {
+      textDecoration: 'none',
+      color:
+        theme.palette.type === 'dark'
+          ? theme.palette.common.white
+          : theme.palette.secondary.main,
+    },
+  },
   dateTimeStamp: {
     [theme.breakpoints.down('sm')]: {
       fontSize: '.8rem',
@@ -26,6 +35,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+
 function TextArea({ date, readingTime, excerpt, slug, title }) {
   const classes = useStyles()
   return (
@@ -37,7 +47,7 @@ function TextArea({ date, readingTime, excerpt, slug, title }) {
       alignItems='flex-start'>
       <Grid item>
         <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
-          <Typography align='left' component='h2' variant='h4'>
+          <Typography className={classes.links} align='left' component='h2' variant='h4'>
             {title}
           </Typography>
         </MuiLink>
