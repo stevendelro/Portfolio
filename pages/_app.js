@@ -65,6 +65,10 @@ export default function MyApp(props) {
             fontFamily: 'Calistoga',
             color: darkMode ? '#ff9100' : '#144d53',
           },
+          h5: {
+            fontFamily: 'Calistoga',
+            color: darkMode ? '#ff9100' : '#144d53',
+          },
           body2: {
             fontFamily: '"Roboto Slab", "Courier New", "serif"',
             fontSize: '1rem',

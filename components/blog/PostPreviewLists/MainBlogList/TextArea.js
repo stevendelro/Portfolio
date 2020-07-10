@@ -4,6 +4,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import CustomDate from '../../../CustomDate'
 import MuiLink from '../../../MuiLink'
+import { truncate } from '../../../layout/utils'
 
 const useStyles = makeStyles(theme => ({
   allText: {
@@ -34,12 +35,22 @@ const useStyles = makeStyles(theme => ({
           : theme.palette.secondary.main,
     },
   },
+  excerpt: {
+    overflow: 'scroll'
+  }
 }))
 
 export default function TextArea({ title, date, slug, excerpt, readingTime }) {
   const classes = useStyles()
   const theme = useTheme()
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
+  let titleVariant = 'h4'
+  const isSmallScreenOnly = useMediaQuery(theme.breakpoints.only('sm'))
+  const isXLargeScreenUp = useMediaQuery(theme.breakpoints.up('xl'))
+  if (isSmallScreenOnly) {
+    titleVariant = 'h5'
+  } else if (isXLargeScreenUp) {
+    titleVariant = 'h3'
+  }
   return (
     <Grid item xs={12} sm={5}>
       <Grid
@@ -54,12 +65,12 @@ export default function TextArea({ title, date, slug, excerpt, readingTime }) {
               className={classes.links}
               align='center'
               component='h2'
-              variant={isSmallScreen ? 'h4' : 'h3'}>
+              variant={titleVariant}>
               {title}
             </Typography>
           </MuiLink>
         </Grid>
-        <Grid item>
+        <Grid  item>
           <Typography
             className={classes.dateReadingTime}
             variant='overline'
@@ -75,9 +86,10 @@ export default function TextArea({ title, date, slug, excerpt, readingTime }) {
             </Typography>
           </Typography>
         </Grid>
-        <Grid item>
+        <Grid className={classes.excerpt}  item>
           <Typography variant='body2' color='textSecondary' align='center'>
-            {excerpt}
+          {truncate(excerpt, 25)}
+            {/* {excerpt} */}
           </Typography>
         </Grid>
       </Grid>

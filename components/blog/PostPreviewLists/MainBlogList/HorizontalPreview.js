@@ -1,5 +1,4 @@
 import Grid from '@material-ui/core/Grid'
-import Divider from '@material-ui/core/Divider'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import ImageArea from './ImageArea'
@@ -7,16 +6,16 @@ import TextArea from './TextArea'
 
 const useStyles = makeStyles(theme => ({
   rootHorizontalPreview: {
+    [theme.breakpoints.up('sm')]: {
+      height: 350,
+    },
+    overflow: 'hidden',
+    borderBottom: `1px solid ${theme.palette.grey[300]}`,
+    padding: theme.spacing(5, 0, 5, 0),
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
         : theme.palette.common.defaultLightBackground,
-  },
-  gridContainer: {
-    marginBottom: theme.spacing(3),
-  },
-  divider: {
-    margin: theme.spacing(5, 0),
   },
 }))
 
@@ -27,6 +26,7 @@ export default function HorizontalPreview({
   excerpt,
   readingTime,
   slug,
+  index
 }) {
   const classes = useStyles()
   const theme = useTheme()
@@ -63,10 +63,8 @@ export default function HorizontalPreview({
   }
   return (
     <article id='MainBlogList__H.Preview' className={classes.rootHorizontalPreview}>
-      <Divider className={classes.divider} />
       <Grid
         container
-        className={classes.gridContainer}
         direction='row'
         justify='space-between'
         alignItems='flex-start'>

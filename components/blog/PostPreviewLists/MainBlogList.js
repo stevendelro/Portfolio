@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   rootMainBlogList: {
-    paddingTop: theme.spacing(3),
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
@@ -18,9 +17,10 @@ export default function MainBlogList({ posts }) {
     <section id='MainBlogList' className={classes.rootMainBlogList}>
       <Grid container direction='row' justify='center' alignItems='center'>
         <Grid item xs={12} sm={10} lg={8} xl={6}>
-          {posts.map(post => {
+          {posts.map((post, index)=> {
             return (
               <HorizontalPreview
+                index={index}
                 key={post.slug}
                 title={post.title}
                 coverImage={post.coverImage.url}
