@@ -13,7 +13,7 @@ export function truncate(phrase, numberToKeep) {
   array = phrase.split(' ')
   if (array.length <= numberToKeep) return phrase
   keptWords = array
-    .slice(0, array.length - (numberToKeep + 2))
+    .slice(0, array.length - (array.length - numberToKeep))
     .toString()
     .replace(/,/g, ' ')
   return `${keptWords}...`
