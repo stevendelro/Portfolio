@@ -6,11 +6,17 @@ import ImageArea from './ImageArea'
 import TextArea from './TextArea'
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  rootHorizontalPreview: {
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? theme.palette.common.defaultDarkBackground
+        : theme.palette.common.defaultLightBackground,
+  },
+  gridContainer: {
     marginBottom: theme.spacing(3),
   },
   divider: {
-    margin: theme.spacing(5, 0)
+    margin: theme.spacing(5, 0),
   },
 }))
 
@@ -56,16 +62,16 @@ export default function HorizontalPreview({
     )
   }
   return (
-    <>
+    <article id='MainBlogList__H.Preview' className={classes.rootHorizontalPreview}>
       <Divider className={classes.divider} />
       <Grid
         container
-        className={classes.root}
+        className={classes.gridContainer}
         direction='row'
         justify='space-between'
         alignItems='flex-start'>
         {adjustedForSmallScreens}
       </Grid>
-    </>
+    </article>
   )
 }

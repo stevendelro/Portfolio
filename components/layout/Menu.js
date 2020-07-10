@@ -33,6 +33,10 @@ const MyTab = withStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       margin: 0,
     },
+    color:
+      theme.palette.type === 'dark'
+        ? theme.palette.secondary.main
+        : theme.palette.primary.main,
     '&:hover': {
       color:
         theme.palette.type === 'dark'
@@ -41,10 +45,8 @@ const MyTab = withStyles(theme => ({
       opacity: 1,
     },
     '&$selected': {
-      color:
-        theme.palette.type === 'dark'
-          ? theme.palette.secondary.main
-          : theme.palette.primary.main,
+
+
       fontWeight: theme.typography.fontWeightMedium,
     },
     '&:focus': {
@@ -70,7 +72,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function Menu() {
+export default function Menu() {
   const classes = useStyles()
   const router = useRouter()
   const { pathname } = router
@@ -104,7 +106,7 @@ function Menu() {
     )
   }
   return (
-    <>
+    <section id='MenuTabs'>
       <MyTabs
         orientation='horizontal'
         value={activeTabIndex}
@@ -114,8 +116,6 @@ function Menu() {
           LinkTab(arrayItem, index)
         )}
       </MyTabs>
-    </>
+    </section>
   )
 }
-
-export default Menu

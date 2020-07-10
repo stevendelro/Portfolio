@@ -17,19 +17,21 @@ export default function BlogIndex({ preview, allPosts }) {
         <meta property='og:title' content="Steven's Blog" />
       </Head>
       <PageIntro title='Blog' paragraph={heroParagraph} />
-      {heroPost && (
-        <HeroPost
-          title={heroPost.title}
-          coverImage={heroPost.coverImage.url}
-          date={heroPost.date}
-          author={heroPost.author}
-          slug={heroPost.slug}
-          excerpt={heroPost.excerpt}
-          readingTime={heroPost.stats.text}
-          titlePosition='right'
-        />
-      )}
-      {morePosts.length > 0 && <MainBlogList posts={morePosts} />}
+      <main>
+        {heroPost && (
+          <HeroPost
+            title={heroPost.title}
+            coverImage={heroPost.coverImage.url}
+            date={heroPost.date}
+            author={heroPost.author}
+            slug={heroPost.slug}
+            excerpt={heroPost.excerpt}
+            readingTime={heroPost.stats.text}
+            titlePosition='right'
+          />
+        )}
+        {morePosts.length > 0 && <MainBlogList posts={morePosts} />}
+      </main>
     </>
   )
 }

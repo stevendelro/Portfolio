@@ -2,6 +2,12 @@ import React from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 
+/**
+ * This component was copied from the Material-UI Sourcecode.
+ * For more info, see this link:
+ * https://github.com/mui-org/material-ui/blob/master/docs/src/modules/components/MarkdownElement.js
+ */
+
 const styles = theme => ({
   root: {
     ...theme.typography.body1,
@@ -155,8 +161,8 @@ const styles = theme => ({
       padding: 16,
     },
     '& blockquote': {
-      borderLeft: '5px solid #ffe564',
-      backgroundColor: 'rgba(255,229,100,0.2)',
+      borderLeft: `5px solid ${theme.palette.grey[700]}`,
+      backgroundColor: 'rgba(189, 189, 189, 0.2)',
       padding: '4px 24px',
       margin: '24px 0',
       '& p': {
@@ -221,6 +227,5 @@ const MarkdownElement = React.forwardRef(function MarkdownElement(props, ref) {
     />
   )
 })
-
 
 export default MarkdownElement

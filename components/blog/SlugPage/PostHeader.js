@@ -31,7 +31,7 @@ export default function PostHeader({
 }) {
   const classes = useStyles()
   return (
-    <div className={classes.root}>
+    <header id='SlugPage__Header' className={classes.root}>
       <Typography
         className={classes.title}
         variant='h3'
@@ -52,6 +52,6 @@ export default function PostHeader({
         date={date}
         readingTime={readingTime}
       />
-    </div>
+    </header>
   )
 }

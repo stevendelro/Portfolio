@@ -12,21 +12,26 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.up('lg')]: {
       width: '1040px',
-      maxHeight: '630px'
+      maxHeight: '630px',
     },
   },
   image: {
     width: '100%',
-    height: '100%'
-  }
+    height: '100%',
+  },
 }))
 
 export default function PostImage({ title, coverImage }) {
   const classes = useStyles()
   return (
-    <Paper className={classes.paper} elevation={0}>
-      <CardMedia className={classes.image} title={title} image={coverImage.url} />
-    </Paper>
+    <section id='SlugPage__Image'>
+      <Paper as='figure' className={classes.paper} elevation={0}>
+        <CardMedia
+          className={classes.image}
+          title={title}
+          image={coverImage.url}
+        />
+      </Paper>
+    </section>
   )
 }
-

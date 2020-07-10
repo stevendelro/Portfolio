@@ -12,12 +12,17 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? theme.palette.common.defaultDarkBackground
+        : theme.palette.common.defaultLightBackground,
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
 
   content: {
     flexGrow: 1,
+    width: '100vw',
   },
 }))
 
@@ -36,37 +41,29 @@ export default function MyApp(props) {
         palette: {
           primary: { main: '#144d53' },
           secondary: { main: '#ff9100' },
+          common: {
+            defaultDarkBackground: '#303030',
+            defaultLightBackground: '#f5f5f5',
+          },
           type: darkMode ? 'dark' : 'light',
         },
         typography: {
           // Overide `body2` to use a serif font.
           h1: {
             fontFamily: 'Calistoga',
-            color:
-              darkMode
-                ? '#ff9100'
-                : '#144d53'
+            color: darkMode ? '#ff9100' : '#144d53',
           },
           h2: {
             fontFamily: 'Calistoga',
-            color:
-              darkMode
-                ? '#ff9100'
-                : '#144d53'
+            color: darkMode ? '#ff9100' : '#144d53',
           },
           h3: {
             fontFamily: 'Calistoga',
-            color:
-              darkMode
-                ? '#ff9100'
-                : '#144d53'
+            color: darkMode ? '#ff9100' : '#144d53',
           },
           h4: {
             fontFamily: 'Calistoga',
-            color:
-              darkMode
-                ? '#ff9100'
-                : '#144d53'
+            color: darkMode ? '#ff9100' : '#144d53',
           },
           body2: {
             fontFamily: '"Roboto Slab", "Courier New", "serif"',

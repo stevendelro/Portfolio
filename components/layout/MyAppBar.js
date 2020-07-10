@@ -16,6 +16,12 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
+  appBar: {
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? theme.palette.common.defaultDarkBackground
+        : theme.palette.common.defaultLightBackground,
+  },
   toolBar: {
     minHeight: 48,
   },
@@ -59,9 +65,9 @@ export default function MenuAppBar(props) {
     setDarkMode(event.target.checked)
   }
   return (
-    <div className={classes.root}>
+    <nav id='MyAppBar' className={classes.root}>
       <ElevationScroll {...props}>
-        <AppBar color='default' position='fixed'>
+        <AppBar className={classes.appBar} position='fixed'>
           <Toolbar className={classes.toolBar}>
             <Grid
               container
@@ -107,6 +113,6 @@ export default function MenuAppBar(props) {
           </Toolbar>
         </AppBar>
       </ElevationScroll>
-    </div>
+    </nav>
   )
 }

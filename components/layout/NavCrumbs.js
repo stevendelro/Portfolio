@@ -62,10 +62,12 @@ export default function NavBreadCrumbs() {
     }
   }, [route, query])
   return (
-    <Breadcrumbs aria-label='breadcrumb'>
-      {createCrumbLink('Home')}
-      {secondCrumb && createCrumbLink(secondCrumb)}
-      {thirdCrumb && createCrumbLink(thirdCrumb)}
-    </Breadcrumbs>
+    <section id='NavCrumbs'>
+      <Breadcrumbs aria-label='breadcrumb'>
+        {createCrumbLink('Home')}
+        {secondCrumb && createCrumbLink(secondCrumb)}
+        {thirdCrumb && createCrumbLink(thirdCrumb)}
+      </Breadcrumbs>
+    </section>
   )
 }

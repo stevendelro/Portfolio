@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-function TextArea({ date, readingTime, excerpt, slug, title }) {
+export default function TextArea({ date, readingTime, excerpt, slug, title }) {
   const classes = useStyles()
   return (
     <Grid
@@ -78,5 +78,3 @@ function TextArea({ date, readingTime, excerpt, slug, title }) {
     </Grid>
   )
 }
-
-export default TextArea

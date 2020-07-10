@@ -20,15 +20,19 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function ImageArea({ coverImage, title, slug }) {
+export default function ImageArea({ coverImage, title, slug }) {
   const classes = useStyles()
   return (
-    <Link as={`/blog/${slug}`} href='/blog/[slug]'>
-      <Paper elevation={3}>
-        <CardMedia className={classes.image} image={coverImage} title={title} />
-      </Paper>
-    </Link>
+    <section>
+      <Link as={`/blog/${slug}`} href='/blog/[slug]'>
+        <Paper elevation={3}>
+          <CardMedia
+            className={classes.image}
+            image={coverImage}
+            title={title}
+          />
+        </Paper>
+      </Link>
+    </section>
   )
 }
-
-export default ImageArea

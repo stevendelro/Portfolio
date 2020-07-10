@@ -25,15 +25,15 @@ export default function ImageArea({ coverImage, title, slug }) {
   const classes = useStyles()
   return (
     <Grid item xs={12} sm={7}>
-      <Link as={`/blog/${slug}`} href='/blog/[slug]'>
-        <Paper elevation={3}>
-          <CardMedia
-            className={classes.image}
-            image={coverImage}
-            title={title}
-          />
-        </Paper>
-      </Link>
-    </Grid>
+        <Link as={`/blog/${slug}`} href='/blog/[slug]'>
+          <Paper elevation={3}>
+            <CardMedia
+              className={classes.image}
+              image={coverImage}
+              title={title}
+            />
+          </Paper>
+        </Link>
+      </Grid>
   )
 }

@@ -23,15 +23,21 @@ export default function VerticalPreview({
 
   return (
     <>
-      <ImageArea coverImage={coverImage} title={title} slug={slug} />
-      <TextArea
-        date={date}
-        readingTime={readingTime}
-        excerpt={excerpt}
-        title={title}
-        slug={slug}
-      />
-      {isTinyScreen ? <Divider className={classes.tinyScreenDivider} /> : null}
+      <section id='SlugPage__V.Preview--Image'>
+        <ImageArea coverImage={coverImage} title={title} slug={slug} />
+      </section>
+      <section id='SlugPage__V.Preview--Text'>
+        <TextArea
+          date={date}
+          readingTime={readingTime}
+          excerpt={excerpt}
+          title={title}
+          slug={slug}
+        />
+        {isTinyScreen ? (
+          <Divider className={classes.tinyScreenDivider} />
+        ) : null}
+      </section>
     </>
   )
 }

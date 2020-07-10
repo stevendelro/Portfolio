@@ -123,23 +123,25 @@ export default function MobileNav({ darkMode, setDarkMode }) {
   }
 
   return (
-    <AppBar className={classes.root} position='fixed'>
-      <BottomNavigation
-        value={activeTabIndex}
-        onChange={(event, selectedOption) => {
-          event.preventDefault()
-          setActiveTabIndex(selectedOption)
-          selectedOption === 2 && setDarkMode(!darkMode)
-        }}
-        showLabels={false}>
-        {[
-          'Home',
-          'Work',
-          lightDarkLabel,
-          'Blog',
-          'Mail',
-        ].map((arrayItem, index) => NavLink(arrayItem, index))}
-      </BottomNavigation>
-    </AppBar>
+    <nav id='MobileNav'>
+      <AppBar className={classes.root} position='fixed'>
+        <BottomNavigation
+          value={activeTabIndex}
+          onChange={(event, selectedOption) => {
+            event.preventDefault()
+            setActiveTabIndex(selectedOption)
+            selectedOption === 2 && setDarkMode(!darkMode)
+          }}
+          showLabels={false}>
+          {[
+            'Home',
+            'Work',
+            lightDarkLabel,
+            'Blog',
+            'Mail',
+          ].map((arrayItem, index) => NavLink(arrayItem, index))}
+        </BottomNavigation>
+      </AppBar>
+    </nav>
   )
 }

@@ -3,14 +3,25 @@ import Head from 'next/head'
 import ErrorPage from 'next/error'
 import Grid from '@material-ui/core/Grid'
 import Divider from '@material-ui/core/Divider'
-import PostTitle from '../../components/blog/PostDetailPage/PostTitle'
-import PostHeader from '../../components/blog/PostDetailPage/PostHeader'
-import PostImage from '../../components/blog/PostDetailPage/PostImage'
-import PostBody from '../../components/blog/PostDetailPage/PostBody'
-import PostDetailList from '../../components/blog/PostPreviewLists/PostDetailList'
+import { makeStyles } from '@material-ui/core/styles'
+import PostTitle from '../../components/blog/SlugPage/PostTitle'
+import PostHeader from '../../components/blog/SlugPage/PostHeader'
+import PostImage from '../../components/blog/SlugPage/PostImage'
+import PostBody from '../../components/blog/SlugPage/PostBody'
+import SlugPageList from '../../components/blog/PostPreviewLists/SlugPageList'
 import { getPostAndMorePosts, getAllPostsWithSlug } from '../../contentful/api'
 
-export default function PostDetail({ post, morePosts, preview }) {
+const useStyles = makeStyles(theme => ({
+  rootSlugPage: {
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? theme.palette.common.defaultDarkBackground
+        : theme.palette.common.defaultLightBackground,
+  },
+}))
+
+export default function SlugPage({ post, morePosts, preview }) {
+  const classes = useStyles()
   const router = useRouter()
   if (!router.isFallback && !post) {
     return <ErrorPage statusCode={404} />
@@ -25,7 +36,7 @@ export default function PostDetail({ post, morePosts, preview }) {
             <title>Blog | {post.title}</title>
             <meta property='og:image' content={post.coverImage.url} />
           </Head>
-          <article>
+          <article id='SlugPage' className={classes.rootSlugPage}>
             <Grid
               container
               direction='column'
@@ -61,17 +72,19 @@ export default function PostDetail({ post, morePosts, preview }) {
             </Grid>
           </article>
           <Divider />
-          <Grid
-            container
-            direction='column'
-            justify='center'
-            alignItems='center'>
-            <Grid item xs={12} sm={8} xl={4}>
-              {morePosts && morePosts.length > 0 && (
-                <PostDetailList posts={morePosts} />
-              )}
+          <article id='SlugPageList' className={classes.rootSlugPage}>
+            <Grid
+              container
+              direction='column'
+              justify='center'
+              alignItems='center'>
+              <Grid item xs={12} sm={8} xl={4}>
+                {morePosts && morePosts.length > 0 && (
+                  <SlugPageList posts={morePosts} />
+                )}
+              </Grid>
             </Grid>
-          </Grid>
+          </article>
         </>
       )}
     </>

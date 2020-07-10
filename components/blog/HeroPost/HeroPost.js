@@ -6,6 +6,12 @@ import Excerpt from './Excerpt'
 import Image from './Image'
 
 const useStyles = makeStyles(theme => ({
+  rootHeroPost: {
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? theme.palette.common.defaultDarkBackground
+        : theme.palette.common.defaultLightBackground,
+  },
   image: {
     marginTop: '1rem',
     marginBottom: '3rem',
@@ -30,7 +36,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function HeroPost({
+export default function HeroPost({
   title,
   coverImage,
   date,
@@ -38,14 +44,14 @@ function HeroPost({
   author,
   slug,
   readingTime,
-  titlePosition = 'left' // if not declared, default to left.
+  titlePosition = 'left', // if not declared, default to left.
 }) {
   const classes = useStyles()
   const theme = useTheme()
   const isTinyScreen = useMediaQuery(theme.breakpoints.down('xs'))
   let composableTextArea
 
-    /*
+  /*
   Larger screens will display content based on what side you prefer
   to have the blog post title (via the "titlePosition" prop)
 */
@@ -76,7 +82,7 @@ function HeroPost({
       </>
     )
 
-  /*
+    /*
   Smaller screens will display the title above the excerpt,
   independent of whatever side was initially chosen.
 */
@@ -109,22 +115,23 @@ function HeroPost({
   }
 
   return (
-    <>
+    <article id='HeroPost' className={classes.rootHeroPost}>
       <Grid container direction='row' justify='center' alignItems='center'>
         <Grid item xs={12} sm={10} lg={8} xl={6}>
-          <Image slug={slug} coverImage={coverImage} title={title} />
-          <Grid
-            container
-            className={classes.allText}
-            direction='row'
-            justify='space-between'
-            alignItems='flex-start'>
+            <Image slug={slug} coverImage={coverImage} title={title} />
+          <section>
+            <Grid
+              container
+              id='HeroPost__TextArea'
+              className={classes.allText}
+              direction='row'
+              justify='space-between'
+              alignItems='flex-start'>
               {composableTextArea}
             </Grid>
+          </section>
         </Grid>
       </Grid>
-    </>
+    </article>
   )
 }
-
-export default HeroPost

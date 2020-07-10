@@ -25,10 +25,16 @@ const useStyles = makeStyles(theme => ({
 export default function Image({ slug, coverImage, title }) {
   const classes = useStyles()
   return (
-    <Link as={`/blog/${slug}`} href='/blog/[slug]'>
-      <Paper elevation={5}>
-        <CardMedia className={classes.image} image={coverImage} title={title} />
-      </Paper>
-    </Link>
+    <section id='HeroPost__ImageArea'>
+      <Link as={`/blog/${slug}`} href='/blog/[slug]'>
+        <Paper elevation={5}>
+          <CardMedia
+            className={classes.image}
+            image={coverImage}
+            title={title}
+          />
+        </Paper>
+      </Link>
+    </section>
   )
 }

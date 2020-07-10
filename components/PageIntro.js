@@ -1,18 +1,26 @@
-import Typography from '@material-ui/core/Typography'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
+import Container from '@material-ui/core/Container'
+import Typography from '@material-ui/core/Typography'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   smallScreen: {
     padding: theme.spacing(8, 0, 6),
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? theme.palette.common.defaultDarkBackground
+        : theme.palette.common.defaultLightBackground,
     [theme.breakpoints.up('md')]: {
       marginBottom: '3rem',
     },
   },
   notSmallScreen: {
-    margin: theme.spacing(5, 0, 5, 0),
+    padding: theme.spacing(5, 0, 5, 0),
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? theme.palette.common.defaultDarkBackground
+        : theme.palette.common.defaultLightBackground,
   },
   paragraph: {
     [theme.breakpoints.down('sm')]: {
@@ -27,16 +35,12 @@ export default function PageIntro({ title, paragraph }) {
   const classes = useStyles()
   const theme = useTheme()
   const xSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
-
+  console.log('theme', theme)
   if (xSmallScreen) {
     return (
-      <div className={classes.smallScreen}>
+      <header className={classes.smallScreen}>
         <Container maxWidth='sm'>
-          <Typography
-            component='h1'
-            variant='h1'
-            align='center'
-            gutterBottom>
+          <Typography component='h1' variant='h1' align='center' gutterBottom>
             {title}
           </Typography>
           <Typography
@@ -48,41 +52,38 @@ export default function PageIntro({ title, paragraph }) {
             {paragraph}
           </Typography>
         </Container>
-      </div>
+      </header>
     )
   }
 
   return (
-    <Grid container direction='row' justify='center' alignItems='center'>
-      <Grid item xs={12} sm={10} lg={8} xl={6}>
-        <Grid
-          container
-          className={classes.notSmallScreen}
-          direction='row'
-          justify='center'
-          alignItems='center'>
-          <Grid item sm={3}>
-            <Typography
-              component='h1'
-              variant='h1'
-              align='center'
-              gutterBottom>
-              {title}
-            </Typography>
-          </Grid>
+    <header className={classes.notSmallScreen}>
+      <Grid container direction='row' justify='center' alignItems='center'>
+        <Grid item xs={12} sm={10} lg={8} xl={6}>
+          <Grid container direction='row' justify='center' alignItems='center'>
+            <Grid item sm={3}>
+              <Typography
+                component='h1'
+                variant='h1'
+                align='center'
+                gutterBottom>
+                {title}
+              </Typography>
+            </Grid>
 
-          <Grid item sm={9}>
-            <Typography
-              className={classes.paragraph}
-              variant='body2'
-              align='center'
-              color='textSecondary'
-              paragraph>
-              {paragraph}
-            </Typography>
+            <Grid item sm={9}>
+              <Typography
+                className={classes.paragraph}
+                variant='body2'
+                align='center'
+                color='textSecondary'
+                paragraph>
+                {paragraph}
+              </Typography>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    </header>
   )
 }
