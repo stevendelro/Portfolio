@@ -6,19 +6,13 @@ import CustomDate from '../../CustomDate'
 import MuiLink from '../../MuiLink'
 
 const useStyles = makeStyles(theme => ({
-  dateReadingTime: {
-    padding: theme.spacing(2),
-  },
-  dateReadingTime: {
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '.7rem',
+  title: {
+    textAlign: 'left',
+    padding: theme.spacing(2, 0, 0, 2),
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'center',
+      padding: theme.spacing(0, 1),
     },
-  },
-  readingTime: {
-    lineHeight: '.1rem',
-    textAlign: 'center',
-  },
-  links: {
     '&:hover': {
       textDecoration: 'none',
       color:
@@ -27,23 +21,39 @@ const useStyles = makeStyles(theme => ({
           : theme.palette.secondary.main,
     },
   },
+  dateReadingTime: {
+    [theme.breakpoints.up('xs')]: {
+      textAlign: 'left',
+      padding: theme.spacing(1, 0, 0, 2),
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '.7rem',
+      padding: 0,
+    },
+    [theme.breakpoints.up('md')]: {
+      textAlign: 'left',
+      padding: theme.spacing(0, 0, 0, 2),
+    },
+  },
 }))
 
 export default function DateReadingTime({ slug, title, date, readingTime }) {
   const classes = useStyles()
   const theme = useTheme()
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
+  const isSmallScreenOnly = useMediaQuery(theme.breakpoints.only('sm'))
+  const isTinyScreenOnly = useMediaQuery(theme.breakpoints.only('xs'))
   return (
     <Grid item sm={5}>
       <Grid
         container
-        className={classes.dateReadingTime}
         direction='row'
-        justify='space-evenly'
+        justify={isTinyScreenOnly ? 'center' : 'flex-start'}
         alignItems='center'>
         <Grid item>
           <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
-            <Typography className={classes.links} variant={isSmallScreen ? 'h4' : 'h3'}>
+            <Typography
+              className={classes.title}
+              variant={isSmallScreenOnly ? 'h4' : 'h3'}>
               {title}
             </Typography>
           </MuiLink>

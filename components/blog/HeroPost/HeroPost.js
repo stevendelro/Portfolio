@@ -49,6 +49,7 @@ export default function HeroPost({
   const classes = useStyles()
   const theme = useTheme()
   const isTinyScreen = useMediaQuery(theme.breakpoints.down('xs'))
+  const isLargeScreenUp = useMediaQuery(theme.breakpoints.up('lg'))
   let composableTextArea
 
   /*
@@ -118,7 +119,7 @@ export default function HeroPost({
     <article id='HeroPost' className={classes.rootHeroPost}>
       <Grid container direction='row' justify='center' alignItems='center'>
         <Grid item xs={12} sm={10} lg={8} xl={6}>
-            <Image slug={slug} coverImage={coverImage} title={title} />
+          <Image slug={slug} coverImage={coverImage} title={title} />
           <section>
             <Grid
               container
@@ -126,7 +127,7 @@ export default function HeroPost({
               className={classes.allText}
               direction='row'
               justify='space-between'
-              alignItems='flex-start'>
+              alignItems={isLargeScreenUp ? 'center' : 'flex-start'}>
               {composableTextArea}
             </Grid>
           </section>
