@@ -11,7 +11,7 @@ export const removeDashesAndUppercaseFirstLetter = slug => {
 export function truncate(phrase, numberToKeep) {
   let array, keptWords
   array = phrase.split(' ')
-  if (array.length < numberToKeep) return phrase
+  if (array.length <= numberToKeep) return phrase
   keptWords = array
     .slice(0, array.length - (numberToKeep + 2))
     .toString()

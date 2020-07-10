@@ -42,6 +42,7 @@ export default function NavBreadCrumbs() {
       createSecondLevelCrumb(route)
       let currentSlug = removeDashesAndUppercaseFirstLetter(query.slug)
       if (thirdCrumb === null || currentSlug !== thirdCrumb) {
+        console.log('currentSlug', currentSlug)
         setThirdCrumb(truncate(currentSlug, 5))
       }
     }
