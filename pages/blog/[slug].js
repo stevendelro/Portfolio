@@ -8,7 +8,7 @@ import PostTitle from '../../components/blog/SlugPage/PostTitle'
 import PostHeader from '../../components/blog/SlugPage/PostHeader'
 import PostImage from '../../components/blog/SlugPage/PostImage'
 import PostBody from '../../components/blog/SlugPage/PostBody'
-import SlugPageList from '../../components/blog/PostPreviewLists/SlugPageList'
+import SlugPageList from '../../components/blog/PostPreviews/SlugPageList'
 import { getPostAndMorePosts, getAllPostsWithSlug } from '../../contentful/api'
 
 const useStyles = makeStyles(theme => ({
@@ -23,9 +23,15 @@ const useStyles = makeStyles(theme => ({
   },
   header: {
     padding: theme.spacing(2),
+    [theme.breakpoints.only('sm')]: {
+      padding: theme.spacing(0),
+    },
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing(3, 3, 0, 3),
+    },
   },
   body: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
   },
 }))
 
@@ -55,7 +61,7 @@ export default function SlugPage({ post, morePosts, preview }) {
                 className={classes.header}
                 item
                 xs={12}
-                sm={10}
+                sm={8}
                 lg={6}
                 xl={4}>
                 <PostHeader
@@ -81,7 +87,7 @@ export default function SlugPage({ post, morePosts, preview }) {
               direction='column'
               justify='center'
               alignItems='center'>
-              <Grid item className={classes.body} xs={12} sm={10} lg={6} xl={4}>
+              <Grid item className={classes.body} xs={12} sm={8} lg={6} xl={4}>
                 <PostBody content={post.content} />
               </Grid>
             </Grid>
