@@ -109,6 +109,9 @@ export default function MyApp(props) {
               <div className={classes.toolbar} />
             </Hidden>
             <Component {...pageProps} />
+            <Hidden smUp>
+              <div className={classes.toolbar} />
+            </Hidden>
             {/* Display bottom AppBar for a better mobile experience */}
             <Hidden smUp>
               <MobileNav darkMode={darkMode} setDarkMode={setDarkMode} />

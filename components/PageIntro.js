@@ -35,7 +35,6 @@ export default function PageIntro({ title, paragraph }) {
   const classes = useStyles()
   const theme = useTheme()
   const xSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
-  console.log('theme', theme)
   if (xSmallScreen) {
     return (
       <header className={classes.smallScreen}>
