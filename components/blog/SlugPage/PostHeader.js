@@ -4,8 +4,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import AvatarStamp from '../../AvatarStamp'
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    marginBottom: theme.spacing(7),
+  rootPostHeader: {
+    margin: theme.spacing(4, 0, 7, 0),
   },
   title: {
     marginTop: theme.spacing(2),
@@ -31,7 +31,7 @@ export default function PostHeader({
 }) {
   const classes = useStyles()
   return (
-    <header id='SlugPage__Header' className={classes.root}>
+    <header id='SlugPage__Header' className={classes.rootPostHeader}>
       <Typography
         className={classes.title}
         variant='h3'

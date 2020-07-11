@@ -7,12 +7,16 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 0,
     height: '50vw',
     marginBottom: theme.spacing(6),
-    [theme.breakpoints.down('lg')]: {
-      width: '100vw',
-    },
     [theme.breakpoints.up('lg')]: {
       width: '1040px',
       maxHeight: '630px',
+    },
+    [theme.breakpoints.down('lg')]: {
+      width: '100vw',
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: '100vw',
+      // overflow: 'hidden'
     },
   },
   image: {

@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import ErrorPage from 'next/error'
 import Grid from '@material-ui/core/Grid'
-import Divider from '@material-ui/core/Divider'
+import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles'
 import PostTitle from '../../components/blog/SlugPage/PostTitle'
 import PostHeader from '../../components/blog/SlugPage/PostHeader'
@@ -13,10 +13,19 @@ import { getPostAndMorePosts, getAllPostsWithSlug } from '../../contentful/api'
 
 const useStyles = makeStyles(theme => ({
   rootSlugPage: {
+    [theme.breakpoints.down('xs')]: {
+      paddingBottom: theme.spacing(5),
+    },
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
         : theme.palette.common.defaultLightBackground,
+  },
+  header: {
+    padding: theme.spacing(2),
+  },
+  body: {
+    padding: theme.spacing(2),
   },
 }))
 
@@ -42,7 +51,13 @@ export default function SlugPage({ post, morePosts, preview }) {
               direction='column'
               justify='center'
               alignItems='center'>
-              <Grid item xs={12} sm={8} lg={6} xl={4}>
+              <Grid
+                className={classes.header}
+                item
+                xs={12}
+                sm={10}
+                lg={6}
+                xl={4}>
                 <PostHeader
                   title={post.title}
                   date={post.date}
@@ -66,24 +81,17 @@ export default function SlugPage({ post, morePosts, preview }) {
               direction='column'
               justify='center'
               alignItems='center'>
-              <Grid item xs={12} sm={8} lg={6} xl={4}>
+              <Grid item className={classes.body} xs={12} sm={10} lg={6} xl={4}>
                 <PostBody content={post.content} />
               </Grid>
             </Grid>
           </article>
-          <Divider />
           <article id='SlugPageList' className={classes.rootSlugPage}>
-            <Grid
-              container
-              direction='column'
-              justify='center'
-              alignItems='center'>
-              <Grid item xs={12} sm={8} xl={4}>
-                {morePosts && morePosts.length > 0 && (
-                  <SlugPageList posts={morePosts} />
-                )}
-              </Grid>
-            </Grid>
+            <Container>
+              {morePosts && morePosts.length > 0 && (
+                <SlugPageList posts={morePosts} />
+              )}
+            </Container>
           </article>
         </>
       )}
