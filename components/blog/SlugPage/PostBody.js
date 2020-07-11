@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 export default function PostBody({ content }) {
   const classes = useStyles()
   return (
-    <main id='SlugPage__Body' className={classes.rootPostBody} style={{}}>
+    <main id='SlugPage__Body' className={classes.rootPostBody}>
       <MarkdownElement
         className={classes.markdownElement}
         children={documentToReactComponents(content)}

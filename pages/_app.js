@@ -7,6 +7,7 @@ import Hidden from '@material-ui/core/Hidden'
 import { makeStyles } from '@material-ui/core/styles'
 import MyAppBar from '../components/layout/MyAppBar'
 import MobileNav from '../components/layout/MobileNav'
+import MyFooter from '../components/layout/MyFooter'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const useStyles = makeStyles(theme => ({
@@ -109,13 +110,11 @@ export default function MyApp(props) {
               <div className={classes.toolbar} />
             </Hidden>
             <Component {...pageProps} />
-            <Hidden smUp>
-              <div className={classes.toolbar} />
-            </Hidden>
             {/* Display bottom AppBar for a better mobile experience */}
             <Hidden smUp>
               <MobileNav darkMode={darkMode} setDarkMode={setDarkMode} />
             </Hidden>
+            <MyFooter />
           </main>
         </div>
       </ThemeProvider>

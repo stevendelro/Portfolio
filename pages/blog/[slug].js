@@ -13,9 +13,6 @@ import { getPostAndMorePosts, getAllPostsWithSlug } from '../../contentful/api'
 
 const useStyles = makeStyles(theme => ({
   rootSlugPage: {
-    [theme.breakpoints.down('xs')]: {
-      paddingBottom: theme.spacing(5),
-    },
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground

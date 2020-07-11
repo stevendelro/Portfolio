@@ -22,14 +22,11 @@ const useStyles = makeStyles(theme => ({
         ? theme.palette.common.defaultDarkBackground
         : theme.palette.common.defaultLightBackground,
   },
-  toolBar: {
-    minHeight: 48,
-  },
   menuButton: {
     marginRight: theme.spacing(2),
     color: theme.palette.primary.main,
   },
-  menuBox: {
+  navCrumbsContainer: {
     [theme.breakpoints.down(740)]: {
       display: 'none',
     },
@@ -68,7 +65,7 @@ export default function MenuAppBar(props) {
     <nav id='MyAppBar' className={classes.root}>
       <ElevationScroll {...props}>
         <AppBar className={classes.appBar} position='fixed'>
-          <Toolbar className={classes.toolBar}>
+          <Toolbar>
             <Grid
               container
               direction='row'
@@ -83,7 +80,7 @@ export default function MenuAppBar(props) {
                   <Box maxWidth='fit-content'>
                     <Menu />
                   </Box>
-                  <Box className={classes.menuBox}>
+                  <Box className={classes.navCrumbsContainer}>
                     <Slide
                       direction='down'
                       in={showScrolltrigger}
