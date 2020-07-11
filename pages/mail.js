@@ -8,6 +8,7 @@ import Link from '@material-ui/core/Link'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
+import PageIntro from '../components/PageIntro'
 
 const useStyles = makeStyles(theme => ({
   rootMailPage: {
@@ -39,8 +40,13 @@ const useStyles = makeStyles(theme => ({
 
 export default function Mail() {
   const classes = useStyles()
+  const heroParagraph = `Odio morbi quis commodo odio aenean
+  sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
+  integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
+  eu scelerisque felis imperdiet proin fermentum leo.`
   return (
     <article id='MainMailPageBody' className={classes.rootMailPage}>
+    <PageIntro title='Mail' paragraph={heroParagraph} />
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>

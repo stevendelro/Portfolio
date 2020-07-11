@@ -2,9 +2,9 @@ import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
+import PageIntro from '../components/PageIntro'
 const useStyles = makeStyles(theme => ({
   rootMainIndex: {
-    height: '100vh',
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
@@ -14,8 +14,13 @@ const useStyles = makeStyles(theme => ({
 
 export default function Index() {
   const classes = useStyles()
+  const heroParagraph = `Odio morbi quis commodo odio aenean
+  sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
+  integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
+  eu scelerisque felis imperdiet proin fermentum leo.`
   return (
     <article id='MainIndexBody' className={classes.rootMainIndex}>
+      <PageIntro title='Hello' paragraph={heroParagraph} />
       <Grid container direction='column' justify='center' alignItems='center'>
         <Grid item xs={10} sm={10} md={8} lg={6}>
           <Typography paragraph>
