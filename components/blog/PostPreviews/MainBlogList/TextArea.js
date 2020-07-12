@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(5, 5),
     },
     [theme.breakpoints.up('sm')]: {
-      paddingRight: theme.spacing(3),
+      padding: theme.spacing(0,3),
     },
   },
   dateReadingTime: {

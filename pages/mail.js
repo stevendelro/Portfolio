@@ -29,9 +29,16 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(3),
   },
   submit: {
-    color: '#fff',
+    color:
+      theme.palette.type === 'dark'
+        ? theme.palette.common.black
+        : theme.palette.common.white,
+
     margin: theme.spacing(3, 0, 2),
-    backgroundColor: '#144d53',
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? theme.palette.secondary.main
+        : theme.palette.primary.main,
   },
   checkbox: {
     marginLeft: 0,
@@ -46,7 +53,7 @@ export default function Mail() {
   eu scelerisque felis imperdiet proin fermentum leo.`
   return (
     <article id='MainMailPageBody' className={classes.rootMailPage}>
-    <PageIntro title='Mail' paragraph={heroParagraph} />
+      <PageIntro title='Mail' paragraph={heroParagraph} />
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>
@@ -128,13 +135,6 @@ export default function Mail() {
               className={classes.submit}>
               Send
             </Button>
-            <Grid container justify='flex-end'>
-              <Grid item>
-                <Link href='#' variant='body2'>
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
-            </Grid>
           </form>
         </div>
       </Container>

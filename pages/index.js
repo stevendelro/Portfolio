@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import PageIntro from '../components/PageIntro'
 const useStyles = makeStyles(theme => ({
   rootMainIndex: {
+    height: '107%',
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
