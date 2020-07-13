@@ -88,8 +88,7 @@ export default function TextArea({ title, date, slug, excerpt, readingTime }) {
         </Grid>
         <Grid className={classes.excerpt}  item>
           <Typography variant='body2' color='textSecondary' align='center'>
-          {truncate(excerpt, 25)}
-            {/* {excerpt} */}
+            {excerpt}
           </Typography>
         </Grid>
       </Grid>

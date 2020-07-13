@@ -7,7 +7,7 @@ import TextArea from './TextArea'
 const useStyles = makeStyles(theme => ({
   rootHorizontalPreview: {
     [theme.breakpoints.up('sm')]: {
-      height: 350,
+      height: 'fit-content',
     },
     overflow: 'hidden',
     borderBottom: `1px solid ${theme.palette.grey[300]}`,
