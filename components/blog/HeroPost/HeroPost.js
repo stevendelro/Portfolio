@@ -102,7 +102,7 @@ export default function HeroPost({
   return (
     <article id='HeroPost' className={classes.rootHeroPost}>
       <Grid container direction='row' justify='center' alignItems='center'>
-        <Grid item xs={12} sm={10} lg={8} xl={6}>
+        <Grid item xs={12} sm={10} md={8} lg={6} xl={4}>
           <Image slug={slug} coverImage={coverImage} title={title} />
           <section>
             <Grid

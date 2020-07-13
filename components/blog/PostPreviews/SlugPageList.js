@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import VerticalPreview from './VerticalPreview'
 
 const useStyles = makeStyles(theme => ({
-  slugPageListContainer: {
+  slugPageList__Container: {
     borderBottom: `1px solid ${theme.palette.divider}`,
     paddingTop: theme.spacing(3),
     [theme.breakpoints.up('sm')]: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(2),
     },
   },
-  slugPageListGrid: {
+  slugPageList__GridContainer: {
     paddingBottom: theme.spacing(4)
   }
 }))
@@ -22,9 +22,9 @@ const useStyles = makeStyles(theme => ({
 export default function SlugPageList({ posts }) {
   const classes = useStyles()
   return (
-    <article id='SlugPage__FeaturedPosts'>
-      <Box className={classes.slugPageListContainer} >
-        <Grid container className={classes.slugPageListGrid} spacing={5}>
+    <article id='SlugPageList'>
+      <Box className={classes.slugPageList__Container} >
+        <Grid container className={classes.slugPageList__GridContainer} spacing={5}>
           {posts.map(post => (
             <Grid item key={post.id} xs={12} sm={6} >
               <VerticalPreview
