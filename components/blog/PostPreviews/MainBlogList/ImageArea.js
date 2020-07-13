@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
   image: {
     cursor: 'pointer',
     width: '100%',
-    height: 269,
+    height: 300,
     [theme.breakpoints.up('sm')]: {
       borderRadius: 5,
     },

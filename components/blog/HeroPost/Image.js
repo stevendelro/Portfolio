@@ -5,17 +5,14 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   image: {
+    flexGrow: 1,
     marginTop: '1rem',
     marginBottom: '3rem',
     cursor: 'pointer',
     [theme.breakpoints.down('sm')]: {
-      height: 300,
-    },
-    [theme.breakpoints.between('sm', 'lg')]: {
       height: 400,
-      borderRadius: 5,
     },
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('sm')]: {
       height: 500,
       borderRadius: 5,
     },

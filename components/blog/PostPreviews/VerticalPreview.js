@@ -18,9 +18,7 @@ const useStyles = makeStyles(theme => ({
   image: {
     cursor: 'pointer',
     paddingTop: '56.25%', // 16:9
-    [theme.breakpoints.up('sm')]: {
-      borderRadius: 5,
-    },
+    borderRadius: 5,
   },
   title: {
     '&:hover': {
@@ -56,6 +54,7 @@ export default function VerticalPreview({
 
   return (
     <article id='SlugPage__V.Preview'>
+      {/* IMAGE */}
       <Paper className={classes.card} elevation={3}>
         <CardMedia
           className={classes.image}
