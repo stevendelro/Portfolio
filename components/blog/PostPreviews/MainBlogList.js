@@ -1,38 +1,44 @@
+import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
-import HorizontalPreview from './MainBlogList/HorizontalPreview'
+import HorizontalPreview from './HorizontalPreview'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
-  rootMainBlogList: {
+  blogIndexList__Container: {
+
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
         : theme.palette.common.defaultLightBackground,
+  },
+  blogIndexList__GridContainer: {
+    // maxWidth: 600,
   },
 }))
 
 export default function MainBlogList({ posts }) {
   const classes = useStyles()
   return (
-    <section id='MainBlogList' className={classes.rootMainBlogList}>
-      <Grid container direction='row' justify='center' alignItems='center'>
-        <Grid item xs={12} sm={10} lg={8} xl={6}>
-          {posts.map((post, index)=> {
+    <section id='MainBlogList'>
+      <Box className={classes.blogIndexList__Container}>
+        <Grid container className={classes.blogIndexList__GridContainer} >
+          {posts.map(post => {
             return (
-              <HorizontalPreview
-                index={index}
-                key={post.slug}
-                title={post.title}
-                coverImage={post.coverImage.url}
-                date={post.date}
-                slug={post.slug}
-                excerpt={post.excerpt}
-                readingTime={post.stats.text}
-              />
+              <Grid item>
+                <HorizontalPreview
+                  key={post.slug}
+                  title={post.title}
+                  coverImage={post.coverImage.url}
+                  date={post.date}
+                  slug={post.slug}
+                  excerpt={post.excerpt}
+                  readingTime={post.stats.text}
+                />
+              </Grid>
             )
           })}
         </Grid>
-      </Grid>
+      </Box>
     </section>
   )
 }
