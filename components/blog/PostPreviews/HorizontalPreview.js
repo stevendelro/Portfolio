@@ -4,6 +4,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
+import MuiLink from '../../MuiLink'
 import CustomDate from '../../CustomDate'
 
 const useStyles = makeStyles(theme => ({
@@ -27,6 +28,15 @@ const useStyles = makeStyles(theme => ({
   hPreview__textContainer_excerpt: {
     textAlign: 'center',
   },
+  hPreview__textContainer_title: {
+    '&:hover': {
+      textDecoration: 'none',
+      color:
+        theme.palette.type === 'dark'
+          ? theme.palette.common.white
+          : theme.palette.secondary.main,
+    },
+  },
   // >>>>>IMAGE AREA<<<<<
   hPreview__imageContainer: {
     display: 'flex',
@@ -47,7 +57,6 @@ const useStyles = makeStyles(theme => ({
       minHeight: 300,
     },
   },
-
 }))
 
 export default function HorizontalPreview({
@@ -56,6 +65,7 @@ export default function HorizontalPreview({
   date,
   excerpt,
   readingTime,
+  slug,
 }) {
   const classes = useStyles()
   const theme = useTheme()
@@ -72,12 +82,14 @@ export default function HorizontalPreview({
         {/* >>>> TEXT SIDE <<<< */}
         <Grid item xs={12} sm={5} className={classes.hPreview__textContainer}>
           {/* TITLE */}
-          <Typography
-            className={classes.hPreview__textContainer_title}
-            component='h2'
-            variant='h4'>
-            {title}
-          </Typography>
+          <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
+            <Typography
+              className={classes.hPreview__textContainer_title}
+              component='h2'
+              variant='h4'>
+              {title}
+            </Typography>
+          </MuiLink>
           {/* DATE • READING TIME */}
           <Typography variant='overline' display='block'>
             <CustomDate dateString={date} />
@@ -101,13 +113,15 @@ export default function HorizontalPreview({
         </Grid>
         {/* >>>> IMAGE SIDE <<<<*/}
         <Grid item xs={12} sm={7} className={classes.hPreview__imageContainer}>
-          <Paper elevation={3}>
-            <CardMedia
-              className={classes.hPreview__imageContainer_image}
-              image={coverImage}
-              title={title}
-            />
-          </Paper>
+          <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' naked>
+            <Paper elevation={3}>
+              <CardMedia
+                className={classes.hPreview__imageContainer_image}
+                image={coverImage}
+                title={title}
+              />
+            </Paper>
+          </MuiLink>
         </Grid>
       </Grid>
     </article>
