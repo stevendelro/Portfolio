@@ -7,7 +7,7 @@ import MuiLink from '../MuiLink'
 import { removeDashesAndUppercaseFirstLetter, truncate } from './utils/index'
 
 const useStyles = makeStyles(theme => ({
-  links: {
+  NavCrumbs__crumbLink: {
     '&:hover': {
       textDecoration: 'none',
       color:
@@ -36,7 +36,7 @@ export default function NavBreadCrumbs() {
     const lowerCased = string.toLowerCase()
     return (
       <MuiLink
-        className={classes.links}
+        className={classes.NavCrumbs__crumbLink}
         color={darkMode === 'light' ? 'primary' : 'secondary'}
         href={`/${lowerCased === 'home' ? '' : lowerCased}`}>
         <Typography variant='caption' display='block'>

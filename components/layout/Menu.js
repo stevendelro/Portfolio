@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
-import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
+import Tabs from '@material-ui/core/Tabs'
+import { makeStyles, withStyles } from '@material-ui/core/styles'
 
 function a11yProps(tabIndex) {
   return {
@@ -21,6 +21,7 @@ const MyTab = withStyles(theme => ({
   root: {
     minWidth: 90,
     textTransform: 'none',
+    fontSize: theme.typography.pxToRem(23),
     fontWeight: theme.typography.fontWeightLight,
     margin: theme.spacing(0, 4),
     [theme.breakpoints.down('lg')]: {
@@ -45,9 +46,11 @@ const MyTab = withStyles(theme => ({
       opacity: 1,
     },
     '&$selected': {
-
-
       fontWeight: theme.typography.fontWeightMedium,
+      fontSize: theme.typography.pxToRem(24),
+      [theme.breakpoints.only('sm')]: {
+        fontSize: theme.typography.pxToRem(21)
+      }
     },
     '&:focus': {
       color:
@@ -60,9 +63,19 @@ const MyTab = withStyles(theme => ({
 }))(props => <Tab disableRipple {...props} />)
 
 const useStyles = makeStyles(theme => ({
+  firstTab: {
+    marginLeft: 0, // No left margin to align menu with container
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1.2rem',
+    },
+    '& > span': {
+      transition: 'all .2s ease-in-out',
+      '&:hover': { transform: 'scale(1.1)' },
+    },
+  },
   tab: {
     fontSize: '1.5rem',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: '1.2rem',
     },
     '& > span': {
@@ -95,7 +108,7 @@ export default function Menu() {
       <MyTab
         key={index}
         component='a'
-        className={classes.tab}
+        className={index === 0 ? classes.firstTab : classes.tab}
         label={label}
         onClick={event => {
           event.preventDefault()
@@ -105,8 +118,9 @@ export default function Menu() {
       />
     )
   }
+
   return (
-    <section id='MenuTabs'>
+    <section id='Menu'>
       <MyTabs
         orientation='horizontal'
         value={activeTabIndex}

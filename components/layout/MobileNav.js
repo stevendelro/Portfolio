@@ -12,14 +12,14 @@ import WbIncandescentOutlinedIcon from '@material-ui/icons/WbIncandescentOutline
 import WbIncandescentIcon from '@material-ui/icons/WbIncandescent'
 
 const useStyles = makeStyles({
-  root: {
+  MobileNav__root: {
     width: '100vw',
     top: 'auto',
     bottom: 0,
   },
 })
 
-// Custom bottom nav button styles to make darkMode look how I want.
+// Custom bottom nav button styles to accomodate darkMode styles
 const MyBottomNavAction = withStyles(theme => ({
   root: {
     transition: theme.transitions.create(['color', 'padding-top'], {
@@ -124,7 +124,7 @@ export default function MobileNav({ darkMode, setDarkMode }) {
 
   return (
     <nav id='MobileNav'>
-      <AppBar className={classes.root} position='fixed'>
+      <AppBar className={classes.MobileNav__root} position='fixed'>
         <BottomNavigation
           value={activeTabIndex}
           onChange={(event, selectedOption) => {

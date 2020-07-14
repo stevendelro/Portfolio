@@ -3,16 +3,13 @@ import Grid from '@material-ui/core/Grid'
 import Hidden from '@material-ui/core/Hidden'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
-import Logo from '../layout/Logo'
+import Logo from '../Logo'
 
 const useStyles = makeStyles(theme => ({
-  rootFooter: {
+  Footer__root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  appBar: {
+  Footer__appBar: {
     top: 'auto',
     bottom: 0,
     color:
@@ -28,30 +25,26 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(10, 0, 10, 0),
     },
   },
-  text: {
+  Footer__nameAndDate: {
     paddingTop: theme.spacing(1)
   },
-  title: {
-    // flexGrow: 1,
-    alignSelf: 'flex-end',
-  },
-  mobileNavSpacer: {
+  Footer__spacer: {
     height: 56,
   },
 }))
 
-export default function MyFooter({ scrollTrigger }) {
+export default function MyFooter() {
   const classes = useStyles()
   return (
-    <footer className={classes.rootFooter}>
-      <AppBar position='static' elevation={0} className={classes.appBar}>
+    <footer className={classes.Footer__root}>
+      <AppBar position='static' elevation={0} className={classes.Footer__appBar}>
         {/* LOGO */}
         <Grid container direction='column' justify='center' alignItems='center'>
           <Grid item>
             <Logo />
           </Grid>
           {/* NAME AND DATE */}
-          <Grid className={classes.text} item>
+          <Grid className={classes.Footer__nameAndDate} item>
             <Typography variant='overline'>Steven Del Rosario</Typography>
             <Typography variant='overline'>
               {' '}
@@ -60,8 +53,9 @@ export default function MyFooter({ scrollTrigger }) {
           </Grid>
         </Grid>
       </AppBar>
+      {/* EMPTY DIV FOR SPACER */}
       <Hidden smUp>
-        <div className={classes.mobileNavSpacer} />
+        <div className={classes.Footer__spacer} />
       </Hidden>
     </footer>
   )
