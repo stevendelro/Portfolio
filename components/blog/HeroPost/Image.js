@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles(theme => ({
   image: {
     flexGrow: 1,
-    marginTop: '1rem',
+    paddingTop: '1rem',
     marginBottom: '3rem',
     cursor: 'pointer',
     [theme.breakpoints.down('sm')]: {

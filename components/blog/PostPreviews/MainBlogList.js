@@ -28,9 +28,8 @@ export default function MainBlogList({ posts }) {
         <Grid container  >
           {posts.map(post => {
             return (
-              <Grid item className={classes.blogIndexList__GridItem}>
+              <Grid item key={post.id} className={classes.blogIndexList__GridItem}>
                 <HorizontalPreview
-                  key={post.id}
                   title={post.title}
                   coverImage={post.coverImage.url}
                   date={post.date}
@@ -46,3 +45,4 @@ export default function MainBlogList({ posts }) {
     </section>
   )
 }
+

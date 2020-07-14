@@ -1,4 +1,5 @@
 import Grid from '@material-ui/core/Grid'
+import Container from '@material-ui/core/Container'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import DateReadingTime from './DateReadingTime'
@@ -13,7 +14,7 @@ const useStyles = makeStyles(theme => ({
         : theme.palette.common.defaultLightBackground,
   },
   allText: {
-    marginBottom: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
     [theme.breakpoints.down('xs')]: {
       padding: '0 1rem',
     },
@@ -101,22 +102,20 @@ export default function HeroPost({
 
   return (
     <article id='HeroPost' className={classes.rootHeroPost}>
-      <Grid container direction='row' justify='center' alignItems='center'>
-        <Grid item xs={12} sm={10} md={8} lg={6} xl={4}>
-          <Image slug={slug} coverImage={coverImage} title={title} />
-          <section>
-            <Grid
-              container
-              id='HeroPost__TextArea'
-              className={classes.allText}
-              direction='row'
-              justify='space-between'
-              alignItems={isLargeScreenUp ? 'center' : 'flex-start'}>
-              {composableTextArea}
-            </Grid>
-          </section>
-        </Grid>
-      </Grid>
+      <Container maxWidth='md'>
+        <Image slug={slug} coverImage={coverImage} title={title} />
+        <section>
+          <Grid
+            container
+            id='HeroPost__TextArea'
+            className={classes.allText}
+            direction='row'
+            justify='space-between'
+            alignItems={isLargeScreenUp ? 'center' : 'flex-start'}>
+            {composableTextArea}
+          </Grid>
+        </section>
+      </Container>
     </article>
   )
 }

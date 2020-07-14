@@ -1,4 +1,4 @@
-import Box from '@material-ui/core/Box'
+import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
@@ -66,7 +66,7 @@ export default function WorkPage() {
   return (
     <article className={classes.rootWorkPage}>
       <PageIntro title='Work' paragraph={heroParagraph} />
-      <Box className={classes.mainContainer}>
+      <Container className={classes.mainContainer} maxWidth='md'>
         <Grid
           container
           direction={isSmallScreen ? 'column' : rowDirection}
@@ -99,7 +99,7 @@ export default function WorkPage() {
             />
           </Grid>
         </Grid>
-      </Box>
+      </Container>
     </article>
   )
 }
