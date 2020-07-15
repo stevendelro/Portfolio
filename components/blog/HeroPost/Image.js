@@ -4,7 +4,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
-  image: {
+  Image__root: {
     flexGrow: 1,
     paddingTop: '1rem',
     marginBottom: '3rem',
@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       height: 400,
     },
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       height: 500,
       borderRadius: 5,
     },
@@ -22,11 +22,11 @@ const useStyles = makeStyles(theme => ({
 export default function Image({ slug, coverImage, title }) {
   const classes = useStyles()
   return (
-    <section id='HeroPost__ImageArea'>
+    <section>
       <Link as={`/blog/${slug}`} href='/blog/[slug]'>
         <Paper elevation={5}>
           <CardMedia
-            className={classes.image}
+            className={classes.Image__root}
             image={coverImage}
             title={title}
           />

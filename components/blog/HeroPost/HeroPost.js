@@ -7,13 +7,13 @@ import Excerpt from './Excerpt'
 import Image from './Image'
 
 const useStyles = makeStyles(theme => ({
-  rootHeroPost: {
+  HeroPost__root: {
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
         : theme.palette.common.defaultLightBackground,
   },
-  allText: {
+  HeroPost__textArea: {
     paddingBottom: theme.spacing(2),
     [theme.breakpoints.down('xs')]: {
       padding: '0 1rem',
@@ -34,81 +34,64 @@ export default function HeroPost({
   const classes = useStyles()
   const theme = useTheme()
   const isTinyScreen = useMediaQuery(theme.breakpoints.down('xs'))
+  const isSmallScreen = useMediaQuery(theme.breakpoints.only('sm'))
+  const isSmallScreenUp = useMediaQuery(theme.breakpoints.up('sm'))
   const isLargeScreenUp = useMediaQuery(theme.breakpoints.up('lg'))
   let composableTextArea
 
-  /*
-  Larger screens will display content based on what side you prefer
-  to have the blog post title (via the "titlePosition" prop)
-*/
-  if (titlePosition === 'right' && !isTinyScreen) {
-    composableTextArea = (
-      <>
-        <Excerpt titlePosition={titlePosition} excerpt={excerpt} />
-        <DateReadingTime
-          slug={slug}
-          title={title}
-          date={date}
-          author={author}
-          readingTime={readingTime}
-        />
-      </>
-    )
-  } else if (titlePosition === 'left' && !isTinyScreen) {
-    composableTextArea = (
-      <>
-        <DateReadingTime
-          slug={slug}
-          title={title}
-          date={date}
-          author={author}
-          readingTime={readingTime}
-        />
-        <Excerpt titlePosition={titlePosition} excerpt={excerpt} />
-      </>
-    )
+  // Decalred to pass down properties before arranging.
+  const PostExcerpt = (
+    <Excerpt titlePosition={titlePosition} excerpt={excerpt} />
+  )
+  const TimeStamp = (
+    <DateReadingTime
+      slug={slug}
+      title={title}
+      date={date}
+      author={author}
+      readingTime={readingTime}
+      titlePosition={titlePosition}
+    />
+  )
+  // Arrange text area based on screen size and orientation
+  switch (titlePosition.toLowerCase()) {
+    case 'right': {
+      // prettier-ignore
+      isTinyScreen
+        ? composableTextArea = <>{TimeStamp}{PostExcerpt}</>
+        : composableTextArea = <>{PostExcerpt}{TimeStamp}</>
+      break
+    }
+    case 'left': {
+      // prettier-ignore
+      isTinyScreen
+        ? composableTextArea = <>{PostExcerpt}{TimeStamp}</>
+        : composableTextArea = <>{TimeStamp}{PostExcerpt}</>
+      break
+    }
+    default: {
+      console.error(`
+      The titlePosition property within <HeroPost /> MUST be defined as 'left' or 'right':
 
-    /*
-  Smaller screens will display the title above the excerpt,
-  independent of whatever side was initially chosen.
-*/
-  } else if (titlePosition === 'right' && isTinyScreen) {
-    composableTextArea = (
-      <>
-        <DateReadingTime
-          slug={slug}
-          title={title}
-          date={date}
-          author={author}
-          readingTime={readingTime}
-        />
-        <Excerpt titlePosition={titlePosition} excerpt={excerpt} />
-      </>
-    )
-  } else if (titlePosition === 'left' && isTinyScreen) {
-    composableTextArea = (
-      <>
-        <Excerpt titlePosition={titlePosition} excerpt={excerpt} />
-        <DateReadingTime
-          slug={slug}
-          title={title}
-          date={date}
-          author={author}
-          readingTime={readingTime}
-        />
-      </>
-    )
+      '${titlePosition}' is not an accepted value.
+      `)
+      break
+    }
   }
 
   return (
-    <article id='HeroPost' className={classes.rootHeroPost}>
-      <Container maxWidth='md'>
+    <article className={classes.HeroPost__root}>
+      {isSmallScreen || isTinyScreen ? (
         <Image slug={slug} coverImage={coverImage} title={title} />
+      ) : null}
+      <Container maxWidth='md'>
+        {isSmallScreenUp && !isSmallScreen ? (
+          <Image slug={slug} coverImage={coverImage} title={title} />
+        ) : null}
         <section>
           <Grid
             container
-            id='HeroPost__TextArea'
-            className={classes.allText}
+            className={classes.HeroPost__textArea}
             direction='row'
             justify='space-between'
             alignItems={isLargeScreenUp ? 'center' : 'flex-start'}>
