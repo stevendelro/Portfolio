@@ -1,28 +1,54 @@
-import React from 'react'
-import clsx from 'clsx'
+import { useRef, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import Markdown from 'markdown-to-jsx'
+import hljs from 'highlight.js'
 
-/**
- * This component was copied from the Material-UI Sourcecode.
- * For more info, see this link:
- * https://github.com/mui-org/material-ui/blob/master/docs/src/modules/components/MarkdownElement.js
- */
-
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
-    ...theme.typography.body1,
+    ...theme.typography.body2,
     color: theme.palette.text.primary,
     wordBreak: 'break-word',
+    fontFamily: 'Roboto Slab',
+    fontWeight: 200,
     '& .anchor-link': {
       marginTop: -96, // Offset for the anchor.
       position: 'absolute',
     },
+    /**
+     * >>>>> BLOCK CODE CONTAINER <<<<<
+     */
+    '& code': {
+      direction: 'ltr',
+      lineHeight: 1.4,
+      backgroundColor: '#273234',
+      display: 'inline-block',
+      fontFamily: 'Fira Code, "Liberation Mono", Menlo, Courier, monospace',
+      WebkitFontSmoothing: 'subpixel-antialiased',
+      fontSize: '.85em',
+      borderRadius: 2,
+    },
+    '& code[class*="language-"]': {
+      backgroundColor: '#272c34',
+      color: '#fff',
+      lineHeight: 1.5, // Avoid layout jump after hydration (style injected by prism)
+    },
+    '& pre code': {
+      fontSize: '.9em',
+    },
+    '& .token.operator': {
+      background: 'transparent',
+    },
+    /**
+     * >>>>> BLOCK CODE <<<<<
+     */
     '& pre': {
       margin: theme.spacing(3, 'auto'),
       padding: theme.spacing(2),
-      backgroundColor: '#272c34',
+      backgroundColor: '#273234',
+      color: '#fff',
       direction: 'ltr',
       borderRadius: theme.shape.borderRadius,
+      boxShadow: theme.shadows[8],
       overflow: 'auto',
       WebkitOverflowScrolling: 'touch', // iOS momentum scrolling.
       maxWidth: 'calc(100vw - 32px)',
@@ -30,35 +56,26 @@ const styles = theme => ({
         maxWidth: 'calc(100vw - 32px - 16px)',
       },
     },
-    // inline code
-    '& code': {
+    /**
+     * >>>>> INLINE CODE <<<<<
+     */
+    '& p code': {
       direction: 'ltr',
       lineHeight: 1.4,
       display: 'inline-block',
-      fontFamily: 'Consolas, "Liberation Mono", Menlo, Courier, monospace',
+      fontFamily: 'Fira Code, "Liberation Mono", Menlo, Courier, monospace',
       WebkitFontSmoothing: 'subpixel-antialiased',
-      padding: '0 3px',
-      color: theme.palette.text.primary,
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? 'rgba(255, 229, 100, 0.2)'
-          : 'rgba(255, 229, 100, 0.2)',
+      padding: '0px 5px',
+      backgroundColor: '#273234',
+      color:
+        theme.palette.type === 'dark' ? '#ABB2BF' : theme.palette.common.white,
       fontSize: '.85em',
-      borderRadius: 2,
+      borderRadius: 4,
+      boxShadow: theme.shadows[1],
     },
-    '& code[class*="language-"]': {
-      backgroundColor: '#272c34',
-      color: '#fff',
-      // Avoid layout jump after hydration (style injected by prism)
-      lineHeight: 1.5,
-    },
-    // code blocks
-    '& pre code': {
-      fontSize: '.9em',
-    },
-    '& .token.operator': {
-      background: 'transparent',
-    },
+    /**
+     * >>>>> MARKDOWN <<<<<
+     */
     '& h1': {
       ...theme.typography.h3,
       fontSize: 40,
@@ -80,10 +97,18 @@ const styles = theme => ({
     '& h4': {
       ...theme.typography.h6,
       margin: '32px 0 16px',
+      fontFamily: 'Calistoga',
+      color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
     },
     '& h5': {
       ...theme.typography.subtitle2,
       margin: '32px 0 16px',
+      color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
+    },
+    '& h6': {
+      ...theme.typography.caption,
+      margin: '32px 0 16px',
+      color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
     },
     '& p, & ul, & ol': {
       marginTop: 0,
@@ -96,12 +121,10 @@ const styles = theme => ({
       '& code': {
         fontSize: 'inherit',
         lineHeight: 'inherit',
-        // Remove scroll on small screens.
-        wordBreak: 'break-all',
+        wordBreak: 'break-all', // Remove scroll on small screens.
       },
       '& .anchor-link-style': {
-        // To prevent the link to get the focus.
-        display: 'none',
+        display: 'none', // To prevent the link to get the focus.
       },
       '&:hover .anchor-link-style': {
         display: 'inline-block',
@@ -117,10 +140,13 @@ const styles = theme => ({
         },
       },
     },
+    /**
+     * >>>>> TABLES <<<<<
+     */
     '& table': {
-      // Trade display table for scroll overflow
-      display: 'block',
+      display: 'block', // Trade display table for scroll overflow
       wordBreak: 'normal',
+      fontFamily: 'Roboto',
       width: '100%',
       overflowX: 'auto',
       WebkitOverflowScrolling: 'touch', // iOS momentum scrolling.
@@ -143,23 +169,31 @@ const styles = theme => ({
         borderBottom: `1px dotted ${theme.palette.divider}`,
       },
     },
+    '& tr': {
+      width: '100%',
+    },
     '& td': {
       ...theme.typography.body2,
       borderBottom: `1px solid ${theme.palette.divider}`,
+      fontWeight: theme.typography.fontWeightLight,
       padding: 16,
       color: theme.palette.text.primary,
+      fontFamily: 'Roboto',
     },
     '& td code': {
       lineHeight: 1.6,
     },
     '& th': {
       lineHeight: theme.typography.pxToRem(24),
-      fontWeight: theme.typography.fontWeightMedium,
+      fontWeight: theme.typography.fontWeightRegular,
       color: theme.palette.text.primary,
       whiteSpace: 'pre',
       borderBottom: `1px solid ${theme.palette.divider}`,
       padding: 16,
     },
+    /**
+     *  >>>>> BLOCKQUOTE <<<<<
+     */
     '& blockquote': {
       borderLeft: `5px solid ${theme.palette.grey[700]}`,
       backgroundColor: 'rgba(189, 189, 189, 0.2)',
@@ -169,14 +203,26 @@ const styles = theme => ({
         marginTop: '16px',
       },
     },
+    /**
+     * >>>>> LINKS <<<<<
+     */
     '& a, & a code': {
-      // Style taken from the Link component
-      color: theme.palette.secondary.main,
+      color:
+        theme.palette.type === 'dark'
+          ? theme.palette.secondary.main
+          : theme.palette.primary.main,
+      fontWeight: 500,
       textDecoration: 'none',
       '&:hover': {
-        textDecoration: 'underline',
+        color:
+          theme.palette.type === 'dark'
+            ? theme.palette.common.white
+            : theme.palette.secondary.main,
       },
     },
+    /**
+     *  >>>>> IMAGES <<<<<
+     */
     '& img, video': {
       maxWidth: '100%',
     },
@@ -184,6 +230,9 @@ const styles = theme => ({
       // Avoid layout jump
       display: 'inline-block',
     },
+    /**
+     *  >>>>> OTHER <<<<<
+     */
     '& hr': {
       height: 1,
       margin: theme.spacing(6, 0),
@@ -204,28 +253,21 @@ const styles = theme => ({
       boxShadow: 'inset 0 -1px 0 #d1d5da',
     },
   },
-})
-const useStyles = makeStyles(styles, { name: 'MarkdownElement', flip: false })
+}))
 
-const MarkdownElement = React.forwardRef(function MarkdownElement(props, ref) {
-  const { className, renderedMarkdown, ...other } = props
+export default function HighlightedMarkdown({ children }) {
+  const rootRef = useRef()
   const classes = useStyles()
-  const more = {}
 
-  if (typeof renderedMarkdown === 'string') {
-    // workaround for https://github.com/facebook/react/issues/17170
-    // otherwise we could just set `dangerouslySetInnerHTML={undefined}`
-    more.dangerouslySetInnerHTML = { __html: renderedMarkdown }
-  }
+  useEffect(() => {
+    rootRef.current.querySelectorAll('pre code').forEach(block => {
+      hljs.highlightBlock(block)
+    })
+  }, [children])
 
   return (
-    <div
-      className={clsx(classes.root, 'markdown-body', className)}
-      {...more}
-      {...other}
-      ref={ref}
-    />
+    <div ref={rootRef}>
+      <Markdown className={classes.root}>{children}</Markdown>
+    </div>
   )
-})
-
-export default MarkdownElement
+}
