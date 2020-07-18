@@ -9,6 +9,7 @@ import MyAppBar from '../components/layout/MyAppBar'
 import MobileNav from '../components/layout/MobileNav'
 import MyFooter from '../components/layout/MyFooter'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+import 'highlight.js/styles/atom-one-dark.css';
 
 const useStyles = makeStyles(theme => ({
   root: {

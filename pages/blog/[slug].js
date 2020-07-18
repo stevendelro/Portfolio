@@ -84,7 +84,7 @@ export default function SlugPage({ post, morePosts, preview }) {
               direction='column'
               justify='center'
               alignItems='center'>
-              <Grid item className={classes.body} xs={12} sm={8} lg={6} xl={4}>
+              <Grid item className={classes.body} xs={12} sm={7} lg={6} xl={4}>
                 <PostBody content={post.content} />
               </Grid>
             </Grid>

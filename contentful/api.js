@@ -45,7 +45,7 @@ function parsePostEntries(entries, cb = parsePost) {
 
 export async function getPreviewPostBySlug(slug) {
   const entries = await getClient(true).getEntries({
-    content_type: 'post',
+    content_type: 'markdownPost',
     limit: 1,
     'fields.slug[in]': slug,
   })
@@ -54,7 +54,7 @@ export async function getPreviewPostBySlug(slug) {
 
 export async function getAllPostsWithSlug() {
   const entries = await client.getEntries({
-    content_type: 'post',
+    content_type: 'markdownPost',
     select: 'fields.slug',
   })
   return parsePostEntries(entries, post => post.fields)
@@ -62,7 +62,7 @@ export async function getAllPostsWithSlug() {
 
 export async function getAllPostsForHome(preview) {
   const entries = await getClient(preview).getEntries({
-    content_type: 'post',
+    content_type: 'markdownPost',
     order: '-fields.date',
   })
   return parsePostEntries(entries)
@@ -70,12 +70,12 @@ export async function getAllPostsForHome(preview) {
 
 export async function getPostAndMorePosts(slug, preview) {
   const entry = await getClient(preview).getEntries({
-    content_type: 'post',
+    content_type: 'markdownPost',
     limit: 1,
     'fields.slug[in]': slug,
   })
   const entries = await getClient(preview).getEntries({
-    content_type: 'post',
+    content_type: 'markdownPost',
     limit: 2,
     order: '-fields.date',
     'fields.slug[nin]': slug,
