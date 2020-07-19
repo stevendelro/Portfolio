@@ -366,7 +366,7 @@ export default function MarkdownRenderer({ children }) {
         className={classes.root}
         options={{
           overrides: {
-            pre: {
+            code: {
               component: CodeBlock, // inject className for syntax highlighting
             },
           },
