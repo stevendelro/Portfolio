@@ -9,7 +9,9 @@ import MyAppBar from '../components/layout/MyAppBar'
 import MobileNav from '../components/layout/MobileNav'
 import MyFooter from '../components/layout/MyFooter'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import 'highlight.js/styles/atom-one-dark.css';
+import Prism from 'prismjs'
+import '../public/syntaxHighlighting.css'
+// import 'highlight.js/styles/atom-one-dark.css';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -90,6 +92,10 @@ export default function MyApp(props) {
       jssStyles.parentElement.removeChild(jssStyles)
     }
   }, [])
+
+  useEffect(() => {
+    Prism.highlightAll()
+  }, [Component])
   return (
     <>
       <Head>
