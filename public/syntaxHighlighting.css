@@ -1,0 +1,134 @@
+/**
+ * Sublime Material Theme - Dark -- for JSX primarily, and JavaScript.
+ *
+ * Loosely based on Jarvis Prestidge's ported Material theme which can be found here: https://github.com/JarvisPrestidge/vscode-material-theme
+ * @author stevendelro https://github.com/stevendelro
+ */
+
+code[class*='language-'],
+pre[class*='language-'] {
+  color: #f8f8f2;
+  background: none;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: 'fira code', Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 1em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*='language-'] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #546e7a;
+}
+
+.token.punctuation {
+  color: #89ddff;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.tag {
+  color: #f07178;
+}
+
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #eeffff;
+}
+
+.token.boolean,
+.token.number {
+  color: #f78c6c;
+}
+.token.property,
+.token.attr-value,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #91b859;
+}
+
+.token.selector,
+.token.attr-name {
+  color: #c792ea;
+}
+
+.tag .token.attr-value .token.entity {
+  color: #f78c6c;
+}
+
+.token.operator,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #89ddff;
+}
+
+.token.atrule,
+.token.function,
+.token.class-name {
+  color: #82aaff;
+}
+
+.token.attr-name,
+.token.keyword {
+  color: #c792ea;
+}
+
+.token.regex,
+.token.important {
+  color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+/* TODO: Get named entities to show this color. */
+.token.entity {
+  color: #ffcb6b;
+}
