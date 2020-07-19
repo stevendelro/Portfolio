@@ -9,20 +9,27 @@ export default class MyDocument extends Document {
       <Html lang='en'>
         <Head>
           {/* PWA primary color */}
-          <meta name='Green-Light Orange-Dark' content={theme.palette.primary.main} />
+          <meta
+            name='Green-Light Orange-Dark'
+            content={theme.palette.primary.main}
+          />
           <link
             rel='stylesheet'
             href='https://fonts.googleapis.com/css?family=Roboto:200,300,400,500&display=swap'
           />
           <link
-            href='https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&display=swap'
             rel='stylesheet'
+            href='https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&display=swap'
           />
-          <link href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap" rel="stylesheet" />
+          <link
+            rel='stylesheet'
+            href='https://fonts.googleapis.com/css2?family=Calistoga&display=swap'
+          />
         </Head>
         <body>
           <Main />
           <NextScript />
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
         </body>
       </Html>
     )

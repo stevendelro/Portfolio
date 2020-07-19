@@ -94,7 +94,8 @@ export default function MyApp(props) {
   }, [])
 
   useEffect(() => {
-    Prism.highlightAll()
+    Prism.highlightAll() // syntax highlighting for code
+    Prism.plugins.autoloader.languages_path = '/prism-components' // auto-detect language to highlight
   }, [Component])
   return (
     <>

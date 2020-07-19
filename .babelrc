@@ -5,7 +5,13 @@
       "prismjs",
       {
         "languages": ["javascript", "css", "jsx", "tsx"],
-        "plugins": ["line-numbers"],
+        "plugins": [
+          "inline-color",
+          "autolinker",
+          "autoloader",
+          "toolbar",
+          "copy-to-clipboard"
+        ],
         "theme": "twilight",
         "css": true
       }

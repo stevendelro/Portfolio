@@ -33,6 +33,14 @@ const useStyles = makeStyles(theme => ({
       fontSize: '.85em',
       borderRadius: 2,
     },
+    '& div[class="toolbar"]': {
+      zIndex: 1,
+      top: '.5rem', // This is the `Copy` button that appears in the top right corner on code block hover.
+      right: '.7rem',
+    },
+    '& div[class*="toolbar-item"]': {
+      color: theme.palette.secondary.main,
+    },
     '& code[class*="language-"]': {
       backgroundColor: '#272822',
       color: '#fff',
@@ -80,8 +88,10 @@ const useStyles = makeStyles(theme => ({
         fontSize: theme.typography.pxToRem(6),
       },
     },
-    '& .token.operator': {
-      background: 'transparent',
+
+    '& .token a': {
+      color: '#91b859', // override the mui-theme link color with proper string syntax color.
+      textDecoration: 'underline'
     },
 
     /**
@@ -124,6 +134,7 @@ const useStyles = makeStyles(theme => ({
           : theme.palette.primary.main,
       fontSize: '.85em',
       fontStyle: 'bold',
+      border: 0,
       borderRadius: 4,
       boxShadow: theme.shadows[1],
     },
@@ -290,9 +301,6 @@ const useStyles = makeStyles(theme => ({
       borderLeft: `5px solid ${theme.palette.grey[700]}`,
       backgroundColor: 'rgba(189, 189, 189, 0.2)',
       padding: '4px 24px',
-      [theme.breakpoints.up(900)]: {
-        padding: '4px 0', // remove 24px left and right padding
-      },
       margin: '24px 0',
       '& p': {
         marginTop: '16px',
@@ -369,9 +377,16 @@ export default function MarkdownRenderer({ children }) {
             code: {
               component: CodeBlock, // inject className for syntax highlighting
             },
+            div: {}
           },
         }}
       />
     </div>
   )
+}
+
+const ImageWithContainer = ({ children }) => {
+  <div>
+    <img src='' alt='' />
+  </div>
 }
