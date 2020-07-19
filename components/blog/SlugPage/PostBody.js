@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles'
-import Markdown from './Markdown'
+import Grid from '@material-ui/core/Grid'
+import MarkdownRenderer from './MarkdownRenderer'
 
 const useStyles = makeStyles(theme => ({
   rootPostBody: {
@@ -11,9 +12,7 @@ export default function PostBody({ content }) {
   const classes = useStyles()
   return (
     <main id='SlugPage__Body' className={classes.rootPostBody}>
-      <Markdown className={classes.root}>
-        {content}
-      </Markdown>
+      <MarkdownRenderer>{content}</MarkdownRenderer>
     </main>
   )
 }

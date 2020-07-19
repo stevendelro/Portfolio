@@ -1,7 +1,11 @@
-import { useRef, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Markdown from 'markdown-to-jsx'
-import hljs from 'highlight.js'
+import CodeBlock from './CodeBlock'
+
+/**
+ * I used the styles from the Material-UI's documentation markdown component as the initial boilerplate for this.
+ * https://github.com/mui-org/material-ui/blob/master/docs/src/modules/components/MarkdownElement.js
+ */
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,13 +18,15 @@ const useStyles = makeStyles(theme => ({
       marginTop: -96, // Offset for the anchor.
       position: 'absolute',
     },
+
     /**
-     * >>>>> BLOCK CODE CONTAINER <<<<<
+     * >>>>> BLOCK CODE *CONTAINER* <<<<<
      */
+
     '& code': {
       direction: 'ltr',
       lineHeight: 1.4,
-      backgroundColor: '#273234',
+      backgroundColor: '#272822',
       display: 'inline-block',
       fontFamily: 'Fira Code, "Liberation Mono", Menlo, Courier, monospace',
       WebkitFontSmoothing: 'subpixel-antialiased',
@@ -28,25 +34,67 @@ const useStyles = makeStyles(theme => ({
       borderRadius: 2,
     },
     '& code[class*="language-"]': {
-      backgroundColor: '#272c34',
+      backgroundColor: '#272822',
       color: '#fff',
       lineHeight: 1.5, // Avoid layout jump after hydration (style injected by prism)
     },
     '& pre code': {
-      fontSize: '.9em',
+      /*    Overkill Responsiveness   */
+      [theme.breakpoints.up(1920)]: {
+        fontSize: theme.typography.pxToRem(10),
+      },
+      [theme.breakpoints.between(1700, 1920)]: {
+        fontSize: theme.typography.pxToRem(14),
+      },
+      [theme.breakpoints.between(1500, 1700)]: {
+        fontSize: theme.typography.pxToRem(13),
+      },
+      [theme.breakpoints.between(1400, 1500)]: {
+        fontSize: theme.typography.pxToRem(12),
+      },
+      [theme.breakpoints.between(1280, 1400)]: {
+        fontSize: theme.typography.pxToRem(10),
+      },
+      [theme.breakpoints.between(1150, 1280)]: {
+        fontSize: theme.typography.pxToRem(15),
+      },
+      [theme.breakpoints.between(1050, 1150)]: {
+        fontSize: theme.typography.pxToRem(13),
+      },
+      [theme.breakpoints.between(950, 1050)]: {
+        fontSize: theme.typography.pxToRem(12),
+      },
+      [theme.breakpoints.between(850, 950)]: {
+        fontSize: theme.typography.pxToRem(11),
+      },
+      [theme.breakpoints.between(750, 850)]: {
+        fontSize: theme.typography.pxToRem(10),
+      },
+      [theme.breakpoints.between(600, 750)]: {
+        fontSize: theme.typography.pxToRem(9),
+      },
+      [theme.breakpoints.between(500, 600)]: {
+        fontSize: theme.typography.pxToRem(8),
+      },
+      [theme.breakpoints.down(500)]: {
+        fontSize: theme.typography.pxToRem(6),
+      },
     },
     '& .token.operator': {
       background: 'transparent',
     },
+
     /**
-     * >>>>> BLOCK CODE <<<<<
+     * >>>>> BLOCK CODE ITSELF <<<<<
      */
+
     '& pre': {
       margin: theme.spacing(3, 'auto'),
       padding: theme.spacing(2),
-      backgroundColor: '#273234',
+      backgroundColor: '#272822',
       color: '#fff',
       direction: 'ltr',
+      border: 0,
       borderRadius: theme.shape.borderRadius,
       boxShadow: theme.shadows[8],
       overflow: 'auto',
@@ -56,9 +104,11 @@ const useStyles = makeStyles(theme => ({
         maxWidth: 'calc(100vw - 32px - 16px)',
       },
     },
+
     /**
      * >>>>> INLINE CODE <<<<<
      */
+
     '& p code': {
       direction: 'ltr',
       lineHeight: 1.4,
@@ -66,19 +116,27 @@ const useStyles = makeStyles(theme => ({
       fontFamily: 'Fira Code, "Liberation Mono", Menlo, Courier, monospace',
       WebkitFontSmoothing: 'subpixel-antialiased',
       padding: '0px 5px',
-      backgroundColor: '#273234',
+      backgroundColor:
+        theme.palette.type === 'dark' ? '#272822' : theme.palette.grey[300],
       color:
-        theme.palette.type === 'dark' ? '#ABB2BF' : theme.palette.common.white,
+        theme.palette.type === 'dark'
+          ? theme.palette.secondary.main
+          : theme.palette.primary.main,
       fontSize: '.85em',
+      fontStyle: 'bold',
       borderRadius: 4,
       boxShadow: theme.shadows[1],
     },
+
     /**
      * >>>>> MARKDOWN <<<<<
      */
+
     '& h1': {
       ...theme.typography.h3,
-      fontSize: 40,
+      fontFamily: 'Roboto Slab',
+      fontWeight: 500,
+      fontSize: theme.typography.pxToRem(40),
       margin: '16px 0',
     },
     '& .description': {
@@ -87,37 +145,62 @@ const useStyles = makeStyles(theme => ({
     },
     '& h2': {
       ...theme.typography.h4,
-      fontSize: 30,
+      fontFamily: 'Roboto Slab',
+      fontWeight: 500,
+      fontSize: theme.typography.pxToRem(30),
       margin: '40px 0 16px',
     },
     '& h3': {
       ...theme.typography.h5,
+      fontFamily: 'Roboto Slab',
+      fontWeight: 500,
       margin: '40px 0 16px',
     },
     '& h4': {
       ...theme.typography.h6,
       margin: '32px 0 16px',
-      fontFamily: 'Calistoga',
+      fontFamily: 'Roboto Slab',
+      fontWeight: 500,
       color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
     },
     '& h5': {
       ...theme.typography.subtitle2,
       margin: '32px 0 16px',
+      fontFamily: 'Roboto Slab',
+      fontWeight: 500,
       color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
     },
     '& h6': {
       ...theme.typography.caption,
       margin: '32px 0 16px',
+      fontFamily: 'Roboto Slab',
+      fontWeight: 500,
       color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
     },
     '& p, & ul, & ol': {
       marginTop: 0,
       marginBottom: 16,
+
+      maxWidth: '560px',
+      [theme.breakpoints.up(730)]: {
+        marginLeft: 'auto', // <<< Psuedo Text Container - 1 of 4
+        marginRight: 'auto',
+      },
     },
     '& ul': {
       paddingLeft: 30,
+      maxWidth: '560px',
+      [theme.breakpoints.up(730)]: {
+        marginLeft: 'auto', // <<< Psuedo Text Container - 2 of 4
+        marginRight: 'auto',
+      },
     },
-    '& h1, & h2, & h3, & h4': {
+    '& h1, & h2, & h3, & h4, & h5, & h6': {
+      maxWidth: '560px',
+      [theme.breakpoints.up(730)]: {
+        marginLeft: 'auto', // Psuedo Text Container - 3 of 4
+        marginRight: 'auto',
+      },
       '& code': {
         fontSize: 'inherit',
         lineHeight: 'inherit',
@@ -140,10 +223,17 @@ const useStyles = makeStyles(theme => ({
         },
       },
     },
+
     /**
      * >>>>> TABLES <<<<<
      */
+
     '& table': {
+      maxWidth: '560px',
+      [theme.breakpoints.up(730)]: {
+        marginLeft: 'auto', // <<< Psuedo Text Container - 4 of 4
+        marginRight: 'auto',
+      },
       display: 'block', // Trade display table for scroll overflow
       wordBreak: 'normal',
       fontFamily: 'Roboto',
@@ -191,21 +281,28 @@ const useStyles = makeStyles(theme => ({
       borderBottom: `1px solid ${theme.palette.divider}`,
       padding: 16,
     },
+
     /**
      *  >>>>> BLOCKQUOTE <<<<<
      */
+
     '& blockquote': {
       borderLeft: `5px solid ${theme.palette.grey[700]}`,
       backgroundColor: 'rgba(189, 189, 189, 0.2)',
       padding: '4px 24px',
+      [theme.breakpoints.up(900)]: {
+        padding: '4px 0', // remove 24px left and right padding
+      },
       margin: '24px 0',
       '& p': {
         marginTop: '16px',
       },
     },
+
     /**
      * >>>>> LINKS <<<<<
      */
+
     '& a, & a code': {
       color:
         theme.palette.type === 'dark'
@@ -220,19 +317,23 @@ const useStyles = makeStyles(theme => ({
             : theme.palette.secondary.main,
       },
     },
+
     /**
      *  >>>>> IMAGES <<<<<
      */
+
     '& img, video': {
       maxWidth: '100%',
     },
     '& img': {
-      // Avoid layout jump
-      display: 'inline-block',
+      display: 'inline-block', // Avoid layout jump
+      textAlign: 'center',
     },
+
     /**
      *  >>>>> OTHER <<<<<
      */
+
     '& hr': {
       height: 1,
       margin: theme.spacing(6, 0),
@@ -255,19 +356,22 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function HighlightedMarkdown({ children }) {
-  const rootRef = useRef()
+export default function MarkdownRenderer({ children }) {
   const classes = useStyles()
 
-  useEffect(() => {
-    rootRef.current.querySelectorAll('pre code').forEach(block => {
-      hljs.highlightBlock(block)
-    })
-  }, [children])
-
   return (
-    <div ref={rootRef}>
-      <Markdown className={classes.root}>{children}</Markdown>
+    <div>
+      <Markdown
+        children={children}
+        className={classes.root}
+        options={{
+          overrides: {
+            pre: {
+              component: CodeBlock, // inject className for syntax highlighting
+            },
+          },
+        }}
+      />
     </div>
   )
 }
