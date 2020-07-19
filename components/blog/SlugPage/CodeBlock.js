@@ -1,8 +1,8 @@
-const CodeBlock = ({ children, className }) => {
+export default function CodeBlock({ children, className }) {
   const language = 'javascript'
   return (
-      <code className={`language-${language} ${{...className}}`}>{children}</code>
+    <code className={`language-${className ? className : language}`}>
+      {children}
+    </code>
   )
 }
-
-export default CodeBlock

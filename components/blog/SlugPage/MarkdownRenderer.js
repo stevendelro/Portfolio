@@ -1,11 +1,15 @@
-import { makeStyles } from '@material-ui/core/styles'
 import Markdown from 'markdown-to-jsx'
+import { makeStyles } from '@material-ui/core/styles'
+import Checkbox from '@material-ui/core/Checkbox'
 import CodeBlock from './CodeBlock'
+import CenteredImage from './CenteredImage'
 
-/**
- * I used the styles from the Material-UI's documentation markdown component as the initial boilerplate for this.
- * https://github.com/mui-org/material-ui/blob/master/docs/src/modules/components/MarkdownElement.js
- */
+// Quick Variables to change if needed:
+const headingFontFamily = 'Roboto Slab'
+const headerFontWeight = 500
+const bodyTextFontFamily = undefined // if undefined, use Material UI theme 'body2' styles. => 'Roboto Slab[200]'
+const bodyTextFontWeight = 300
+const tableFontFamily = 'Roboto'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,9 +23,9 @@ const useStyles = makeStyles(theme => ({
       position: 'absolute',
     },
 
-    /**
-     * >>>>> BLOCK CODE *CONTAINER* <<<<<
-     */
+    /**********************************
+     ****** BLOCK CODE CONTAINER ******
+     **********************************/
 
     '& code': {
       direction: 'ltr',
@@ -33,21 +37,16 @@ const useStyles = makeStyles(theme => ({
       fontSize: '.85em',
       borderRadius: 2,
     },
-    '& div[class="toolbar"]': {
-      zIndex: 1,
-      top: '.5rem', // This is the `Copy` button that appears in the top right corner on code block hover.
-      right: '.7rem',
-    },
-    '& div[class*="toolbar-item"]': {
-      color: theme.palette.secondary.main,
-    },
+
     '& code[class*="language-"]': {
       backgroundColor: '#272822',
       color: '#fff',
       lineHeight: 1.5, // Avoid layout jump after hydration (style injected by prism)
     },
+
+    /** CODE BLOCK RESPONSIVENESS OVERKILL **/
+
     '& pre code': {
-      /*    Overkill Responsiveness   */
       [theme.breakpoints.up(1920)]: {
         fontSize: theme.typography.pxToRem(10),
       },
@@ -91,19 +90,18 @@ const useStyles = makeStyles(theme => ({
 
     '& .token a': {
       color: '#91b859', // override the mui-theme link color with proper string syntax color.
-      textDecoration: 'underline'
+      textDecoration: 'underline',
     },
 
-    /**
-     * >>>>> BLOCK CODE ITSELF <<<<<
-     */
+    /**********************************
+     ******** BLOCK CODE ITSELF *******
+     **********************************/
 
     '& pre': {
+      direction: 'ltr',
       margin: theme.spacing(3, 'auto'),
       padding: theme.spacing(2),
       backgroundColor: '#272822',
-      color: '#fff',
-      direction: 'ltr',
       border: 0,
       borderRadius: theme.shape.borderRadius,
       boxShadow: theme.shadows[8],
@@ -115,9 +113,9 @@ const useStyles = makeStyles(theme => ({
       },
     },
 
-    /**
-     * >>>>> INLINE CODE <<<<<
-     */
+    /**********************************
+     ********** INLINE CODE ***********
+     **********************************/
 
     '& p code': {
       direction: 'ltr',
@@ -126,12 +124,6 @@ const useStyles = makeStyles(theme => ({
       fontFamily: 'Fira Code, "Liberation Mono", Menlo, Courier, monospace',
       WebkitFontSmoothing: 'subpixel-antialiased',
       padding: '0px 5px',
-      backgroundColor:
-        theme.palette.type === 'dark' ? '#272822' : theme.palette.grey[300],
-      color:
-        theme.palette.type === 'dark'
-          ? theme.palette.secondary.main
-          : theme.palette.primary.main,
       fontSize: '.85em',
       fontStyle: 'bold',
       border: 0,
@@ -139,14 +131,27 @@ const useStyles = makeStyles(theme => ({
       boxShadow: theme.shadows[1],
     },
 
-    /**
-     * >>>>> MARKDOWN <<<<<
-     */
+    /**********************************
+     ****** 'COPY' CODE BUTTON ********
+     **********************************/
+
+    '& div[class="toolbar"]': {
+      zIndex: 1,
+      top: '.5rem',
+      right: '.7rem',
+    },
+    '& div[class*="toolbar-item"]': {
+      color: theme.palette.secondary.main,
+    },
+
+    /**********************************
+     ************* TEXT ***************
+     **********************************/
 
     '& h1': {
       ...theme.typography.h3,
-      fontFamily: 'Roboto Slab',
-      fontWeight: 500,
+      fontFamily: `${headingFontFamily}, "Courier New", "serif"`,
+      fontWeight: headerFontWeight,
       fontSize: theme.typography.pxToRem(40),
       margin: '16px 0',
     },
@@ -156,72 +161,78 @@ const useStyles = makeStyles(theme => ({
     },
     '& h2': {
       ...theme.typography.h4,
-      fontFamily: 'Roboto Slab',
-      fontWeight: 500,
+      fontFamily: `${headingFontFamily}, "Courier New", "serif"`,
+      fontWeight: headerFontWeight,
       fontSize: theme.typography.pxToRem(30),
       margin: '40px 0 16px',
     },
     '& h3': {
       ...theme.typography.h5,
-      fontFamily: 'Roboto Slab',
-      fontWeight: 500,
+      fontFamily: `${headingFontFamily}, "Courier New", "serif"`,
+      fontWeight: headerFontWeight,
       margin: '40px 0 16px',
     },
     '& h4': {
       ...theme.typography.h6,
       margin: '32px 0 16px',
-      fontFamily: 'Roboto Slab',
-      fontWeight: 500,
+      fontFamily: `${headingFontFamily}, "Courier New", "serif"`,
+      fontWeight: headerFontWeight,
       color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
     },
     '& h5': {
       ...theme.typography.subtitle2,
       margin: '32px 0 16px',
-      fontFamily: 'Roboto Slab',
-      fontWeight: 500,
+      fontFamily: `${headingFontFamily}, "Courier New", "serif"`,
+      fontWeight: headerFontWeight,
       color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
     },
     '& h6': {
       ...theme.typography.caption,
       margin: '32px 0 16px',
-      fontFamily: 'Roboto Slab',
-      fontWeight: 500,
+      fontFamily: `${headingFontFamily}, "Courier New", "serif"`,
+      fontWeight: headerFontWeight,
       color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
     },
     '& p, & ul, & ol': {
+      ...theme.typography.body2,
+      fontFamily: bodyTextFontFamily
+        ? `${bodyTextFontFamily}, "Courier New", "serif"`
+        : undefined,
+      fontWeight: bodyTextFontWeight,
+      lineHeight: 1.5,
       marginTop: 0,
       marginBottom: 16,
 
-      maxWidth: '560px',
+      maxWidth: '560px', // <<< Psuedo Text Container - 1 of 4
       [theme.breakpoints.up(730)]: {
         marginLeft: 'auto', // <<< Psuedo Text Container - 1 of 4
-        marginRight: 'auto',
+        marginRight: 'auto', // <<< Psuedo Text Container - 1 of 4
       },
     },
     '& ul': {
       paddingLeft: 30,
-      maxWidth: '560px',
+      maxWidth: '560px', // <<< Psuedo Text Container - 2 of 4
       [theme.breakpoints.up(730)]: {
         marginLeft: 'auto', // <<< Psuedo Text Container - 2 of 4
-        marginRight: 'auto',
+        marginRight: 'auto', // <<< Psuedo Text Container - 2 of 4
       },
     },
     '& h1, & h2, & h3, & h4, & h5, & h6': {
-      maxWidth: '560px',
+      maxWidth: '560px', // Psuedo Text Container - 3 of 4
       [theme.breakpoints.up(730)]: {
         marginLeft: 'auto', // Psuedo Text Container - 3 of 4
-        marginRight: 'auto',
+        marginRight: 'auto', // Psuedo Text Container - 3 of 4
       },
       '& code': {
         fontSize: 'inherit',
         lineHeight: 'inherit',
-        wordBreak: 'break-all', // Remove scroll on small screens.
+        wordBreak: 'break-all',
       },
       '& .anchor-link-style': {
-        display: 'none', // To prevent the link to get the focus.
+        display: 'none', // To prevent the link to capture focus.
       },
       '&:hover .anchor-link-style': {
-        display: 'inline-block',
+        display: 'inline-block', // Hyperlink styles within main body text
         padding: '0 8px',
         color: theme.palette.text.secondary,
         '&:hover': {
@@ -235,19 +246,19 @@ const useStyles = makeStyles(theme => ({
       },
     },
 
-    /**
-     * >>>>> TABLES <<<<<
-     */
+    /**********************************
+     ************ TABLES **************
+     **********************************/
 
     '& table': {
-      maxWidth: '560px',
+      maxWidth: '560px', // <<< Psuedo Text Container - 4 of 4
       [theme.breakpoints.up(730)]: {
         marginLeft: 'auto', // <<< Psuedo Text Container - 4 of 4
-        marginRight: 'auto',
+        marginRight: 'auto', // <<< Psuedo Text Container - 4 of 4
       },
       display: 'block', // Trade display table for scroll overflow
       wordBreak: 'normal',
-      fontFamily: 'Roboto',
+      fontFamily: tableFontFamily,
       width: '100%',
       overflowX: 'auto',
       WebkitOverflowScrolling: 'touch', // iOS momentum scrolling.
@@ -255,22 +266,9 @@ const useStyles = makeStyles(theme => ({
       marginBottom: '16px',
       borderSpacing: 0,
       overflow: 'hidden',
-      '& .prop-name': {
-        fontFamily: 'Consolas, "Liberation Mono", Menlo, monospace',
-      },
-      '& .required': {
-        color: theme.palette.type === 'light' ? '#006500' : '#a5ffa5',
-      },
-      '& .prop-type': {
-        fontFamily: 'Consolas, "Liberation Mono", Menlo, monospace',
-        color: theme.palette.type === 'light' ? '#932981' : '#ffb6ec',
-      },
-      '& .prop-default': {
-        fontFamily: 'Consolas, "Liberation Mono", Menlo, monospace',
-        borderBottom: `1px dotted ${theme.palette.divider}`,
-      },
     },
     '& tr': {
+      flexGrow: 1,
       width: '100%',
     },
     '& td': {
@@ -279,7 +277,7 @@ const useStyles = makeStyles(theme => ({
       fontWeight: theme.typography.fontWeightLight,
       padding: 16,
       color: theme.palette.text.primary,
-      fontFamily: 'Roboto',
+      fontFamily: tableFontFamily,
     },
     '& td code': {
       lineHeight: 1.6,
@@ -293,9 +291,9 @@ const useStyles = makeStyles(theme => ({
       padding: 16,
     },
 
-    /**
-     *  >>>>> BLOCKQUOTE <<<<<
-     */
+    /**********************************
+     ********** BLOCKQUOTE ************
+     **********************************/
 
     '& blockquote': {
       borderLeft: `5px solid ${theme.palette.grey[700]}`,
@@ -307,9 +305,9 @@ const useStyles = makeStyles(theme => ({
       },
     },
 
-    /**
-     * >>>>> LINKS <<<<<
-     */
+    /**********************************
+     ************* LINKS **************
+     **********************************/
 
     '& a, & a code': {
       color:
@@ -326,21 +324,20 @@ const useStyles = makeStyles(theme => ({
       },
     },
 
-    /**
-     *  >>>>> IMAGES <<<<<
-     */
+    /**********************************
+     ************* IMAGES *************
+     **********************************/
 
     '& img, video': {
       maxWidth: '100%',
     },
     '& img': {
       display: 'inline-block', // Avoid layout jump
-      textAlign: 'center',
     },
 
-    /**
-     *  >>>>> OTHER <<<<<
-     */
+    /**********************************
+     ************ DIVIDER *************
+     **********************************/
 
     '& hr': {
       height: 1,
@@ -349,24 +346,11 @@ const useStyles = makeStyles(theme => ({
       flexShrink: 0,
       backgroundColor: theme.palette.divider,
     },
-    '& kbd': {
-      // Style taken from GitHub
-      padding: '2px 5px',
-      font: '11px Consolas,Liberation Mono,Menlo,monospace',
-      lineHeight: '10px',
-      color: '#444d56',
-      verticalAlign: 'middle',
-      backgroundColor: '#fafbfc',
-      border: '1px solid #d1d5da',
-      borderRadius: 3,
-      boxShadow: 'inset 0 -1px 0 #d1d5da',
-    },
   },
 }))
 
 export default function MarkdownRenderer({ children }) {
   const classes = useStyles()
-
   return (
     <div>
       <Markdown
@@ -377,7 +361,12 @@ export default function MarkdownRenderer({ children }) {
             code: {
               component: CodeBlock, // inject className for syntax highlighting
             },
-            div: {}
+            img: {
+              component: CenteredImage, // center images
+            },
+            input: {
+              component: Checkbox, // use Material UI style checkbox
+            },
           },
         }}
       />
@@ -385,8 +374,9 @@ export default function MarkdownRenderer({ children }) {
   )
 }
 
-const ImageWithContainer = ({ children }) => {
-  <div>
-    <img src='' alt='' />
-  </div>
-}
+/**
+ * Initial boilerplate styles came from Material-UI's documentation markdown component.
+ *
+ * See the source code here:
+ * https://github.com/mui-org/material-ui/blob/master/docs/src/modules/components/MarkdownElement.js
+ */
