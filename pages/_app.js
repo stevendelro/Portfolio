@@ -52,7 +52,7 @@ export default function MyApp(props) {
           type: darkMode ? 'dark' : 'light',
         },
         typography: {
-          // Overide `body2` to use a serif font.
+
           h1: {
             fontFamily: 'Calistoga',
             color: darkMode ? '#ff9100' : '#144d53',
@@ -74,7 +74,7 @@ export default function MyApp(props) {
             color: darkMode ? '#ff9100' : '#144d53',
           },
           body2: {
-            fontFamily: '"Roboto Slab", "Courier New", "serif"',
+            fontFamily: '"Roboto Slab", "Courier New", "serif"', // Main body text
             fontSize: '1rem',
             fontWeight: 400,
             letterSpacing: '0.00938em',
