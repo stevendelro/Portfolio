@@ -7,21 +7,21 @@ import MuiLink from '../../MuiLink'
 import CustomDate from '../../CustomDate'
 
 const useStyles = makeStyles(theme => ({
-  vPreview__imageContainer: {
+  vListItem__imageContainer: {
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
   },
-  vPreview__imageContainer_image: {
+  vListItem__imageContainer_image: {
     cursor: 'pointer',
     paddingTop: '56.25%', // 16:9
     borderRadius: 5,
   },
-  vPreview__textContainer: {
+  vListItem__textContainer: {
     flexGrow: 1,
     padding: theme.spacing(3, 1, 1, 1),
   },
-  vPreview__textContainer_title: {
+  vListItem__textContainer_title: {
     '&:hover': {
       textDecoration: 'none',
       color:
@@ -30,14 +30,14 @@ const useStyles = makeStyles(theme => ({
           : theme.palette.secondary.main,
     },
   },
-  vPreview__textContainer_date: {
+  vListItem__textContainer_date: {
     marginBottom: theme.spacing(3),
   },
-  vPreview__textContainer_readingTime: {
+  vListItem__textContainer_readingTime: {
     lineHeight: '.1rem',
   },
 }))
-export default function VerticalPreview({
+export default function VerticalListItem({
   title,
   coverImage,
   date,
@@ -49,18 +49,18 @@ export default function VerticalPreview({
   return (
     <article id='SlugPage__V.Preview'>
       {/* IMAGE */}
-      <Paper className={classes.vPreview__imageContainer} elevation={3}>
+      <Paper className={classes.vListItem__imageContainer} elevation={3}>
         <CardMedia
-          className={classes.vPreview__imageContainer_image}
+          className={classes.vListItem__imageContainer_image}
           image={coverImage}
           title={title}
         />
       </Paper>
-      <Box className={classes.vPreview__textContainer}>
+      <Box className={classes.vListItem__textContainer}>
         {/* TITLE */}
         <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
           <Typography
-            className={classes.vPreview__textContainer_title}
+            className={classes.vListItem__textContainer_title}
             align='left'
             component='h2'
             variant='h4'>
@@ -70,13 +70,13 @@ export default function VerticalPreview({
 
         {/* DATE AND READING TIME */}
         <Typography
-          className={classes.vPreview__textContainer_date}
+          className={classes.vListItem__textContainer_date}
           variant='overline'
           align='left'
           display='block'>
           <CustomDate dateString={date} />
           <Typography
-            className={classes.vPreview__textContainer_readingTime}
+            className={classes.vListItem__textContainer_readingTime}
             align='left'
             variant='overline'
             color='textSecondary'

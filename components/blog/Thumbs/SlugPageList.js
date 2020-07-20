@@ -1,7 +1,7 @@
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import { makeStyles } from '@material-ui/core/styles'
-import VerticalPreview from './VerticalPreview'
+import VerticalListItem from './VerticalListItem'
 
 const useStyles = makeStyles(theme => ({
   slugPageList__Container: {
@@ -27,7 +27,7 @@ export default function SlugPageList({ posts }) {
         <Grid container className={classes.slugPageList__GridContainer} spacing={5}>
           {posts.map(post => (
             <Grid item key={post.id} xs={12} sm={6} >
-              <VerticalPreview
+              <VerticalListItem
                 key={post.slug}
                 title={post.title}
                 coverImage={post.coverImage.url}

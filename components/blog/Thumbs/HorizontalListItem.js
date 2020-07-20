@@ -8,7 +8,7 @@ import MuiLink from '../../MuiLink'
 import CustomDate from '../../CustomDate'
 
 const useStyles = makeStyles(theme => ({
-  hPreview__mainContainer: {
+  hListItem__mainContainer: {
     width: '100%',
     minHeight: 280,
     padding: theme.spacing(2, 0),
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   // >>>>>TEXT AREA<<<<<<
-  hPreview__textContainer: {
+  hListItem__textContainer: {
     textAlign: 'center',
     padding: theme.spacing(0, 2, 2, 2),
     [theme.breakpoints.down('xs')]: {
@@ -25,10 +25,10 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(3),
     },
   },
-  hPreview__textContainer_excerpt: {
+  hListItem__textContainer_excerpt: {
     textAlign: 'center',
   },
-  hPreview__textContainer_title: {
+  hListItem__textContainer_title: {
     '&:hover': {
       textDecoration: 'none',
       color:
@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   // >>>>>IMAGE AREA<<<<<
-  hPreview__imageContainer: {
+  hListItem__imageContainer: {
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
       minWidth: '100%',
     },
   },
-  hPreview__imageContainer_image: {
+  hListItem__imageContainer_image: {
     borderRadius: 5,
     cursor: 'pointer',
     [theme.breakpoints.up('xs')]: {
@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function HorizontalPreview({
+export default function HorizontalListItem({
   title,
   coverImage,
   date,
@@ -75,16 +75,16 @@ export default function HorizontalPreview({
     <article>
       <Grid
         container
-        className={classes.hPreview__mainContainer}
+        className={classes.hListItem__mainContainer}
         direction={isTinyScreenDown ? 'column-reverse' : 'row'}
         justify='center'
         alignItems={isTinyScreenDown ? 'center' : 'flex-start'}>
         {/* >>>> TEXT SIDE <<<< */}
-        <Grid item xs={12} sm={5} className={classes.hPreview__textContainer}>
+        <Grid item xs={12} sm={5} className={classes.hListItem__textContainer}>
           {/* TITLE */}
           <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
             <Typography
-              className={classes.hPreview__textContainer_title}
+              className={classes.hListItem__textContainer_title}
               component='h2'
               variant='h4'>
               {title}
@@ -104,7 +104,7 @@ export default function HorizontalPreview({
           </Typography>
           {/* EXCERPT */}
           <Typography
-            className={classes.hPreview__textContainer_excerpt}
+            className={classes.hListItem__textContainer_excerpt}
             variant='body2'
             color='textSecondary'
             align='left'>
@@ -112,11 +112,11 @@ export default function HorizontalPreview({
           </Typography>
         </Grid>
         {/* >>>> IMAGE SIDE <<<<*/}
-        <Grid item xs={12} sm={7} className={classes.hPreview__imageContainer}>
+        <Grid item xs={12} sm={7} className={classes.hListItem__imageContainer}>
           <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' naked>
             <Paper elevation={3}>
               <CardMedia
-                className={classes.hPreview__imageContainer_image}
+                className={classes.hListItem__imageContainer_image}
                 image={coverImage}
                 title={title}
               />

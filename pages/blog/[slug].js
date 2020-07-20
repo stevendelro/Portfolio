@@ -8,7 +8,7 @@ import PostTitle from '../../components/blog/SlugPage/PostTitle'
 import PostHeader from '../../components/blog/SlugPage/PostHeader'
 import PostImage from '../../components/blog/SlugPage/PostImage'
 import PostBody from '../../components/blog/SlugPage/PostBody'
-import SlugPageList from '../../components/blog/PostPreviews/SlugPageList'
+import SlugPageList from '../../components/blog/Thumbs/SlugPageList'
 import { getPostAndMorePosts, getAllPostsWithSlug } from '../../contentful/api'
 
 const useStyles = makeStyles(theme => ({

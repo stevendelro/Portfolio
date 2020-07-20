@@ -1,6 +1,6 @@
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
-import HorizontalPreview from './HorizontalPreview'
+import HorizontalListItem from './HorizontalListItem'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
@@ -29,7 +29,7 @@ export default function MainBlogList({ posts }) {
           {posts.map(post => {
             return (
               <Grid item key={post.id} className={classes.blogIndexList__GridItem}>
-                <HorizontalPreview
+                <HorizontalListItem
                   title={post.title}
                   coverImage={post.coverImage.url}
                   date={post.date}
