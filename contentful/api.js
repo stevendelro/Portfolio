@@ -1,7 +1,6 @@
 import { createClient } from 'contentful'
-import readingTime from 'reading-time'
 import { v4 as uuidv4 } from 'uuid'
-
+import readingTime from 'reading-time'
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,

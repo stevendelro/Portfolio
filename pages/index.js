@@ -1,8 +1,10 @@
+import { makeStyles } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
-import Container from '@material-ui/core/Container'
-import { makeStyles } from '@material-ui/core/styles'
+
 import PageIntro from '../components/PageIntro'
+
 const useStyles = makeStyles(theme => ({
   rootMainIndex: {
     height: '107%',

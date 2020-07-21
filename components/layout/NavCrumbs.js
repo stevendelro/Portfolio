@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs'
 import Typography from '@material-ui/core/Typography'
-import MuiLink from '../MuiLink'
+
 import { removeDashesAndUppercaseFirstLetter, truncate } from './utils/index'
+import MuiLink from '../MuiLink'
 
 const useStyles = makeStyles(theme => ({
   NavCrumbs__crumbLink: {

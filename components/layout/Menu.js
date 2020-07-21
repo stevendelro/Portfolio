@@ -1,8 +1,8 @@
+import { makeStyles, withStyles } from '@material-ui/core/styles'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import Tab from '@material-ui/core/Tab'
 import Tabs from '@material-ui/core/Tabs'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
 
 function a11yProps(tabIndex) {
   return {

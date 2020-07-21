@@ -1,8 +1,9 @@
-import Markdown from 'markdown-to-jsx'
 import { makeStyles } from '@material-ui/core/styles'
 import Checkbox from '@material-ui/core/Checkbox'
-import CodeBlock from './CodeBlock'
+import Markdown from 'markdown-to-jsx'
+
 import CenteredImage from './CenteredImage'
+import CodeBlock from './CodeBlock'
 
 // Quick Variables to change if needed:
 const headingFontFamily = 'Roboto Slab'

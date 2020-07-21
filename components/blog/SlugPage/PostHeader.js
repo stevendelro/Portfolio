@@ -1,6 +1,7 @@
+import { makeStyles } from '@material-ui/core/styles'
 import Divider from '@material-ui/core/Divider'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
+
 import AvatarStamp from '../../AvatarStamp'
 
 const useStyles = makeStyles(theme => ({

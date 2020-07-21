@@ -1,7 +1,7 @@
+import { makeStyles } from '@material-ui/core/styles'
+import CardMedia from '@material-ui/core/CardMedia'
 import Link from 'next/link'
 import Paper from '@material-ui/core/Paper'
-import CardMedia from '@material-ui/core/CardMedia'
-import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   Image__root: {

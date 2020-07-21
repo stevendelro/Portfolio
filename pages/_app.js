@@ -1,16 +1,19 @@
-import Head from 'next/head'
-import { useState, useEffect, useMemo } from 'react'
 import { createMuiTheme } from '@material-ui/core/styles'
-import { ThemeProvider } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import Hidden from '@material-ui/core/Hidden'
 import { makeStyles } from '@material-ui/core/styles'
-import MyAppBar from '../components/layout/MyAppBar'
-import MobileNav from '../components/layout/MobileNav'
-import MyFooter from '../components/layout/MyFooter'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { ThemeProvider } from '@material-ui/core/styles'
+import { useState, useEffect, useMemo } from 'react'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Head from 'next/head'
+import Hidden from '@material-ui/core/Hidden'
 import Prism from 'prismjs'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+
+import MobileNav from '../components/layout/MobileNav'
+import MyAppBar from '../components/layout/MyAppBar'
+import MyFooter from '../components/layout/MyFooter'
+
 import '../public/syntaxHighlighting.css'
+
 // import 'highlight.js/styles/atom-one-dark.css';
 
 const useStyles = makeStyles(theme => ({

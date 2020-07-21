@@ -1,7 +1,8 @@
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+
 import PageIntro from '../components/PageIntro'
 import ProjectImage from '../components/work/ProjectImage'
 import ProjectText from '../components/work/ProjectText'

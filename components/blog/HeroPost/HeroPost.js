@@ -1,7 +1,8 @@
-import Grid from '@material-ui/core/Grid'
-import Container from '@material-ui/core/Container'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+
 import DateReadingTime from './DateReadingTime'
 import Excerpt from './Excerpt'
 import Image from './Image'

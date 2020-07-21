@@ -1,15 +1,16 @@
+import { makeStyles } from '@material-ui/core/styles'
 import { useRouter } from 'next/router'
-import Head from 'next/head'
+import Container from '@material-ui/core/Container'
 import ErrorPage from 'next/error'
 import Grid from '@material-ui/core/Grid'
-import Container from '@material-ui/core/Container'
-import { makeStyles } from '@material-ui/core/styles'
-import PostTitle from '../../components/blog/SlugPage/PostTitle'
+import Head from 'next/head'
+
+import { getPostAndMorePosts, getAllPostsWithSlug } from '../../contentful/api'
+import PostBody from '../../components/blog/SlugPage/PostBody'
 import PostHeader from '../../components/blog/SlugPage/PostHeader'
 import PostImage from '../../components/blog/SlugPage/PostImage'
-import PostBody from '../../components/blog/SlugPage/PostBody'
+import PostTitle from '../../components/blog/SlugPage/PostTitle'
 import SlugPageList from '../../components/blog/Thumbs/SlugPageList'
-import { getPostAndMorePosts, getAllPostsWithSlug } from '../../contentful/api'
 
 const useStyles = makeStyles(theme => ({
   rootSlugPage: {

@@ -1,8 +1,9 @@
 import Head from 'next/head'
-import PageIntro from '../../components/PageIntro'
+
+import { getAllPostsForHome } from '../../contentful/api'
 import HeroPost from '../../components/blog/HeroPost/HeroPost'
 import MainBlogList from '../../components/blog/Thumbs/MainBlogList'
-import { getAllPostsForHome } from '../../contentful/api'
+import PageIntro from '../../components/PageIntro'
 
 export default function BlogIndex({ preview, allPosts }) {
   const heroPost = allPosts[0]

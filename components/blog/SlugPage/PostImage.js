@@ -1,6 +1,6 @@
-import Paper from '@material-ui/core/Paper'
-import CardMedia from '@material-ui/core/CardMedia'
 import { makeStyles } from '@material-ui/core/styles'
+import CardMedia from '@material-ui/core/CardMedia'
+import Paper from '@material-ui/core/Paper'
 
 const useStyles = makeStyles(theme => ({
   paper: {

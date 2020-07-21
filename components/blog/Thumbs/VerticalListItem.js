@@ -1,10 +1,11 @@
-import Box from '@material-ui/core/Box'
-import Typography from '@material-ui/core/Typography'
-import Paper from '@material-ui/core/Paper'
-import CardMedia from '@material-ui/core/CardMedia'
 import { makeStyles } from '@material-ui/core/styles'
-import MuiLink from '../../MuiLink'
+import Box from '@material-ui/core/Box'
+import CardMedia from '@material-ui/core/CardMedia'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+
 import CustomDate from '../../CustomDate'
+import MuiLink from '../../MuiLink'
 
 const useStyles = makeStyles(theme => ({
   vListItem__imageContainer: {
