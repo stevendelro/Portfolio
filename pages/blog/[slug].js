@@ -10,11 +10,11 @@ import PostBody from '../../components/blog/SlugPage/PostBody'
 import PostHeader from '../../components/blog/SlugPage/PostHeader'
 import PostImage from '../../components/blog/SlugPage/PostImage'
 import PostTitle from '../../components/blog/SlugPage/PostTitle'
+import PreviewAlert from '../../components/blog/PreviewAlert'
 import SlugPageList from '../../components/blog/Thumbs/SlugPageList'
 
 const useStyles = makeStyles(theme => ({
   rootSlugPage: {
-    // height: 'auto',
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
@@ -41,7 +41,6 @@ export default function SlugPage({ post, morePosts, preview }) {
     return <ErrorPage statusCode={404} />
   }
 
-  console.log('preview', preview)
   return (
     <>
       {router.isFallback ? (
@@ -53,6 +52,7 @@ export default function SlugPage({ post, morePosts, preview }) {
             <meta property='og:image' content={post.coverImage.url} />
           </Head>
           <article id='SlugPage' className={classes.rootSlugPage}>
+            {preview ? <PreviewAlert /> : null}
             <Grid
               container
               direction='column'
@@ -88,7 +88,14 @@ export default function SlugPage({ post, morePosts, preview }) {
               direction='column'
               justify='center'
               alignItems='center'>
-              <Grid item className={classes.body} xs={12} sm={10} md={8} lg={6} xl={4}>
+              <Grid
+                item
+                className={classes.body}
+                xs={12}
+                sm={10}
+                md={8}
+                lg={6}
+                xl={4}>
                 <PostBody content={post.content} />
               </Grid>
             </Grid>
@@ -110,7 +117,7 @@ export async function getStaticProps({ params, preview = false }) {
   const data = await getPostAndMorePosts(params.slug, preview)
   return {
     props: {
-      preview,
+      preview, // For Contentful to preview draft with page styles before publishing.
       post: data?.post ?? null,
       morePosts: data?.morePosts ?? null,
     },
@@ -124,3 +131,8 @@ export async function getStaticPaths() {
     fallback: true,
   }
 }
+
+/**
+ * More info on preview mode can be found here:
+ * https://nextjs.org/docs/advanced-features/preview-mode#step-2-update-getstaticprops
+ */
