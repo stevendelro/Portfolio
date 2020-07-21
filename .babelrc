@@ -4,15 +4,12 @@
     [
       "prismjs",
       {
-        "languages": ["javascript", "css", "jsx", "tsx"],
+        "languages": ["javascript", "css", "jsx", "tsx", "json"],
         "plugins": [
-          "inline-color",
           "autolinker",
           "autoloader",
-          "toolbar",
-          "copy-to-clipboard"
+          "toolbar"
         ],
-        "theme": "twilight",
         "css": true
       }
     ]

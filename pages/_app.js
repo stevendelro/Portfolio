@@ -14,8 +14,6 @@ import MyFooter from '../components/layout/MyFooter'
 
 import '../public/syntaxHighlighting.css'
 
-// import 'highlight.js/styles/atom-one-dark.css';
-
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -98,7 +96,6 @@ export default function MyApp(props) {
 
   useEffect(() => {
     Prism.highlightAll() // syntax highlighting for code
-    Prism.plugins.autoloader.languages_path = '/prism-components' // auto-detect language to highlight
   }, [Component])
   return (
     <>

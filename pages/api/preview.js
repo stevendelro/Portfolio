@@ -1,4 +1,4 @@
-import { getPreviewPostBySlug } from '../../lib/api'
+import { getPreviewPostBySlug } from '../../contentful/api'
 
 export default async function preview(req, res) {
   const { secret, slug } = req.query

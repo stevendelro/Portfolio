@@ -40,6 +40,8 @@ export default function SlugPage({ post, morePosts, preview }) {
   if (!router.isFallback && !post) {
     return <ErrorPage statusCode={404} />
   }
+
+  console.log('preview', preview)
   return (
     <>
       {router.isFallback ? (
