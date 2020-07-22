@@ -13,6 +13,9 @@ const useStyles = makeStyles(theme => ({
         ? theme.palette.common.defaultDarkBackground
         : theme.palette.common.defaultLightBackground,
   },
+  div: {
+    height: '34vh'
+  }
 }))
 
 export default function Index() {
@@ -40,7 +43,7 @@ export default function Index() {
           lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
           faucibus et molestie ac.
         </Typography>
-        <Typography paragraph>
+        <Typography>
           Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
           ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
           elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
@@ -55,6 +58,7 @@ export default function Index() {
           posuere sollicitudin aliquam ultrices sagittis orci a.
         </Typography>
       </Container>
+      <div className={classes.div}></div>
     </article>
   )
 }

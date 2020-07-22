@@ -1,19 +1,16 @@
 import { makeStyles } from '@material-ui/core/styles'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 import Button from '@material-ui/core/Button'
-import Checkbox from '@material-ui/core/Checkbox'
 import Container from '@material-ui/core/Container'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Grid from '@material-ui/core/Grid'
-import Link from '@material-ui/core/Link'
-import React from 'react'
 import TextField from '@material-ui/core/TextField'
 
 import PageIntro from '../components/PageIntro'
 
 const useStyles = makeStyles(theme => ({
   rootMailPage: {
-    height: '100vh',
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
@@ -44,93 +41,121 @@ const useStyles = makeStyles(theme => ({
   checkbox: {
     marginLeft: 0,
   },
+  div: {
+    height: '53vh',
+  },
 }))
+const heroParagraph = `Thanks for checking out my site. I'm always open to
+job opportunites, questions, comments, and suggestions for future blog posts.
+And, if you happen to find a bug, this would be the perfect place to let me know!`
 
+const heroParagraph2 = `Odio morbi quis commodo odio aenean
+sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
+integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
+eu scelerisque felis imperdiet proin fermentum leo.`
+
+const initialValues = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  message: '',
+}
+
+const onSubmit = values => console.log('Form Data: ', values)
+
+const validationSchema = Yup.object({
+  firstName: Yup.string().required('Required'),
+  lastName: Yup.string().required('Required'),
+  email: Yup.string().email('Invalid email format').required('Required'),
+})
 export default function Mail() {
   const classes = useStyles()
-  const heroParagraph = `Odio morbi quis commodo odio aenean
-  sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-  integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-  eu scelerisque felis imperdiet proin fermentum leo.`
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema,
+  })
+  const {
+    errors,
+    touched,
+    values,
+    handleChange,
+    handleSubmit,
+    getFieldProps,
+  } = formik
+
   return (
     <article id='MainMailPageBody' className={classes.rootMailPage}>
       <PageIntro title='Mail' paragraph={heroParagraph} />
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  autoComplete='fname'
-                  name='firstName'
-                  variant='outlined'
-                  required
+                  autoFocus
                   fullWidth
                   id='firstName'
+                  name='firstName'
                   label='First Name'
+                  autoComplete='given-name'
+                  variant='outlined'
                   color='secondary'
-                  autoFocus
+                  {...getFieldProps('firstName')}
+                  error={errors.firstName && Boolean(touched.firstName)}
+                  helperText={touched.firstName ? errors.firstName : ''}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  variant='outlined'
-                  required
                   fullWidth
                   id='lastName'
-                  label='Last Name'
-                  color='secondary'
                   name='lastName'
-                  autoComplete='lname'
+                  label='Last Name'
+                  autoComplete='family-name'
+                  variant='outlined'
+                  color='secondary'
+                  {...getFieldProps('lastName')}
+                  error={errors.lastName && Boolean(touched.lastName)}
+                  helperText={touched.lastName ? errors.lastName : ''}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  variant='outlined'
-                  required
                   fullWidth
                   id='email'
-                  label='Email'
-                  color='secondary'
                   name='email'
+                  label='Email'
                   autoComplete='email'
+                  variant='outlined'
+                  color='secondary'
+                  {...getFieldProps('email')}
+                  error={errors.email && Boolean(touched.email)}
+                  helperText={touched.email ? errors.email : ''}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  variant='outlined'
-                  fullWidth
-                  name='message'
-                  label='Message'
-                  color='secondary'
-                  type='message'
-                  id='message'
                   multiline
                   rows={5}
+                  fullWidth
+                  id='message'
+                  name='message'
+                  type='message'
+                  label='Message'
                   autoComplete='message'
+                  variant='outlined'
+                  color='secondary'
+                  onChange={handleChange}
+                  value={values.message}
+                  placeholder='Feel free to include any details.'
                 />
-              </Grid>
-              <Grid
-                container
-                direction='row'
-                justify='center'
-                alignItems='center'>
-                <Grid item xs={12}>
-                  <FormControlLabel
-                    className={classes.checkbox}
-                    control={
-                      <Checkbox value='allowExtraEmails' color='secondary' />
-                    }
-                    label="I'm interested in potentially working with you."
-                    color='secondary'
-                  />
-                </Grid>
               </Grid>
             </Grid>
             <Button
-              type='submit'
               fullWidth
+              type='submit'
               variant='contained'
               color='primary'
               className={classes.submit}>
@@ -139,6 +164,7 @@ export default function Mail() {
           </form>
         </div>
       </Container>
+      <div className={classes.div}></div>
     </article>
   )
 }
