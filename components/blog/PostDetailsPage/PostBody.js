@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
 export default function PostBody({ content }) {
   const classes = useStyles()
   return (
-    <main id='SlugPage__Body' className={classes.rootPostBody}>
+    <main id='PostDetailsPage__Body' className={classes.rootPostBody}>
       <MarkdownRenderer>{content}</MarkdownRenderer>
     </main>
   )

@@ -48,7 +48,7 @@ export default function VerticalListItem({
 }) {
   const classes = useStyles()
   return (
-    <article id='SlugPage__V.Preview'>
+    <article id='PostDetailsPage__V.Preview'>
       {/* IMAGE */}
       <Paper className={classes.vListItem__imageContainer} elevation={3}>
         <CardMedia

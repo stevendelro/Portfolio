@@ -6,15 +6,15 @@ import Grid from '@material-ui/core/Grid'
 import Head from 'next/head'
 
 import { getPostAndMorePosts, getAllPostsWithSlug } from '../../contentful/api'
-import PostBody from '../../components/blog/SlugPage/PostBody'
-import PostHeader from '../../components/blog/SlugPage/PostHeader'
-import PostImage from '../../components/blog/SlugPage/PostImage'
-import PostTitle from '../../components/blog/SlugPage/PostTitle'
+import PostBody from '../../components/blog/PostDetailsPage/PostBody'
+import PostHeader from '../../components/blog/PostDetailsPage/PostHeader'
+import PostImage from '../../components/blog/PostDetailsPage/PostImage'
+import PostTitle from '../../components/blog/PostDetailsPage/PostTitle'
 import PreviewAlert from '../../components/blog/PreviewAlert'
-import SlugPageList from '../../components/blog/Thumbs/SlugPageList'
+import PostDetailsPageList from '../../components/blog/Thumbs/PostDetailsPageList'
 
 const useStyles = makeStyles(theme => ({
-  rootSlugPage: {
+  rootPostDetailsPage: {
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function SlugPage({ post, morePosts, preview }) {
+export default function PostDetailsPage({ post, morePosts, preview }) {
   const classes = useStyles()
   const router = useRouter()
   if (!router.isFallback && !post) {
@@ -51,7 +51,7 @@ export default function SlugPage({ post, morePosts, preview }) {
             <title>Blog | {post.title}</title>
             <meta property='og:image' content={post.coverImage.url} />
           </Head>
-          <article id='SlugPage' className={classes.rootSlugPage}>
+          <article id='PostDetailsPage' className={classes.rootPostDetailsPage}>
             {preview ? <PreviewAlert /> : null}
             <Grid
               container
@@ -100,10 +100,12 @@ export default function SlugPage({ post, morePosts, preview }) {
               </Grid>
             </Grid>
           </article>
-          <article id='SlugPageList' className={classes.rootSlugPage}>
+          <article
+            id='PostDetailsPageList'
+            className={classes.rootPostDetailsPage}>
             <Container>
               {morePosts && morePosts.length > 0 && (
-                <SlugPageList posts={morePosts} />
+                <PostDetailsPageList posts={morePosts} />
               )}
             </Container>
           </article>

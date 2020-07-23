@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid'
 import VerticalListItem from './VerticalListItem'
 
 const useStyles = makeStyles(theme => ({
-  slugPageList__Container: {
+  PostDetailsPageList__Container: {
     borderBottom: `1px solid ${theme.palette.divider}`,
     paddingTop: theme.spacing(3),
     [theme.breakpoints.up('sm')]: {
@@ -15,19 +15,22 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(2),
     },
   },
-  slugPageList__GridContainer: {
-    paddingBottom: theme.spacing(4)
-  }
+  PostDetailsPageList__GridContainer: {
+    paddingBottom: theme.spacing(4),
+  },
 }))
 
-export default function SlugPageList({ posts }) {
+export default function PostDetailsPageList({ posts }) {
   const classes = useStyles()
   return (
-    <article id='SlugPageList'>
-      <Box className={classes.slugPageList__Container} >
-        <Grid container className={classes.slugPageList__GridContainer} spacing={5}>
+    <article id='PostDetailsPageList'>
+      <Box className={classes.PostDetailsPageList__Container}>
+        <Grid
+          container
+          className={classes.PostDetailsPageList__GridContainer}
+          spacing={5}>
           {posts.map(post => (
-            <Grid item key={post.id} xs={12} sm={6} >
+            <Grid item key={post.id} xs={12} sm={6}>
               <VerticalListItem
                 key={post.slug}
                 title={post.title}

@@ -32,7 +32,7 @@ export default function PostHeader({
 }) {
   const classes = useStyles()
   return (
-    <header id='SlugPage__Header' className={classes.rootPostHeader}>
+    <header id='PostDetailsPage__Header' className={classes.rootPostHeader}>
       <Typography
         className={classes.title}
         variant='h3'
@@ -48,11 +48,7 @@ export default function PostHeader({
         {excerpt}
       </Typography>
       <Divider className={classes.divider} />
-      <AvatarStamp
-        author={author}
-        date={date}
-        readingTime={readingTime}
-      />
+      <AvatarStamp author={author} date={date} readingTime={readingTime} />
     </header>
   )
 }

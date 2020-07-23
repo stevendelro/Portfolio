@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 export default function PostImage({ title, coverImage }) {
   const classes = useStyles()
   return (
-    <section id='SlugPage__Image'>
+    <section id='PostDetailsPage__Image'>
       <Paper as='figure' className={classes.paper} elevation={0}>
         <CardMedia
           className={classes.image}
