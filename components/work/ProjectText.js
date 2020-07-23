@@ -51,24 +51,36 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-//// Save these declarations for future update on developer expereince
-//// TODO: Map out the three repeating subtitles and paragraphs.
+// Default Placeholder Text to be displayed if none provided.
+const summaryDefault = `
+  Lorem ipsum dolor sit amet, consectetur adipiscing
+  elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+  Consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+`
 
-// const summaryDefault = `Lorem ipsum dolor sit amet, consectetur adipiscing
-// elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-// Consectetur adipiscing elit. Suspendisse malesuada lacus ex,`
+const keyFeaturesDefault = `
+  Lorem ipsum dolor sit amet, consectetur
+  adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo
+  lobortis eget.
+`
 
-// const keyFeaturesDefault = `Lorem ipsum dolor sit amet, consectetur
-// adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo
-// lobortis eget.`
+const technologiesDefault = `
+  Lorem ipsum dolor sit amet, consectetur
+  adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo
+  lobortis eget. Adipiscing elit. Suspendisse malesuada lacus ex, sit amet
+  blandit.
+`
 
-// const technologiesDefault = `Lorem ipsum dolor sit amet, consectetur
-// adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo
-// lobortis eget. Adipiscing elit. Suspendisse malesuada lacus ex, sit amet
-// blandit.`
-
-function ProjectText({ imageRight, isSmallScreen, rowDirection }) {
+function ProjectText({
+  imageRight,
+  isSmallScreen,
+  rowDirection,
+  paragraphs,
+  projectName,
+  website,
+}) {
   const classes = useStyles()
+
   return (
     <div>
       <Box>
@@ -80,15 +92,15 @@ function ProjectText({ imageRight, isSmallScreen, rowDirection }) {
           }
           variant='h4'
           component='h2'
-          onClick={() => (window.location.href = 'https://weathernaut.now.sh')}
+          onClick={() => (window.location.href = website)}
           gutterBottom>
-          Weathernaut
+          {paragraphs.name ? paragraphs.name : 'Project Name'}
         </Typography>
       </Box>
       <section>
         <Grid
           container
-          direction={isSmallScreen ? rowDirection : 'column'}
+          direction={true ? rowDirection : 'column'}
           justify='space-between'
           alignItems='flex-start'>
           <Grid item sm={4} md={12} className={classes.keyPoint}>
@@ -103,10 +115,7 @@ function ProjectText({ imageRight, isSmallScreen, rowDirection }) {
             </Box>
             <Box className={classes.paragraphBox}>
               <Typography variant='body2' component='p' color='textSecondary'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget. Consectetur adipiscing elit. Suspendisse malesuada lacus
-                ex,
+                {paragraphs.summary ? paragraphs.summary : summaryDefault}
               </Typography>
             </Box>
           </Grid>
@@ -122,9 +131,9 @@ function ProjectText({ imageRight, isSmallScreen, rowDirection }) {
             </Box>
             <Box className={classes.paragraphBox}>
               <Typography variant='body2' component='p' color='textSecondary'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
+                {paragraphs.keyFeatures
+                  ? paragraphs.keyFeatures
+                  : keyFeaturesDefault}
               </Typography>
             </Box>
           </Grid>
@@ -140,10 +149,9 @@ function ProjectText({ imageRight, isSmallScreen, rowDirection }) {
             </Box>
             <Box className={classes.paragraphBox}>
               <Typography variant='body2' component='p' color='textSecondary'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget. Adipiscing elit. Suspendisse malesuada lacus ex, sit amet
-                blandit.
+                {paragraphs.technologies
+                  ? paragraphs.technologies
+                  : technologiesDefault}
               </Typography>
             </Box>
           </Grid>

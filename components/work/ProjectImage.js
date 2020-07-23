@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function ProjectImage({ imageRight, isSmallScreen, image }) {
+function ProjectImage({ imageRight, isSmallScreen, image, website }) {
   const classes = useStyles()
   return (
     <Paper
@@ -49,7 +49,7 @@ function ProjectImage({ imageRight, isSmallScreen, image }) {
         className={classes.image}
         title='Weathernaut App'
         src={image}
-        onClick={() => (window.location.href = 'https://weathernaut.now.sh')}
+        onClick={() => (window.location.href = website)}
       />
     </Paper>
   )

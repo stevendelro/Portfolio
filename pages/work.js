@@ -1,11 +1,8 @@
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import Project from '../components/work/Project'
 
 import PageIntro from '../components/PageIntro'
-import ProjectImage from '../components/work/ProjectImage'
-import ProjectText from '../components/work/ProjectText'
 
 const useStyles = makeStyles(theme => ({
   rootWorkPage: {
@@ -20,86 +17,52 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(0, 1),
     },
   },
-  projectTitle: {
-    cursor: 'pointer',
-    textAlign: 'left',
-    [theme.breakpoints.up('sm')]: {
-      marginBottom: theme.spacing(4),
-    },
-    [theme.breakpoints.down('sm')]: {
-      textAlign: 'center',
-      fontSize: theme.typography.pxToRem(55),
-      margin: theme.spacing(3, 0, 5),
-    },
-    [theme.breakpoints.down('xs')]: {
-      fontSize: theme.typography.pxToRem(40),
-    },
-  },
-  allTextContainer: {
-    paddingBottom: theme.spacing(3),
-    [theme.breakpoints.down('sm')]: {
-      paddingTop: theme.spacing(4),
-    },
-  },
-  // Right Side Image - Text Styles
-  textAlign_R: {
-    textAlign: 'right',
-  },
 }))
 
+/**********************************
+ ********** PAGE SETUP ************
+ **********************************/
+
+const workPageIntro = `
+Something short and leading about the collection
+below—its contents, the creator, etc. Make it short and sweet, but not too
+short so folks don't simply skip over it entirely.
+`
+/**********************************
+ ******* WEATHERNAUT SETUP ********
+ **********************************/
+
+const weathernautInfo = {
+  name: 'Weathernaut',
+  summary:`
+    This weather app converts location names into coordinates, then it uses
+    those coordinates to fetch current weather data for that location. Styled
+    with Material UI and written in React with hooks.
+  `,
+  keyFeatures: `
+    Upon page load, the app will ask permission to utilize the browser's
+    Geolocation API. If approved, it will automatically fetch weather data.
+    It's also responsive across all screen widths.
+  `,
+  technologies: `
+    Styled with Material UI. Recharts display chart data. Icons purchased from
+    Lance Snider. Built within the NextJS React Framework.
+  `,
+}
+
 export default function WorkPage() {
-  const theme = useTheme()
   const classes = useStyles()
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
-
-  // Set post orientation.
-  const imageRight = false
-  const image = '/weathernaught.png'
-  const heroParagraph = `Something short and leading about the collection below—its contents, the creator, etc.
-  Make it short and sweet, but not too short so folks don't simply skip over it
-  entirely.`
-
-  // Handle post orientation.
-  let rowDirection = 'row'
-  if (imageRight) {
-    rowDirection = isSmallScreen ? 'row' : 'row-reverse'
-  }
   return (
     <article className={classes.rootWorkPage}>
-      <PageIntro title='Work' paragraph={heroParagraph} />
-      <Container className={classes.mainContainer} maxWidth='md'>
-        <Grid
-          container
-          direction={isSmallScreen ? 'column' : rowDirection}
-          justify='space-between'
-          alignItems={isSmallScreen ? 'center' : 'flex-start'}>
-          {/* IMAGE SIDE */}
-          <Grid item xs={12} sm={11} md={8}>
-            <ProjectImage
-              imageRight={imageRight}
-              isSmallScreen={isSmallScreen}
-              image={image}
-            />
-          </Grid>
-
-          {/* TEXT SIDE */}
-          <Grid
-            item
-            className={
-              imageRight && !isSmallScreen
-                ? classes.allTextContainer && classes.textAlign_R
-                : classes.projectTitle
-            }
-            xs={12}
-            sm={11}
-            md={4}>
-            <ProjectText
-              imageRight={imageRight}
-              isSmallScreen={isSmallScreen}
-              rowDirection={rowDirection}
-            />
-          </Grid>
-        </Grid>
+      <PageIntro title='Work' paragraph={workPageIntro} />
+      <Container className={classes.mainContainer} maxWidth='lg'>
+        <Project
+          name='Weathernaut'
+          image='/weathernaut.png'
+          paragraphs={weathernautInfo}
+          website='https://weathernaut.now.sh'
+          orientation='imageLeft'
+        />
       </Container>
     </article>
   )
