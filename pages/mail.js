@@ -45,14 +45,11 @@ const useStyles = makeStyles(theme => ({
     height: '53vh',
   },
 }))
-const heroParagraph = `Thanks for checking out my site. I'm always open to
-job opportunites, questions, comments, and suggestions for future blog posts.
-And, if you happen to find a bug, this would be the perfect place to let me know!`
-
-const heroParagraph2 = `Odio morbi quis commodo odio aenean
-sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-eu scelerisque felis imperdiet proin fermentum leo.`
+const heroParagraph = `
+  Thanks for checking out my site. I'm always open to
+  job opportunites, questions, comments, and suggestions for future blog posts.
+  And, if you happen to find a bug, this would be the perfect place to let me know!
+`
 
 const initialValues = {
   firstName: '',
