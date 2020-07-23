@@ -1,8 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
-import Project from '../components/work/Project'
 
-import PageIntro from '../components/PageIntro'
+import PageIntro from '../../components/PageIntro'
+import Project from '../../components/work/Project'
 
 const useStyles = makeStyles(theme => ({
   rootWorkPage: {
@@ -34,7 +34,7 @@ short so folks don't simply skip over it entirely.
 
 const weathernautInfo = {
   name: 'Weathernaut',
-  summary:`
+  summary: `
     This weather app converts location names into coordinates, then it uses
     those coordinates to fetch current weather data for that location. Styled
     with Material UI and written in React with hooks.
