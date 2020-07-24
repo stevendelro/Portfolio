@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Project({ orientation, image, paragraphs, website }) {
+export default function Project({ orientation, projectInfo }) {
   const theme = useTheme()
   const classes = useStyles()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
@@ -51,13 +51,10 @@ export default function Project({ orientation, image, paragraphs, website }) {
   if (imageRight) {
     rowDirection = isSmallScreen ? 'row' : 'row-reverse'
   }
-
   const textStyles =
     imageRight && !isSmallScreen
       ? classes.imageRightStyles && classes.textAlign_R
       : classes.imageLeftStyles && classes.textAlign_L
-  console.log('orientation', orientation)
-  console.log('imageRight', imageRight)
   return (
     <section>
       <Grid
@@ -70,8 +67,7 @@ export default function Project({ orientation, image, paragraphs, website }) {
           <ProjectImage
             imageRight={imageRight}
             isSmallScreen={isSmallScreen}
-            image={image}
-            website={website}
+            projectInfo={projectInfo}
           />
         </Grid>
 
@@ -81,8 +77,7 @@ export default function Project({ orientation, image, paragraphs, website }) {
             imageRight={imageRight}
             isSmallScreen={isSmallScreen}
             rowDirection={rowDirection}
-            paragraphs={paragraphs}
-            website={website}
+            projectInfo={projectInfo}
           />
         </Grid>
       </Grid>

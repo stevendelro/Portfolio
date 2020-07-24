@@ -2,6 +2,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import CardMedia from '@material-ui/core/CardMedia'
 import Paper from '@material-ui/core/Paper'
 
+import MuiLink from '../MuiLink'
+
 const useStyles = makeStyles(theme => ({
   paperImageContainer: {
     margin: theme.spacing(0, 4),
@@ -34,24 +36,29 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function ProjectImage({ imageRight, isSmallScreen, image, website }) {
+function ProjectImage({ imageRight, isSmallScreen, projectInfo }) {
   const classes = useStyles()
+  const { gitUsername, gitReponame, name, imagePath } = projectInfo
   return (
-    <Paper
-      className={
-        imageRight && !isSmallScreen
-          ? classes.paperImageContainer_R
-          : classes.paperImageContainer
-      }
-      elevation={7}>
-      <CardMedia
-        component='img'
-        className={classes.image}
-        title='Weathernaut App'
-        src={image}
-        onClick={() => (window.location.href = website)}
-      />
-    </Paper>
+    <MuiLink
+      as={`/work/${gitReponame}?gitUsername=${gitUsername}`}
+      href='/work/[project]'
+      naked>
+      <Paper
+        className={
+          imageRight && !isSmallScreen
+            ? classes.paperImageContainer_R
+            : classes.paperImageContainer
+        }
+        elevation={7}>
+        <CardMedia
+          component='img'
+          className={classes.image}
+          title={name}
+          src={imagePath}
+        />
+      </Paper>
+    </MuiLink>
   )
 }
 

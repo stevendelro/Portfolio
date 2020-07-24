@@ -4,6 +4,8 @@ import Grid from '@material-ui/core/Grid'
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
 
+import MuiLink from '../MuiLink'
+
 const useStyles = makeStyles(theme => ({
   projectTitle: {
     cursor: 'pointer',
@@ -71,31 +73,36 @@ const technologiesDefault = `
   blandit.
 `
 
-function ProjectText({
-  imageRight,
-  isSmallScreen,
-  rowDirection,
-  paragraphs,
-  projectName,
-  website,
-}) {
+function ProjectText({ imageRight, isSmallScreen, rowDirection, projectInfo }) {
   const classes = useStyles()
-
+  const {
+    gitUsername,
+    gitReponame,
+    name,
+    summary,
+    keyFeatures,
+    technologies,
+  } = projectInfo
   return (
     <div>
       <Box>
-        <Typography
-          className={
-            imageRight && !isSmallScreen
-              ? classes.projectTitle && classes.textAlign_R
-              : classes.projectTitle
-          }
-          variant='h4'
-          component='h2'
-          onClick={() => (window.location.href = website)}
-          gutterBottom>
-          {paragraphs.name ? paragraphs.name : 'Project Name'}
-        </Typography>
+        <MuiLink
+          style={{ textDecoration: 'none' }}
+          as={`/work/${gitReponame}?gitUsername=${gitUsername}`}
+          href='/work/[project]'
+          naked>
+          <Typography
+            className={
+              imageRight && !isSmallScreen
+                ? classes.projectTitle && classes.textAlign_R
+                : classes.projectTitle
+            }
+            variant='h4'
+            component='h2'
+            gutterBottom>
+            {name ? name : 'Project Name'}
+          </Typography>
+        </MuiLink>
       </Box>
       <section>
         <Grid
@@ -115,7 +122,7 @@ function ProjectText({
             </Box>
             <Box className={classes.paragraphBox}>
               <Typography variant='body2' component='p' color='textSecondary'>
-                {paragraphs.summary ? paragraphs.summary : summaryDefault}
+                {summary ? summary : summaryDefault}
               </Typography>
             </Box>
           </Grid>
@@ -131,9 +138,7 @@ function ProjectText({
             </Box>
             <Box className={classes.paragraphBox}>
               <Typography variant='body2' component='p' color='textSecondary'>
-                {paragraphs.keyFeatures
-                  ? paragraphs.keyFeatures
-                  : keyFeaturesDefault}
+                {keyFeatures ? keyFeatures : keyFeaturesDefault}
               </Typography>
             </Box>
           </Grid>
@@ -149,9 +154,7 @@ function ProjectText({
             </Box>
             <Box className={classes.paragraphBox}>
               <Typography variant='body2' component='p' color='textSecondary'>
-                {paragraphs.technologies
-                  ? paragraphs.technologies
-                  : technologiesDefault}
+                {technologies ? technologies : technologiesDefault}
               </Typography>
             </Box>
           </Grid>
