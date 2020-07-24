@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function ProjectBody({ content }) {
+export default function Body({ content }) {
   const classes = useStyles()
   return (
     <main id='ProjectDetailsPage__Body' className={classes.rootPostBody}>

@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function ProjectImage({ title, coverImage }) {
+export default function Image({ title, coverImage }) {
   const classes = useStyles()
   return (
     <section id='PostDetailsPage__Image'>
