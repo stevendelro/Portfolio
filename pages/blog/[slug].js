@@ -5,7 +5,7 @@ import ErrorPage from 'next/error'
 import Grid from '@material-ui/core/Grid'
 import Head from 'next/head'
 
-import { getPostAndMorePosts, getAllPostsWithSlug } from '../../contentful/api'
+import { getPostAndMorePosts, getAllPostsWithSlug } from '../api/contentful'
 import PostBody from '../../components/blog/PostDetailsPage/PostBody'
 import PostHeader from '../../components/blog/PostDetailsPage/PostHeader'
 import PostImage from '../../components/blog/PostDetailsPage/PostImage'

@@ -1,11 +1,11 @@
 import Head from 'next/head'
 
-import { getAllPostsForHome } from '../../contentful/api'
+import { getAllPostsForHome } from '../api/contentful'
 import HeroPost from '../../components/blog/HeroPost/HeroPost'
 import MainBlogList from '../../components/blog/Thumbs/MainBlogList'
 import PageIntro from '../../components/PageIntro'
 
-export default function BlogIndex({ preview, allPosts }) {
+export default function BlogIndex({ allPosts }) {
   const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1)
   const heroParagraph = `I'm an avid writer. Below, you'll find a few
