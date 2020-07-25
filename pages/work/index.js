@@ -1,7 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 
-import { getPublicREADMEmd } from '../api/github'
 import PageIntro from '../../components/PageIntro'
 import Project from '../../components/work/Project'
 

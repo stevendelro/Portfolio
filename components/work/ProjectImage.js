@@ -41,8 +41,8 @@ function ProjectImage({ imageRight, isSmallScreen, projectInfo }) {
   const { gitUsername, gitReponame, name, imagePath } = projectInfo
   return (
     <MuiLink
-      as={`/work/${gitReponame}?gitUsername=${gitUsername}`}
-      href='/work/[project]'
+      as={`/work/${gitUsername}/${gitReponame}`}
+      href='/work/[...projectDetails]'
       naked>
       <Paper
         className={
