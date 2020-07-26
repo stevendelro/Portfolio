@@ -13,6 +13,7 @@
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
+    "@octokit/auth": "^2.0.0",
     "@octokit/request": "^5.4.7",
     "babel-plugin-prismjs": "^2.0.1",
     "clsx": "latest",

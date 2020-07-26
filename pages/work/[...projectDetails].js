@@ -1,21 +1,53 @@
-import axios from 'axios'
-import { getRepositoryNamesForPaths } from '../api/github'
+import { makeStyles } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
+import Head from 'next/head'
 
-export default function ProjectDetailsPage({ username, repository }) {
+import { getRepositoryNamesForPaths, getProjectDetails } from '../api/github'
+import Body from '../../components/work/ProjectDetailsPage/Body'
+import Header from '../../components/work/ProjectDetailsPage/Header'
+import Image from '../../components/work/ProjectDetailsPage/Image'
+
+const useStyles = makeStyles(theme => ({
+  rootProjectDetailsPage: {
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? theme.palette.common.defaultDarkBackground
+        : theme.palette.common.defaultLightBackground,
+  },
+  header: {
+    padding: theme.spacing(2),
+    [theme.breakpoints.only('sm')]: {
+      padding: theme.spacing(0),
+    },
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing(3, 3, 0, 3),
+    },
+  },
+  body: {
+    padding: theme.spacing(3),
+  },
+}))
+
+export default function ProjectDetailsPage({ markdown, repo, user }) {
+  const classes = useStyles()
+  console.log('getStaticProps: markdown', markdown)
+  console.log('getStaticProps: repo', repo)
+  console.log('getStaticProps: user', user)
   return (
-    <div>
-      <h1>Username: {username}</h1>
-      <h2>Reponame: {repository}</h2>
-    </div>
+    <>
+      <h1>placeholder</h1>
+      
+    </>
   )
 }
 export async function getStaticProps({ params }) {
-  const { projectDetails } = params
+  const username = params.projectDetails[0]
+  const repository = params.projectDetails[1]
+  const { markdown, repo, user } = await getProjectDetails(username, repository)
+
   return {
-    props: {
-      repository: projectDetails[1],
-      username: projectDetails[0],
-    },
+    props: { markdown, repo, user },
   }
 }
 
