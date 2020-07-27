@@ -56,6 +56,7 @@ export const weathernautInfo = {
   name: 'Weathernaut',
   imagePath: '/weathernaut.png',
   website: 'https://weathernaut.now.sh',
+  github:'https://github.com/stevendelro/Weathernaut',
   gitUsername: 'stevendelro',
   gitReponame: 'nextjs-redux-weather',
   summary: `

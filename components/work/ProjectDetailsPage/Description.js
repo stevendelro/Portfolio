@@ -4,13 +4,13 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
   description: {
-    padding: theme.spacing(5, 7, 7),
+    padding: theme.spacing(6, 7, 0),
     textTransform: 'italic',
     [theme.breakpoints.only('sm')]: {
-      padding: theme.spacing(5, 4, 4),
+      padding: theme.spacing(6, 4, 0),
     },
     [theme.breakpoints.down('xs')]: {
-      padding: theme.spacing(5, 1, 1),
+      padding: theme.spacing(6, 1, 0),
     },
   },
 }))

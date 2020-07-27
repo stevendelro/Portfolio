@@ -14,14 +14,6 @@ const useStyles = makeStyles(theme => ({
   title: {
     marginTop: theme.spacing(2),
     fontWeight: 500,
-    '&:hover': {
-      cursor: 'pointer',
-      color:
-        theme.palette.type === 'dark'
-          ? theme.palette.common.white
-          : theme.palette.secondary.main,
-      opacity: 1,
-    },
     [theme.breakpoints.up(1380)]: {
       fontSize: theme.typography.pxToRem(115),
     },
@@ -69,7 +61,6 @@ export default function ProjectHeader({ projectName, dateCreated, lastUpdated })
         className={classes.title}
         variant='h1'
         component='h1'
-        onClick={() => (window.location.href = repo.website)}
         align='center'>
         {projectName}
       </Typography>

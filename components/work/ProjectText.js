@@ -5,22 +5,34 @@ import React from 'react'
 import Typography from '@material-ui/core/Typography'
 
 import MuiLink from '../MuiLink'
+import DemoSourceLinks from './DemoSourceLinks'
 
 const useStyles = makeStyles(theme => ({
   projectTitle: {
-    cursor: 'pointer',
     textAlign: 'left',
-    [theme.breakpoints.up('sm')]: {
-      marginBottom: theme.spacing(4),
-    },
     [theme.breakpoints.down('sm')]: {
       textAlign: 'center',
       fontSize: theme.typography.pxToRem(55),
-      margin: theme.spacing(3, 0, 5),
+      margin: theme.spacing(3, 0, 0),
     },
     [theme.breakpoints.down('xs')]: {
       fontSize: theme.typography.pxToRem(40),
     },
+    '&:hover': {
+      cursor: 'pointer',
+      color:
+        theme.palette.type === 'dark'
+          ? theme.palette.common.white
+          : theme.palette.secondary.main,
+      opacity: 1,
+    },
+  },
+  demoSourceLinks: {
+    paddingLeft: '3px',
+    marginBottom: theme.spacing(3),
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center'
+    }
   },
   keyPoint: {
     [theme.breakpoints.down('sm')]: {
@@ -38,6 +50,9 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     minHeight: theme.spacing(8),
     paddingBottom: theme.spacing(4),
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing(0, 4, 4),
+    },
   },
   subHeading: {
     fontSize: theme.typography.pxToRem(20),
@@ -82,6 +97,8 @@ function ProjectText({ imageRight, isSmallScreen, rowDirection, projectInfo }) {
     summary,
     keyFeatures,
     technologies,
+    github,
+    website,
   } = projectInfo
   return (
     <div>
@@ -98,11 +115,16 @@ function ProjectText({ imageRight, isSmallScreen, rowDirection, projectInfo }) {
                 : classes.projectTitle
             }
             variant='h4'
-            component='h2'
-            gutterBottom>
+            component='h2'>
             {name ? name : 'Project Name'}
           </Typography>
         </MuiLink>
+        <Box className={classes.demoSourceLinks}>
+          <DemoSourceLinks
+            liveDemo={website}
+            sourceCode={github}
+          />
+        </Box>
       </Box>
       <section>
         <Grid

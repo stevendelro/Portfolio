@@ -15,7 +15,6 @@ const useStyles = makeStyles(theme => ({
   image: {
     width: '100%',
     height: 'auto',
-    cursor: 'pointer',
     [theme.breakpoints.up('sm')]: {
       borderRadius: theme.shape.borderRadius,
     },
@@ -29,7 +28,6 @@ export default function Image({ title, imagePath, website }) {
       <Paper className={classes.paperImageContainer} elevation={7}>
         <CardMedia
           component='img'
-          onClick={() => (window.location.href = website)}
           className={classes.image}
           title={title}
           image={imagePath}

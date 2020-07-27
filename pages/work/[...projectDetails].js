@@ -7,7 +7,7 @@ import { getRepositoryNamesForPaths, getProjectDetails } from '../api/github'
 import { weathernautInfo } from './index'
 import Body from '../../components/work/ProjectDetailsPage/Body'
 import Description from '../../components/work/ProjectDetailsPage/Description'
-import DemoSourceLinks from '../../components/work/ProjectDetailsPage/DemoSourceLinks'
+import DemoSourceLinks from '../../components/work/DemoSourceLinks'
 import Header from '../../components/work/ProjectDetailsPage/Header'
 import Image from '../../components/work/ProjectDetailsPage/Image'
 
@@ -28,8 +28,8 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(3, 3, 0, 3),
     },
   },
-  DemoSourceLinks: {
-    marginBottom: theme.spacing(20),
+  demoSourceLinks: {
+    padding: theme.spacing(5,0,0),
   },
 }))
 
@@ -59,14 +59,25 @@ export default function ProjectDetailsPage({ markdown, repo }) {
               website={repo.website}
             />
             <Description description={repo.description} />
+            <Grid
+              container
+              className={classes.demoSourceLinks}
+              direction='row'
+              justify='center'
+              alignItems='center'>
+              <DemoSourceLinks
+                liveDemo={repo.website}
+                sourceCode={repo.github}
+              />
+            </Grid>
+
+
             <Body content={markdown} />
             <Grid
               container
               direction='column'
               justify='center'
-              alignItems='center'>
-              <DemoSourceLinks liveDemo={repo.website} sourceCode={repo.github} />
-            </Grid>
+              alignItems='center'></Grid>
           </Container>
         </Grid>
       </Grid>
