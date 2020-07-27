@@ -1,54 +1,99 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import Box from '@material-ui/core/Box'
 import Divider from '@material-ui/core/Divider'
+import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-import AvatarStamp from '../../AvatarStamp'
+import CustomDate from '../../CustomDate'
 
 const useStyles = makeStyles(theme => ({
   rootProjectHeader: {
-    margin: theme.spacing(4, 0, 7, 0),
+    margin: theme.spacing(4, 0),
   },
   title: {
     marginTop: theme.spacing(2),
+    fontWeight: 500,
+    '&:hover': {
+      cursor: 'pointer',
+      color:
+        theme.palette.type === 'dark'
+          ? theme.palette.common.white
+          : theme.palette.secondary.main,
+      opacity: 1,
+    },
+    [theme.breakpoints.up(1380)]: {
+      fontSize: theme.typography.pxToRem(115),
+    },
+    [theme.breakpoints.between(1280, 1380)]: {
+      fontSize: theme.typography.pxToRem(107),
+    },
+    [theme.breakpoints.only('md')]: {
+      fontSize: theme.typography.pxToRem(100),
+    },
+    [theme.breakpoints.only('sm')]: {
+      fontSize: theme.typography.pxToRem(80),
+    },
     [theme.breakpoints.down('xs')]: {
-      fontWeight: 500,
+      fontSize: theme.typography.pxToRem(50),
+    },
+    [theme.breakpoints.down(340)]: {
+      fontSize: theme.typography.pxToRem(40),
+    },
+    [theme.breakpoints.down(280)]: {
+      fontSize: theme.typography.pxToRem(30),
     },
   },
-  excerpt: {
-    marginBottom: theme.spacing(3),
-    fontSize: '1.2rem',
+  dates: {
+    lineHeight: 1.4,
+    [theme.breakpoints.down('xs')]: {
+      lineHeight: 1,
+      fontSize: theme.typography.pxToRem(5),
+    },
   },
   divider: {
     margin: theme.spacing(1, 0),
   },
 }))
 
-export default function ProjectHeader({
-  title,
-  date,
-  author,
-  excerpt,
-  readingTime,
-}) {
+export default function ProjectHeader({ projectName, dateCreated, lastUpdated }) {
   const classes = useStyles()
+  const theme = useTheme()
+  const isWatchScreenDown = useMediaQuery(theme.breakpoints.down(280))
+  const isTinyScreenDown = useMediaQuery(theme.breakpoints.down('xs'))
   return (
-    <header id='ProjectDetailsPage__Header' className={classes.rootProjectHeader}>
+    <header
+      id='header--ProjectDetailsPage'
+      className={classes.rootProjectHeader}>
       <Typography
         className={classes.title}
-        variant='h3'
+        variant='h1'
         component='h1'
-        gutterBottom>
-        {title}
-      </Typography>
-      <Typography
-        className={classes.excerpt}
-        color='textSecondary'
-        variant='body2'
-        component='p'>
-        {excerpt}
+        onClick={() => (window.location.href = repo.website)}
+        align='center'>
+        {projectName}
       </Typography>
       <Divider className={classes.divider} />
-      <AvatarStamp author={author} date={date} readingTime={readingTime} />
+      <Typography
+        className={classes.dates}
+        color='textSecondary'
+        variant='overline'
+        display='block'>
+        <Grid
+          container
+          direction={isWatchScreenDown ? 'column' : 'row'}
+          justify='space-between'
+          alignItems='center'>
+          <Box>
+            {isTinyScreenDown ? null : 'Date'} Created:{' '}
+            <CustomDate dateString={dateCreated} />
+          </Box>
+          <Box>
+            {isTinyScreenDown ? null : 'Last'} Updated:{' '}
+            <CustomDate dateString={lastUpdated} />
+          </Box>
+        </Grid>
+      </Typography>
     </header>
   )
 }
