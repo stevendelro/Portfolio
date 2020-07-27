@@ -52,7 +52,7 @@ Project Component API
  ******* WEATHERNAUT SETUP ********
  **********************************/
 
-const weathernautInfo = {
+export const weathernautInfo = {
   name: 'Weathernaut',
   imagePath: '/weathernaut.png',
   website: 'https://weathernaut.now.sh',

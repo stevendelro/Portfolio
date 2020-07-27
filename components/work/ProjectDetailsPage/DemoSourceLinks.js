@@ -21,12 +21,10 @@ const useStyles = makeStyles(theme => ({
       opacity: 1,
     },
   },
-  githubStamp: {
-    marginBottom: theme.spacing(20),
-  },
+
 }))
 
-export default function AvatarStamp({ liveDemo, sourceCode }) {
+export default function DemoSourceLinks({ liveDemo, sourceCode }) {
   const classes = useStyles()
   const WebsiteLink = (
     <a href={liveDemo} className={classes.externalLinks}>
@@ -40,16 +38,14 @@ export default function AvatarStamp({ liveDemo, sourceCode }) {
   )
 
   return (
-    <article id='GithubStamp' className={classes.githubStamp}>
-      <Grid container direction='column' justify='center' alignItems='center'>
-        <Typography
-          className={classes.date}
-          color='textSecondary'
-          variant='overline'
-          display='block'>
-          {WebsiteLink} • {GithubLink}
-        </Typography>
-      </Grid>
-    </article>
+    <section id='DemoSourceLinks'>
+      <Typography
+        className={classes.date}
+        color='textSecondary'
+        variant='overline'
+        display='block'>
+        {WebsiteLink} • {GithubLink}
+      </Typography>
+    </section>
   )
 }
