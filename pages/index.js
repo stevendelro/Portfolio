@@ -7,7 +7,7 @@ import PageIntro from '../components/PageIntro'
 
 const useStyles = makeStyles(theme => ({
   rootMainIndex: {
-    height: '107%',
+    minHeight: '100vh',
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground

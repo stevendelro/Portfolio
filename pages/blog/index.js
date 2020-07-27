@@ -1,11 +1,18 @@
 import Head from 'next/head'
-
+import { makeStyles } from '@material-ui/core/styles'
 import { getAllPostsForHome } from '../api/contentful'
 import HeroPost from '../../components/blog/HeroPost/HeroPost'
 import MainBlogList from '../../components/blog/Thumbs/MainBlogList'
 import PageIntro from '../../components/PageIntro'
 
+const useStyles = makeStyles(theme => ({
+  rootBlogPage: {
+    minHeight: '100vh',
+  },
+}))
+
 export default function BlogIndex({ allPosts }) {
+  const classes = useStyles()
   const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1)
   const heroParagraph = `I'm an avid writer. Below, you'll find a few
@@ -17,8 +24,8 @@ export default function BlogIndex({ allPosts }) {
         <title>Steven's Blog</title>
         <meta property='og:title' content="Steven's Blog" />
       </Head>
+      <main className={classes.rootBlogPage}>
       <PageIntro title='Blog' paragraph={heroParagraph} />
-      <main>
         {heroPost && (
           <HeroPost
             title={heroPost.title}

@@ -15,6 +15,7 @@ import PostDetailsPageList from '../../components/blog/Thumbs/PostDetailsPageLis
 
 const useStyles = makeStyles(theme => ({
   rootPostDetailsPage: {
+    minHeight: '100vh',
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground

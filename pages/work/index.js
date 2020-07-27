@@ -6,6 +6,7 @@ import Project from '../../components/work/Project'
 
 const useStyles = makeStyles(theme => ({
   rootWorkPage: {
+    minHeight: '100vh',
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
@@ -79,7 +80,7 @@ export const weathernautInfo = {
 export default function WorkPage() {
   const classes = useStyles()
   return (
-    <article className={classes.rootWorkPage}>
+    <main className={classes.rootWorkPage}>
       <PageIntro title='Work' paragraph={workPageIntro} />
       <Container className={classes.mainContainer} maxWidth='lg'>
         <Project
@@ -87,7 +88,7 @@ export default function WorkPage() {
           projectInfo={weathernautInfo}
         />
       </Container>
-    </article>
+    </main>
   )
 }
 

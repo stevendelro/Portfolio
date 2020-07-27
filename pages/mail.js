@@ -11,6 +11,7 @@ import PageIntro from '../components/PageIntro'
 
 const useStyles = makeStyles(theme => ({
   rootMailPage: {
+    minHeight: '100vh',
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
@@ -40,9 +41,6 @@ const useStyles = makeStyles(theme => ({
   },
   checkbox: {
     marginLeft: 0,
-  },
-  div: {
-    height: '53vh',
   },
 }))
 const heroParagraph = `
@@ -161,7 +159,6 @@ export default function Mail() {
           </form>
         </div>
       </Container>
-      <div className={classes.div}></div>
     </article>
   )
 }
