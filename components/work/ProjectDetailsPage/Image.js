@@ -3,36 +3,36 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Paper from '@material-ui/core/Paper'
 
 const useStyles = makeStyles(theme => ({
-  paper: {
-    borderRadius: 0,
-    height: '50vw',
-    marginBottom: theme.spacing(6),
-    [theme.breakpoints.up('lg')]: {
-      width: '1040px',
-      maxHeight: '630px',
+  paperImageContainer: {
+    margin: theme.spacing(0, 4, 0),
+    [theme.breakpoints.only('md')]: {
+      margin: theme.spacing(0, 0, 0, 3),
     },
-    [theme.breakpoints.down('lg')]: {
-      width: '100vw',
-    },
-    [theme.breakpoints.down('xs')]: {
-      width: '100vw',
+    [theme.breakpoints.down('sm')]: {
+      margin: 0,
     },
   },
   image: {
     width: '100%',
-    height: '100%',
+    height: 'auto',
+    cursor: 'pointer',
+    [theme.breakpoints.up('sm')]: {
+      borderRadius: theme.shape.borderRadius,
+    },
   },
 }))
 
-export default function Image({ title, coverImage }) {
+export default function Image({ title, imagePath, website }) {
   const classes = useStyles()
   return (
-    <section id='PostDetailsPage__Image'>
-      <Paper as='figure' className={classes.paper} elevation={0}>
+    <section>
+      <Paper className={classes.paperImageContainer} elevation={7}>
         <CardMedia
+          component='img'
+          onClick={() => (window.location.href = website)}
           className={classes.image}
           title={title}
-          image={coverImage.url}
+          image={imagePath}
         />
       </Paper>
     </section>
