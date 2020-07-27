@@ -53,6 +53,9 @@ const getRepoInfo = async (username, repository) => {
     name: data.name,
     description: data.description,
     lastUpdated: data.updated_at,
+    dateCreated: data.created_at,
+    website: data.homepage,
+    github: data.html_url,
   }
   return repoInfo
 }
