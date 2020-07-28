@@ -41,7 +41,7 @@ Project Component API
     projectInfo.imagePath    ->  Path to image within /public.
     projectInfo.website      ->  URL to the project hosted live.
     projectInfo.gitUsername  ->  Your github account username.
-    projectInfo.gitReponame  ->  The name of the repository.
+    projectInfo.gitReponame  ->  The name of the repository. This will also be the slug used in the url and NavCrumbs.
     projectInfo.summary      ->  A short paragraph. (Under 250 characters)
     projectInfo.keyFeatures  ->  A short paragraph. (Under 250 characters)
     projectInfo.technologies ->  A short paragraph. (Under 250 characters)
@@ -59,7 +59,7 @@ export const weathernautInfo = {
   website: 'https://weathernaut.now.sh',
   github:'https://github.com/stevendelro/Weathernaut',
   gitUsername: 'stevendelro',
-  gitReponame: 'nextjs-redux-weather',
+  projectNameToUseInURL: 'Weathernaut',
   summary: `
     This weather app converts location names into coordinates, then it uses
     those coordinates to fetch current weather data for that location. Styled

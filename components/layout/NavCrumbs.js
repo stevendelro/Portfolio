@@ -28,8 +28,8 @@ export default function NavBreadCrumbs() {
   const [thirdCrumb, setThirdCrumb] = useState(null)
 
   const createSecondLevelCrumb = route => {
-    if (route === '/work') return setSecondCrumb('Work')
     if (route === '/mail') return setSecondCrumb('Mail')
+    if (route === '/work' || '/work/[projectDetails]') return setSecondCrumb('Work')
     if (route === '/blog' || '/blog/[slug]') return setSecondCrumb('Blog')
   }
 
@@ -60,7 +60,16 @@ export default function NavBreadCrumbs() {
         setThirdCrumb(truncate(currentSlug, 5))
       }
     }
+    if (route === '/work/[projectDetails]') {
+      createSecondLevelCrumb(route)
+
+      let currentSlug = removeDashesAndUppercaseFirstLetter(query.projectDetails)
+      if (thirdCrumb === null || currentSlug !== thirdCrumb) {
+        setThirdCrumb(truncate(currentSlug, 5))
+      }
+    }
   }, [route, query])
+
   return (
     <section id='NavCrumbs'>
       <Breadcrumbs aria-label='breadcrumb'>
