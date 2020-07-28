@@ -1,6 +1,8 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 import CardMedia from '@material-ui/core/CardMedia'
 import Paper from '@material-ui/core/Paper'
+import Tooltip from '@material-ui/core/Tooltip'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import MuiLink from '../MuiLink'
 
@@ -38,6 +40,8 @@ const useStyles = makeStyles(theme => ({
 
 function ProjectImage({ imageRight, isSmallScreen, projectInfo }) {
   const classes = useStyles()
+  const theme = useTheme()
+  const isSmallScreenOrSmaller = useMediaQuery(theme.breakpoints.down('sm'))
   const { projectNameToUseInURL, name, imagePath } = projectInfo
   return (
     <MuiLink
@@ -51,12 +55,19 @@ function ProjectImage({ imageRight, isSmallScreen, projectInfo }) {
             : classes.paperImageContainer
         }
         elevation={7}>
-        <CardMedia
-          component='img'
-          className={classes.image}
-          title={name}
-          src={imagePath}
-        />
+        <Tooltip
+          disableFocusListener
+          disableTouchListener
+          arrow
+          title='Click For Details'
+          placement={isSmallScreenOrSmaller ? 'top' : 'bottom'}>
+          <CardMedia
+            component='img'
+            className={classes.image}
+            title={name}
+            src={imagePath}
+          />
+        </Tooltip>
       </Paper>
     </MuiLink>
   )
