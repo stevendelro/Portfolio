@@ -38,11 +38,11 @@ const useStyles = makeStyles(theme => ({
 
 function ProjectImage({ imageRight, isSmallScreen, projectInfo }) {
   const classes = useStyles()
-  const { gitUsername, gitReponame, name, imagePath } = projectInfo
+  const { projectNameToUseInURL, name, imagePath } = projectInfo
   return (
     <MuiLink
-      as={`/work/${gitUsername}/${gitReponame}`}
-      href='/work/[...projectDetails]'
+      as={`/work/${projectNameToUseInURL.toLowerCase()}`}
+      href='/work/[projectDetails]'
       naked>
       <Paper
         className={

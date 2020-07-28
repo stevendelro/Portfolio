@@ -6,8 +6,8 @@ import Head from 'next/head'
 import { getRepositoryNamesForPaths, getProjectDetails } from '../api/github'
 import { weathernautInfo } from './index'
 import Body from '../../components/work/ProjectDetailsPage/Body'
-import Description from '../../components/work/ProjectDetailsPage/Description'
 import DemoSourceLinks from '../../components/work/DemoSourceLinks'
+import Description from '../../components/work/ProjectDetailsPage/Description'
 import Header from '../../components/work/ProjectDetailsPage/Header'
 import Image from '../../components/work/ProjectDetailsPage/Image'
 
@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   demoSourceLinks: {
-    padding: theme.spacing(5,0,0),
+    padding: theme.spacing(5, 0, 0),
   },
 }))
 
@@ -71,7 +71,6 @@ export default function ProjectDetailsPage({ markdown, repo }) {
               />
             </Grid>
 
-
             <Body content={markdown} />
             <Grid
               container
@@ -85,22 +84,20 @@ export default function ProjectDetailsPage({ markdown, repo }) {
   )
 }
 export async function getStaticProps({ params }) {
-  const username = params.projectDetails[0]
-  const repository = params.projectDetails[1]
-  const { markdown, repo, user } = await getProjectDetails(username, repository)
+  const { markdown, repo } = await getProjectDetails(
+    undefined,
+    params.projectDetails
+  )
 
   return {
-    props: { markdown, repo, user },
+    props: { markdown, repo },
   }
 }
 
 export async function getStaticPaths() {
-  const { paths, githubUsername } = await getRepositoryNamesForPaths()
+  const { paths } = await getRepositoryNamesForPaths()
   return {
-    paths:
-      paths?.map(
-        repositoryName => `/work/${githubUsername}/${repositoryName}`
-      ) ?? [],
+    paths: paths?.map(repositoryName => `/work/${repositoryName}`) ?? [],
     fallback: true,
   }
 }

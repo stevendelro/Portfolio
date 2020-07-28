@@ -32,7 +32,10 @@ export const getRepositoryNamesForPaths = async () => {
   }
 }
 
-const getMarkdown = async (username, repository) => {
+const getMarkdown = async (
+  username = process.env.GITHUB_USERNAME,
+  repository
+) => {
   const { data } = await requestWithAuth('GET /repos/:user/:repo/readme', {
     user: username,
     repo: repository,
@@ -42,7 +45,10 @@ const getMarkdown = async (username, repository) => {
   return markdown
 }
 
-const getRepoInfo = async (username, repository) => {
+const getRepoInfo = async (
+  username = process.env.GITHUB_USERNAME,
+  repository
+) => {
   const { data } = await requestWithAuth('GET /repos/:user/:repo', {
     user: username,
     repo: repository,
@@ -60,22 +66,32 @@ const getRepoInfo = async (username, repository) => {
   return repoInfo
 }
 
-const getUserInfo = async username => {
-  const { data } = await requestWithAuth('GET /users/:user', {
-    user: username,
-  })
-  const userInfo = {
-    id: data.id,
-    fullname: data.name,
-    location: data.location,
-    avatar: data.avatar_url,
-  }
-  return userInfo
-}
+// const getUserInfo = async username => {
+//   const { data } = await requestWithAuth('GET /users/:user', {
+//     user: username,
+//   })
+//   const userInfo = {
+//     id: data.id,
+//     fullname: data.name,
+//     location: data.location,
+//     avatar: data.avatar_url,
+//   }
+//   return userInfo
+// }
 
-export const getProjectDetails = async (username, repository) => {
+/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ * This is commented out because I don't currently need it. It may
+ * become more relevent and useful if multiple users are using this
+ * project to share their seperate bodies of work, but right now,
+ * it's just me.
+ */
+
+export const getProjectDetails = async (
+  username = process.env.GITHUB_USERNAME,
+  repository
+) => {
   const markdown = await getMarkdown(username, repository)
   const repo = await getRepoInfo(username, repository)
-  const user = await getUserInfo(username)
-  return { markdown, repo, user }
+  // const user = await getUserInfo(username)
+  return { markdown, repo }
 }
