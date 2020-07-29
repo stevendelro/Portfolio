@@ -28,9 +28,26 @@ export default function NavBreadCrumbs() {
   const [thirdCrumb, setThirdCrumb] = useState(null)
 
   const createSecondLevelCrumb = route => {
-    if (route === '/mail') return setSecondCrumb('Mail')
-    if (route === '/work' || '/work/[projectDetails]') return setSecondCrumb('Work')
-    if (route === '/blog' || '/blog/[slug]') return setSecondCrumb('Blog')
+    switch (route) {
+      case '/mail':
+        setSecondCrumb('Mail')
+        break
+      case '/work':
+        setSecondCrumb('Work')
+        break
+      case '/work/[projectDetails]':
+        setSecondCrumb('Work')
+        break
+      case '/blog':
+        setSecondCrumb('Blog')
+        break
+      case '/blog/[slug]':
+        setSecondCrumb('Blog')
+        break
+      default:
+        setSecondCrumb(null)
+        break
+    }
   }
 
   const createCrumbLink = string => {
@@ -63,7 +80,9 @@ export default function NavBreadCrumbs() {
     if (route === '/work/[projectDetails]') {
       createSecondLevelCrumb(route)
 
-      let currentSlug = removeDashesAndUppercaseFirstLetter(query.projectDetails)
+      let currentSlug = removeDashesAndUppercaseFirstLetter(
+        query.projectDetails
+      )
       if (thirdCrumb === null || currentSlug !== thirdCrumb) {
         setThirdCrumb(truncate(currentSlug, 5))
       }
