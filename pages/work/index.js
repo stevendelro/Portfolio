@@ -59,7 +59,6 @@ export const weathernautInfo = {
   website: 'https://weathernaut.now.sh',
   github:'https://github.com/stevendelro/Weathernaut',
   gitUsername: 'stevendelro',
-  projectNameToUseInURL: 'Weathernaut',
   summary: `
     This weather app converts location names into coordinates, then it uses
     those coordinates to fetch current weather data for that location. Styled

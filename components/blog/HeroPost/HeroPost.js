@@ -8,14 +8,11 @@ import Excerpt from './Excerpt'
 import Image from './Image'
 
 const useStyles = makeStyles(theme => ({
-  HeroPost__root: {
-    backgroundColor:
-      theme.palette.type === 'dark'
-        ? theme.palette.common.defaultDarkBackground
-        : theme.palette.common.defaultLightBackground,
-  },
   HeroPost__textArea: {
     paddingBottom: theme.spacing(2),
+    [theme.breakpoints.down('md')]: {
+      marginBottom: theme.spacing(5),
+    },
     [theme.breakpoints.down('xs')]: {
       padding: '0 1rem',
     },
@@ -42,10 +39,11 @@ export default function HeroPost({
 
   // Decalred to pass down properties before arranging.
   const PostExcerpt = (
-    <Excerpt titlePosition={titlePosition} excerpt={excerpt} />
+    <Excerpt  titlePosition={titlePosition} excerpt={excerpt} />
   )
   const TimeStamp = (
     <DateReadingTime
+
       slug={slug}
       title={title}
       date={date}
@@ -81,7 +79,7 @@ export default function HeroPost({
   }
 
   return (
-    <article className={classes.HeroPost__root}>
+    <article>
       {isSmallScreen || isTinyScreen ? (
         <Image slug={slug} coverImage={coverImage} title={title} />
       ) : null}

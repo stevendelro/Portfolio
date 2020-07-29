@@ -15,7 +15,6 @@ import PostDetailsPageList from '../../components/blog/Thumbs/PostDetailsPageLis
 
 const useStyles = makeStyles(theme => ({
   rootPostDetailsPage: {
-    minHeight: '100vh',
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
@@ -27,6 +26,7 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(0),
     },
     [theme.breakpoints.down('xs')]: {
+      textAlign: 'center',
       padding: theme.spacing(3, 3, 0, 3),
     },
   },

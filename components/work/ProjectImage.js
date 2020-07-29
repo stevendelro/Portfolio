@@ -42,10 +42,10 @@ function ProjectImage({ imageRight, isSmallScreen, projectInfo }) {
   const classes = useStyles()
   const theme = useTheme()
   const isSmallScreenOrSmaller = useMediaQuery(theme.breakpoints.down('sm'))
-  const { projectNameToUseInURL, name, imagePath } = projectInfo
+  const { name, imagePath } = projectInfo
   return (
     <MuiLink
-      as={`/work/${projectNameToUseInURL.toLowerCase()}`}
+      as={`/work/${name.toLowerCase()}`}
       href='/work/[projectDetails]'
       naked>
       <Paper
@@ -64,7 +64,6 @@ function ProjectImage({ imageRight, isSmallScreen, projectInfo }) {
           <CardMedia
             component='img'
             className={classes.image}
-            title={name}
             src={imagePath}
           />
         </Tooltip>

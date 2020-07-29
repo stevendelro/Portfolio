@@ -8,6 +8,10 @@ import PageIntro from '../../components/PageIntro'
 const useStyles = makeStyles(theme => ({
   rootBlogPage: {
     minHeight: '100vh',
+    backgroundColor:
+    theme.palette.type === 'dark'
+      ? theme.palette.common.defaultDarkBackground
+      : theme.palette.common.defaultLightBackground,
   },
 }))
 

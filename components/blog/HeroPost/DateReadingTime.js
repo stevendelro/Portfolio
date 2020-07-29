@@ -10,7 +10,7 @@ import MuiLink from '../../MuiLink'
 const useStyles = makeStyles(theme => ({
   /* >>>>>TITLE<<<<< */
   postTitle: {
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       textAlign: 'center',
       padding: theme.spacing(0, 1),
     },
@@ -25,10 +25,18 @@ const useStyles = makeStyles(theme => ({
   postTitle_L: {
     textAlign: 'right',
     padding: theme.spacing(2, 2, 0, 0),
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'center',
+      padding: theme.spacing(0)
+    },
   },
   postTitle_R: {
     textAlign: 'left',
     padding: theme.spacing(2, 0, 0, 2),
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'center',
+      padding: theme.spacing(0)
+    },
 
     /* >>>>>DATE/READING TIME<<<<< */
   },
