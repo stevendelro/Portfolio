@@ -31,6 +31,14 @@ const useStyles = makeStyles(theme => ({
   demoSourceLinks: {
     padding: theme.spacing(5, 0, 0),
   },
+  mainContainer: {
+    paddingLeft: 0,
+    paddingRight: 0,
+    [theme.breakpoints.down('xs')]: {
+      paddingLeft: theme.spacing(3),
+      paddingRight: theme.spacing(3),
+    },
+  }
 }))
 
 export default function ProjectDetailsPage({ markdown, repo }) {
@@ -52,7 +60,7 @@ export default function ProjectDetailsPage({ markdown, repo }) {
         justify='space-between'
         alignItems='center'>
         <Grid item xs={12} sm={11}>
-          <Container maxWidth='lg'>
+          <Container maxWidth='lg' className={classes.mainContainer}>
             <Image
               title={repo.name}
               imagePath={weathernautInfo.imagePath}
@@ -72,11 +80,7 @@ export default function ProjectDetailsPage({ markdown, repo }) {
             </Grid>
 
             <Body content={markdown} />
-            <Grid
-              container
-              direction='column'
-              justify='center'
-              alignItems='center'></Grid>
+
           </Container>
         </Grid>
       </Grid>

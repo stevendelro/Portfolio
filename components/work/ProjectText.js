@@ -10,12 +10,17 @@ import DemoSourceLinks from './DemoSourceLinks'
 const useStyles = makeStyles(theme => ({
   projectTitle: {
     textAlign: 'left',
+    [theme.breakpoints.only('sm')]: {
+      fontSize: theme.typography.pxToRem(63),
+    },
     [theme.breakpoints.down('sm')]: {
       textAlign: 'center',
-      fontSize: theme.typography.pxToRem(55),
-      margin: theme.spacing(3, 0, 0),
+      paddingTop: theme.spacing(7),
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.between(360, 600)]: {
+      fontSize: theme.typography.pxToRem(55),
+    },
+    [theme.breakpoints.down(360)]: {
       fontSize: theme.typography.pxToRem(40),
     },
     '&:hover': {
@@ -31,8 +36,9 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: '3px',
     marginBottom: theme.spacing(3),
     [theme.breakpoints.down('sm')]: {
-      textAlign: 'center'
-    }
+      textAlign: 'center',
+      paddingBottom: theme.spacing(1),
+    },
   },
   keyPoint: {
     [theme.breakpoints.down('sm')]: {
@@ -120,10 +126,7 @@ function ProjectText({ imageRight, isSmallScreen, rowDirection, projectInfo }) {
           </Typography>
         </MuiLink>
         <Box className={classes.demoSourceLinks}>
-          <DemoSourceLinks
-            liveDemo={website}
-            sourceCode={github}
-          />
+          <DemoSourceLinks liveDemo={website} sourceCode={github} />
         </Box>
       </Box>
       <section>

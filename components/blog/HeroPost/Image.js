@@ -9,12 +9,20 @@ const useStyles = makeStyles(theme => ({
     paddingTop: '1rem',
     marginBottom: '3rem',
     cursor: 'pointer',
-    [theme.breakpoints.down('sm')]: {
-      height: 400,
+    borderRadius: 5,
+    [theme.breakpoints.up('lg')]: {
+      height: 700,
     },
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.only('md')]: {
+      height: 600,
+    },
+    [theme.breakpoints.only('sm')]: {
       height: 500,
-      borderRadius: 5,
+      borderRadius: 0,
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: 400,
+      borderRadius: 0,
     },
   },
 }))

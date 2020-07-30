@@ -4,9 +4,9 @@ import { useState } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
-import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined'
-import MailOutlineIcon from '@material-ui/icons/MailOutline'
-import SubjectOutlinedIcon from '@material-ui/icons/SubjectOutlined'
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import MailOutlineOutlinedIcon from '@material-ui/icons/MailOutlineOutlined';
+import LibraryBooksOutlinedIcon from '@material-ui/icons/LibraryBooksOutlined';
 import WbIncandescentIcon from '@material-ui/icons/WbIncandescent'
 import WbIncandescentOutlinedIcon from '@material-ui/icons/WbIncandescentOutlined'
 import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined'
@@ -73,7 +73,7 @@ export default function MobileNav({ darkMode, setDarkMode }) {
     let icon
     switch (lowerCased) {
       case 'home':
-        icon = <HomeOutlinedIcon />
+        icon = <AccountCircleOutlinedIcon />
         break
       case 'work':
         icon = <WorkOutlineOutlinedIcon />
@@ -85,10 +85,10 @@ export default function MobileNav({ darkMode, setDarkMode }) {
         icon = <WbIncandescentIcon />
         break
       case 'blog':
-        icon = <SubjectOutlinedIcon />
+        icon = <LibraryBooksOutlinedIcon />
         break
       case 'mail':
-        icon = <MailOutlineIcon />
+        icon = <MailOutlineOutlinedIcon />
         break
       default:
         break

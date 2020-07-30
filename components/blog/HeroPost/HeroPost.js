@@ -8,6 +8,9 @@ import Excerpt from './Excerpt'
 import Image from './Image'
 
 const useStyles = makeStyles(theme => ({
+  rootHeroPost: {
+    marginBottom: theme.spacing(10)
+  },
   HeroPost__textArea: {
     paddingBottom: theme.spacing(2),
     [theme.breakpoints.down('md')]: {
@@ -79,11 +82,11 @@ export default function HeroPost({
   }
 
   return (
-    <article>
+    <article className={classes.rootHeroPost}>
       {isSmallScreen || isTinyScreen ? (
         <Image slug={slug} coverImage={coverImage} title={title} />
       ) : null}
-      <Container maxWidth='md'>
+      <Container maxWidth='lg'>
         {isSmallScreenUp && !isSmallScreen ? (
           <Image slug={slug} coverImage={coverImage} title={title} />
         ) : null}

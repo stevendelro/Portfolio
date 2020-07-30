@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: theme.typography.pxToRem(80),
     },
     [theme.breakpoints.down('xs')]: {
-      fontSize: theme.typography.pxToRem(50),
+      fontSize: theme.typography.pxToRem(60),
     },
     [theme.breakpoints.down(340)]: {
       fontSize: theme.typography.pxToRem(40),
