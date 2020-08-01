@@ -11,6 +11,9 @@ const useStyles = makeStyles(theme => ({
   rootHeroPost: {
     marginBottom: theme.spacing(10)
   },
+  imageContainer: {
+    padding: theme.spacing(0, 7)
+  },
   HeroPost__textArea: {
     paddingBottom: theme.spacing(2),
     [theme.breakpoints.down('md')]: {
@@ -86,7 +89,7 @@ export default function HeroPost({
       {isSmallScreen || isTinyScreen ? (
         <Image slug={slug} coverImage={coverImage} title={title} />
       ) : null}
-      <Container maxWidth='lg'>
+      <Container className={classes.imageContainer} maxWidth='lg'>
         {isSmallScreenUp && !isSmallScreen ? (
           <Image slug={slug} coverImage={coverImage} title={title} />
         ) : null}

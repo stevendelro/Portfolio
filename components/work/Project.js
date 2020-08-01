@@ -6,6 +6,9 @@ import ProjectImage from './ProjectImage'
 import ProjectText from './ProjectText'
 
 const useStyles = makeStyles(theme => ({
+  rootProject: {
+    padding: theme.spacing(10,0)
+  },
   imageLeftStyles: {
     cursor: 'pointer',
     [theme.breakpoints.up('sm')]: {
@@ -56,7 +59,7 @@ export default function Project({ orientation, projectInfo }) {
       ? classes.imageRightStyles && classes.textAlign_R
       : classes.imageLeftStyles && classes.textAlign_L
   return (
-    <section>
+    <section className={classes.rootProject}>
       <Grid
         container
         direction={isSmallScreen ? 'column' : rowDirection}

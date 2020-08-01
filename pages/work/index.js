@@ -1,6 +1,8 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
 
+import { DevelopDark, DevelopLight } from '../../components/svg/Develop'
 import PageIntro from '../../components/PageIntro'
 import Project from '../../components/work/Project'
 
@@ -17,6 +19,15 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(0, 1),
     },
+  },
+  imageContainer: {
+    [theme.breakpoints.only('sm')]: {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+  },
+  project: {
+    padding: theme.spacing(50),
   },
 }))
 
@@ -57,7 +68,7 @@ export const weathernautInfo = {
   name: 'Weathernaut',
   imagePath: '/weathernaut.png',
   website: 'https://weathernaut.now.sh',
-  github:'https://github.com/stevendelro/Weathernaut',
+  github: 'https://github.com/stevendelro/Weathernaut',
   gitUsername: 'stevendelro',
   summary: `
     This weather app converts location names into coordinates, then it uses
@@ -75,19 +86,20 @@ export const weathernautInfo = {
   `,
 }
 
-
 export default function WorkPage() {
   const classes = useStyles()
+  const theme = useTheme()
+  const type = theme.palette.type
+  const isDarkMode = type === 'dark' ? true : false
   return (
     <main className={classes.rootWorkPage}>
       <PageIntro title='Work' paragraph={workPageIntro} />
       <Container className={classes.mainContainer} maxWidth='lg'>
-        <Project
-          orientation='imageLeft'
-          projectInfo={weathernautInfo}
-        />
+        <Container maxWidth='md' className={classes.imageContainer}>
+          {isDarkMode ? <DevelopDark /> : <DevelopLight />}
+        </Container>
+        <Project orientation='imageLeft' projectInfo={weathernautInfo} />
       </Container>
     </main>
   )
 }
-
