@@ -1,4 +1,4 @@
-export function PartyDark({ width = '100%', height = 'auto' }) {
+export function PartyDark({ width = '100%', height = '100%' }) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -270,7 +270,7 @@ export function PartyDark({ width = '100%', height = 'auto' }) {
   )
 }
 
-export function PartyLight({ width = '100%', height = 'auto' }) {
+export function PartyLight({ width = '100%', height = '100%' }) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'

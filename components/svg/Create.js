@@ -1,4 +1,4 @@
-export function CreateDark({ width = '100%', height = 'auto' }) {
+export function CreateDark({ width = '100%', height = '100%' }) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -310,7 +310,7 @@ export function CreateDark({ width = '100%', height = 'auto' }) {
   )
 }
 
-export function CreateLight({ width = '100%', height = 'auto' }) {
+export function CreateLight({ width = '100%', height = '100%' }) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'

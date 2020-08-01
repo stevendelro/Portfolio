@@ -1,4 +1,4 @@
-export function WorkDark({ width = '100%', height = 'auto' }) {
+export function WorkDark({ width = '100%', height = '100%' }) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -233,7 +233,7 @@ export function WorkDark({ width = '100%', height = 'auto' }) {
   )
 }
 
-export function WorkLight({ width = '100%', height = 'auto' }) {
+export function WorkLight({ width = '100%', height = '100%' }) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
