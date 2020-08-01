@@ -36,9 +36,10 @@ const useStyles = makeStyles(theme => ({
  **********************************/
 
 const workPageIntro = `
-Something short and leading about the collection
-below—its contents, the creator, etc. Make it short and sweet, but not too
-short so folks don't simply skip over it entirely.
+This section is reserved for projects that I'm proud of. The project
+details come straight from the public README.md that's hosted on
+Github. I figure that this would be the best way to keep this portfolio
+up to date, while motivating me to make better writeups.
 `
 
 /*

@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(4, 0),
   },
   title: {
+    width: '100%',
     marginTop: theme.spacing(2),
     fontWeight: 500,
     [theme.breakpoints.up(1380)]: {
@@ -23,8 +24,11 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.only('md')]: {
       fontSize: theme.typography.pxToRem(100),
     },
-    [theme.breakpoints.only('sm')]: {
+    [theme.breakpoints.between(700, 960)]: {
       fontSize: theme.typography.pxToRem(80),
+    },
+    [theme.breakpoints.between(600, 700)]: {
+      fontSize: theme.typography.pxToRem(69),
     },
     [theme.breakpoints.down('xs')]: {
       fontSize: theme.typography.pxToRem(60),

@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(3),
   },
   PageIntro__title: {
-    width: 'fit-content',
+    flexGrow: 1,
     padding: theme.spacing(2),
     [theme.breakpoints.only('sm')]: {
       padding: theme.spacing(2, 0, 0, 0),
@@ -59,7 +59,7 @@ export default function PageIntro({ title, paragraph }) {
           direction={isSmallScreen ? 'column' : 'row'}
           justify='center'
           alignItems='center'>
-          <Grid item xs={12} sm={4} md={3}>
+          <Grid item xs={12} sm={5} md={3}>
             <Typography
               className={classes.PageIntro__title}
               component='h1'
@@ -69,7 +69,7 @@ export default function PageIntro({ title, paragraph }) {
               {title}
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={8} md={9}>
+          <Grid item xs={12} sm={7} md={9}>
             <Typography
               className={classes.PageIntro__paragraph}
               component='p'

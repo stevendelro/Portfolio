@@ -19,9 +19,11 @@ export default function BlogIndex({ allPosts }) {
   const classes = useStyles()
   const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1)
-  const heroParagraph = `I'm an avid writer. Below, you'll find a few
-  pieces that I'm particularly proud of. If you care to understand my
-  thought process, check out a few posts and let me know what you think.`
+  const heroParagraph = `
+  I'm an avid writer. Below, you'll find a few pieces that I'm particularly
+  proud of. Some pieces are centered around coding. Others have nothing to
+  do with code focus on my thoughts and ideas. All of it was written by me.
+  `
   return (
     <>
       <Head>
