@@ -63,7 +63,7 @@ export default function MenuAppBar(props) {
     <nav id='MyAppBar' className={classes.MyAppBar__root}>
       <ElevationScroll {...props}>
         <AppBar className={classes.MyAppBar__appBar} position='fixed'>
-          <Container maxWidth='md'>
+          <Container maxWidth='lg'>
             <Toolbar disableGutters>
               <Grid
                 container
