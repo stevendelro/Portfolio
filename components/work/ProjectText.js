@@ -4,11 +4,11 @@ import Grid from '@material-ui/core/Grid'
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
 
-import MuiLink from '../MuiLink'
 import DemoSourceLinks from './DemoSourceLinks'
+import MuiLink from '../MuiLink'
 
 const useStyles = makeStyles(theme => ({
-  projectTitle: {
+  projectText__title: {
     textAlign: 'left',
     [theme.breakpoints.only('sm')]: {
       fontSize: theme.typography.pxToRem(63),
@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
       opacity: 1,
     },
   },
-  demoSourceLinks: {
+  projectText__demoSourceLinks: {
     paddingLeft: '3px',
     marginBottom: theme.spacing(3),
     [theme.breakpoints.down('sm')]: {
@@ -40,17 +40,25 @@ const useStyles = makeStyles(theme => ({
       paddingBottom: theme.spacing(1),
     },
   },
-  keyPoint: {
+  projectText__keyPoint: {
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       textAlign: 'center',
       padding: theme.spacing(1),
     },
   },
-  subHeadingBox: {
+  projectText__subHeadingContainer: {
     minHeight: 45,
   },
-  paragraphBox: {
+  projectText__subHeading: {
+    fontSize: theme.typography.pxToRem(20),
+    fontWeight: theme.typography.fontWeightRegular,
+    color:
+      theme.palette.type === 'dark'
+        ? theme.palette.secondary.light
+        : theme.palette.primary.light,
+  },
+  projectText__paragraphContainer: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -60,14 +68,6 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(0, 4, 4),
     },
   },
-  subHeading: {
-    fontSize: theme.typography.pxToRem(20),
-    fontWeight: theme.typography.fontWeightRegular,
-    color:
-      theme.palette.type === 'dark'
-        ? theme.palette.secondary.light
-        : theme.palette.primary.light,
-  },
   // Right Side Image Styles
   textAlign_R: {
     textAlign: 'right',
@@ -75,30 +75,21 @@ const useStyles = makeStyles(theme => ({
 }))
 
 // Default Placeholder Text to be displayed if none provided.
-const summaryDefault = `
-  Lorem ipsum dolor sit amet, consectetur adipiscing
-  elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-  Consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-`
-
-const keyFeaturesDefault = `
-  Lorem ipsum dolor sit amet, consectetur
-  adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo
-  lobortis eget.
-`
-
-const technologiesDefault = `
-  Lorem ipsum dolor sit amet, consectetur
+const defaultText = `
+  Lorem ipsum dolor sit amet, consectetur sit amet blandit leo malesuada
   adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo
   lobortis eget. Adipiscing elit. Suspendisse malesuada lacus ex, sit amet
   blandit.
 `
 
-function ProjectText({ imageRight, isSmallScreen, rowDirection, projectInfo }) {
+export default function ProjectText({
+  imageRight,
+  isSmallScreen,
+  rowDirection,
+  projectInfo,
+}) {
   const classes = useStyles()
   const {
-    gitUsername,
-    gitReponame,
     name,
     summary,
     keyFeatures,
@@ -106,9 +97,20 @@ function ProjectText({ imageRight, isSmallScreen, rowDirection, projectInfo }) {
     github,
     website,
   } = projectInfo
+
+  // Organize data into an array to map over.
+  const sumText = summary ? summary : defaultText
+  const keyText = keyFeatures ? keyFeatures : defaultText
+  const techText = technologies ? technologies : defaultText
+  const keyPointsArray = [
+    ['Summary', sumText],
+    ['Key Features', keyText],
+    ['Technologies', techText],
+  ]
+
   return (
-    <div>
-      <Box>
+    <section id='projectText'>
+      <section id='projectText__titleArea'>
         <MuiLink
           style={{ textDecoration: 'none' }}
           as={`/work/${name}`}
@@ -117,76 +119,54 @@ function ProjectText({ imageRight, isSmallScreen, rowDirection, projectInfo }) {
           <Typography
             className={
               imageRight && !isSmallScreen
-                ? classes.projectTitle && classes.textAlign_R
-                : classes.projectTitle
+                ? classes.projectText__title && classes.textAlign_R
+                : classes.projectText__title
             }
             variant='h4'
             component='h2'>
             {name ? name : 'Project Name'}
           </Typography>
         </MuiLink>
-        <Box className={classes.demoSourceLinks}>
+        <Box className={classes.projectText__demoSourceLinks}>
           <DemoSourceLinks liveDemo={website} sourceCode={github} />
         </Box>
-      </Box>
-      <section>
+      </section>
+      <section id='projectText__keypoints'>
         <Grid
           container
           direction={true ? rowDirection : 'column'}
           justify='space-between'
           alignItems='flex-start'>
-          <Grid item sm={4} md={12} className={classes.keyPoint}>
-            <Box className={classes.subHeadingBox}>
-              <Typography
-                variant='h5'
-                component='h3'
-                color='primary'
-                className={classes.subHeading}>
-                Summary
-              </Typography>
-            </Box>
-            <Box className={classes.paragraphBox}>
-              <Typography variant='body2' component='p' color='textSecondary'>
-                {summary ? summary : summaryDefault}
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item sm={4} md={12} className={classes.keyPoint}>
-            <Box className={classes.subHeadingBox}>
-              <Typography
-                variant='h5'
-                component='h3'
-                color='primary'
-                className={classes.subHeading}>
-                Key Features
-              </Typography>
-            </Box>
-            <Box className={classes.paragraphBox}>
-              <Typography variant='body2' component='p' color='textSecondary'>
-                {keyFeatures ? keyFeatures : keyFeaturesDefault}
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item sm={4} md={12} className={classes.keyPoint}>
-            <Box className={classes.subHeadingBox}>
-              <Typography
-                variant='h5'
-                component='h3'
-                color='primary'
-                className={classes.subHeading}>
-                Technologies
-              </Typography>
-            </Box>
-            <Box className={classes.paragraphBox}>
-              <Typography variant='body2' component='p' color='textSecondary'>
-                {technologies ? technologies : technologiesDefault}
-              </Typography>
-            </Box>
-          </Grid>
+          {keyPointsArray.map((keyPoint, index) => {
+            return (
+              <Grid
+                id={index}
+                item
+                sm={4}
+                md={12}
+                className={classes.projectText__keyPoint}>
+                <Box className={classes.projectText__subHeadingContainer}>
+                  <Typography
+                    variant='h5'
+                    component='h3'
+                    color='primary'
+                    className={classes.projectText__subHeading}>
+                    {keyPoint[0]}
+                  </Typography>
+                </Box>
+                <Box className={classes.projectText__paragraphContainer}>
+                  <Typography
+                    variant='body2'
+                    component='p'
+                    color='textSecondary'>
+                    {keyPoint[1]}
+                  </Typography>
+                </Box>
+              </Grid>
+            )
+          })}
         </Grid>
       </section>
-    </div>
+    </section>
   )
 }
-
-export default ProjectText
