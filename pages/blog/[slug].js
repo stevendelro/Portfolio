@@ -52,7 +52,10 @@ export default function PostDetailsPage({ post, morePosts, preview }) {
         <>
           <Head>
             <title>Blog | {post.title}</title>
-            <meta property='Description' content={`Blog post titled: ${post.title}`} />
+            <meta
+              property='description'
+              content={`This is a personal blog post from Steven Del Rosario titled: ${post.title}`}
+            />
           </Head>
           <article
             id='postDetailsPage__ROOT'

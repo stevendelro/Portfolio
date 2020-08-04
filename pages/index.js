@@ -101,8 +101,8 @@ export default function Index() {
       <Head>
         <title>Steven | About Me</title>
         <meta
-          name='Description'
-          content={`This is Steven's About Me section`}
+          name='description'
+          content={`This is the About Me section of Steven Del Rosario's self-developed website`}
         />
       </Head>
       <article id='MainIndexBody' className={classes.mainIndex__ROOT}>

@@ -51,8 +51,8 @@ export default function ProjectDetailsPage({ markdown, repo }) {
       <Head>
         <title>Work | {repo.name}</title>
         <meta
-          property='Description'
-          content={`Project Page for: ${repo.name}`}
+          property='description'
+          content={`${repo.name} repository details from Steven Del Rosario's Github.`}
         />
       </Head>
       <article className={classes.projectDetailPage__ROOT}>

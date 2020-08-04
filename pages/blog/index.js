@@ -18,29 +18,24 @@ const useStyles = makeStyles(theme => ({
 
 const pageIntroParagraph = `
 I'm an avid writer. Below, you'll find a few pieces that I'm particularly
-proud of. Some pieces are centered around coding. Others have nothing to
-do with code focus on my thoughts and ideas. All of it was written by me.
+proud of. Some are centered around coding, others have nothing to
+do with code and focus on my thoughts and ideas. All of it, written by me.
 `
 
 export default function BlogIndex({ allPosts }) {
   const classes = useStyles()
   const featuredPost = allPosts[0]
   const morePosts = allPosts.slice(1)
-  const {
-    title,
-    coverImage,
-    date,
-    author,
-    slug,
-    excerpt,
-    stats,
-  } = featuredPost
+  const { title, coverImage, date, author, slug, excerpt, stats } = featuredPost
 
   return (
     <>
       <Head>
         <title>Steven's Blog</title>
-        <meta property='og:title' content="Steven's Blog" />
+        <meta
+          property='description'
+          content='A personal Blog designed and developed by Steven Del Rosario'
+        />
       </Head>
       <div className={classes.blogIndexPage__ROOT}>
         <PageIntro title='Blog' paragraph={pageIntroParagraph} />
