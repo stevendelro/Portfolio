@@ -6,25 +6,25 @@ import Typography from '@material-ui/core/Typography'
 import CustomDate from './CustomDate'
 
 const useStyles = makeStyles(theme => ({
-  author: {
-    lineHeight: 1.4,
-  },
-  date: {
-    lineHeight: 1.4,
-  },
-  avatar: {
+  avatarStamp__avatar: {
     margin: theme.spacing(1, 1),
+  },
+  avatarStamp__author: {
+    lineHeight: 1.4,
+  },
+  avatarStamp__date: {
+    lineHeight: 1.4,
   },
 }))
 
 export default function AvatarStamp({ author, date, readingTime }) {
   const classes = useStyles()
   return (
-    <article id='AvatarStamp'>
+    <article id='avatarStamp'>
       <Grid container direction='row' justify='flex-start' alignItems='center'>
         <Grid item>
           <Avatar
-            className={classes.avatar}
+            className={classes.avatarStamp__avatar}
             alt={author.name}
             src={author.picture.url}
           />
@@ -37,7 +37,7 @@ export default function AvatarStamp({ author, date, readingTime }) {
             alignItems='flex-start'>
             <Grid item>
               <Typography
-                className={classes.author}
+                className={classes.avatarStamp__author}
                 variant='overline'
                 display='block'>
                 {author.name}
@@ -45,7 +45,7 @@ export default function AvatarStamp({ author, date, readingTime }) {
             </Grid>
             <Grid item>
               <Typography
-                className={classes.date}
+                className={classes.avatarStamp__date}
                 color='textSecondary'
                 variant='overline'
                 display='block'>

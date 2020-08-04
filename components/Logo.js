@@ -1,11 +1,11 @@
 import { useTheme } from '@material-ui/core/styles'
 
-export default function Logo({
-  height = '64px',
-  width = '64px',
-}) {
+export default function Logo({ height = '64px', width = '64px' }) {
   const theme = useTheme()
-  let color = theme.palette.type === 'dark' ? theme.palette.secondary.main : theme.palette.primary.main
+  let color =
+    theme.palette.type === 'dark'
+      ? theme.palette.secondary.main
+      : theme.palette.primary.main
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'

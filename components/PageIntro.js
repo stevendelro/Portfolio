@@ -7,9 +7,9 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 const useStyles = makeStyles(theme => ({
   PageIntro__root: {
     backgroundColor:
-    theme.palette.type === 'dark'
-      ? theme.palette.common.defaultDarkBackground
-      : theme.palette.common.defaultLightBackground,
+      theme.palette.type === 'dark'
+        ? theme.palette.common.defaultDarkBackground
+        : theme.palette.common.defaultLightBackground,
   },
   PageIntro__Container: {
     paddingTop: theme.spacing(3),
@@ -23,20 +23,19 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down('xs')]: {
       padding: theme.spacing(10, 0, 5, 0),
-
     },
   },
   PageIntro__paragraph: {
     fontSize: '1.3rem',
     padding: theme.spacing(),
 
-    [theme.breakpoints.between('lg','xl')]: {
+    [theme.breakpoints.between('lg', 'xl')]: {
       padding: theme.spacing(0, 7),
-      marginBottom: 0
+      marginBottom: 0,
     },
     [theme.breakpoints.only('md')]: {
       padding: theme.spacing(0, 7),
-      marginBottom: 0
+      marginBottom: 0,
     },
     [theme.breakpoints.only('sm')]: {
       paddingBottom: theme.spacing(2),

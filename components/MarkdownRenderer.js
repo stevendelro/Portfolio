@@ -5,6 +5,13 @@ import Markdown from 'markdown-to-jsx'
 import CenteredImage from './CenteredImage'
 import CodeBlock from './CodeBlock'
 
+/**
+ * Initial boilerplate styles came from Material-UI's documentation markdown component.
+ *
+ *    See the source code here:
+ *    https://github.com/mui-org/material-ui/blob/master/docs/src/modules/components/MarkdownElement.js
+ */
+
 // Quick Variables to change if needed:
 const headingFontFamily = 'Roboto Slab'
 const headerFontWeight = 500
@@ -371,10 +378,3 @@ export default function MarkdownRenderer({ children }) {
     </div>
   )
 }
-
-/**
- * Initial boilerplate styles came from Material-UI's documentation markdown component.
- *
- * See the source code here:
- * https://github.com/mui-org/material-ui/blob/master/docs/src/modules/components/MarkdownElement.js
- */
