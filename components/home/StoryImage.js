@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const useStyles = makeStyles(theme => ({
-  text: {
+  storyImage__story: {
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(6),
     },
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
       marginBottom: theme.spacing(10),
     },
   },
-  image: {
+  storyImage__image: {
     padding: theme.spacing(3, 5),
     [theme.breakpoints.only('sm')]: {
       padding: theme.spacing(3, 0),
@@ -28,9 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-
-
-export default function TextPictureItem({
+export default function StoryImage({
   darkModeImage,
   lightModeImage,
   text,
@@ -40,14 +38,14 @@ export default function TextPictureItem({
   const theme = useTheme()
   const isTinyScreen = useMediaQuery(theme.breakpoints.down('xs'))
 
-  const TextSide = () => {
+  const Story = () => {
     return (
       <Grid item xs={12} sm={5}>
         <Typography
           component='p'
           variant='body2'
           color='textSecondary'
-          className={classes.text}
+          className={classes.storyImage__story}
           align={isTinyScreen ? 'left' : imageOrientation}
           paragraph>
           {text}
@@ -56,11 +54,11 @@ export default function TextPictureItem({
     )
   }
 
-  const ImageSide = () => {
+  const Image = () => {
     const { type } = theme.palette
     const isDarkMode = type === 'dark' ? true : false
     return (
-      <Grid item xs={12} sm={7} className={classes.image}>
+      <Grid item xs={12} sm={7} className={classes.storyImage__image}>
         {isDarkMode ? darkModeImage : lightModeImage}
       </Grid>
     )
@@ -72,22 +70,22 @@ export default function TextPictureItem({
       // prettier-ignore
       isTinyScreen
       // Keep image above text on small screens
-      ? composedArrangement = <><ImageSide /><TextSide /></>
-      : composedArrangement = <><TextSide /><ImageSide /></>
+      ? composedArrangement = <><Image /><Story /></>
+      : composedArrangement = <><Story /><Image /></>
       break
     case 'left':
       // prettier-ignore
-      composedArrangement = <><ImageSide /><TextSide /></>
+      composedArrangement = <><Image /><Story /></>
       break
 
     default:
       // prettier-ignore
-      composedArrangement = <><TextSide /><ImageSide /></>
+      composedArrangement = <><Story /><Image /></>
       break
   }
 
   return (
-    <section id='AboutTextPictureItem' className={classes.rootMainIndex}>
+    <section id='AboutTextPictureItem'>
       <Grid container direction='row' justify='center' alignItems='center'>
         {composedArrangement}
       </Grid>
