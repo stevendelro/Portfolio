@@ -61,8 +61,8 @@ I’m fairly inquisitive. If something piques my interest, it doesn’t take
 much to allow my curiosity to take over. In conversation, I enjoy quick
 exchanges filled with clever quips and references as much as anyone. But
 I really prefer going in-depth. If the world we live in was built on the
-stories we share, you could find me at the forefront of nuance, chipping
-away at the ineffable.
+stories we share, you could find me at the forefront of nuance, happily
+chipping away at the ineffable.
 `
 
 const workText =`

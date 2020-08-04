@@ -43,6 +43,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function ProjectDetailsPage({ markdown, repo }) {
   const classes = useStyles()
+  if (!markdown || !repo) {
+    return <div>Loading...</div>
+  }
   return (
     <article className={classes.rootArticle_ProjectDetails}>
       <Grid container direction='column' justify='center' alignItems='center'>
