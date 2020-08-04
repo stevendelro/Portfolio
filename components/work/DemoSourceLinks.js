@@ -1,12 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles'
-import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
-  date: {
+  demoSourceLinks__date: {
     lineHeight: 1.4,
   },
-  externalLinks: {
+  demoSourceLinks__link: {
     textDecoration: 'none',
     color:
       theme.palette.type === 'dark'
@@ -21,26 +20,25 @@ const useStyles = makeStyles(theme => ({
       opacity: 1,
     },
   },
-
 }))
 
 export default function DemoSourceLinks({ liveDemo, sourceCode }) {
   const classes = useStyles()
   const WebsiteLink = (
-    <a href={liveDemo} className={classes.externalLinks}>
+    <a href={liveDemo} className={classes.demoSourceLinks__link}>
       LIVE DEMO
     </a>
   )
   const GithubLink = (
-    <a href={sourceCode} className={classes.externalLinks}>
+    <a href={sourceCode} className={classes.demoSourceLinks__link}>
       SOURCE CODE
     </a>
   )
 
   return (
-    <section id='DemoSourceLinks'>
+    <section id='demoSourceLinks'>
       <Typography
-        className={classes.date}
+        className={classes.demoSourceLinks__date}
         color='textSecondary'
         variant='overline'
         display='block'>

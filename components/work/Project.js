@@ -6,10 +6,10 @@ import ProjectImage from './ProjectImage'
 import ProjectText from './ProjectText'
 
 const useStyles = makeStyles(theme => ({
-  rootProject: {
+  project__ROOT: {
     padding: theme.spacing(10,0)
   },
-  imageLeftStyles: {
+  project__imageLeft: {
     cursor: 'pointer',
     [theme.breakpoints.up('sm')]: {
       marginBottom: theme.spacing(4),
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: theme.typography.pxToRem(40),
     },
   },
-  imageRightStyles: {
+  project__imageRightStyles: {
     cursor: 'pointer',
     paddingBottom: theme.spacing(3),
     [theme.breakpoints.down('sm')]: {
@@ -54,12 +54,12 @@ export default function Project({ orientation, projectInfo }) {
   if (imageRight) {
     rowDirection = isSmallScreen ? 'row' : 'row-reverse'
   }
-  const textStyles =
+  const project__text =
     imageRight && !isSmallScreen
-      ? classes.imageRightStyles && classes.textAlign_R
-      : classes.imageLeftStyles && classes.textAlign_L
+      ? classes.project__imageRightStyles && classes.textAlign_R
+      : classes.project__imageLeft && classes.textAlign_L
   return (
-    <section className={classes.rootProject}>
+    <section id='project' className={classes.project__ROOT}>
       <Grid
         container
         direction={isSmallScreen ? 'column' : rowDirection}
@@ -75,7 +75,7 @@ export default function Project({ orientation, projectInfo }) {
         </Grid>
 
         {/* TEXT SIDE */}
-        <Grid item className={textStyles} xs={12} sm={11} md={4}>
+        <Grid item className={project__text} xs={12} sm={11} md={4}>
           <ProjectText
             imageRight={imageRight}
             isSmallScreen={isSmallScreen}

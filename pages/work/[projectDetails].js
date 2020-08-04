@@ -5,21 +5,29 @@ import Head from 'next/head'
 
 import { getRepositoryNamesForPaths, getProjectDetails } from '../api/github'
 import { weathernautInfo } from './index'
-import Body from '../../components/work/ProjectDetailsPage/Body'
 import DemoSourceLinks from '../../components/work/DemoSourceLinks'
-import Description from '../../components/work/ProjectDetailsPage/Description'
-import Header from '../../components/work/ProjectDetailsPage/Header'
-import Image from '../../components/work/ProjectDetailsPage/Image'
+import ProjectBody from '../../components/work/ProjectDetailsPage/ProjectBody'
+import ProjectDescription from '../../components/work/ProjectDetailsPage/ProjectDescription'
+import ProjectHeader from '../../components/work/ProjectDetailsPage/ProjectHeader'
+import ProjectImage from '../../components/work/ProjectDetailsPage/ProjectImage'
 
 const useStyles = makeStyles(theme => ({
-  rootArticle_ProjectDetails: {
+  projectDetailPage__ROOT: {
     paddingBottom: theme.spacing(30),
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
         : theme.palette.common.defaultLightBackground,
   },
-  header: {
+  projectDetailPage__container: {
+    paddingLeft: 0,
+    paddingRight: 0,
+    [theme.breakpoints.down('xs')]: {
+      paddingLeft: theme.spacing(3),
+      paddingRight: theme.spacing(3),
+    },
+  },
+  projectDetailPage__header: {
     padding: theme.spacing(2),
     [theme.breakpoints.only('sm')]: {
       padding: theme.spacing(0),
@@ -28,17 +36,9 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(3, 3, 0, 3),
     },
   },
-  demoSourceLinks: {
+  projectDetailPage__demoSourceLinks: {
     padding: theme.spacing(5, 0, 0),
   },
-  mainContainer: {
-    paddingLeft: 0,
-    paddingRight: 0,
-    [theme.breakpoints.down('xs')]: {
-      paddingLeft: theme.spacing(3),
-      paddingRight: theme.spacing(3),
-    },
-  }
 }))
 
 export default function ProjectDetailsPage({ markdown, repo }) {
@@ -47,52 +47,67 @@ export default function ProjectDetailsPage({ markdown, repo }) {
     return <div>Loading...</div>
   }
   return (
-    <article className={classes.rootArticle_ProjectDetails}>
-      <Grid container direction='column' justify='center' alignItems='center'>
-        <Grid className={classes.header} item xs={12} sm={8} lg={6} xl={4}>
-          <Header
-            projectName={repo.name}
-            dateCreated={repo.dateCreated}
-            lastUpdated={repo.lastUpdated}
-          />
-        </Grid>
-      </Grid>
-      <Grid
-        container
-        direction='column'
-        justify='space-between'
-        alignItems='center'>
-        <Grid item xs={12} sm={11}>
-          <Container maxWidth='lg' className={classes.mainContainer}>
-            <Image
-              title={repo.name}
-              imagePath={weathernautInfo.imagePath}
-              website={repo.website}
+    <>
+      <Head>
+        <title>Work | {repo.name}</title>
+        <meta
+          property='Description'
+          content={`Project Page for: ${repo.name}`}
+        />
+      </Head>
+      <article className={classes.projectDetailPage__ROOT}>
+        <Grid container direction='column' justify='center' alignItems='center'>
+          <Grid
+            className={classes.projectDetailPage__header}
+            item
+            xs={12}
+            sm={8}
+            lg={6}
+            xl={4}>
+            <ProjectHeader
+              projectName={repo.name}
+              dateCreated={repo.dateCreated}
+              lastUpdated={repo.lastUpdated}
             />
-            <Description description={repo.description} />
-            <Grid
-              container
-              className={classes.demoSourceLinks}
-              direction='row'
-              justify='center'
-              alignItems='center'>
-              <DemoSourceLinks
-                liveDemo={repo.website}
-                sourceCode={repo.github}
-              />
-            </Grid>
-
-            <Body content={markdown} />
-
-          </Container>
+          </Grid>
         </Grid>
-      </Grid>
-    </article>
+        <Grid
+          container
+          direction='column'
+          justify='space-between'
+          alignItems='center'>
+          <Grid item xs={12} sm={11}>
+            <Container
+              maxWidth='lg'
+              className={classes.projectDetailPage__container}>
+              <ProjectImage
+                title={repo.name}
+                imagePath={weathernautInfo.imagePath}
+                website={repo.website}
+              />
+              <ProjectDescription description={repo.description} />
+              <Grid
+                container
+                className={classes.projectDetailPage__demoSourceLinks}
+                direction='row'
+                justify='center'
+                alignItems='center'>
+                <DemoSourceLinks
+                  liveDemo={repo.website}
+                  sourceCode={repo.github}
+                />
+              </Grid>
+              <ProjectBody content={markdown} />
+            </Container>
+          </Grid>
+        </Grid>
+      </article>
+    </>
   )
 }
 export async function getStaticProps({ params }) {
   const { markdown, repo } = await getProjectDetails(
-    undefined,
+    undefined, // Use this to wire up getUserDetails if needed in the future
     params.projectDetails
   )
 

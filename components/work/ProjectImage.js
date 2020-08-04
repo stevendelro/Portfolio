@@ -7,7 +7,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import MuiLink from '../MuiLink'
 
 const useStyles = makeStyles(theme => ({
-  paperImageContainer: {
+  projectImage__container: {
     margin: theme.spacing(0, 4),
     [theme.breakpoints.only('md')]: {
       margin: theme.spacing(0, 3, 0, 0),
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
 
-  image: {
+  projectImage__image: {
     width: '100%',
     height: 'auto',
     cursor: 'pointer',
@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   },
 
   // Right Side Image Styles
-  paperImageContainer_R: {
+  projectImage__container_R: {
     margin: theme.spacing(0, 4, 0),
     [theme.breakpoints.only('md')]: {
       margin: theme.spacing(0, 0, 0, 3),
@@ -38,38 +38,41 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function ProjectImage({ imageRight, isSmallScreen, projectInfo }) {
+export default function ProjectImage({
+  imageRight,
+  isSmallScreen,
+  projectInfo,
+}) {
   const classes = useStyles()
   const theme = useTheme()
   const isSmallScreenOrSmaller = useMediaQuery(theme.breakpoints.down('sm'))
   const { name, imagePath } = projectInfo
   return (
-    <MuiLink
-      as={`/work/${name.toLowerCase()}`}
-      href='/work/[projectDetails]'
-      naked>
-      <Paper
-        className={
-          imageRight && !isSmallScreen
-            ? classes.paperImageContainer_R
-            : classes.paperImageContainer
-        }
-        elevation={7}>
-        <Tooltip
-          disableFocusListener
-          disableTouchListener
-          arrow
-          title='Click For Details'
-          placement={isSmallScreenOrSmaller ? 'top' : 'bottom'}>
-          <CardMedia
-            component='img'
-            className={classes.image}
-            src={imagePath}
-          />
-        </Tooltip>
-      </Paper>
-    </MuiLink>
+    <section id='project__projectImage'>
+      <MuiLink
+        as={`/work/${name.toLowerCase()}`}
+        href='/work/[projectDetails]'
+        naked>
+        <Paper
+          className={
+            imageRight && !isSmallScreen
+              ? classes.projectImage__container_R
+              : classes.projectImage__container
+          }
+          elevation={7}>
+          <Tooltip
+            disableTouchListener
+            arrow
+            title='Click For Details'
+            placement={isSmallScreenOrSmaller ? 'top' : 'bottom'}>
+            <CardMedia
+              component='img'
+              className={classes.projectImage__image}
+              src={imagePath}
+            />
+          </Tooltip>
+        </Paper>
+      </MuiLink>
+    </section>
   )
 }
-
-export default ProjectImage

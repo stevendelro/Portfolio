@@ -52,7 +52,7 @@ export default function PostDetailsPage({ post, morePosts, preview }) {
         <>
           <Head>
             <title>Blog | {post.title}</title>
-            <meta property='og:image' content={post.coverImage.url} />
+            <meta property='Description' content={`Blog post titled: ${post.title}`} />
           </Head>
           <article
             id='postDetailsPage__ROOT'

@@ -1,6 +1,6 @@
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
+import Head from 'next/head'
 
 import { DevelopDark, DevelopLight } from '../../components/svg/Develop'
 import PageIntro from '../../components/PageIntro'
@@ -93,14 +93,23 @@ export default function WorkPage() {
   const type = theme.palette.type
   const isDarkMode = type === 'dark' ? true : false
   return (
-    <main className={classes.rootWorkPage}>
-      <PageIntro title='Work' paragraph={workPageIntro} />
-      <Container className={classes.mainContainer} maxWidth='lg'>
-        <Container maxWidth='md' className={classes.imageContainer}>
-          {isDarkMode ? <DevelopDark /> : <DevelopLight />}
+    <>
+      <Head>
+        <title>Work | Projects</title>
+        <meta
+          property='description'
+          content='A collection of projects developed by Steven Del Rosario'
+        />
+      </Head>
+      <main className={classes.rootWorkPage}>
+        <PageIntro title='Work' paragraph={workPageIntro} />
+        <Container className={classes.mainContainer} maxWidth='lg'>
+          <Container maxWidth='md' className={classes.imageContainer}>
+            {isDarkMode ? <DevelopDark /> : <DevelopLight />}
+          </Container>
+          <Project orientation='imageLeft' projectInfo={weathernautInfo} />
         </Container>
-        <Project orientation='imageLeft' projectInfo={weathernautInfo} />
-      </Container>
-    </main>
+      </main>
+    </>
   )
 }

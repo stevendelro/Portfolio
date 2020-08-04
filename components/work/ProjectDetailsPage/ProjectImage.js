@@ -3,7 +3,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Paper from '@material-ui/core/Paper'
 
 const useStyles = makeStyles(theme => ({
-  paperImageContainer: {
+  projectImage__ROOT: {
     margin: theme.spacing(0, 4, 0),
     [theme.breakpoints.only('md')]: {
       margin: theme.spacing(0, 0, 0, 3),
@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
       margin: 0,
     },
   },
-  image: {
+  projectImage__image: {
     width: '100%',
     height: 'auto',
     [theme.breakpoints.up('sm')]: {
@@ -21,14 +21,14 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Image({ title, imagePath, website }) {
+export default function ProjectImage({ title, imagePath }) {
   const classes = useStyles()
   return (
-    <section>
-      <Paper className={classes.paperImageContainer} elevation={7}>
+    <section id='projectDetailsPage__image'>
+      <Paper className={classes.projectImage__ROOT} elevation={7}>
         <CardMedia
           component='img'
-          className={classes.image}
+          className={classes.projectImage__image}
           title={title}
           image={imagePath}
         />

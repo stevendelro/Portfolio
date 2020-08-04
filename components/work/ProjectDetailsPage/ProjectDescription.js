@@ -3,7 +3,7 @@ import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
-  description: {
+  projectDescription__ROOT: {
     padding: theme.spacing(6, 7, 0),
     textTransform: 'italic',
     [theme.breakpoints.only('sm')]: {
@@ -14,12 +14,12 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }))
-export default function Description({ description }) {
+export default function ProjectDescription({ description }) {
   const classes = useStyles()
   return (
     <Container maxWidth='md'>
       <Typography
-        className={classes.description}
+        className={classes.projectDescription__ROOT}
         variant='body2'
         color='textSecondary'
         align='center'>

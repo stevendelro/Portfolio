@@ -8,10 +8,10 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import CustomDate from '../../CustomDate'
 
 const useStyles = makeStyles(theme => ({
-  rootProjectHeader: {
+  projectHeader__ROOT: {
     margin: theme.spacing(4, 0),
   },
-  title: {
+  projectHeader__title: {
     width: '100%',
     marginTop: theme.spacing(2),
     fontWeight: 500,
@@ -40,37 +40,41 @@ const useStyles = makeStyles(theme => ({
       fontSize: theme.typography.pxToRem(30),
     },
   },
-  dates: {
+  projectHeader__dates: {
     lineHeight: 1.4,
     [theme.breakpoints.down('xs')]: {
       lineHeight: 1,
       fontSize: theme.typography.pxToRem(5),
     },
   },
-  divider: {
+  projectHeader__divider: {
     margin: theme.spacing(1, 0),
   },
 }))
 
-export default function ProjectHeader({ projectName, dateCreated, lastUpdated }) {
+export default function ProjectHeader({
+  projectName,
+  dateCreated,
+  lastUpdated,
+}) {
   const classes = useStyles()
   const theme = useTheme()
   const isWatchScreenDown = useMediaQuery(theme.breakpoints.down(280))
   const isTinyScreenDown = useMediaQuery(theme.breakpoints.down('xs'))
   return (
     <header
-      id='header--ProjectDetailsPage'
-      className={classes.rootProjectHeader}>
+      id='ProjectDetailsPage__header'
+      className={classes.projectHeader__ROOT}>
       <Typography
-        className={classes.title}
+        className={classes.projectHeader__title}
         variant='h1'
         component='h1'
         align='center'>
         {projectName}
       </Typography>
-      <Divider className={classes.divider} />
+      <Divider className={classes.projectHeader__divider} />
       <Typography
-        className={classes.dates}
+        className={classes.projectHeader__dates}
         color='textSecondary'
         variant='overline'
         display='block'>
