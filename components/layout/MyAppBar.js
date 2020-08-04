@@ -15,21 +15,21 @@ import Menu from './Menu'
 import NavCrumbs from './NavCrumbs'
 
 const useStyles = makeStyles(theme => ({
-  MyAppBar__root: {
+  myAppBar__ROOT: {
     flexGrow: 1,
   },
-  MyAppBar__appBar: {
+  myAppBar__appBar: {
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
         : theme.palette.common.defaultLightBackground,
   },
-  MyAppBar__crumbs: {
+  myAppBar__crumbs: {
     [theme.breakpoints.down(740)]: {
       display: 'none',
     },
   },
-  MyAppBar__darkModeSwitch: {
+  myAppBar__darkModeSwitch: {
     color:
       theme.palette.type === 'dark'
         ? theme.palette.secondary.main
@@ -59,10 +59,11 @@ export default function MenuAppBar(props) {
   const toggleThemeColorChange = event => {
     setDarkMode(event.target.checked)
   }
+  
   return (
-    <nav id='MyAppBar' className={classes.MyAppBar__root}>
+    <nav id='MyAppBar' className={classes.myAppBar__ROOT}>
       <ElevationScroll {...props}>
-        <AppBar className={classes.MyAppBar__appBar} position='fixed'>
+        <AppBar className={classes.myAppBar__appBar} position='fixed'>
           <Container maxWidth='lg'>
             <Toolbar disableGutters>
               <Grid
@@ -73,7 +74,7 @@ export default function MenuAppBar(props) {
                 <Box maxWidth='fit-content'>
                   <Menu />
                 </Box>
-                <Box className={classes.MyAppBar__crumbs}>
+                <Box className={classes.myAppBar__crumbs}>
                   <Slide
                     direction='down'
                     in={crumbScrollTrigger}
@@ -86,7 +87,7 @@ export default function MenuAppBar(props) {
                 </Box>
                 <FormGroup>
                   <FormControlLabel
-                    className={classes.MyAppBar__darkModeSwitch}
+                    className={classes.myAppBar__darkModeSwitch}
                     control={
                       <Switch
                         checked={darkMode}

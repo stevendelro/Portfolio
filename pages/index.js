@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
+import Head from 'next/head'
 
 import { AboutDark, AboutLight } from '../components/svg/About'
 import { ExploreDark, ExploreLight } from '../components/svg/Explore'
@@ -96,23 +97,32 @@ export default function Index() {
   const classes = useStyles()
 
   return (
-    <article id='MainIndexBody' className={classes.mainIndex__ROOT}>
-      <PageIntro title='Hello' paragraph={heroParagraph} />
-      <Container
-        className={classes.mainIndex__storyImageContainer}
-        maxWidth='lg'>
-        {imageTextArray.map((item, index) => {
-          return (
-            <StoryImage
-              key={index}
-              darkModeImage={item[0]}
-              lightModeImage={item[1]}
-              text={item[2] ? item[2] : defaultParagraph}
-              imageOrientation={index % 2 === 0 ? 'left' : 'right'}
-            />
-          )
-        })}
-      </Container>
-    </article>
+    <>
+      <Head>
+        <title>Steven | About Me</title>
+        <meta
+          name='Description'
+          content={`This is Steven's About Me section`}
+        />
+      </Head>
+      <article id='MainIndexBody' className={classes.mainIndex__ROOT}>
+        <PageIntro title='Hello' paragraph={heroParagraph} />
+        <Container
+          className={classes.mainIndex__storyImageContainer}
+          maxWidth='lg'>
+          {imageTextArray.map((item, index) => {
+            return (
+              <StoryImage
+                key={index}
+                darkModeImage={item[0]}
+                lightModeImage={item[1]}
+                text={item[2] ? item[2] : defaultParagraph}
+                imageOrientation={index % 2 === 0 ? 'left' : 'right'}
+              />
+            )
+          })}
+        </Container>
+      </article>
+    </>
   )
 }

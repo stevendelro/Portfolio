@@ -7,10 +7,10 @@ import Typography from '@material-ui/core/Typography'
 import Logo from '../Logo'
 
 const useStyles = makeStyles(theme => ({
-  Footer__root: {
+  myFooter__ROOT: {
     flexGrow: 1,
   },
-  Footer__appBar: {
+  footer__appBar: {
     top: 'auto',
     bottom: 0,
     color:
@@ -26,10 +26,10 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(10, 0, 10, 0),
     },
   },
-  Footer__nameAndDate: {
-    paddingTop: theme.spacing(1)
+  footer__nameDate: {
+    paddingTop: theme.spacing(1),
   },
-  Footer__spacer: {
+  footer__divSpacer: {
     height: 56,
   },
 }))
@@ -37,15 +37,18 @@ const useStyles = makeStyles(theme => ({
 export default function MyFooter() {
   const classes = useStyles()
   return (
-    <footer className={classes.Footer__root}>
-      <AppBar position='static' elevation={0} className={classes.Footer__appBar}>
+    <footer className={classes.myFooter__ROOT}>
+      <AppBar
+        position='static'
+        elevation={0}
+        className={classes.footer__appBar}>
         {/* LOGO */}
         <Grid container direction='column' justify='center' alignItems='center'>
           <Grid item>
             <Logo />
           </Grid>
           {/* NAME AND DATE */}
-          <Grid className={classes.Footer__nameAndDate} item>
+          <Grid className={classes.footer__nameDate} item>
             <Typography variant='overline'>Steven Del Rosario</Typography>
             <Typography variant='overline'>
               {' '}
@@ -56,7 +59,7 @@ export default function MyFooter() {
       </AppBar>
       {/* EMPTY DIV FOR SPACER */}
       <Hidden smUp>
-        <div className={classes.Footer__spacer} />
+        <div className={classes.footer__divSpacer} />
       </Hidden>
     </footer>
   )

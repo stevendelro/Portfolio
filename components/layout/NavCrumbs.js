@@ -8,7 +8,7 @@ import { removeDashesAndUppercaseFirstLetter, truncate } from './utils/index'
 import MuiLink from '../MuiLink'
 
 const useStyles = makeStyles(theme => ({
-  NavCrumbs__crumbLink: {
+  navCrumbs__crumbLink: {
     '&:hover': {
       textDecoration: 'none',
       color:
@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function NavBreadCrumbs() {
+export default function NavCrumbs() {
   const theme = useTheme()
   const classes = useStyles()
   const darkMode = theme.palette.type
@@ -54,7 +54,8 @@ export default function NavBreadCrumbs() {
     const lowerCased = string.toLowerCase()
     return (
       <MuiLink
-        className={classes.NavCrumbs__crumbLink}
+        className={classes.navCrumbs__crumbLink}
+        aria-labelledby='navCrumbs'
         color={darkMode === 'light' ? 'primary' : 'secondary'}
         href={`/${lowerCased === 'home' ? '' : lowerCased}`}>
         <Typography variant='caption' display='block'>
@@ -65,11 +66,14 @@ export default function NavBreadCrumbs() {
   }
 
   useEffect(() => {
+    // Handle first crumb, clean up second and third crumbs
     if (route === '/') return setSecondCrumb(null)
     if (route === '/work' || '/blog' || '/mail') {
       setThirdCrumb(null)
       createSecondLevelCrumb(route)
     }
+
+    // Handle second and third crumb for Blog routes
     if (route === '/blog/[slug]') {
       createSecondLevelCrumb(route)
       let currentSlug = removeDashesAndUppercaseFirstLetter(query.slug)
@@ -77,21 +81,22 @@ export default function NavBreadCrumbs() {
         setThirdCrumb(truncate(currentSlug, 5))
       }
     }
+
+    // Handle second and third crumb for Work routes
     if (route === '/work/[projectDetails]') {
       createSecondLevelCrumb(route)
-
-      let currentSlug = removeDashesAndUppercaseFirstLetter(
+      let currentProject = removeDashesAndUppercaseFirstLetter(
         query.projectDetails
       )
-      if (thirdCrumb === null || currentSlug !== thirdCrumb) {
-        setThirdCrumb(truncate(currentSlug, 5))
+      if (thirdCrumb === null || currentProject !== thirdCrumb) {
+        setThirdCrumb(truncate(currentProject, 5))
       }
     }
   }, [route, query])
 
   return (
-    <section id='NavCrumbs'>
-      <Breadcrumbs aria-label='breadcrumb'>
+    <section id='navCrumbs'>
+      <Breadcrumbs aria-label='navigationLinkGroup'>
         {createCrumbLink('Home')}
         {secondCrumb && createCrumbLink(secondCrumb)}
         {thirdCrumb && createCrumbLink(thirdCrumb)}

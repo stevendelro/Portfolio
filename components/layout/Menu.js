@@ -8,15 +8,18 @@ function a11yProps(tabIndex) {
   return {
     id: `horizontal-tab-${tabIndex}`,
     'aria-controls': `horizontal-tabpanel-${tabIndex}`,
+    'aria-labelledby': `horizontal-tab-${tabIndex}`
   }
 }
 
+// Custom Material UI tabs
 const MyTabs = withStyles({
   indicator: {
     backgroundColor: '#ffffff00', // remove active tab indicator
   },
 })(Tabs)
 
+// Custom Material UI tab
 const MyTab = withStyles(theme => ({
   root: {
     minWidth: 90,
@@ -49,8 +52,8 @@ const MyTab = withStyles(theme => ({
       fontWeight: theme.typography.fontWeightMedium,
       fontSize: theme.typography.pxToRem(24),
       [theme.breakpoints.only('sm')]: {
-        fontSize: theme.typography.pxToRem(21)
-      }
+        fontSize: theme.typography.pxToRem(21),
+      },
     },
     '&:focus': {
       color:
@@ -110,6 +113,7 @@ export default function Menu() {
         component='a'
         className={index === 0 ? classes.firstTab : classes.tab}
         label={label}
+        aria-labelledby='menu'
         onClick={event => {
           event.preventDefault()
           router.push(`/${lowerCased === 'home' ? '' : lowerCased}`)
@@ -120,16 +124,16 @@ export default function Menu() {
   }
 
   return (
-    <section id='Menu'>
+    <nav id='menu'>
       <MyTabs
         orientation='horizontal'
         value={activeTabIndex}
         onChange={handleTabSwitch}
-        aria-label='home menu tabs'>
+        aria-label='navigation'>
         {['HOME', 'WORK', 'BLOG', 'MAIL'].map((arrayItem, index) =>
           LinkTab(arrayItem, index)
         )}
       </MyTabs>
-    </section>
+    </nav>
   )
 }

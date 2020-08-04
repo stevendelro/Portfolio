@@ -1,18 +1,18 @@
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import AppBar from '@material-ui/core/AppBar'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
-import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
-import MailOutlineOutlinedIcon from '@material-ui/icons/MailOutlineOutlined';
-import LibraryBooksOutlinedIcon from '@material-ui/icons/LibraryBooksOutlined';
+import LibraryBooksOutlinedIcon from '@material-ui/icons/LibraryBooksOutlined'
+import MailOutlineOutlinedIcon from '@material-ui/icons/MailOutlineOutlined'
 import WbIncandescentIcon from '@material-ui/icons/WbIncandescent'
 import WbIncandescentOutlinedIcon from '@material-ui/icons/WbIncandescentOutlined'
 import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined'
 
 const useStyles = makeStyles({
-  MobileNav__root: {
+  mobileNav__ROOT: {
     width: '100vw',
     top: 'auto',
     bottom: 0,
@@ -43,12 +43,10 @@ const MyBottomNavAction = withStyles(theme => ({
         ? theme.palette.secondary.main
         : theme.palette.primary.main,
   },
-  /* Pseudo-class applied to the root element if `showLabel={false}` and not selected. */
-  iconOnly: {},
-  /* Styles applied to the label's span element. */
   label: {
     fontFamily: theme.typography.fontFamily,
     fontSize: theme.typography.pxToRem(12),
+    /* Styles applied to the label's span element. */
     '&$selected': {
       fontSize: theme.typography.pxToRem(14),
       color:
@@ -123,8 +121,8 @@ export default function MobileNav({ darkMode, setDarkMode }) {
   }
 
   return (
-    <nav id='MobileNav'>
-      <AppBar className={classes.MobileNav__root} position='fixed'>
+    <nav id='mobileNav'>
+      <AppBar className={classes.mobileNav__ROOT} position='fixed'>
         <BottomNavigation
           value={activeTabIndex}
           onChange={(event, selectedOption) => {
