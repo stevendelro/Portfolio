@@ -67,7 +67,7 @@ Project Component API
 
 export const weathernautInfo = {
   name: 'Weathernaut',
-  imagePath: '/weathernaut.png',
+  imagePath: '/weathernaut.webp',
   website: 'https://weathernaut.now.sh',
   github: 'https://github.com/stevendelro/Weathernaut',
   gitUsername: 'stevendelro',
