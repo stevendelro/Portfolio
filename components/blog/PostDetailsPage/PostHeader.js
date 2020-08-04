@@ -5,20 +5,20 @@ import Typography from '@material-ui/core/Typography'
 import AvatarStamp from '../../AvatarStamp'
 
 const useStyles = makeStyles(theme => ({
-  rootPostHeader: {
+  postHeader__ROOT: {
     margin: theme.spacing(4, 0, 7, 0),
   },
-  title: {
+  postHeader__title: {
     marginTop: theme.spacing(2),
     [theme.breakpoints.down('xs')]: {
       fontWeight: 500,
     },
   },
-  excerpt: {
+  postHeader__excerpt: {
     marginBottom: theme.spacing(3),
     fontSize: '1.2rem',
   },
-  divider: {
+  postHeader__divider: {
     margin: theme.spacing(1, 0),
   },
 }))
@@ -32,22 +32,22 @@ export default function PostHeader({
 }) {
   const classes = useStyles()
   return (
-    <header id='PostDetailsPage__Header' className={classes.rootPostHeader}>
+    <header id='postDetailsPage__Header' className={classes.postHeader__ROOT}>
       <Typography
-        className={classes.title}
+        className={classes.postHeader__title}
         variant='h3'
         component='h1'
         gutterBottom>
         {title}
       </Typography>
       <Typography
-        className={classes.excerpt}
+        className={classes.postHeader__excerpt}
         color='textSecondary'
         variant='body2'
         component='p'>
         {excerpt}
       </Typography>
-      <Divider className={classes.divider} />
+      <Divider className={classes.postHeader__divider} />
       <AvatarStamp author={author} date={date} readingTime={readingTime} />
     </header>
   )

@@ -3,7 +3,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Paper from '@material-ui/core/Paper'
 
 const useStyles = makeStyles(theme => ({
-  paper: {
+  postImage__imageContainer: {
     borderRadius: 0,
     height: '50vw',
     marginBottom: theme.spacing(6),
@@ -16,10 +16,9 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down('xs')]: {
       width: '100vw',
-      // overflow: 'hidden'
     },
   },
-  image: {
+  postImage__image: {
     width: '100%',
     height: '100%',
   },
@@ -28,10 +27,13 @@ const useStyles = makeStyles(theme => ({
 export default function PostImage({ title, coverImage }) {
   const classes = useStyles()
   return (
-    <section id='PostDetailsPage__Image'>
-      <Paper as='figure' className={classes.paper} elevation={0}>
+    <section id='postDetailsPage__Image'>
+      <Paper
+        as='figure'
+        className={classes.postImage__imageContainer}
+        elevation={0}>
         <CardMedia
-          className={classes.image}
+          className={classes.postImage__image}
           title={title}
           image={coverImage.url}
         />

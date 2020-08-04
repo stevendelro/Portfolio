@@ -4,23 +4,23 @@ import Container from '@material-ui/core/Container'
 import ErrorPage from 'next/error'
 import Grid from '@material-ui/core/Grid'
 import Head from 'next/head'
+import Typography from '@material-ui/core/Typography'
 
 import { getPostAndMorePosts, getAllPostsWithSlug } from '../api/contentful'
 import PostBody from '../../components/blog/PostDetailsPage/PostBody'
+import PostDetailsPageList from '../../components/blog/Thumbs/PostDetailsPageList'
 import PostHeader from '../../components/blog/PostDetailsPage/PostHeader'
 import PostImage from '../../components/blog/PostDetailsPage/PostImage'
-import PostTitle from '../../components/blog/PostDetailsPage/PostTitle'
 import PreviewAlert from '../../components/blog/PreviewAlert'
-import PostDetailsPageList from '../../components/blog/Thumbs/PostDetailsPageList'
 
 const useStyles = makeStyles(theme => ({
-  rootPostDetailsPage: {
+  postDetailsPage__ROOT: {
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
         : theme.palette.common.defaultLightBackground,
   },
-  header: {
+  postDetailsPage__header: {
     padding: theme.spacing(2),
     [theme.breakpoints.only('sm')]: {
       padding: theme.spacing(0),
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(3, 3, 0, 3),
     },
   },
-  body: {
+  postDetailsPage__body: {
     padding: theme.spacing(3),
   },
 }))
@@ -45,14 +45,18 @@ export default function PostDetailsPage({ post, morePosts, preview }) {
   return (
     <>
       {router.isFallback ? (
-        <PostTitle>Loading…</PostTitle>
+        <Typography variant='h1' component='h2' gutterBottom>
+          Loading…
+        </Typography>
       ) : (
         <>
           <Head>
             <title>Blog | {post.title}</title>
             <meta property='og:image' content={post.coverImage.url} />
           </Head>
-          <article id='PostDetailsPage' className={classes.rootPostDetailsPage}>
+          <article
+            id='postDetailsPage__ROOT'
+            className={classes.postDetailsPage__ROOT}>
             {preview ? <PreviewAlert /> : null}
             <Grid
               container
@@ -60,7 +64,7 @@ export default function PostDetailsPage({ post, morePosts, preview }) {
               justify='center'
               alignItems='center'>
               <Grid
-                className={classes.header}
+                className={classes.postDetailsPage__header}
                 item
                 xs={12}
                 sm={8}
@@ -91,7 +95,7 @@ export default function PostDetailsPage({ post, morePosts, preview }) {
               alignItems='center'>
               <Grid
                 item
-                className={classes.body}
+                className={classes.postDetailsPage__body}
                 xs={12}
                 sm={10}
                 md={8}
@@ -102,8 +106,8 @@ export default function PostDetailsPage({ post, morePosts, preview }) {
             </Grid>
           </article>
           <article
-            id='PostDetailsPageList'
-            className={classes.rootPostDetailsPage}>
+            id='postDetailsPage__list'
+            className={classes.postDetailsPage__ROOT}>
             <Container>
               {morePosts && morePosts.length > 0 && (
                 <PostDetailsPageList posts={morePosts} />
