@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography'
 
 import { getPostAndMorePosts, getAllPostsWithSlug } from '../api/contentful'
 import PostBody from '../../components/blog/PostDetailsPage/PostBody'
-import PostDetailsPageList from '../../components/blog/Thumbs/PostDetailsPageList'
+import PostDetailsPageList from '../../components/blog/PostLists/PostDetailsList'
 import PostHeader from '../../components/blog/PostDetailsPage/PostHeader'
 import PostImage from '../../components/blog/PostDetailsPage/PostImage'
 import PreviewAlert from '../../components/blog/PreviewAlert'

@@ -3,12 +3,8 @@ import MuiAlert from '@material-ui/lab/Alert'
 import React from 'react'
 import Snackbar from '@material-ui/core/Snackbar'
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant='filled' {...props} />
-}
-
 const useStyles = makeStyles(theme => ({
-  root: {
+  previewAlert__ROOT: {
     width: '100%',
     '& > * + *': {
       marginTop: theme.spacing(2),
@@ -16,11 +12,14 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+function Alert(props) {
+  return <MuiAlert elevation={6} variant='filled' {...props} />
+}
+
 export default function PreviewAlert() {
   const classes = useStyles()
-
   return (
-    <div className={classes.root}>
+    <section className={classes.previewAlert__ROOT}>
       <Snackbar
         open={true}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
@@ -28,6 +27,6 @@ export default function PreviewAlert() {
           PREVIEW MODE
         </Alert>
       </Snackbar>
-    </div>
+    </section>
   )
 }

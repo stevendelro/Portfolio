@@ -2,51 +2,64 @@ import { makeStyles } from '@material-ui/core/styles'
 import Head from 'next/head'
 
 import { getAllPostsForHome } from '../api/contentful'
-import HeroPost from '../../components/blog/FeaturedPost/FeaturedPost'
-import MainBlogList from '../../components/blog/Thumbs/MainBlogList'
+import FeaturedPost from '../../components/blog/FeaturedPost'
+import MainBlogList from '../../components/blog/PostLists/BlogIndexList'
 import PageIntro from '../../components/PageIntro'
 
 const useStyles = makeStyles(theme => ({
-  blogIndex__ROOT: {
+  blogIndexPage__ROOT: {
     minHeight: '100vh',
     backgroundColor:
-    theme.palette.type === 'dark'
-      ? theme.palette.common.defaultDarkBackground
-      : theme.palette.common.defaultLightBackground,
+      theme.palette.type === 'dark'
+        ? theme.palette.common.defaultDarkBackground
+        : theme.palette.common.defaultLightBackground,
   },
 }))
 
+const pageIntroParagraph = `
+I'm an avid writer. Below, you'll find a few pieces that I'm particularly
+proud of. Some pieces are centered around coding. Others have nothing to
+do with code focus on my thoughts and ideas. All of it was written by me.
+`
+
 export default function BlogIndex({ allPosts }) {
   const classes = useStyles()
-  const heroPost = allPosts[0]
+  const featuredPost = allPosts[0]
   const morePosts = allPosts.slice(1)
-  const heroParagraph = `
-  I'm an avid writer. Below, you'll find a few pieces that I'm particularly
-  proud of. Some pieces are centered around coding. Otherßs have nothing to
-  do with code focus on my thoughts and ideas. All of it was written by me.
-  `
+  const {
+    title,
+    coverImage,
+    date,
+    author,
+    slug,
+    excerpt,
+    stats,
+  } = featuredPost
+
   return (
     <>
       <Head>
         <title>Steven's Blog</title>
         <meta property='og:title' content="Steven's Blog" />
       </Head>
-      <main className={classes.blogIndex__ROOT}>
-      <PageIntro title='Blog' paragraph={heroParagraph} />
-        {heroPost && (
-          <HeroPost
-            title={heroPost.title}
-            coverImage={heroPost.coverImage.url}
-            date={heroPost.date}
-            author={heroPost.author}
-            slug={heroPost.slug}
-            excerpt={heroPost.excerpt}
-            readingTime={heroPost.stats.text}
-            titlePosition='right'
-          />
-        )}
-        {morePosts.length > 0 && <MainBlogList posts={morePosts} />}
-      </main>
+      <div className={classes.blogIndexPage__ROOT}>
+        <PageIntro title='Blog' paragraph={pageIntroParagraph} />
+        <main>
+          {featuredPost && (
+            <FeaturedPost
+              title={title}
+              coverImage={coverImage.url}
+              date={date}
+              author={author}
+              slug={slug}
+              excerpt={excerpt}
+              readingTime={stats.text}
+              titlePosition='right' // this can also be 'left' if needed for different compositions in the future.
+            />
+          )}
+          {morePosts.length > 0 && <MainBlogList posts={morePosts} />}
+        </main>
+      </div>
     </>
   )
 }
@@ -57,3 +70,8 @@ export async function getStaticProps({ preview = false }) {
     props: { preview, allPosts },
   }
 }
+
+/**
+ * More info on preview mode can be found here:
+ * https://nextjs.org/docs/advanced-features/preview-mode#step-2-update-getstaticprops
+ */

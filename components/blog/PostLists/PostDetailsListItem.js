@@ -8,21 +8,27 @@ import CustomDate from '../../CustomDate'
 import MuiLink from '../../MuiLink'
 
 const useStyles = makeStyles(theme => ({
-  vListItem__imageContainer: {
+  /************************************
+   *********** IMAGE SIDE *************
+   ************************************/
+  postDetailsListItem__image_container: {
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
   },
-  vListItem__imageContainer_image: {
+  postDetailsListItem__image: {
     cursor: 'pointer',
     paddingTop: '56.25%', // 16:9
     borderRadius: 5,
   },
-  vListItem__textContainer: {
+  /************************************
+   *********** TEXT SIDE **************
+   ************************************/
+  postDetailsListItem__text_container: {
     flexGrow: 1,
     padding: theme.spacing(3, 1, 1, 1),
   },
-  vListItem__textContainer_title: {
+  postDetailsListItem__text_title: {
     '&:hover': {
       textDecoration: 'none',
       color:
@@ -31,14 +37,14 @@ const useStyles = makeStyles(theme => ({
           : theme.palette.secondary.main,
     },
   },
-  vListItem__textContainer_date: {
+  postDetailsListItem__text_date: {
     marginBottom: theme.spacing(3),
   },
-  vListItem__textContainer_readingTime: {
+  postDetailsListItem__text_readingTime: {
     lineHeight: '.1rem',
   },
 }))
-export default function VerticalListItem({
+export default function PostDetailListItem({
   title,
   coverImage,
   date,
@@ -48,20 +54,31 @@ export default function VerticalListItem({
 }) {
   const classes = useStyles()
   return (
-    <article id='PostDetailsPage__V.Preview'>
-      {/* IMAGE */}
-      <Paper className={classes.vListItem__imageContainer} elevation={3}>
-        <CardMedia
-          className={classes.vListItem__imageContainer_image}
-          image={coverImage}
-          title={title}
-        />
+    <article id='postDetailsListItem'>
+      {/************************************
+       *********** IMAGE SIDE *************
+       ************************************/}
+      <Paper
+        className={classes.postDetailsListItem__image_container}
+        elevation={3}>
+        <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
+          <CardMedia
+            className={classes.postDetailsListItem__image}
+            image={coverImage}
+            title={title}
+          />
+        </MuiLink>
       </Paper>
-      <Box className={classes.vListItem__textContainer}>
-        {/* TITLE */}
+      {/************************************
+       *********** TEXT SIDE **************
+       ************************************/}
+      <Box
+        id='postDetailsListItem__text'
+        className={classes.postDetailsListItem__text_container}>
+        {/********** TITLE ***********/}
         <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
           <Typography
-            className={classes.vListItem__textContainer_title}
+            className={classes.postDetailsListItem__text_title}
             align='left'
             component='h2'
             variant='h4'>
@@ -69,15 +86,15 @@ export default function VerticalListItem({
           </Typography>
         </MuiLink>
 
-        {/* DATE AND READING TIME */}
+        {/******  DATE • READING TIME *******/}
         <Typography
-          className={classes.vListItem__textContainer_date}
+          className={classes.postDetailsListItem__text_date}
           variant='overline'
           align='left'
           display='block'>
           <CustomDate dateString={date} />
           <Typography
-            className={classes.vListItem__textContainer_readingTime}
+            className={classes.postDetailsListItem__text_readingTime}
             align='left'
             variant='overline'
             color='textSecondary'
@@ -88,7 +105,7 @@ export default function VerticalListItem({
           </Typography>
         </Typography>
 
-        {/* EXCERPT */}
+        {/************ EXCERPT ************/}
         <Typography variant='body2' color='textSecondary' align='left'>
           {excerpt}
         </Typography>

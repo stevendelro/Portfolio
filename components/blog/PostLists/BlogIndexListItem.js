@@ -9,7 +9,7 @@ import CustomDate from '../../CustomDate'
 import MuiLink from '../../MuiLink'
 
 const useStyles = makeStyles(theme => ({
-  hListItem__mainContainer: {
+  blogIndexListItem__ROOT: {
     width: '100%',
     minHeight: 280,
     padding: theme.spacing(2, 0),
@@ -17,8 +17,10 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(0),
     },
   },
-  // >>>>>TEXT AREA<<<<<<
-  hListItem__textContainer: {
+  /************************************
+   *********** TEXT SIDE **************
+   ************************************/
+  blogIndexListItem__text_container: {
     textAlign: 'center',
     padding: theme.spacing(0, 2, 2, 2),
     [theme.breakpoints.down('xs')]: {
@@ -26,10 +28,10 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(3),
     },
   },
-  hListItem__textContainer_excerpt: {
+  blogIndexListItem__text_excerpt: {
     textAlign: 'center',
   },
-  hListItem__textContainer_title: {
+  blogIndexListItem__text_title: {
     '&:hover': {
       textDecoration: 'none',
       color:
@@ -38,8 +40,10 @@ const useStyles = makeStyles(theme => ({
           : theme.palette.secondary.main,
     },
   },
-  // >>>>>IMAGE AREA<<<<<
-  hListItem__imageContainer: {
+  /************************************
+   *********** IMAGE SIDE *************
+   ************************************/
+  blogIndexListItem__image_container: {
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
@@ -50,7 +54,7 @@ const useStyles = makeStyles(theme => ({
       minWidth: '100%',
     },
   },
-  hListItem__imageContainer_image: {
+  blogIndexListItem__image: {
     borderRadius: 5,
     cursor: 'pointer',
     [theme.breakpoints.up('xs')]: {
@@ -60,7 +64,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function HorizontalListItem({
+export default function BlogIndexListItem({
   title,
   coverImage,
   date,
@@ -76,22 +80,28 @@ export default function HorizontalListItem({
     <article>
       <Grid
         container
-        className={classes.hListItem__mainContainer}
+        className={classes.blogIndexListItem__ROOT}
         direction={isTinyScreenDown ? 'column-reverse' : 'row'}
         justify='center'
         alignItems={isTinyScreenDown ? 'center' : 'flex-start'}>
-        {/* >>>> TEXT SIDE <<<< */}
-        <Grid item xs={12} sm={5} className={classes.hListItem__textContainer}>
-          {/* TITLE */}
+        {/************************************
+         *********** TEXT SIDE **************
+         ************************************/}
+        <Grid
+          item
+          xs={12}
+          sm={5}
+          className={classes.blogIndexListItem__text_container}>
+          {/********** TITLE ***********/}
           <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
             <Typography
-              className={classes.hListItem__textContainer_title}
+              className={classes.blogIndexListItem__text_title}
               component='h2'
               variant='h4'>
               {title}
             </Typography>
           </MuiLink>
-          {/* DATE • READING TIME */}
+          {/******  DATE • READING TIME *******/}
           <Typography variant='overline' display='block'>
             <CustomDate dateString={date} />
             <Typography
@@ -103,21 +113,27 @@ export default function HorizontalListItem({
               • {readingTime}
             </Typography>
           </Typography>
-          {/* EXCERPT */}
+          {/************ EXCERPT ************/}
           <Typography
-            className={classes.hListItem__textContainer_excerpt}
+            className={classes.blogIndexListItem__text_excerpt}
             variant='body2'
             color='textSecondary'
             align='left'>
             {excerpt}
           </Typography>
         </Grid>
-        {/* >>>> IMAGE SIDE <<<<*/}
-        <Grid item xs={12} sm={7} className={classes.hListItem__imageContainer}>
+        {/************************************
+         *********** IMAGE SIDE *************
+         ************************************/}
+        <Grid
+          item
+          xs={12}
+          sm={7}
+          className={classes.blogIndexListItem__image_container}>
           <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' naked>
             <Paper elevation={3}>
               <CardMedia
-                className={classes.hListItem__imageContainer_image}
+                className={classes.blogIndexListItem__image}
                 image={coverImage}
                 title={title}
               />
