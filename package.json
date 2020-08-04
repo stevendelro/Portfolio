@@ -15,6 +15,8 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@octokit/auth": "^2.0.0",
     "@octokit/request": "^5.4.7",
+    "@sendgrid/mail": "^7.2.2",
+    "axios": "^0.19.2",
     "babel-plugin-prismjs": "^2.0.1",
     "clsx": "latest",
     "contentful": "^7.14.5",

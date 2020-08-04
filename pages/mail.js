@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
+import axios from 'axios'
 
 import { MailDark, MailLight } from '../components/svg/Mail'
 import PageIntro from '../components/PageIntro'
@@ -74,7 +75,32 @@ const initialValues = {
   message: '',
 }
 
-const onSubmit = values => console.log('Form Data: ', values)
+// const onSubmit = (values, onSubmitProps) => {
+//   const { firstName, lastName, email, message } = values
+//   Email.send({
+//     Host: 'smtp.sendgrid.net',
+//     Username: 'apikey',
+//     Password: process.env.SENDGRID_API_KEY,
+//     To: process.env.PERSONAL_EMAIL,
+//     From: process.env.PERSONAL_EMAIL,
+//     Subject: `PORTFOLIO: ${firstName} ${lastName} sent you a message.`,
+//     Body: `Email: ${email}. Message: ${message}`,
+//   }).then(message => alert(message))
+//   onSubmitProps.resetForm()
+// }
+const onSubmit = async (values, onSubmitProps) => {
+  await fetch('/api/mail', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      firstName: values.firstName,
+      lastName: values.lastName,
+      email: values.email,
+      message: values.message,
+    }),
+  })
+  onSubmitProps.resetForm()
+}
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required('Required'),
@@ -99,7 +125,6 @@ export default function Mail() {
     handleSubmit,
     getFieldProps,
   } = formik
-
   return (
     <article id='MainMailPageBody' className={classes.rootMailPage}>
       <PageIntro title='Mail' paragraph={heroParagraph} />
