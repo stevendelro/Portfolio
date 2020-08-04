@@ -1,12 +1,13 @@
-import Head from 'next/head'
 import { makeStyles } from '@material-ui/core/styles'
+import Head from 'next/head'
+
 import { getAllPostsForHome } from '../api/contentful'
-import HeroPost from '../../components/blog/HeroPost/HeroPost'
+import HeroPost from '../../components/blog/FeaturedPost/FeaturedPost'
 import MainBlogList from '../../components/blog/Thumbs/MainBlogList'
 import PageIntro from '../../components/PageIntro'
 
 const useStyles = makeStyles(theme => ({
-  rootBlogPage: {
+  blogIndex__ROOT: {
     minHeight: '100vh',
     backgroundColor:
     theme.palette.type === 'dark'
@@ -21,7 +22,7 @@ export default function BlogIndex({ allPosts }) {
   const morePosts = allPosts.slice(1)
   const heroParagraph = `
   I'm an avid writer. Below, you'll find a few pieces that I'm particularly
-  proud of. Some pieces are centered around coding. Others have nothing to
+  proud of. Some pieces are centered around coding. Otherßs have nothing to
   do with code focus on my thoughts and ideas. All of it was written by me.
   `
   return (
@@ -30,7 +31,7 @@ export default function BlogIndex({ allPosts }) {
         <title>Steven's Blog</title>
         <meta property='og:title' content="Steven's Blog" />
       </Head>
-      <main className={classes.rootBlogPage}>
+      <main className={classes.blogIndex__ROOT}>
       <PageIntro title='Blog' paragraph={heroParagraph} />
         {heroPost && (
           <HeroPost

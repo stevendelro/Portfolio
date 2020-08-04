@@ -3,18 +3,18 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-import DateReadingTime from './DateReadingTime'
+import DateReadingTime from './TitleDateTime'
 import Excerpt from './Excerpt'
 import Image from './Image'
 
 const useStyles = makeStyles(theme => ({
-  rootHeroPost: {
-    marginBottom: theme.spacing(10)
+  featuredPost__ROOT: {
+    marginBottom: theme.spacing(10),
   },
-  imageContainer: {
-    padding: theme.spacing(0, 7)
+  featuredPost__image: {
+    padding: theme.spacing(0, 7),
   },
-  HeroPost__textArea: {
+  featuredPost__text: {
     paddingBottom: theme.spacing(2),
     [theme.breakpoints.down('md')]: {
       marginBottom: theme.spacing(5),
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function HeroPost({
+export default function FeaturedPost({
   title,
   coverImage,
   date,
@@ -45,11 +45,10 @@ export default function HeroPost({
 
   // Decalred to pass down properties before arranging.
   const PostExcerpt = (
-    <Excerpt  titlePosition={titlePosition} excerpt={excerpt} />
+    <Excerpt titlePosition={titlePosition} excerpt={excerpt} />
   )
   const TimeStamp = (
     <DateReadingTime
-
       slug={slug}
       title={title}
       date={date}
@@ -85,18 +84,18 @@ export default function HeroPost({
   }
 
   return (
-    <article className={classes.rootHeroPost}>
+    <article id='featuredPost' className={classes.featuredPost__ROOT}>
       {isSmallScreen || isTinyScreen ? (
         <Image slug={slug} coverImage={coverImage} title={title} />
       ) : null}
-      <Container className={classes.imageContainer} maxWidth='lg'>
+      <Container className={classes.featuredPost__image} maxWidth='lg'>
         {isSmallScreenUp && !isSmallScreen ? (
           <Image slug={slug} coverImage={coverImage} title={title} />
         ) : null}
         <section>
           <Grid
             container
-            className={classes.HeroPost__textArea}
+            className={classes.featuredPost__text}
             direction='row'
             justify='space-between'
             alignItems={isLargeScreenUp ? 'center' : 'flex-start'}>

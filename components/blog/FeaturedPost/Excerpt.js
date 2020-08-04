@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
-  Excerpt__root: {
+  excerpt: {
     padding: theme.spacing(2),
     fontSize: '1.3rem',
     [theme.breakpoints.only('sm')]: {
@@ -20,7 +20,7 @@ export default function Excerpt({ titlePosition, excerpt }) {
   return (
     <Grid item sm={7}>
       <Typography
-        className={classes.Excerpt__root}
+        className={classes.excerpt}
         variant='body2'
         color='textSecondary'
         align={titlePosition}

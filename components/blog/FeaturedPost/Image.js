@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Paper from '@material-ui/core/Paper'
 
 const useStyles = makeStyles(theme => ({
-  Image__root: {
+  FeaturedPost_Image__ROOT: {
     flexGrow: 1,
     paddingTop: '1rem',
     marginBottom: '3rem',
@@ -34,7 +34,7 @@ export default function Image({ slug, coverImage, title }) {
       <Link as={`/blog/${slug}`} href='/blog/[slug]'>
         <Paper elevation={5}>
           <CardMedia
-            className={classes.Image__root}
+            className={classes.FeaturedPost_Image__ROOT}
             image={coverImage}
             title={title}
           />

@@ -9,7 +9,7 @@ import MuiLink from '../../MuiLink'
 
 const useStyles = makeStyles(theme => ({
   /* >>>>>TITLE<<<<< */
-  postTitle: {
+  title: {
     [theme.breakpoints.down('sm')]: {
       textAlign: 'center',
       padding: theme.spacing(0, 1),
@@ -22,31 +22,31 @@ const useStyles = makeStyles(theme => ({
           : theme.palette.secondary.main,
     },
   },
-  postTitle_L: {
+  title_left: {
     textAlign: 'right',
     padding: theme.spacing(2, 2, 0, 0),
     [theme.breakpoints.down('xs')]: {
       textAlign: 'center',
-      padding: theme.spacing(0)
+      padding: theme.spacing(0),
     },
   },
-  postTitle_R: {
+  title_Right: {
     textAlign: 'left',
     padding: theme.spacing(2, 0, 0, 2),
     [theme.breakpoints.down('xs')]: {
       textAlign: 'center',
-      padding: theme.spacing(0)
+      padding: theme.spacing(0),
     },
 
     /* >>>>>DATE/READING TIME<<<<< */
   },
-  dateReadingTime: {
+  dateTime: {
     [theme.breakpoints.down('xs')]: {
       fontSize: '.7rem',
       padding: 0,
     },
   },
-  dateReadingTime_L: {
+  dateTime_left: {
     [theme.breakpoints.up('xs')]: {
       padding: theme.spacing(1, 2, 0, 0),
     },
@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(0, 2, 0, 0),
     },
   },
-  dateReadingTime_R: {
+  dateTime_right: {
     [theme.breakpoints.up('xs')]: {
       padding: theme.spacing(1, 0, 0, 2),
     },
@@ -65,9 +65,9 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function DateReadingTime({
+export default function TitleDateTime({
   slug,
-  title,
+  title: postTitle,
   date,
   readingTime,
   titlePosition,
@@ -75,28 +75,28 @@ export default function DateReadingTime({
   const theme = useTheme()
   const classes = useStyles()
   const {
-    postTitle,
-    postTitle_L,
-    postTitle_R,
-    dateReadingTime,
-    dateReadingTime_L,
-    dateReadingTime_R,
+    title,
+    title_left,
+    title_Right,
+    dateTime,
+    dateTime_left,
+    dateTime_right,
   } = classes
 
   const postOrientation = titlePosition.toLowerCase()
   const isSmallScreenOnly = useMediaQuery(theme.breakpoints.only('sm'))
   const isTinyScreenOnly = useMediaQuery(theme.breakpoints.only('xs'))
 
-  const postTitleStyles = clsx({
-    [postTitle]: true,
-    [postTitle_L]: postOrientation === 'left' && true,
-    [postTitle_R]: postOrientation === 'right' && true,
+  const titleStyles = clsx({
+    [title]: true,
+    [title_left]: postOrientation === 'left' && true,
+    [title_Right]: postOrientation === 'right' && true,
   })
 
   const drtStyles = clsx({
-    [dateReadingTime]: true,
-    [dateReadingTime_L]: postOrientation === 'left' && true,
-    [dateReadingTime_R]: postOrientation === 'right' && true,
+    [dateTime]: true,
+    [dateTime_left]: postOrientation === 'left' && true,
+    [dateTime_right]: postOrientation === 'right' && true,
   })
 
   const flexed = postOrientation === 'right' ? 'flex-start' : 'flex-end'
@@ -110,9 +110,9 @@ export default function DateReadingTime({
         <Grid item>
           <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
             <Typography
-              className={postTitleStyles}
+              className={titleStyles}
               variant={isSmallScreenOnly ? 'h4' : 'h3'}>
-              {title}
+              {postTitle}
             </Typography>
           </MuiLink>
         </Grid>
