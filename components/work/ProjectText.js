@@ -111,7 +111,7 @@ function ProjectText({ imageRight, isSmallScreen, rowDirection, projectInfo }) {
       <Box>
         <MuiLink
           style={{ textDecoration: 'none' }}
-          as={`/work/${gitReponame}`}
+          as={`/work/${name}`}
           href='/work/[projectDetails]'
           naked>
           <Typography
