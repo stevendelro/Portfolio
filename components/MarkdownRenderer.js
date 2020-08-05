@@ -46,12 +46,6 @@ const useStyles = makeStyles(theme => ({
       borderRadius: 2,
     },
 
-    '& code[class*="language-"]': {
-      backgroundColor: '#272822',
-      color: '#fff',
-      lineHeight: 1.5, // Avoid layout jump after hydration (style injected by prism)
-    },
-
     /** CODE BLOCK RESPONSIVENESS OVERKILL **/
 
     '& pre code': {
@@ -122,9 +116,19 @@ const useStyles = makeStyles(theme => ({
      ********** INLINE CODE ***********
      **********************************/
 
+    '& p code[class*="language-"]': {
+      backgroundColor: '#272822',
+      color: '#fff',
+      lineHeight: 1.5, // Avoid layout jump after hydration (style injected by prism)
+    },
+    '& p code[class*="language-"]': {
+      // inline code within lists
+    },
+
     '& p code': {
       direction: 'ltr',
       lineHeight: 1.4,
+
       display: 'inline-block',
       fontFamily: 'Fira Code, "Liberation Mono", Menlo, Courier, monospace',
       WebkitFontSmoothing: 'subpixel-antialiased',
@@ -132,8 +136,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: '.85em',
       fontStyle: 'bold',
       border: 0,
-      borderRadius: 4,
-      boxShadow: theme.shadows[1],
+      borderRadius: 1,
     },
 
     /**********************************
