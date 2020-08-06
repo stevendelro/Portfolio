@@ -30,10 +30,16 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.between(600, 700)]: {
       fontSize: theme.typography.pxToRem(69),
     },
-    [theme.breakpoints.down('xs')]: {
-      fontSize: theme.typography.pxToRem(60),
+    [theme.breakpoints.between(500, 600)]: {
+      fontSize: theme.typography.pxToRem(65),
     },
-    [theme.breakpoints.down(340)]: {
+    [theme.breakpoints.between(400, 500)]: {
+      fontSize: theme.typography.pxToRem(58),
+    },
+    [theme.breakpoints.between(350, 400)]: {
+      fontSize: theme.typography.pxToRem(53),
+    },
+    [theme.breakpoints.down(350)]: {
       fontSize: theme.typography.pxToRem(40),
     },
     [theme.breakpoints.down(280)]: {
