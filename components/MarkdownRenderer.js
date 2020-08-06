@@ -196,7 +196,7 @@ const useStyles = makeStyles(theme => ({
     },
     '& h6': {
       ...theme.typography.caption,
-      margin: '32px 0 16px',
+      margin: '-16px 0 32px',
       fontFamily: `${headingFontFamily}, "Courier New", "serif"`,
       fontWeight: headerFontWeight,
       color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
