@@ -37,7 +37,8 @@ the two big pages in this portfolio are Work and Blog. I customized the
 markdown renderer that Material UI uses for its official docs in order to
 render the markdown from each project’s readme. Blog uses Contentful as a
 headless CMS and its design was heavily influenced by Ghost and Medium.
-All vector art was created from Katerina Limpitsouni, over at undraw.co.
+All vector art comes from Katerina Limpitsouni's Undraw.co community. Kudos
+to her, for real. An open source community for designers. What a great idea.
 `
 const partyText = `
 I’m a people person. You could put me in a multitude of situations, with

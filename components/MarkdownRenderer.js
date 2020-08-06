@@ -18,6 +18,7 @@ const headerFontWeight = 500
 const bodyTextFontFamily = undefined // if undefined, use Material UI theme 'body2' styles. => 'Roboto Slab[200]'
 const bodyTextFontWeight = 300
 const tableFontFamily = 'Roboto'
+const maxWidthBodyText= '590px'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -192,8 +193,8 @@ const useStyles = makeStyles(theme => ({
       margin: '32px 0 16px',
       fontFamily: `${headingFontFamily}, "Courier New", "serif"`,
       fontWeight: headerFontWeight,
-      color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
-    },
+
+    },color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
     '& h6': {
       ...theme.typography.caption,
       margin: '-16px 0 32px',
@@ -209,9 +210,9 @@ const useStyles = makeStyles(theme => ({
       fontWeight: bodyTextFontWeight,
       lineHeight: 1.5,
       marginTop: 0,
-      marginBottom: 16,
+      marginBottom: 16,color: theme.palette.type === 'dark' ? '#fff' : '#000',
 
-      maxWidth: '560px', // <<< Psuedo Text Container - 1 of 4
+      maxWidth: maxWidthBodyText, // <<< Psuedo Text Container - 1 of 4
       [theme.breakpoints.up(730)]: {
         marginLeft: 'auto', // <<< Psuedo Text Container - 1 of 4
         marginRight: 'auto', // <<< Psuedo Text Container - 1 of 4
@@ -219,14 +220,14 @@ const useStyles = makeStyles(theme => ({
     },
     '& ul': {
       paddingLeft: 30,
-      maxWidth: '560px', // <<< Psuedo Text Container - 2 of 4
+      maxWidth: maxWidthBodyText, // <<< Psuedo Text Container - 2 of 4
       [theme.breakpoints.up(730)]: {
         marginLeft: 'auto', // <<< Psuedo Text Container - 2 of 4
         marginRight: 'auto', // <<< Psuedo Text Container - 2 of 4
       },
     },
     '& h1, & h2, & h3, & h4, & h5, & h6': {
-      maxWidth: '560px', // Psuedo Text Container - 3 of 4
+      maxWidth: maxWidthBodyText, // Psuedo Text Container - 3 of 4
       [theme.breakpoints.up(730)]: {
         marginLeft: 'auto', // Psuedo Text Container - 3 of 4
         marginRight: 'auto', // Psuedo Text Container - 3 of 4
@@ -259,7 +260,7 @@ const useStyles = makeStyles(theme => ({
      **********************************/
 
     '& table': {
-      maxWidth: '560px', // <<< Psuedo Text Container - 4 of 4
+      maxWidth: maxWidthBodyText, // <<< Psuedo Text Container - 4 of 4
       [theme.breakpoints.up(730)]: {
         marginLeft: 'auto', // <<< Psuedo Text Container - 4 of 4
         marginRight: 'auto', // <<< Psuedo Text Container - 4 of 4
