@@ -36,6 +36,9 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(3, 3, 0, 3),
     },
   },
+  projectDetailPage__body: {
+    padding: theme.spacing(3),
+  },
   projectDetailPage__demoSourceLinks: {
     padding: theme.spacing(5, 0, 0),
   },
@@ -74,17 +77,15 @@ export default function ProjectDetailsPage({ markdown, repo }) {
         <Grid
           container
           direction='column'
-          justify='space-between'
+          justify='center'
           alignItems='center'>
-          <Grid item xs={12} sm={11}>
-            <Container
-              maxWidth='lg'
-              className={classes.projectDetailPage__container}>
+          <Grid item xs={11} lg={10} xl={7}>
               <ProjectImage
                 title={repo.name}
                 imagePath={weathernautInfo.imagePath}
                 website={repo.website}
               />
+          </Grid>
               <ProjectDescription description={repo.description} />
               <Grid
                 container
@@ -97,9 +98,22 @@ export default function ProjectDetailsPage({ markdown, repo }) {
                   sourceCode={repo.github}
                 />
               </Grid>
-              <ProjectBody content={markdown} />
-            </Container>
-          </Grid>
+              <Grid
+                container
+                direction='column'
+                justify='center'
+                alignItems='center'>
+                <Grid
+                  item
+                  className={classes.projectDetailPage__body}
+                  xs={12}
+                  sm={10}
+                  md={8}
+                  lg={6}
+                  xl={4}>
+                  <ProjectBody content={markdown} />
+                </Grid>
+              </Grid>
         </Grid>
       </article>
     </>
