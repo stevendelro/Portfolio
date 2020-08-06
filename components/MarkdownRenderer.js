@@ -338,6 +338,7 @@ const useStyles = makeStyles(theme => ({
 
     '& img, video': {
       maxWidth: '100%',
+      boxShadow: theme.shadows[7]
     },
     '& img': {
       display: 'inline-block', // Avoid layout jump
