@@ -5,12 +5,12 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import AppBar from '@material-ui/core/AppBar'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
-import LibraryBooksOutlinedIcon from '@material-ui/icons/LibraryBooksOutlined'
+import InsertCommentOutlinedIcon from '@material-ui/icons/InsertCommentOutlined';
 import MailOutlineOutlinedIcon from '@material-ui/icons/MailOutlineOutlined'
+import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import WbIncandescentIcon from '@material-ui/icons/WbIncandescent'
 import WbIncandescentOutlinedIcon from '@material-ui/icons/WbIncandescentOutlined'
 import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined'
-import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 
 const useStyles = makeStyles({
   mobileNav__ROOT: {
@@ -100,7 +100,7 @@ export default function MobileNav(props) {
         icon = <WbIncandescentIcon />
         break
       case 'blog':
-        icon = <LibraryBooksOutlinedIcon />
+        icon = <InsertCommentOutlinedIcon />
         break
       case 'mail':
         icon = <MailOutlineOutlinedIcon />

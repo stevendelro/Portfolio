@@ -29,9 +29,6 @@ const useStyles = makeStyles(theme => ({
   footer__nameDate: {
     paddingTop: theme.spacing(1),
   },
-  footer__divSpacer: {
-    height: 56,
-  },
 }))
 
 export default function MyFooter() {
@@ -57,10 +54,6 @@ export default function MyFooter() {
           </Grid>
         </Grid>
       </AppBar>
-      {/* EMPTY DIV FOR SPACER */}
-      <Hidden smUp>
-        <div className={classes.footer__divSpacer} />
-      </Hidden>
     </footer>
   )
 }

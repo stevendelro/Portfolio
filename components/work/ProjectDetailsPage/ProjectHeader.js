@@ -9,7 +9,10 @@ import CustomDate from '../../CustomDate'
 
 const useStyles = makeStyles(theme => ({
   projectHeader__ROOT: {
-    margin: theme.spacing(4, 0),
+    margin: theme.spacing(4, 0, 4),
+    [theme.breakpoints.down('xs')]: {
+      margin: theme.spacing(8, 0, 4),
+    }
   },
   projectHeader__title: {
     width: '100%',

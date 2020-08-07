@@ -7,6 +7,9 @@ import AvatarStamp from '../../AvatarStamp'
 const useStyles = makeStyles(theme => ({
   postHeader__ROOT: {
     margin: theme.spacing(4, 0, 7, 0),
+    [theme.breakpoints.down('xs')]: {
+      margin: theme.spacing(8, 0, 7, 0),
+    }
   },
   postHeader__title: {
     marginTop: theme.spacing(2),

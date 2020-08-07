@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles'
+import { v4 as uuidv4 } from 'uuid'
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import React from 'react'
@@ -141,6 +142,7 @@ export default function ProjectText({
             return (
               <Grid
                 id={index}
+                key={uuidv4()}
                 item
                 sm={4}
                 md={12}
