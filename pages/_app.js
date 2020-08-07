@@ -53,7 +53,6 @@ export default function MyApp(props) {
           type: darkMode ? 'dark' : 'light',
         },
         typography: {
-
           h1: {
             fontFamily: 'Calistoga',
             color: darkMode ? '#ff9100' : '#144d53',
@@ -86,6 +85,11 @@ export default function MyApp(props) {
     [darkMode]
   )
 
+  // Scroll to the top of the page on nav click.
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [Component])
+
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')
@@ -113,15 +117,15 @@ export default function MyApp(props) {
           <Hidden xsDown>
             <MyAppBar darkMode={darkMode} setDarkMode={setDarkMode} />
           </Hidden>
+          <Hidden smUp>
+            <MobileNav darkMode={darkMode} setDarkMode={setDarkMode} />
+          </Hidden>
           <main className={classes.content}>
             <Hidden xsDown>
               <div className={classes.toolbar} />
             </Hidden>
             <Component {...pageProps} />
             {/* Display bottom AppBar for a better mobile experience */}
-            <Hidden smUp>
-              <MobileNav darkMode={darkMode} setDarkMode={setDarkMode} />
-            </Hidden>
             <MyFooter />
           </main>
         </div>
