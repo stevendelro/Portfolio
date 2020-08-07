@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container'
 import ErrorPage from 'next/error'
 import Grid from '@material-ui/core/Grid'
 import Head from 'next/head'
+import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
 
 import { getPostAndMorePosts, getAllPostsWithSlug } from '../api/contentful'
@@ -15,6 +16,13 @@ import PreviewAlert from '../../components/blog/PreviewAlert'
 
 const useStyles = makeStyles(theme => ({
   postDetailsPage__ROOT: {
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? theme.palette.common.defaultDarkBackground
+        : theme.palette.common.defaultLightBackground,
+  },
+  postDetailsPage__spacer: {
+    flexGrow: 1,
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
@@ -45,9 +53,14 @@ export default function PostDetailsPage({ post, morePosts, preview }) {
   return (
     <>
       {router.isFallback ? (
-        <Typography variant='h1' component='h2' gutterBottom>
-          Loading…
-        </Typography>
+        <Grid
+          container
+          direction='column'
+          justify='space-between'
+          alignItems='center'>
+          <LinearProgress />
+          <div className={classes.postDetailsPage__spacer} />
+        </Grid>
       ) : (
         <>
           <Head>

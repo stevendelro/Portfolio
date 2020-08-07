@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles'
-import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Head from 'next/head'
+import LinearProgress from '@material-ui/core/LinearProgress'
 
 import { getRepositoryNamesForPaths, getProjectDetails } from '../api/github'
 import { weathernautInfo } from './index'
@@ -14,6 +14,13 @@ import ProjectImage from '../../components/work/ProjectDetailsPage/ProjectImage'
 const useStyles = makeStyles(theme => ({
   projectDetailPage__ROOT: {
     paddingBottom: theme.spacing(30),
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? theme.palette.common.defaultDarkBackground
+        : theme.palette.common.defaultLightBackground,
+  },
+  projectDetailPage__loading: {
+    flexGrow: 1,
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
@@ -47,7 +54,7 @@ const useStyles = makeStyles(theme => ({
 export default function ProjectDetailsPage({ markdown, repo }) {
   const classes = useStyles()
   if (!markdown || !repo) {
-    return <div>Loading...</div>
+    return <LinearProgress />
   }
   return (
     <>
@@ -74,46 +81,39 @@ export default function ProjectDetailsPage({ markdown, repo }) {
             />
           </Grid>
         </Grid>
-        <Grid
-          container
-          direction='column'
-          justify='center'
-          alignItems='center'>
+        <Grid container direction='column' justify='center' alignItems='center'>
           <Grid item xs={11} lg={10} xl={7}>
-              <ProjectImage
-                title={repo.name}
-                imagePath={weathernautInfo.imagePath}
-                website={repo.website}
-              />
+            <ProjectImage
+              title={repo.name}
+              imagePath={weathernautInfo.imagePath}
+              website={repo.website}
+            />
           </Grid>
-              <ProjectDescription description={repo.description} />
-              <Grid
-                container
-                className={classes.projectDetailPage__demoSourceLinks}
-                direction='row'
-                justify='center'
-                alignItems='center'>
-                <DemoSourceLinks
-                  liveDemo={repo.website}
-                  sourceCode={repo.github}
-                />
-              </Grid>
-              <Grid
-                container
-                direction='column'
-                justify='center'
-                alignItems='center'>
-                <Grid
-                  item
-                  className={classes.projectDetailPage__body}
-                  xs={12}
-                  sm={10}
-                  md={8}
-                  lg={6}
-                  xl={4}>
-                  <ProjectBody content={markdown} />
-                </Grid>
-              </Grid>
+          <ProjectDescription description={repo.description} />
+          <Grid
+            container
+            className={classes.projectDetailPage__demoSourceLinks}
+            direction='row'
+            justify='center'
+            alignItems='center'>
+            <DemoSourceLinks liveDemo={repo.website} sourceCode={repo.github} />
+          </Grid>
+          <Grid
+            container
+            direction='column'
+            justify='center'
+            alignItems='center'>
+            <Grid
+              item
+              className={classes.projectDetailPage__body}
+              xs={12}
+              sm={10}
+              md={8}
+              lg={6}
+              xl={4}>
+              <ProjectBody content={markdown} />
+            </Grid>
+          </Grid>
         </Grid>
       </article>
     </>

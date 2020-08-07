@@ -93,17 +93,17 @@ export default function MobileNav(props) {
       case 'work':
         icon = <WorkOutlineOutlinedIcon />
         break
-      case 'light':
-        icon = <WbIncandescentOutlinedIcon />
-        break
-      case 'dark':
-        icon = <WbIncandescentIcon />
-        break
       case 'blog':
         icon = <InsertCommentOutlinedIcon />
         break
       case 'mail':
         icon = <MailOutlineOutlinedIcon />
+        break
+      case 'light':
+        icon = <WbIncandescentOutlinedIcon />
+        break
+      case 'dark':
+        icon = <WbIncandescentIcon />
         break
       default:
         break
@@ -112,8 +112,8 @@ export default function MobileNav(props) {
     // Ensure proper tag is active on page refresh
     pathname === '/' && activeTabIndex !== 0 && setActiveTabIndex(0)
     pathname === '/work' && activeTabIndex !== 1 && setActiveTabIndex(1)
-    pathname === '/blog' && activeTabIndex !== 3 && setActiveTabIndex(3)
-    pathname === '/mail' && activeTabIndex !== 4 && setActiveTabIndex(4)
+    pathname === '/blog' && activeTabIndex !== 2 && setActiveTabIndex(2)
+    pathname === '/mail' && activeTabIndex !== 3 && setActiveTabIndex(3)
 
     return (
       <MyBottomNavAction
