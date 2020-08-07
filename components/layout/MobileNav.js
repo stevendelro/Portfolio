@@ -1,6 +1,6 @@
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useState, cloneElement } from 'react'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import AppBar from '@material-ui/core/AppBar'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
@@ -10,14 +10,26 @@ import MailOutlineOutlinedIcon from '@material-ui/icons/MailOutlineOutlined'
 import WbIncandescentIcon from '@material-ui/icons/WbIncandescent'
 import WbIncandescentOutlinedIcon from '@material-ui/icons/WbIncandescentOutlined'
 import WorkOutlineOutlinedIcon from '@material-ui/icons/WorkOutlineOutlined'
+import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 
 const useStyles = makeStyles({
   mobileNav__ROOT: {
     width: '100vw',
-    top: 'auto',
-    bottom: 0,
+    top: 0,
+    bottom: 'auto',
   },
 })
+
+// AppBar will cast a Container shadow when content scrolls under it
+function ElevationScroll({ children }) {
+  const elevationScrollTrigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+  })
+  return cloneElement(children, {
+    elevation: elevationScrollTrigger ? 4 : 0,
+  })
+}
 
 // Custom bottom nav button styles to accomodate darkMode styles
 const MyBottomNavAction = withStyles(theme => ({
@@ -28,6 +40,10 @@ const MyBottomNavAction = withStyles(theme => ({
     padding: '6px 12px 8px',
     minWidth: 64,
     color: theme.palette.text.secondary,
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? theme.palette.common.defaultDarkBackground
+        : theme.palette.common.defaultLightBackground,
     '&$selected': {
       paddingTop: 6,
       color:
@@ -57,7 +73,8 @@ const MyBottomNavAction = withStyles(theme => ({
   },
 }))(props => <BottomNavigationAction {...props} />)
 
-export default function MobileNav({ darkMode, setDarkMode }) {
+export default function MobileNav(props) {
+  const { darkMode, setDarkMode } = props
   const classes = useStyles()
   const router = useRouter()
   const { pathname } = router
@@ -122,24 +139,26 @@ export default function MobileNav({ darkMode, setDarkMode }) {
 
   return (
     <nav id='mobileNav'>
-      <AppBar className={classes.mobileNav__ROOT} position='fixed'>
-        <BottomNavigation
-          value={activeTabIndex}
-          onChange={(event, selectedOption) => {
-            event.preventDefault()
-            setActiveTabIndex(selectedOption)
-            selectedOption === 2 && setDarkMode(!darkMode)
-          }}
-          showLabels={false}>
-          {[
-            'Home',
-            'Work',
-            lightDarkLabel,
-            'Blog',
-            'Mail',
-          ].map((arrayItem, index) => NavLink(arrayItem, index))}
-        </BottomNavigation>
-      </AppBar>
+      <ElevationScroll {...props}>
+        <AppBar className={classes.mobileNav__ROOT} position='fixed'>
+          <BottomNavigation
+            value={activeTabIndex}
+            onChange={(event, selectedOption) => {
+              event.preventDefault()
+              setActiveTabIndex(selectedOption)
+              selectedOption === 2 && setDarkMode(!darkMode)
+            }}
+            showLabels={false}>
+            {[
+              'Home',
+              'Work',
+              lightDarkLabel,
+              'Blog',
+              'Mail',
+            ].map((arrayItem, index) => NavLink(arrayItem, index))}
+          </BottomNavigation>
+        </AppBar>
+      </ElevationScroll>
     </nav>
   )
 }
