@@ -13,6 +13,9 @@ const useStyles = makeStyles(theme => ({
   },
   featuredPost__image: {
     padding: theme.spacing(0, 7),
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing(0, 2)
+    }
   },
   featuredPost__text: {
     paddingBottom: theme.spacing(2),

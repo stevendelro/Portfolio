@@ -10,6 +10,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: '1.1rem',
     },
     [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing(0),
       textAlign: 'center',
     },
   },
