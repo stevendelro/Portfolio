@@ -68,18 +68,19 @@ export const weathernautInfo = {
   github: 'https://github.com/stevendelro/Weathernaut',
   gitUsername: 'stevendelro',
   summary: `
-    This weather app converts location names into coordinates, then it uses
-    those coordinates to fetch current weather data for that location. Styled
-    with Material UI and written in React with hooks.
+    Weathernaut converts location names into coordinates, then it uses
+    those coordinates to fetch current weather data for that location. Built on
+    the NextJS React framework, Weathernaut is serverside rendered and fast.
   `,
   keyFeatures: `
-    Upon page load, the app will ask permission to utilize the browser's
-    Geolocation API. If approved, it will automatically fetch weather data.
-    It's also responsive across all screen widths.
+    With permission, geolocation can be utilized to automatically fetch local
+    weather. Weather data will persist after page refreshes. Typos and misspellings
+    are automatically handled by Mapbox when retrieving coordinates.
   `,
   technologies: `
-    Styled with Material UI. Recharts display chart data. Icons purchased from
-    Lance Snider. Built within the NextJS React Framework.
+    Custom styled Material UI components. Recharts display the chart data.
+    WebGL-powered React suite for displaying the map. And, of course, the
+    entire app has been built on the lightning fast NextJS React framework.
   `,
 }
 
