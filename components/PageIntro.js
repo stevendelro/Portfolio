@@ -51,7 +51,7 @@ export default function PageIntro({ title, paragraph }) {
   const theme = useTheme()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
   return (
-    <header className={classes.PageIntro__root}>
+    <header id='back-to-top-anchor' className={classes.PageIntro__root}>
       <Container maxWidth='md' className={classes.PageIntro__Container}>
         <Grid
           container
