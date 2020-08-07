@@ -1,5 +1,6 @@
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { useFormik } from 'formik'
+import { useState } from 'react'
 import * as Yup from 'yup'
 import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
@@ -9,6 +10,7 @@ import TextField from '@material-ui/core/TextField'
 
 import { MailDark, MailLight } from '../components/svg/Mail'
 import PageIntro from '../components/PageIntro'
+import SentSuccessModal from '../components/mail/SentSuccessModal'
 
 const useStyles = makeStyles(theme => ({
   rootMailPage: {
@@ -62,10 +64,12 @@ const useStyles = makeStyles(theme => ({
     marginLeft: 0,
   },
 }))
+
 const heroParagraph = `
-  Thanks for checking out my site. I'm always open to
-  job opportunites, questions, comments, and suggestions for future blog posts.
-  And, if you happen to find a bug, this would be the perfect place to let me know!
+  Thanks for checking out my site. I'm always open to job opportunites,
+  questions, comments, and suggestions for future blog posts. And, if
+  you happen to find a bug, this would be the perfect place to let me
+  know!
 `
 
 const initialValues = {
@@ -75,43 +79,34 @@ const initialValues = {
   message: '',
 }
 
-// const onSubmit = (values, onSubmitProps) => {
-//   const { firstName, lastName, email, message } = values
-//   Email.send({
-//     Host: 'smtp.sendgrid.net',
-//     Username: 'apikey',
-//     Password: process.env.SENDGRID_API_KEY,
-//     To: process.env.PERSONAL_EMAIL,
-//     From: process.env.PERSONAL_EMAIL,
-//     Subject: `PORTFOLIO: ${firstName} ${lastName} sent you a message.`,
-//     Body: `Email: ${email}. Message: ${message}`,
-//   }).then(message => alert(message))
-//   onSubmitProps.resetForm()
-// }
-const onSubmit = async (values, onSubmitProps) => {
-  await fetch('/api/mail', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      firstName: values.firstName,
-      lastName: values.lastName,
-      email: values.email,
-      message: values.message,
-    }),
-  })
-  onSubmitProps.resetForm()
-}
-
 const validationSchema = Yup.object({
   firstName: Yup.string().required('Required'),
   lastName: Yup.string().required('Required'),
   email: Yup.string().email('Invalid email format').required('Required'),
 })
 export default function Mail() {
+  const [displayModal, setDisplayModal] = useState(false)
+  const [senderFirstName, setSenderFirstName] = useState('')
   const classes = useStyles()
   const theme = useTheme()
   const type = theme.palette.type
   const isDarkMode = type === 'dark' ? true : false
+
+  const onSubmit = async (values, onSubmitProps) => {
+    await fetch('/api/mail', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        message: values.message,
+      }),
+    })
+    setSenderFirstName(values.firstName)
+    onSubmitProps.resetForm()
+    setDisplayModal(true)
+  }
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -220,6 +215,11 @@ export default function Mail() {
               </form>
             </Grid>
           </Grid>
+          <SentSuccessModal
+            senderFirstName={senderFirstName}
+            setDisplayModal={setDisplayModal}
+            displayModal={displayModal}
+          />
         </Container>
       </article>
     </>

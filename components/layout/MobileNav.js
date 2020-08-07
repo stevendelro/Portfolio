@@ -5,7 +5,7 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import AppBar from '@material-ui/core/AppBar'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
-import InsertCommentOutlinedIcon from '@material-ui/icons/InsertCommentOutlined';
+import InsertCommentOutlinedIcon from '@material-ui/icons/InsertCommentOutlined'
 import MailOutlineOutlinedIcon from '@material-ui/icons/MailOutlineOutlined'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import WbIncandescentIcon from '@material-ui/icons/WbIncandescent'
@@ -146,15 +146,15 @@ export default function MobileNav(props) {
             onChange={(event, selectedOption) => {
               event.preventDefault()
               setActiveTabIndex(selectedOption)
-              selectedOption === 2 && setDarkMode(!darkMode)
+              selectedOption === 4 && setDarkMode(!darkMode)
             }}
             showLabels={false}>
             {[
               'Home',
               'Work',
-              lightDarkLabel,
               'Blog',
               'Mail',
+              lightDarkLabel,
             ].map((arrayItem, index) => NavLink(arrayItem, index))}
           </BottomNavigation>
         </AppBar>
