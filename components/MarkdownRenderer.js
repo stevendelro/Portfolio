@@ -141,19 +141,6 @@ const useStyles = makeStyles(theme => ({
     },
 
     /**********************************
-     ****** 'COPY' CODE BUTTON ********
-     **********************************/
-
-    '& div[class="toolbar"]': {
-      zIndex: 1,
-      top: '.5rem',
-      right: '.7rem',
-    },
-    '& div[class*="toolbar-item"]': {
-      color: theme.palette.secondary.main,
-    },
-
-    /**********************************
      ************* TEXT ***************
      **********************************/
 

@@ -7,8 +7,7 @@
         "languages": ["javascript", "css", "jsx", "tsx", "json"],
         "plugins": [
           "autolinker",
-          "autoloader",
-          "toolbar"
+          "autoloader"
         ],
         "css": true
       }
