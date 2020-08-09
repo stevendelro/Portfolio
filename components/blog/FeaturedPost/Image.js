@@ -1,7 +1,8 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 import CardMedia from '@material-ui/core/CardMedia'
 import Link from 'next/link'
 import Paper from '@material-ui/core/Paper'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const useStyles = makeStyles(theme => ({
   FeaturedPost_Image__ROOT: {
@@ -29,10 +30,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function Image({ slug, coverImage, title }) {
   const classes = useStyles()
+  const theme = useTheme()
+  const isSmallScreenDown = useMediaQuery(theme.breakpoints.down('sm'))
   return (
     <section>
       <Link as={`/blog/${slug}`} href='/blog/[slug]'>
-        <Paper elevation={5}>
+        <Paper elevation={isSmallScreenDown ? 0 : 5}>
           <CardMedia
             className={classes.FeaturedPost_Image__ROOT}
             image={coverImage}

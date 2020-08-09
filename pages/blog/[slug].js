@@ -5,7 +5,6 @@ import ErrorPage from 'next/error'
 import Grid from '@material-ui/core/Grid'
 import Head from 'next/head'
 import LinearProgress from '@material-ui/core/LinearProgress'
-import Typography from '@material-ui/core/Typography'
 
 import { getPostAndMorePosts, getAllPostsWithSlug } from '../api/contentful'
 import PostBody from '../../components/blog/PostDetailsPage/PostBody'

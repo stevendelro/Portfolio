@@ -208,7 +208,7 @@ export default function Mail() {
                   fullWidth
                   type='submit'
                   variant='contained'
-             color={isDarkMode ? 'secondary' : 'primary'}
+                  color={isDarkMode ? 'secondary' : 'primary'}
                   className={classes.submit}>
                   Send
                 </Button>

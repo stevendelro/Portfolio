@@ -18,7 +18,7 @@ const headerFontWeight = 500
 const bodyTextFontFamily = undefined // if undefined, use Material UI theme 'body2' styles. => 'Roboto Slab[200]'
 const bodyTextFontWeight = 300
 const tableFontFamily = 'Roboto'
-const maxWidthBodyText= '590px'
+const maxWidthBodyText = '590px'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -46,27 +46,9 @@ const useStyles = makeStyles(theme => ({
       fontSize: '.85em',
       borderRadius: 2,
     },
-
-    /** CODE BLOCK RESPONSIVENESS OVERKILL **/
-
     '& pre code': {
-      [theme.breakpoints.up(1920)]: {
-        fontSize: theme.typography.pxToRem(16),
-      },
-      [theme.breakpoints.between(1700, 1920)]: {
-        fontSize: theme.typography.pxToRem(14),
-      },
-      [theme.breakpoints.between(1500, 1700)]: {
-        fontSize: theme.typography.pxToRem(13),
-      },
-      [theme.breakpoints.between(1400, 1500)]: {
-        fontSize: theme.typography.pxToRem(12),
-      },
-      [theme.breakpoints.between(1280, 1400)]: {
-        fontSize: theme.typography.pxToRem(11),
-      },
-      [theme.breakpoints.between(1150, 1280)]: {
-        fontSize: theme.typography.pxToRem(15),
+      [theme.breakpoints.up(1150)]: {
+        fontSize: theme.typography.pxToRem(13.5),
       },
       [theme.breakpoints.between(1050, 1150)]: {
         fontSize: theme.typography.pxToRem(13),
@@ -77,14 +59,8 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.between(750, 950)]: {
         fontSize: theme.typography.pxToRem(11),
       },
-      [theme.breakpoints.between(600, 750)]: {
+      [theme.breakpoints.down(750)]: {
         fontSize: theme.typography.pxToRem(10),
-      },
-      [theme.breakpoints.between(500, 600)]: {
-        fontSize: theme.typography.pxToRem(8),
-      },
-      [theme.breakpoints.down(500)]: {
-        fontSize: theme.typography.pxToRem(7),
       },
     },
 
@@ -180,8 +156,8 @@ const useStyles = makeStyles(theme => ({
       margin: '32px 0 16px',
       fontFamily: `${headingFontFamily}, "Courier New", "serif"`,
       fontWeight: headerFontWeight,
-
-    },color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
+    },
+    color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
     '& h6': {
       ...theme.typography.caption,
       margin: '-16px 0 32px',
@@ -197,7 +173,8 @@ const useStyles = makeStyles(theme => ({
       fontWeight: bodyTextFontWeight,
       lineHeight: 1.5,
       marginTop: 0,
-      marginBottom: 16,color: theme.palette.type === 'dark' ? '#fff' : '#000',
+      marginBottom: 16,
+      color: theme.palette.type === 'dark' ? '#fff' : '#000',
 
       maxWidth: maxWidthBodyText, // <<< Psuedo Text Container - 1 of 4
       [theme.breakpoints.up(730)]: {
@@ -326,7 +303,7 @@ const useStyles = makeStyles(theme => ({
 
     '& img, video': {
       maxWidth: '100%',
-      boxShadow: theme.shadows[7]
+      boxShadow: theme.shadows[7],
     },
     '& img': {
       display: 'inline-block', // Avoid layout jump
