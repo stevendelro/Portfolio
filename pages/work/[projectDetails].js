@@ -6,10 +6,10 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 import { getRepositoryNamesForPaths, getProjectDetails } from '../api/github'
 import { weathernautInfo } from './index'
 import DemoSourceLinks from '../../components/work/DemoSourceLinks'
-import ProjectBody from '../../components/work/ProjectDetailsPage/ProjectBody'
-import ProjectDescription from '../../components/work/ProjectDetailsPage/ProjectDescription'
-import ProjectHeader from '../../components/work/ProjectDetailsPage/ProjectHeader'
-import ProjectDemo from '../../components/work/ProjectDetailsPage/ProjectDemo'
+import ProjectBody from '../../components/work/projectDetails/ProjectBody'
+import ProjectDescription from '../../components/work/projectDetails/ProjectDescription'
+import ProjectHeader from '../../components/work/projectDetails/ProjectHeader'
+import ProjectDemo from '../../components/work/projectDetails/ProjectDemo'
 
 const useStyles = makeStyles(theme => ({
   projectDetailPage__ROOT: {

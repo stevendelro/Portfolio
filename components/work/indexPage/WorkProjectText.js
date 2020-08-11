@@ -5,8 +5,8 @@ import Grid from '@material-ui/core/Grid'
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
 
-import DemoSourceLinks from './DemoSourceLinks'
-import MuiLink from '../MuiLink'
+import DemoSourceLinks from '../DemoSourceLinks'
+import MuiLink from '../../MuiLink'
 
 const useStyles = makeStyles(theme => ({
   projectText__title: {

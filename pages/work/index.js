@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 import { DevelopDark, DevelopLight } from '../../components/svg/Develop'
 import PageIntro from '../../components/PageIntro'
-import Project from '../../components/work/Project'
+import Project from '../../components/work/indexPage/WorkProject'
 
 const useStyles = makeStyles(theme => ({
   WorkPage__ROOT: {

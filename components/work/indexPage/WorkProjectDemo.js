@@ -2,8 +2,8 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-import MuiLink from '../MuiLink'
-import Video from '../Video'
+import MuiLink from '../../MuiLink'
+import Video from '../../Video'
 
 const useStyles = makeStyles(theme => ({
   ProjectDemo__container: {
