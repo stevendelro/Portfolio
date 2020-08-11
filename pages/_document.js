@@ -40,6 +40,10 @@ export default class MyDocument extends Document {
             sizes='16x16'
             href='/favicon-16x16.png'
           />
+          <link
+            href='https://unpkg.com/video.js/dist/video-js.min.css'
+            rel='stylesheet'
+          />
           <link rel='manifest' href='/site.webmanifest' />
           <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#5bbad5' />
           <meta
@@ -50,7 +54,7 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script src='https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js'></script>
+          <script src="https://unpkg.com/video.js/dist/video.min.js"></script>
         </body>
       </Html>
     )

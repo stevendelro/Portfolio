@@ -1,7 +1,5 @@
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import CardMedia from '@material-ui/core/CardMedia'
 import Paper from '@material-ui/core/Paper'
-import Tooltip from '@material-ui/core/Tooltip'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import MuiLink from '../MuiLink'
@@ -21,6 +19,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     height: 'auto',
     cursor: 'pointer',
+    verticalAlign: 'middle',
     [theme.breakpoints.up('sm')]: {
       borderRadius: theme.shape.borderRadius,
     },
@@ -60,17 +59,28 @@ export default function ProjectImage({
               : classes.projectImage__container
           }
           elevation={7}>
-          <Tooltip
-            disableTouchListener
-            arrow
-            title='Click For Details'
-            placement={isSmallScreenOrSmaller ? 'top' : 'bottom'}>
-            <CardMedia
-              component='img'
-              className={classes.projectImage__image}
-              src={imagePath}
-            />
-          </Tooltip>
+          <video
+            className={classes.projectImage__image}
+            height='auto'
+            width='100%'
+            autoPlay
+            muted
+            loop
+            alignSelf='center'
+            preload='auto'
+            poster={imagePath}
+            data-setup='{}'>
+            <source src='/projectMedia/weathernaut.mp4' type='video/mp4'></source>
+            <p className='vjs-no-js'>
+              To view this video please enable JavaScript, and consider
+              upgrading to a web browser that
+              <a
+                href='https://videojs.com/html5-video-support/'
+                target='_blank'>
+                supports HTML5 video
+              </a>
+            </p>
+          </video>
         </Paper>
       </MuiLink>
     </section>

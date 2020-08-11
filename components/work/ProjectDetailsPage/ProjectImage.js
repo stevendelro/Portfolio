@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles'
-import CardMedia from '@material-ui/core/CardMedia'
 import Paper from '@material-ui/core/Paper'
 
 const useStyles = makeStyles(theme => ({
@@ -15,6 +14,7 @@ const useStyles = makeStyles(theme => ({
   projectImage__image: {
     width: '100%',
     height: 'auto',
+    verticalAlign: 'middle',
     [theme.breakpoints.up('sm')]: {
       borderRadius: theme.shape.borderRadius,
     },
@@ -26,12 +26,26 @@ export default function ProjectImage({ title, imagePath }) {
   return (
     <section id='projectDetailsPage__image'>
       <Paper className={classes.projectImage__ROOT} elevation={7}>
-        <CardMedia
-          component='img'
+        <video
           className={classes.projectImage__image}
-          title={title}
-          image={imagePath}
-        />
+          height='auto'
+          width='100%'
+          autoPlay
+          muted
+          loop
+          alignSelf='center'
+          preload='auto'
+          poster={imagePath}
+          data-setup='{}'>
+          <source src='/projectMedia/weathernaut.mp4' type='video/mp4'></source>
+          <p className='vjs-no-js'>
+            To view this video please enable JavaScript, and consider upgrading
+            to a web browser that
+            <a href='https://videojs.com/html5-video-support/' target='_blank'>
+              supports HTML5 video
+            </a>
+          </p>
+        </video>
       </Paper>
     </section>
   )
