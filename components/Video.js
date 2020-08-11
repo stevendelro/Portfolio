@@ -1,4 +1,5 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const useStyles = makeStyles(theme => ({
   video__ROOT: {
@@ -14,13 +15,23 @@ export default function Video({
   width = '100%',
 }) {
   const classes = useStyles()
+  const theme = useTheme()
+  const isTinyScreenDown = useMediaQuery(theme.breakpoints.down('xs'))
+  /**
+   * Video autoplay is disabled and video controls become visible on tiny
+   * screens.
+   *
+   * iPhones force a fullscreen letterbox mode when a video begins playing,
+   * causing the UX to become really confusing.
+   */
   return (
     <video
       className={classes.video__ROOT}
       height={height}
       width={width}
-      autoPlay
+      autoPlay={isTinyScreenDown ? false : true}
       muted
+      controls={isTinyScreenDown ? true : false}
       loop
       preload='auto'
       poster={imagePath}
@@ -28,7 +39,8 @@ export default function Video({
       <source src={videoPath} type='video/mp4'></source>
       <p className='vjs-no-js'>
         To view this video please enable JavaScript, and consider upgrading to a
-        web browser that supports HTML5 video. See: https://videojs.com/html5-video-support/
+        web browser that supports HTML5 video. See:
+        https://videojs.com/html5-video-support/
       </p>
     </video>
   )

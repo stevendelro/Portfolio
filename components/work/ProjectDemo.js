@@ -1,5 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import MuiLink from '../MuiLink'
 import Video from '../Video'
@@ -32,23 +33,47 @@ export default function ProjectDemo({
   projectInfo,
 }) {
   const classes = useStyles()
+  const theme = useTheme()
+  const isTinyScreenDown = useMediaQuery(theme.breakpoints.down('xs'))
   const { videoPath, imagePath, name } = projectInfo
+
+  const demoWithLink = (
+    <MuiLink
+      as={`/work/${name.toLowerCase()}`}
+      href='/work/[projectDetails]'
+      naked>
+      <Paper
+        className={
+          imageRight && !isSmallScreen
+            ? classes.ProjectDemo__container_R
+            : classes.ProjectDemo__container
+        }
+        elevation={7}>
+        <Video imagePath={imagePath} videoPath={videoPath} />
+      </Paper>
+    </MuiLink>
+  )
+
+  /**
+   * Tiny screens had autoplay disabled and video controls visible.
+   * If the video is encapsulated within a link, interfacing with
+   * the video controls causes the route to change.
+   */
+  const demoWithoutLink = (
+    <Paper
+      className={
+        imageRight && !isSmallScreen
+          ? classes.ProjectDemo__container_R
+          : classes.ProjectDemo__container
+      }
+      elevation={7}>
+      <Video imagePath={imagePath} videoPath={videoPath} />
+    </Paper>
+  )
+
   return (
     <section id='project__ProjectDemo'>
-      <MuiLink
-        as={`/work/${name.toLowerCase()}`}
-        href='/work/[projectDetails]'
-        naked>
-        <Paper
-          className={
-            imageRight && !isSmallScreen
-              ? classes.ProjectDemo__container_R
-              : classes.ProjectDemo__container
-          }
-          elevation={7}>
-          <Video imagePath={imagePath} videoPath={videoPath} />
-        </Paper>
-      </MuiLink>
+      {isTinyScreenDown ? demoWithoutLink : demoWithLink}
     </section>
   )
 }
