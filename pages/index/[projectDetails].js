@@ -84,8 +84,9 @@ export default function ProjectDetailsPage({ markdown, repo }) {
         <Grid container direction='column' justify='center' alignItems='center'>
           <Grid item xs={11} lg={10} xl={7}>
             <ProjectDemo
-              videoPath={weathernautInfo.videoPath}
+              title={repo.name}
               imagePath={weathernautInfo.imagePath}
+              website={repo.website}
             />
           </Grid>
           <ProjectDescription description={repo.description} />

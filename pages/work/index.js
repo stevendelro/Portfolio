@@ -64,6 +64,7 @@ up to date, while motivating me to make better writeups.
 export const weathernautInfo = {
   name: 'Weathernaut',
   imagePath: '/projectMedia/weathernaut.png',
+  videoPath: '/projectMedia/weathernaut.mp4',
   website: 'https://weathernaut.now.sh',
   github: 'https://github.com/stevendelro/Weathernaut',
   gitUsername: 'stevendelro',

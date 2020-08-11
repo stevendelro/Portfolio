@@ -2,12 +2,12 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-import ProjectImage from './ProjectImage'
+import ProjectDemo from './ProjectDemo'
 import ProjectText from './ProjectText'
 
 const useStyles = makeStyles(theme => ({
   project__ROOT: {
-    padding: theme.spacing(10,0)
+    padding: theme.spacing(10, 0),
   },
   project__imageLeft: {
     cursor: 'pointer',
@@ -67,7 +67,7 @@ export default function Project({ orientation, projectInfo }) {
         alignItems={isSmallScreen ? 'center' : 'flex-start'}>
         {/* IMAGE SIDE */}
         <Grid item xs={12} sm={11} md={8}>
-          <ProjectImage
+          <ProjectDemo
             imageRight={imageRight}
             isSmallScreen={isSmallScreen}
             projectInfo={projectInfo}
