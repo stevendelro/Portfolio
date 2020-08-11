@@ -6,7 +6,7 @@ import MuiLink from '../../MuiLink'
 import Video from '../../Video'
 
 const useStyles = makeStyles(theme => ({
-  ProjectDemo__container: {
+  workProjectDemo__container: {
     margin: theme.spacing(0, 4),
     [theme.breakpoints.only('md')]: {
       margin: theme.spacing(0, 3, 0, 0),
@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   // Right Side Image Styles
-  ProjectDemo__container_R: {
+  workProjectDemo__container_R: {
     margin: theme.spacing(0, 4, 0),
     [theme.breakpoints.only('md')]: {
       margin: theme.spacing(0, 0, 0, 3),
@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function ProjectDemo({
+export default function WorkProjectDemo({
   imageRight,
   isSmallScreen,
   projectInfo,
@@ -45,8 +45,8 @@ export default function ProjectDemo({
       <Paper
         className={
           imageRight && !isSmallScreen
-            ? classes.ProjectDemo__container_R
-            : classes.ProjectDemo__container
+            ? classes.workProjectDemo__container_R
+            : classes.workProjectDemo__container
         }
         elevation={7}>
         <Video imagePath={imagePath} videoPath={videoPath} />
@@ -63,14 +63,13 @@ export default function ProjectDemo({
     <Paper
       className={
         imageRight && !isSmallScreen
-          ? classes.ProjectDemo__container_R
-          : classes.ProjectDemo__container
+          ? classes.workProjectDemo__container_R
+          : classes.workProjectDemo__container
       }
       elevation={7}>
       <Video imagePath={imagePath} videoPath={videoPath} />
     </Paper>
   )
-
   return (
     <section id='project__ProjectDemo'>
       {isTinyScreenDown ? demoWithoutLink : demoWithLink}

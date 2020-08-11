@@ -2,14 +2,14 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-import ProjectDemo from './WorkProjectDemo'
-import ProjectText from './WorkProjectText'
+import WorkProjectDemo from './WorkProjectDemo'
+import WorkProjectText from './WorkProjectText'
 
 const useStyles = makeStyles(theme => ({
-  project__ROOT: {
+  workProject__ROOT: {
     padding: theme.spacing(10, 0),
   },
-  project__imageLeft: {
+  workProject__imageLeft: {
     cursor: 'pointer',
     [theme.breakpoints.up('sm')]: {
       marginBottom: theme.spacing(4),
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
       fontSize: theme.typography.pxToRem(40),
     },
   },
-  project__imageRightStyles: {
+  workProject__imageRightStyles: {
     cursor: 'pointer',
     paddingBottom: theme.spacing(3),
     [theme.breakpoints.down('sm')]: {
@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Project({ orientation, projectInfo }) {
+export default function WorkProject({ orientation, projectInfo }) {
   const theme = useTheme()
   const classes = useStyles()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
@@ -48,18 +48,20 @@ export default function Project({ orientation, projectInfo }) {
   // on large screens.
   let imageRight = true
   if (orientation === 'imageLeft') imageRight = false
+
   // Make sure that the information text appears in the correct order
   // independant of the what side the image is on.
   let rowDirection = 'row' // default to row
   if (imageRight) {
     rowDirection = isSmallScreen ? 'row' : 'row-reverse'
   }
-  const project__text =
+  const workProject__text =
     imageRight && !isSmallScreen
-      ? classes.project__imageRightStyles && classes.textAlign_R
-      : classes.project__imageLeft && classes.textAlign_L
+      ? classes.workProject__imageRightStyles && classes.textAlign_R
+      : classes.workProject__imageLeft && classes.textAlign_L
+
   return (
-    <section id='project' className={classes.project__ROOT}>
+    <section id='project' className={classes.workProject__ROOT}>
       <Grid
         container
         direction={isSmallScreen ? 'column' : rowDirection}
@@ -67,7 +69,7 @@ export default function Project({ orientation, projectInfo }) {
         alignItems={isSmallScreen ? 'center' : 'flex-start'}>
         {/* IMAGE SIDE */}
         <Grid item xs={12} sm={11} md={8}>
-          <ProjectDemo
+          <WorkProjectDemo
             imageRight={imageRight}
             isSmallScreen={isSmallScreen}
             projectInfo={projectInfo}
@@ -75,8 +77,8 @@ export default function Project({ orientation, projectInfo }) {
         </Grid>
 
         {/* TEXT SIDE */}
-        <Grid item className={project__text} xs={12} sm={11} md={4}>
-          <ProjectText
+        <Grid item className={workProject__text} xs={12} sm={11} md={4}>
+          <WorkProjectText
             imageRight={imageRight}
             isSmallScreen={isSmallScreen}
             rowDirection={rowDirection}

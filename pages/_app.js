@@ -1,13 +1,14 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 import { makeStyles } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, createContext } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Head from 'next/head'
 import Hidden from '@material-ui/core/Hidden'
 import Prism from 'prismjs'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
+import { projectInformation } from '../components/work/ProjectInformation'
 import MobileNav from '../components/layout/MobileNav'
 import MyAppBar from '../components/layout/MyAppBar'
 import MyFooter from '../components/layout/MyFooter'
@@ -30,6 +31,8 @@ const useStyles = makeStyles(theme => ({
     width: '100vw',
   },
 }))
+
+export const ProjectInformation = createContext()
 
 export default function MyApp(props) {
   const classes = useStyles()
@@ -113,19 +116,23 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         <div className={classes.root}>
           <CssBaseline />
-          {/* Hide Top AppBar on mobile screens */}
           <Hidden xsDown>
+            {/* Hide Desktop AppBar on mobile screens */}
             <MyAppBar darkMode={darkMode} setDarkMode={setDarkMode} />
           </Hidden>
           <Hidden smUp>
+            {/* Hide Mobile AppBar on desktop screens */}
             <MobileNav darkMode={darkMode} setDarkMode={setDarkMode} />
           </Hidden>
           <main className={classes.content}>
             <Hidden xsDown>
+              {/* This div is a toolbar spacer to keep content from being under the AppBar*/}
               <div className={classes.toolbar} />
             </Hidden>
-            <Component {...pageProps} />
-            {/* Display bottom AppBar for a better mobile experience */}
+            <ProjectInformation.Provider value={projectInformation}>
+              {/* Text data to display alongside projects */}
+              <Component {...pageProps} />
+            </ProjectInformation.Provider>
             <MyFooter />
           </main>
         </div>

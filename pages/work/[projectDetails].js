@@ -1,15 +1,16 @@
 import { makeStyles } from '@material-ui/core/styles'
+import { useState, useEffect, useContext } from 'react'
 import Grid from '@material-ui/core/Grid'
 import Head from 'next/head'
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 import { getRepositoryNamesForPaths, getProjectDetails } from '../api/github'
-import { weathernautInfo } from './index'
+import { ProjectInformation } from '../_app'
 import DemoSourceLinks from '../../components/work/DemoSourceLinks'
 import ProjectBody from '../../components/work/projectDetails/ProjectBody'
+import ProjectDemo from '../../components/work/projectDetails/ProjectDemo'
 import ProjectDescription from '../../components/work/projectDetails/ProjectDescription'
 import ProjectHeader from '../../components/work/projectDetails/ProjectHeader'
-import ProjectDemo from '../../components/work/projectDetails/ProjectDemo'
 
 const useStyles = makeStyles(theme => ({
   projectDetailPage__ROOT: {
@@ -53,9 +54,19 @@ const useStyles = makeStyles(theme => ({
 
 export default function ProjectDetailsPage({ markdown, repo }) {
   const classes = useStyles()
+  const [projectInfo, setProjectInfo] = useState({})
+  // Step 3a: components/work/ProjectInformation.js
+  const { weathernautInfo } = useContext(ProjectInformation)
+
   if (!markdown || !repo) {
     return <LinearProgress />
   }
+
+  useEffect(() => {
+    // Step 3b: components/work/ProjectInformation.js
+    repo.name === 'Weathernaut' && setProjectInfo(weathernautInfo)
+  }, [repo.name])
+
   return (
     <>
       <Head>
@@ -84,8 +95,8 @@ export default function ProjectDetailsPage({ markdown, repo }) {
         <Grid container direction='column' justify='center' alignItems='center'>
           <Grid item xs={11} lg={10} xl={7}>
             <ProjectDemo
-              videoPath={weathernautInfo.videoPath}
-              imagePath={weathernautInfo.imagePath}
+              videoPath={projectInfo.videoPath}
+              imagePath={projectInfo.imagePath}
             />
           </Grid>
           <ProjectDescription description={repo.description} />
@@ -123,7 +134,6 @@ export async function getStaticProps({ params }) {
     undefined, // Use this to wire up getUserDetails if needed in the future
     params.projectDetails
   )
-
   return {
     props: { markdown, repo },
   }

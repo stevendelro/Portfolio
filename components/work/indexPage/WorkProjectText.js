@@ -9,7 +9,7 @@ import DemoSourceLinks from '../DemoSourceLinks'
 import MuiLink from '../../MuiLink'
 
 const useStyles = makeStyles(theme => ({
-  projectText__title: {
+  workProjectText__title: {
     textAlign: 'left',
     [theme.breakpoints.only('sm')]: {
       fontSize: theme.typography.pxToRem(63),
@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
       opacity: 1,
     },
   },
-  projectText__demoSourceLinks: {
+  workProjectText__demoSourceLinks: {
     paddingLeft: '3px',
     marginBottom: theme.spacing(3),
     [theme.breakpoints.down('sm')]: {
@@ -41,17 +41,17 @@ const useStyles = makeStyles(theme => ({
       paddingBottom: theme.spacing(1),
     },
   },
-  projectText__keyPoint: {
+  workProjectText__keyPoint: {
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       textAlign: 'center',
       padding: theme.spacing(1),
     },
   },
-  projectText__subHeadingContainer: {
+  workProjectText__subHeadingContainer: {
     minHeight: 45,
   },
-  projectText__subHeading: {
+  workProjectText__subHeading: {
     fontSize: theme.typography.pxToRem(20),
     fontWeight: theme.typography.fontWeightRegular,
     color:
@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
         ? theme.palette.secondary.light
         : theme.palette.primary.light,
   },
-  projectText__paragraphContainer: {
+  workProjectText__paragraphContainer: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -83,7 +83,7 @@ const defaultText = `
   blandit.
 `
 
-export default function ProjectText({
+export default function WorkProjectText({
   imageRight,
   isSmallScreen,
   rowDirection,
@@ -111,7 +111,7 @@ export default function ProjectText({
 
   return (
     <section id='projectText'>
-      <section id='projectText__titleArea'>
+      <section id='workProjectText__titleArea'>
         <MuiLink
           style={{ textDecoration: 'none' }}
           as={`/work/${name}`}
@@ -120,19 +120,19 @@ export default function ProjectText({
           <Typography
             className={
               imageRight && !isSmallScreen
-                ? classes.projectText__title && classes.textAlign_R
-                : classes.projectText__title
+                ? classes.workProjectText__title && classes.textAlign_R
+                : classes.workProjectText__title
             }
             variant='h4'
             component='h2'>
             {name ? name : 'Project Name'}
           </Typography>
         </MuiLink>
-        <Box className={classes.projectText__demoSourceLinks}>
+        <Box className={classes.workProjectText__demoSourceLinks}>
           <DemoSourceLinks liveDemo={website} sourceCode={github} />
         </Box>
       </section>
-      <section id='projectText__keypoints'>
+      <section id='workProjectText__keypoints'>
         <Grid
           container
           direction={true ? rowDirection : 'column'}
@@ -146,17 +146,17 @@ export default function ProjectText({
                 item
                 sm={4}
                 md={12}
-                className={classes.projectText__keyPoint}>
-                <Box className={classes.projectText__subHeadingContainer}>
+                className={classes.workProjectText__keyPoint}>
+                <Box className={classes.workProjectText__subHeadingContainer}>
                   <Typography
                     variant='h5'
                     component='h3'
                     color='primary'
-                    className={classes.projectText__subHeading}>
+                    className={classes.workProjectText__subHeading}>
                     {keyPoint[0]}
                   </Typography>
                 </Box>
-                <Box className={classes.projectText__paragraphContainer}>
+                <Box className={classes.workProjectText__paragraphContainer}>
                   <Typography
                     variant='body2'
                     component='p'

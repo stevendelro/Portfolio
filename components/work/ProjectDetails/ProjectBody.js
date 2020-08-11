@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import MarkdownRenderer from '../../MarkdownRenderer'
 
 const useStyles = makeStyles(theme => ({
-  postBody__ROOT: {
+  projectBody__ROOT: {
     marginBottom: theme.spacing(10),
   },
 }))
@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
 export default function ProjectBody({ content }) {
   const classes = useStyles()
   return (
-    <main id='ProjectDetailsPage__Body' className={classes.postBody__ROOT}>
+    <main id='ProjectDetailsPage__Body' className={classes.projectBody__ROOT}>
       <MarkdownRenderer>{content}</MarkdownRenderer>
     </main>
   )
