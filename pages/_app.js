@@ -33,6 +33,8 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export const ProjectInformation = createContext()
+export const primaryColor = '#144d53'
+export const secondaryColor = '#ff9100'
 
 export default function MyApp(props) {
   const classes = useStyles()
@@ -41,14 +43,14 @@ export default function MyApp(props) {
     // This will check the user/system settings to see if dark mode is preferred.
     useMediaQuery('(prefers-color-scheme: dark)')
   )
-
+  const handleDarkMode = darkMode ? secondaryColor : primaryColor
   const theme = useMemo(
     () =>
       createMuiTheme({
         themeName: 'greenOrange',
         palette: {
-          primary: { main: '#144d53' },
-          secondary: { main: '#ff9100' },
+          primary: { main: primaryColor },
+          secondary: { main: secondaryColor },
           common: {
             defaultDarkBackground: '#303030',
             defaultLightBackground: '#f5f5f5',
@@ -58,23 +60,23 @@ export default function MyApp(props) {
         typography: {
           h1: {
             fontFamily: 'Calistoga',
-            color: darkMode ? '#ff9100' : '#144d53',
+            color: handleDarkMode,
           },
           h2: {
             fontFamily: 'Calistoga',
-            color: darkMode ? '#ff9100' : '#144d53',
+            color: handleDarkMode,
           },
           h3: {
             fontFamily: 'Calistoga',
-            color: darkMode ? '#ff9100' : '#144d53',
+            color: handleDarkMode,
           },
           h4: {
             fontFamily: 'Calistoga',
-            color: darkMode ? '#ff9100' : '#144d53',
+            color: handleDarkMode,
           },
           h5: {
             fontFamily: 'Calistoga',
-            color: darkMode ? '#ff9100' : '#144d53',
+            color: handleDarkMode,
           },
           body2: {
             fontFamily: '"Roboto Slab", "Courier New", "serif"', // Main body text

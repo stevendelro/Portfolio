@@ -1,3 +1,5 @@
+import { primaryColor, secondaryColor } from '../../pages/_app'
+
 export function CreateDark({ width = '100%', height = '100%' }) {
   return (
     <svg
@@ -42,12 +44,20 @@ export function CreateDark({ width = '100%', height = '100%' }) {
         rx='31.118'
         ry='80.859'
         transform='rotate(-19.92 307.424 487.927)'></ellipse>
-      <circle cx='692.446' cy='104' r='67.5' fill='#ff9100'></circle>
+      <circle cx='692.446' cy='104' r='67.5' fill={secondaryColor}></circle>
       <circle cx='692.446' cy='104' r='42.188' fill='#2f2e41'></circle>
-      <circle cx='883.696' cy='104' r='67.5' fill='#ff9100'></circle>
+      <circle cx='883.696' cy='104' r='67.5' fill={secondaryColor}></circle>
       <circle cx='883.696' cy='104' r='42.188' fill='#2f2e41'></circle>
-      <circle cx='788.071' cy='392.281' r='171.563' fill='#ff9100'></circle>
-      <circle cx='788.071' cy='192.594' r='130.781' fill='#ff9100'></circle>
+      <circle
+        cx='788.071'
+        cy='392.281'
+        r='171.563'
+        fill={secondaryColor}></circle>
+      <circle
+        cx='788.071'
+        cy='192.594'
+        r='130.781'
+        fill={secondaryColor}></circle>
       <circle cx='844.321' cy='171.5' r='35.156' fill='#2f2e41'></circle>
       <circle cx='844.321' cy='171.5' r='9.844' fill='#fff'></circle>
       <circle cx='858.384' cy='154.625' r='4.219' fill='#fff'></circle>
@@ -354,12 +364,20 @@ export function CreateLight({ width = '100%', height = '100%' }) {
         rx='31.118'
         ry='80.859'
         transform='rotate(-19.92 307.424 487.927)'></ellipse>
-      <circle cx='692.446' cy='104' r='67.5' fill='#437075'></circle>
+      <circle cx='692.446' cy='104' r='67.5' fill={primaryColor}></circle>
       <circle cx='692.446' cy='104' r='42.188' fill='#2f2e41'></circle>
-      <circle cx='883.696' cy='104' r='67.5' fill='#437075'></circle>
+      <circle cx='883.696' cy='104' r='67.5' fill={primaryColor}></circle>
       <circle cx='883.696' cy='104' r='42.188' fill='#2f2e41'></circle>
-      <circle cx='788.071' cy='392.281' r='171.563' fill='#437075'></circle>
-      <circle cx='788.071' cy='192.594' r='130.781' fill='#437075'></circle>
+      <circle
+        cx='788.071'
+        cy='392.281'
+        r='171.563'
+        fill={primaryColor}></circle>
+      <circle
+        cx='788.071'
+        cy='192.594'
+        r='130.781'
+        fill={primaryColor}></circle>
       <circle cx='844.321' cy='171.5' r='35.156' fill='#2f2e41'></circle>
       <circle cx='844.321' cy='171.5' r='9.844' fill='#fff'></circle>
       <circle cx='858.384' cy='154.625' r='4.219' fill='#fff'></circle>

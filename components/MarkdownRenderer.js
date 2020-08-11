@@ -4,6 +4,7 @@ import Markdown from 'markdown-to-jsx'
 
 import CenteredImage from './CenteredImage'
 import CodeBlock from './CodeBlock'
+import { primaryColor, secondaryColor } from '../pages/_app'
 
 /**
  * Initial boilerplate styles came from Material-UI's documentation markdown component.
@@ -149,7 +150,7 @@ const useStyles = makeStyles(theme => ({
       margin: '32px 0 16px',
       fontFamily: `${headingFontFamily}, "Courier New", "serif"`,
       fontWeight: headerFontWeight,
-      color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
+      color: theme.palette.type === 'dark' ? secondaryColor : primaryColor,
     },
     '& h5': {
       ...theme.typography.subtitle2,
@@ -157,13 +158,13 @@ const useStyles = makeStyles(theme => ({
       fontFamily: `${headingFontFamily}, "Courier New", "serif"`,
       fontWeight: headerFontWeight,
     },
-    color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
+    color: theme.palette.type === 'dark' ? secondaryColor : primaryColor,
     '& h6': {
       ...theme.typography.caption,
       margin: '-16px 0 32px',
       fontFamily: `${headingFontFamily}, "Courier New", "serif"`,
       fontWeight: headerFontWeight,
-      color: theme.palette.type === 'dark' ? '#ff9100' : '#144d53',
+      color: theme.palette.type === 'dark' ? secondaryColor : primaryColor,
     },
     '& p, & ul, & ol': {
       ...theme.typography.body2,
