@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs'
 import Typography from '@material-ui/core/Typography'
 
-import { removeDashesAndUppercaseFirstLetter, truncate } from './utils/index'
+import { removeDashesAndUppercaseFirstLetter, truncate } from './utilityFunctions'
 import MuiLink from '../MuiLink'
 
 const useStyles = makeStyles(theme => ({
@@ -41,7 +41,7 @@ export default function NavCrumbs() {
       case '/blog':
         setSecondCrumb('Blog')
         break
-      case '/blog/[slug]':
+      case '/blog/[postDetails]':
         setSecondCrumb('Blog')
         break
       default:
@@ -74,9 +74,9 @@ export default function NavCrumbs() {
     }
 
     // Handle second and third crumb for Blog routes
-    if (route === '/blog/[slug]') {
+    if (route === '/blog/[postDetails]') {
       createSecondLevelCrumb(route)
-      let currentSlug = removeDashesAndUppercaseFirstLetter(query.slug)
+      let currentSlug = removeDashesAndUppercaseFirstLetter(query.postDetails)
       if (thirdCrumb === null || currentSlug !== thirdCrumb) {
         setThirdCrumb(truncate(currentSlug, 5))
       }

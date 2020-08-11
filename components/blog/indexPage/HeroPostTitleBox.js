@@ -65,7 +65,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function TitleDateTime({
+export default function HeroPostTitleBox({
   slug,
   title: postTitle,
   date,
@@ -108,7 +108,10 @@ export default function TitleDateTime({
         justify={isTinyScreenOnly ? 'center' : flexed}
         alignItems='center'>
         <Grid item>
-          <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
+          <MuiLink
+            as={`/blog/${slug}`}
+            href='/blog/[postDetails]'
+            underline='none'>
             <Typography
               className={titleStyles}
               variant={isSmallScreenOnly ? 'h4' : 'h3'}>

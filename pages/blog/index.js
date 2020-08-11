@@ -2,8 +2,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import Head from 'next/head'
 
 import { getAllPostsForHome } from '../api/contentful'
-import FeaturedPost from '../../components/blog/FeaturedPost'
-import MainBlogList from '../../components/blog/PostLists/BlogIndexList'
+import HeroPost from '../../components/blog/indexPage/HeroPost'
+import PostsList from '../../components/blog/indexPage/PostsList'
 import PageIntro from '../../components/PageIntro'
 
 const useStyles = makeStyles(theme => ({
@@ -24,9 +24,9 @@ do with code and focus on my thoughts and ideas. All of it, written by me.
 
 export default function BlogIndex({ allPosts }) {
   const classes = useStyles()
-  const featuredPost = allPosts[0]
+  const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1)
-  const { title, coverImage, date, author, slug, excerpt, stats } = featuredPost
+  const { title, coverImage, date, author, slug, excerpt, stats } = heroPost
 
   return (
     <>
@@ -40,8 +40,8 @@ export default function BlogIndex({ allPosts }) {
       <div className={classes.blogIndexPage__ROOT}>
         <PageIntro title='Blog' paragraph={pageIntroParagraph} />
         <main>
-          {featuredPost && (
-            <FeaturedPost
+          {heroPost && (
+            <HeroPost
               title={title}
               coverImage={coverImage.url}
               date={date}
@@ -52,7 +52,7 @@ export default function BlogIndex({ allPosts }) {
               titlePosition='right' // this can also be 'left' if needed for different compositions in the future.
             />
           )}
-          {morePosts.length > 0 && <MainBlogList posts={morePosts} />}
+          {morePosts.length > 0 && <PostsList posts={morePosts} />}
         </main>
       </div>
     </>

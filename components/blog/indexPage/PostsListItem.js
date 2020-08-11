@@ -9,7 +9,7 @@ import CustomDate from '../../CustomDate'
 import MuiLink from '../../MuiLink'
 
 const useStyles = makeStyles(theme => ({
-  blogIndexListItem__ROOT: {
+  postsListItem__ROOT: {
     width: '100%',
     minHeight: 280,
     padding: theme.spacing(2, 0),
@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   /************************************
    *********** TEXT SIDE **************
    ************************************/
-  blogIndexListItem__text_container: {
+  postsListItem__text: {
     textAlign: 'center',
     padding: theme.spacing(0, 2, 2, 2),
     [theme.breakpoints.down('xs')]: {
@@ -28,10 +28,10 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(3),
     },
   },
-  blogIndexListItem__text_excerpt: {
+  postsListItem__text_excerpt: {
     textAlign: 'center',
   },
-  blogIndexListItem__text_title: {
+  postsListItem__text_title: {
     '&:hover': {
       textDecoration: 'none',
       color:
@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
   /************************************
    *********** IMAGE SIDE *************
    ************************************/
-  blogIndexListItem__image_container: {
+  postsListItem__image_container: {
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
       minWidth: '100%',
     },
   },
-  blogIndexListItem__image: {
+  postsListItem__image: {
     borderRadius: 5,
     cursor: 'pointer',
     [theme.breakpoints.up('xs')]: {
@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function BlogIndexListItem({
+export default function PostsListItem({
   title,
   coverImage,
   date,
@@ -80,22 +80,21 @@ export default function BlogIndexListItem({
     <article>
       <Grid
         container
-        className={classes.blogIndexListItem__ROOT}
+        className={classes.postsListItem__ROOT}
         direction={isTinyScreenDown ? 'column-reverse' : 'row'}
         justify='center'
         alignItems={isTinyScreenDown ? 'center' : 'flex-start'}>
         {/************************************
          *********** TEXT SIDE **************
          ************************************/}
-        <Grid
-          item
-          xs={12}
-          sm={5}
-          className={classes.blogIndexListItem__text_container}>
+        <Grid item xs={12} sm={5} className={classes.postsListItem__text}>
           {/********** TITLE ***********/}
-          <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
+          <MuiLink
+            as={`/blog/${slug}`}
+            href='/blog/[postDetails]'
+            underline='none'>
             <Typography
-              className={classes.blogIndexListItem__text_title}
+              className={classes.postsListItem__text_title}
               component='h2'
               variant='h4'>
               {title}
@@ -115,7 +114,7 @@ export default function BlogIndexListItem({
           </Typography>
           {/************ EXCERPT ************/}
           <Typography
-            className={classes.blogIndexListItem__text_excerpt}
+            className={classes.postsListItem__text_excerpt}
             variant='body2'
             color='textSecondary'
             align='left'>
@@ -129,11 +128,11 @@ export default function BlogIndexListItem({
           item
           xs={12}
           sm={7}
-          className={classes.blogIndexListItem__image_container}>
-          <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' naked>
+          className={classes.postsListItem__image_container}>
+          <MuiLink as={`/blog/${slug}`} href='/blog/[postDetails]' naked>
             <Paper elevation={3}>
               <CardMedia
-                className={classes.blogIndexListItem__image}
+                className={classes.postsListItem__image}
                 image={coverImage}
                 title={title}
               />

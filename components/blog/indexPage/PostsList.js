@@ -2,38 +2,38 @@ import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 
-import HorizontalListItem from './BlogIndexListItem'
+import PostsListItem from './PostsListItem'
 
 const useStyles = makeStyles(theme => ({
-  blogIndexList__ROOT: {
+  postsList__ROOT: {
     backgroundColor:
       theme.palette.type === 'dark'
         ? theme.palette.common.defaultDarkBackground
         : theme.palette.common.defaultLightBackground,
   },
-  blogIndexList__container: {
+  postsList__container: {
     [theme.breakpoints.down('xs')]: {
       padding: theme.spacing(0, 1),
     },
   },
-  blogIndexList__listItemContainer: {
+  postsList__listItemContainer: {
     flexGrow: 1,
   },
 }))
 
-export default function BlogIndexList({ posts }) {
+export default function PostsList({ posts }) {
   const classes = useStyles()
   return (
-    <section className={classes.blogIndexList__ROOT} id='blogIndexList'>
-      <Container className={classes.blogIndexList__container} maxWidth='md'>
+    <section className={classes.postsList__ROOT} id='postsList'>
+      <Container className={classes.postsList__container} maxWidth='md'>
         <Grid container>
           {posts.map(post => {
             return (
               <Grid
                 item
                 key={post.id}
-                className={classes.blogIndexList__listItemContainer}>
-                <HorizontalListItem
+                className={classes.postsList__listItemContainer}>
+                <PostsListItem
                   title={post.title}
                   coverImage={post.coverImage.url}
                   date={post.date}

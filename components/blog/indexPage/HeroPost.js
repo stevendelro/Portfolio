@@ -3,21 +3,21 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-import DateReadingTime from './TitleDateTime'
-import Excerpt from './Excerpt'
-import Image from './Image'
+import HeroPostExcerpt from './HeroPostExcerpt'
+import HeroPostImage from './HeroPostImage'
+import HeroPostTitleBox from './HeroPostTitleBox'
 
 const useStyles = makeStyles(theme => ({
-  featuredPost__ROOT: {
+  heroPost__ROOT: {
     marginBottom: theme.spacing(10),
   },
-  featuredPost__image: {
+  heroPost__image: {
     padding: theme.spacing(0, 7),
     [theme.breakpoints.down('xs')]: {
-      padding: theme.spacing(0, 2)
-    }
+      padding: theme.spacing(0, 2),
+    },
   },
-  featuredPost__text: {
+  heroPost__text: {
     paddingBottom: theme.spacing(2),
     [theme.breakpoints.down('md')]: {
       marginBottom: theme.spacing(5),
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function FeaturedPost({
+export default function HeroPost({
   title,
   coverImage,
   date,
@@ -48,10 +48,10 @@ export default function FeaturedPost({
 
   // Decalred to pass down properties before arranging.
   const PostExcerpt = (
-    <Excerpt titlePosition={titlePosition} excerpt={excerpt} />
+    <HeroPostExcerpt titlePosition={titlePosition} excerpt={excerpt} />
   )
-  const TimeStamp = (
-    <DateReadingTime
+  const TitleBox = (
+    <HeroPostTitleBox
       slug={slug}
       title={title}
       date={date}
@@ -65,15 +65,15 @@ export default function FeaturedPost({
     case 'right': {
       // prettier-ignore
       isTinyScreen
-        ? composableTextArea = <>{TimeStamp}{PostExcerpt}</>
-        : composableTextArea = <>{PostExcerpt}{TimeStamp}</>
+        ? composableTextArea = <>{TitleBox}{PostExcerpt}</>
+        : composableTextArea = <>{PostExcerpt}{TitleBox}</>
       break
     }
     case 'left': {
       // prettier-ignore
       isTinyScreen
-        ? composableTextArea = <>{PostExcerpt}{TimeStamp}</>
-        : composableTextArea = <>{TimeStamp}{PostExcerpt}</>
+        ? composableTextArea = <>{PostExcerpt}{TitleBox}</>
+        : composableTextArea = <>{TitleBox}{PostExcerpt}</>
       break
     }
     default: {
@@ -87,18 +87,18 @@ export default function FeaturedPost({
   }
 
   return (
-    <article id='featuredPost' className={classes.featuredPost__ROOT}>
+    <article id='heroPost' className={classes.heroPost__ROOT}>
       {isSmallScreen || isTinyScreen ? (
-        <Image slug={slug} coverImage={coverImage} title={title} />
+        <HeroPostImage slug={slug} coverImage={coverImage} title={title} />
       ) : null}
-      <Container className={classes.featuredPost__image} maxWidth='lg'>
+      <Container className={classes.heroPost__image} maxWidth='lg'>
         {isSmallScreenUp && !isSmallScreen ? (
-          <Image slug={slug} coverImage={coverImage} title={title} />
+          <HeroPostImage slug={slug} coverImage={coverImage} title={title} />
         ) : null}
         <section>
           <Grid
             container
-            className={classes.featuredPost__text}
+            className={classes.heroPost__text}
             direction='row'
             justify='space-between'
             alignItems={isLargeScreenUp ? 'center' : 'flex-start'}>

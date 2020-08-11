@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const useStyles = makeStyles(theme => ({
-  FeaturedPost_Image__ROOT: {
+  heroPost__image: {
     flexGrow: 1,
     paddingTop: '1rem',
     marginBottom: '3rem',
@@ -28,16 +28,16 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Image({ slug, coverImage, title }) {
+export default function HeroPostImage({ slug, coverImage, title }) {
   const classes = useStyles()
   const theme = useTheme()
   const isSmallScreenDown = useMediaQuery(theme.breakpoints.down('sm'))
   return (
     <section>
-      <Link as={`/blog/${slug}`} href='/blog/[slug]'>
+      <Link as={`/blog/${slug}`} href='/blog/[postDetails]'>
         <Paper elevation={isSmallScreenDown ? 0 : 5}>
           <CardMedia
-            className={classes.FeaturedPost_Image__ROOT}
+            className={classes.heroPost__image}
             image={coverImage}
             title={title}
           />

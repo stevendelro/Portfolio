@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Excerpt({ titlePosition, excerpt }) {
+export default function HeroPostExcerpt({ titlePosition, excerpt }) {
   const classes = useStyles()
   return (
     <Grid item sm={7}>

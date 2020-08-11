@@ -61,7 +61,10 @@ export default function PostDetailListItem({
       <Paper
         className={classes.postDetailsListItem__image_container}
         elevation={3}>
-        <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
+        <MuiLink
+          as={`/blog/${slug}`}
+          href='/blog/[postDetails]'
+          underline='none'>
           <CardMedia
             className={classes.postDetailsListItem__image}
             image={coverImage}
@@ -76,7 +79,10 @@ export default function PostDetailListItem({
         id='postDetailsListItem__text'
         className={classes.postDetailsListItem__text_container}>
         {/********** TITLE ***********/}
-        <MuiLink as={`/blog/${slug}`} href='/blog/[slug]' underline='none'>
+        <MuiLink
+          as={`/blog/${slug}`}
+          href='/blog/[postDetails]'
+          underline='none'>
           <Typography
             className={classes.postDetailsListItem__text_title}
             align='left'
