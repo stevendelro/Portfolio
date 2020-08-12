@@ -7,10 +7,10 @@ import Head from 'next/head'
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 import { getPostAndMorePosts, getAllPostsWithSlug } from '../api/contentful'
-import PostBody from '../../components/blog/PostDetailsPage/PostBody'
+import PostBody from '../../components/blog/postDetailsPage/PostBody'
 import PostDetailsPageList from '../../components/blog/postDetailsPage/PostDetailsList'
-import PostHeader from '../../components/blog/PostDetailsPage/PostHeader'
-import PostImage from '../../components/blog/PostDetailsPage/PostImage'
+import PostHeader from '../../components/blog/postDetailsPage/PostHeader'
+import PostImage from '../../components/blog/postDetailsPage/PostImage'
 import PreviewAlert from '../../components/blog/PreviewAlert'
 
 const useStyles = makeStyles(theme => ({
