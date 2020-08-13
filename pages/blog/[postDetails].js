@@ -136,7 +136,7 @@ export default function PostDetailsPage({ post, morePosts, preview }) {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const data = await getPostAndMorePosts(params.slug, preview)
+  const data = await getPostAndMorePosts(params.postDetails, preview)
   return {
     props: {
       preview, // For Contentful to preview draft with page styles before publishing.
