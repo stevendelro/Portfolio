@@ -64,7 +64,31 @@ const weathernautInfo = {
   `,
 }
 
+const portfolioInfo = {
+  name: 'Portfolio',
+  website: 'https://www.stevenlives.com',
+  github: 'https://github.com/stevendelro/Portfolio',
+  imagePath: '/projectMedia/portfolio.png',
+  videoPath: '/projectMedia/portfolio.mp4',
+  summary: `
+    Built with React and NextJS, everything page on within this site is either
+    server side rendered or automatically generated as static HTML + JSON.
+  `,
+  keyFeatures: `
+    The Work section uses the GitHub API as a psuedo CMS by using the readme
+    files for each project as that project's details page. The Blog section is wired
+    up with the Contentful CMS. All markdown is rendered via a custom-made markdown
+    renderer.
+  `,
+  technologies: `
+    I used Material UI for styles and their theming system. PrismJS was configured with
+    my own syntax highlighting theme. Formik and SendGrid handle the contact form in Mail.
+    I've also rewritten most of the Material UI styles in my own implementation of Markdown-to-JSX.
+  `,
+}
+
 // Add new projects here:
 export const projectInformation = {
   weathernautInfo,
+  portfolioInfo,
 }
