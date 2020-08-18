@@ -7,7 +7,7 @@ import WorkProjectText from './WorkProjectText'
 
 const useStyles = makeStyles(theme => ({
   workProject__ROOT: {
-    padding: theme.spacing(10, 0),
+    padding: theme.spacing(10, 0, 0),
   },
   workProject__imageLeft: {
     cursor: 'pointer',
@@ -66,9 +66,9 @@ export default function WorkProject({ orientation, projectInfo }) {
         container
         direction={isSmallScreen ? 'column' : rowDirection}
         justify='space-between'
-        alignItems={isSmallScreen ? 'center' : 'flex-start'}>
+        alignItems='center'>
         {/* IMAGE SIDE */}
-        <Grid item xs={12} sm={11} md={8}>
+        <Grid item xs={12} sm={11} md={9}>
           <WorkProjectDemo
             imageRight={imageRight}
             isSmallScreen={isSmallScreen}
@@ -77,7 +77,7 @@ export default function WorkProject({ orientation, projectInfo }) {
         </Grid>
 
         {/* TEXT SIDE */}
-        <Grid item className={workProject__text} xs={12} sm={11} md={4}>
+        <Grid item className={workProject__text} xs={12} sm={11} md={3}>
           <WorkProjectText
             imageRight={imageRight}
             isSmallScreen={isSmallScreen}

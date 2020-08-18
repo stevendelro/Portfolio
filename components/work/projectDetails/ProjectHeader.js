@@ -58,6 +58,20 @@ const useStyles = makeStyles(theme => ({
   },
   projectHeader__divider: {
     margin: theme.spacing(1, 0),
+    width: 'auto'
+  },
+  projectHeader__dateCreated: {
+    paddingRight: '1rem',
+    overflow: '',
+    [theme.breakpoints.down(700)]:{
+      paddingRight: '.5rem',
+    },
+  },
+  projectHeader__dateUpdated: {
+    paddingLeft: '1rem',
+    [theme.breakpoints.down(700)]:{
+      paddingLeft: '.5rem',
+    },
   },
 }))
 
@@ -69,7 +83,7 @@ export default function ProjectHeader({
   const classes = useStyles()
   const theme = useTheme()
   const isWatchScreenDown = useMediaQuery(theme.breakpoints.down(280))
-  const isTinyScreenDown = useMediaQuery(theme.breakpoints.down('xs'))
+  const isTinyScreenDown = useMediaQuery(theme.breakpoints.down(636))
   return (
     <header
       id='ProjectDetailsPage__header'
@@ -92,11 +106,11 @@ export default function ProjectHeader({
           direction={isWatchScreenDown ? 'column' : 'row'}
           justify='space-between'
           alignItems='center'>
-          <Box>
+          <Box className={classes.projectHeader__dateCreated}>
             {isTinyScreenDown ? null : 'Date'} Created:{' '}
             <CustomDate dateString={dateCreated} />
           </Box>
-          <Box>
+          <Box className={classes.projectHeader__dateUpdated}>
             {isTinyScreenDown ? null : 'Last'} Updated:{' '}
             <CustomDate dateString={lastUpdated} />
           </Box>

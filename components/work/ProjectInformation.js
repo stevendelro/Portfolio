@@ -27,7 +27,7 @@ name         ->  Name of the project.
 website      ->  Live demo website url for the project.
 github       ->  URL to the project's github.
 imagePath    ->  Path to image within /public. Use link below to optimize images.
-videoPath    ->  Path to video within /public. Use link below to optimize video.
+videoPath    ->  Path to video within /public. Quicktime screen record a demo at 1292x920.
 summary      ->  A short paragraph. (Under ~250 characters)
 keyFeatures  ->  A short paragraph. (Under ~250 characters)
 technologies ->  A short paragraph. (Under ~250 characters)

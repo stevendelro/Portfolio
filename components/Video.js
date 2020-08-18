@@ -32,7 +32,6 @@ export default function Video({
       autoPlay={isTinyScreenDown ? false : true}
       muted
       controls={isTinyScreenDown ? true : false}
-      loop
       preload='auto'
       poster={imagePath}
       data-setup='{}'>

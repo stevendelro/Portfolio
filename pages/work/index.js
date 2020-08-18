@@ -33,10 +33,10 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const workPageIntro = `
-This section is reserved for projects that I'm proud of. The project
-details come straight from the public README.md that's hosted on
-Github. I figure that this would be the best way to keep this portfolio
-up to date, while motivating me to make better writeups.
+Although not every project that I've created is listed here, this section is
+reserved for projects that I want to bring more attention towards. I have them
+listed in reverse-chronological order, with the most recently created project on
+top.
 `
 
 export default function WorkPage() {
@@ -63,8 +63,8 @@ export default function WorkPage() {
           </Container>
           {/* Step 2b. See instructions in components/work/ProjectInformation.js.
               alternate orientation with 'imageLeft' || 'imageRight' */}
-          <WorkProject orientation='imageLeft' projectInfo={weathernautInfo} />
-          <WorkProject orientation='imageRight' projectInfo={portfolioInfo} />
+          <WorkProject orientation='imageLeft' projectInfo={portfolioInfo} />
+          <WorkProject orientation='imageRight' projectInfo={weathernautInfo} />
         </Container>
       </main>
     </article>
