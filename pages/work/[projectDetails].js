@@ -55,16 +55,17 @@ const useStyles = makeStyles(theme => ({
 export default function ProjectDetailsPage({ markdown, repo }) {
   const classes = useStyles()
   const [projectInfo, setProjectInfo] = useState({})
-  // Step 3a: components/work/ProjectInformation.js
-  const { weathernautInfo } = useContext(ProjectInformation)
+  // Step 3a. See instructions from components/work/ProjectInformation.js
+  const { weathernautInfo, portfolioInfo } = useContext(ProjectInformation)
 
   if (!markdown || !repo) {
     return <LinearProgress />
   }
 
   useEffect(() => {
-    // Step 3b: components/work/ProjectInformation.js
+    // Step 3b. See instructions from components/work/ProjectInformation.js
     repo.name === 'Weathernaut' && setProjectInfo(weathernautInfo)
+    repo.name === 'Portfolio' && setProjectInfo(portfolioInfo)
   }, [repo.name])
 
   return (

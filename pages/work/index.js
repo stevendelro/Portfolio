@@ -44,8 +44,8 @@ export default function WorkPage() {
   const theme = useTheme()
   const type = theme.palette.type
   const isDarkMode = type === 'dark' ? true : false
-  // Step 2a: components/work/ProjectInformation.js
-  const { weathernautInfo } = projectInformation
+  // Step 2a. See instructions in components/work/ProjectInformation.js
+  const { weathernautInfo, portfolioInfo } = projectInformation
   return (
     <article>
       <Head>
@@ -61,9 +61,10 @@ export default function WorkPage() {
           <Container maxWidth='md' className={classes.workPage__image}>
             {isDarkMode ? <DevelopDark /> : <DevelopLight />}
           </Container>
-          {/* Step 2b: components/work/ProjectInformation.js.
+          {/* Step 2b. See instructions in components/work/ProjectInformation.js.
               alternate orientation with 'imageLeft' || 'imageRight' */}
           <WorkProject orientation='imageLeft' projectInfo={weathernautInfo} />
+          <WorkProject orientation='imageRight' projectInfo={portfolioInfo} />
         </Container>
       </main>
     </article>
