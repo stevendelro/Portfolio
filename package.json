@@ -28,7 +28,6 @@
     "react": "latest",
     "react-dom": "latest",
     "reading-time": "^1.2.0",
-    "swr": "^0.2.3",
     "uuid": "^8.2.0",
     "yup": "^0.29.1"
   },
