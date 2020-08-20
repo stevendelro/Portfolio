@@ -154,64 +154,69 @@ It was perfect. This idea really excited me and propelled me to drive the projec
 
 ## Folder structure
 
-> The folder structure in which I organized everything is fairly straight forward. In order to keep things visually simplified, I'm excluding most of the files within each folder in the file tree examples below. If you're not familiar with NextJS's file-based routing via the `/pages` directory , read [this](https://nextjs.org/docs/routing/introduction) before continuing.
+> The folder structure in which I organized everything is fairly straight forward. In order to keep things visually simplified, I'm **not** going to include the files within each folder, only the folders themselves. If you're not familiar with NextJS's file-based routing via the /pages directory, read [this](https://nextjs.org/docs/routing/introduction) before continuing.
 
 
 
 In the root of this project there are only four folders:
-```
-Portfolio
- ┣components             // individual components for each page
- ┣contentful-cli-setup   // scripts to install a Contentful account
- ┣pages                  // individual pages of the site
- ┣public                 // static media: imgs, favicons, etc
+
+```md
+📦Portfolio
+ ┣ 📂components             ← individual components for each page
+ ┣ 📂contentful-cli-setup   ← scripts to install a Contentful account
+ ┣ 📂pages                  ← individual pages of the site
+ ┣ 📂public                 ← static media: imgs, favicons, etc
  ```
-Now, let's take a look at the `/pages` folder. Here, I'll show the individual files as each file corresponds with an entire page on the front end. The `/api` folder contains all the backend code.
-```pages
- ┣api                    // backend
- ┃ ┣contentful
- ┃ ┃ ┗index.js           // contentful backend
- ┃ ┣github
- ┃ ┃ ┗index.js           // github backend
- <!-- ┃ ┗preview.js           // contentful "preview post before publishing" code -->
- ┣blog
- ┃ ┣[postDetails].js     // /blog/[postDetails]      (individual blog post page)
- ┃ ┗index.js             // /blog                    (BLOG page)
- ┣work
- ┃ ┣[projectDetails].js  // /work/[projectDetails]   (individual project page)
- ┃ ┗index.js             // /work                    (WORK page)
- ┣_app.js
- ┣_document.js
- ┣index.js               // /                        (HOME page)
- ┗mail.js                // /mail                    (MAIL page)
-```
-We'll step out of the `/pages` folder and back into the root of the project. Now, let's checkout what the `/components` folder looks like. Each folder within the `/components` folder contains all the components for that specific page. The two exceptions to this would be:
 
-* `/layout` -- contains all components regarding navigation and footer.
-* `/styles` -- contains `theme.json` which is the customized theme that I created for this project.
+Now, let's take a look at the /pages folder. Here, I'll show the individual files as each file corresponds with an entire page on the front end. The /api folder contains all the backend code.
 
+```md
+📂pages
+ ┣ 📂api                    ← backend
+ ┃ ┣ 📂contentful
+ ┃ ┃ ┗ 📜index.js           ← contentful backend
+ ┃ ┣ 📂github
+ ┃ ┃ ┗ 📜index.js           ← github backend
+ ┃ ┗ 📜preview.js           ← contentful "preview post before publishing" code
+ ┣ 📂blog
+ ┃ ┣ 📜[postDetails].js     ← /blog/[postDetails]      (individual blog post page)
+ ┃ ┗ 📜index.js             ← /blog                    (BLOG page)
+ ┣ 📂work
+ ┃ ┣ 📜[projectDetails].js  ← /work/[projectDetails]   (individual project page)
+ ┃ ┗ 📜index.js             ← /work                    (WORK page)
+ ┣ 📜_app.js
+ ┣ 📜_document.js
+ ┣ 📜index.js               ← /                        (HOME page)
+ ┗ 📜mail.js                ← /mail                    (MAIL page)
 ```
-components
- ┣blog
- ┃ ┣indexPage            // components for: /blog
- ┃ ┣postDetailsPage      // components for: /blog/[postDetails] ->
- ┣error                  // components for: /errorPage
- ┣home                   // components for: /
- ┣layout
- ┣mail                   // components for: /mail
- ┣styles
- ┣work
- ┃ ┣indexPage            // components for: /work
- ┃ ┣projectDetails       // components for: /work/[projectDetails]
- ┣AvatarStamp.js         // All files in the root of /components are shared
- ┣CenteredImage.js
- ┣CodeBlock.js
- ┣CustomDate.js
- ┣Logo.js
- ┣MarkdownRenderer.js
- ┣MuiLink.js
- ┣PageIntro.js
- ┗Video.js
+
+We'll step out of the /pages folder and back into the root of the project. Now, let's checkout what the /components folder looks like. Each folder within the /components folder contains all the components for that specific page. The two exceptions to this would be:
+
+* /layout — contains all components regarding navigation and footer.
+* /styles — contains theme.json which is the customized theme that I created for this project.
+
+```md
+📂components
+ ┣ 📂blog
+ ┃ ┣ 📂indexPage            ← components for: /blog
+ ┃ ┣ 📂postDetailsPage      ← components for: /blog/[postDetails] ->
+ ┣ 📂error                  ← components for: /errorPage
+ ┣ 📂home                   ← components for: /
+ ┣ 📂layout
+ ┣ 📂mail                   ← components for: /mail
+ ┣ 📂styles
+ ┣ 📂work
+ ┃ ┣ 📂indexPage            ← components for: /work
+ ┃ ┣ 📂projectDetails       ← components for: /work/[projectDetails]
+ ┣ 📜AvatarStamp.js         ← All files in the root of /components are shared
+ ┣ 📜CenteredImage.js
+ ┣ 📜CodeBlock.js
+ ┣ 📜CustomDate.js
+ ┣ 📜Logo.js
+ ┣ 📜MarkdownRenderer.js
+ ┣ 📜MuiLink.js
+ ┣ 📜PageIntro.js
+ ┗ 📜Video.js
 ```
 
 ## License
@@ -220,37 +225,39 @@ Do whatever you want with it.
 
 ## Contact
 
-Steven Del Rosario - [@steveDelRosario](https://twitter.com/stevenDelRosario) - stevendelro@pm.me
+Twitter: [@steveDelRosario](https://twitter.com/stevenDelRosario)
+mailto:stevendelro@pm.me
 
-Project Link: [https://github.com/stevendelro/Weathernaut](https://github.com/stevendelro/Weathernaut)
+Project Link:
+[https://github.com/stevendelro/Weathernaut](https://github.com/stevendelro/Weathernaut)
 
 ## Built With
 
-- [ReactJS](https://reactjs.org) -- A Javascript library for building user interfaces.
-- [NextJS](https://nextjs.org) -- A React framework  with hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more.
-- [Material UI](https://material-ui.com) -- A React component-based design system.
-- [Contentful CMS](https://www.contentful.com/) -- t’s the modern way to manage content: Control all content from a single hub.
-- [Formik](https://formik.org/) -- An open source form library for React and React Native.
-- [SendGrid](https://sendgrid.com/) -- Send emails with Javascript
-- [PrismJS](https://prismjs.com/) -- Prism is a lightweight, extensible syntax highlighter, built with modern web standards in mind.
-- [VideoJS](https://videojs.com/) -- HTML5 video player framework. I used this for all my demos.
-- [octokit/request](https://github.com/octokit/request.js) -- Send parameterized requests to GitHub’s APIs with sensible defaults in browsers and Node
-- [markdown-to-jsx](https://github.com/probablyup/markdown-to-jsx) -- The most lightweight, customizable React markdown component.
-- [reading-time](https://github.com/ngryman/reading-time) -- Estimates how long an article will take to read. It works perfectly with plain text, but also with markdown or html.
-- [yup](https://github.com/jquense/yup) -- A JavaScript schema builder for value parsing and validation.
-- [axios](https://github.com/axios/axios) -- Promise based HTTP client for the browser and node.js
-- [uuid](https://github.com/uuidjs/uuid) -- For the creation of RFC4122 UUIDs. Used for mapped list items.
+- [ReactJS](https://reactjs.org) — A Javascript library for building user interfaces.
+- [NextJS](https://nextjs.org) — A React framework  with hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more.
+- [Material UI](https://material-ui.com) — A React component-based design system.
+- [Contentful CMS](https://www.contentful.com/) — Awesome CMS. Control all content from a single hub.
+- [Formik](https://formik.org/) — An open source form library for React and React Native.
+- [SendGrid](https://sendgrid.com/) — Send emails with Javascript
+- [PrismJS](https://prismjs.com/) — Prism is a lightweight, extensible syntax highlighter, built with modern web standards in mind.
+- [VideoJS](https://videojs.com/) — HTML5 video player framework. I used this for all my demos.
+- [octokit/request](https://github.com/octokit/request.js) — Send parameterized requests to GitHub’s APIs with sensible defaults in browsers and Node
+- [markdown-to-jsx](https://github.com/probablyup/markdown-to-jsx) — The most lightweight, customizable React markdown component.
+- [reading-time](https://github.com/ngryman/reading-time) — Estimates how long an article will take to read. It works perfectly with plain text, but also with markdown or html.
+- [yup](https://github.com/jquense/yup) — A JavaScript schema builder for value parsing and validation.
+- [axios](https://github.com/axios/axios) — Promise based HTTP client for the browser and node.js
+- [uuid](https://github.com/uuidjs/uuid) — For the creation of RFC4122 UUIDs. Used for mapped list items.
 
 ## Acknowledgements
 
-> These resources helped me immensely while developing this project.
+These resources helped me immensely while developing this project:
 
-- [Ghost's Casper Theme](https://demo.ghost.io/) -- The primary inspiration for the design of my blog.
-- [Undraw.co](https://undraw.co/) -- Open source illustrations. Similar to unsplash, but with vector art.
-- [file-tree-generator](https://marketplace.visualstudio.com/items?itemName=Shinotatwu-DS.file-tree-generator) -- VSCode extension that made the folder structure trees for this README.md.
-- [ES6 Import Formatter](https://marketplace.visualstudio.com/items?itemName=henry-li.vscode-import-formatter) -- VSCode extension that that auto sorts my import statements.
-- [Sublime MAterial Theme - Dark](https://github.com/JarvisPrestidge/vscode-material-theme) -- The VSCode color theme that I use and my inspiration for the syntax highlighting.
-- [Codevolution](https://www.youtube.com/c/Codevolution/) -- Youtube channel with incredible ReactJS content.
-- [Sirv](https://sirv.com/) -- This was the image CDN hosting provider that I used to host images and gifs.
-- [TinyPNG](https://tinypng.com/) -- Smart PNG and JPEG compression.
-- [SmartConverter](https://apps.apple.com/us/app/smart-converter/id447513724?mt=12) -- The fastest, easiest to use video converter on the App Store
+- [Ghost's Casper Theme](https://demo.ghost.io/) — The primary inspiration for the design of my blog.
+- [Undraw.co](https://undraw.co/) — Open source illustrations. Similar to unsplash, but with vector art.
+- [file-tree-generator](https://marketplace.visualstudio.com/items?itemName=Shinotatwu-DS.file-tree-generator) — VSCode extension that made the folder structure trees for this README.md.
+- [ES6 Import Formatter](https://marketplace.visualstudio.com/items?itemName=henry-li.vscode-import-formatter) — VSCode extension that that auto sorts my import statements.
+- [Sublime MAterial Theme - Dark](https://github.com/JarvisPrestidge/vscode-material-theme) — The VSCode color theme that I use and my inspiration for the syntax highlighting.
+- [Codevolution](https://www.youtube.com/c/Codevolution/) — Youtube channel with incredible ReactJS content.
+- [Sirv](https://sirv.com/) — This was the image CDN hosting provider that I used to host images and gifs.
+- [TinyPNG](https://tinypng.com/) — Smart PNG and JPEG compression.
+- [SmartConverter](https://apps.apple.com/us/app/smart-converter/id447513724?mt=12) — The fastest, easiest to use video converter on the App Store
