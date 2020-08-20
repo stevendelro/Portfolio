@@ -4,7 +4,7 @@
     [
       "prismjs",
       {
-        "languages": ["javascript", "css", "jsx", "tsx", "json"],
+        "languages": ["javascript", "css", "jsx", "tsx", "json", "md"],
         "plugins": [
           "autolinker",
           "autoloader"
