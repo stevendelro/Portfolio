@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid'
 import Head from 'next/head'
 import TextField from '@material-ui/core/TextField'
 
-import { MailDark, MailLight } from '../components/svg/Mail'
+import { MailDark, MailLight } from '../components/mail/Mail'
 import PageIntro from '../components/PageIntro'
 import SentSuccessModal from '../components/mail/SentSuccessModal'
 

@@ -2,7 +2,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Head from 'next/head'
 
-import { DevelopDark, DevelopLight } from '../../components/svg/Develop'
+import { DevelopDark, DevelopLight } from '../../components/work/Develop'
 import { projectInformation } from '../../components/work/ProjectInformation'
 import PageIntro from '../../components/PageIntro'
 import WorkProject from '../../components/work/indexPage/WorkProject'
