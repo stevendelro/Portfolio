@@ -154,65 +154,64 @@ It was perfect. This idea really excited me and propelled me to drive the projec
 
 ## Folder structure
 
-> The folder structure in which I organized everything is fairly straight forward. In order to keep things visually simplified, I'm **not** going to include the files within each folder, only the folders themselves. If you're not familiar with NextJS's file-based routing via the `/pages` directory , read [this](https://nextjs.org/docs/routing/introduction) before continuing.
+> The folder structure in which I organized everything is fairly straight forward. In order to keep things visually simplified, I'm excluding most of the files within each folder in the file tree examples below. If you're not familiar with NextJS's file-based routing via the `/pages` directory , read [this](https://nextjs.org/docs/routing/introduction) before continuing.
 
 
 
 In the root of this project there are only four folders:
-```md
-📦Portfolio
- ┣ 📂components             <!-- individual components for each page -->
- ┣ 📂contentful-cli-setup   <!-- scripts to install a Contentful account -->
- ┣ 📂pages                  <!-- individual pages of the site -->
- ┣ 📂public                 <!-- static media: imgs, favicons, etc -->
+```
+Portfolio
+ ┣components             // individual components for each page
+ ┣contentful-cli-setup   // scripts to install a Contentful account
+ ┣pages                  // individual pages of the site
+ ┣public                 // static media: imgs, favicons, etc
  ```
 Now, let's take a look at the `/pages` folder. Here, I'll show the individual files as each file corresponds with an entire page on the front end. The `/api` folder contains all the backend code.
-```md
-📂pages
- ┣ 📂api                    <!-- backend -->
- ┃ ┣ 📂contentful
- ┃ ┃ ┗ 📜index.js           <!-- contentful backend -->
- ┃ ┣ 📂github
- ┃ ┃ ┗ 📜index.js           <!-- github backend -->
- ┃ ┗ 📜preview.js           <!-- contentful "preview post before publishing" code -->
- ┣ 📂blog
- ┃ ┣ 📜[postDetails].js     <!-- /blog/[postDetails]      (individual blog post page) -->
- ┃ ┗ 📜index.js             <!-- /blog                    (BLOG page) -->
- ┣ 📂work
- ┃ ┣ 📜[projectDetails].js  <!-- /work/[projectDetails]   (individual project page) -->
- ┃ ┗ 📜index.js             <!-- /work                    (WORK page) -->
- ┣ 📜_app.js
- ┣ 📜_document.js
- ┣ 📜index.js               <!-- /                        (HOME page) -->
- ┗ 📜mail.js                <!-- /mail                    (MAIL page) -->
+```pages
+ ┣api                    // backend
+ ┃ ┣contentful
+ ┃ ┃ ┗index.js           // contentful backend
+ ┃ ┣github
+ ┃ ┃ ┗index.js           // github backend
+ <!-- ┃ ┗preview.js           // contentful "preview post before publishing" code -->
+ ┣blog
+ ┃ ┣[postDetails].js     // /blog/[postDetails]      (individual blog post page)
+ ┃ ┗index.js             // /blog                    (BLOG page)
+ ┣work
+ ┃ ┣[projectDetails].js  // /work/[projectDetails]   (individual project page)
+ ┃ ┗index.js             // /work                    (WORK page)
+ ┣_app.js
+ ┣_document.js
+ ┣index.js               // /                        (HOME page)
+ ┗mail.js                // /mail                    (MAIL page)
 ```
 We'll step out of the `/pages` folder and back into the root of the project. Now, let's checkout what the `/components` folder looks like. Each folder within the `/components` folder contains all the components for that specific page. The two exceptions to this would be:
 
 * `/layout` -- contains all components regarding navigation and footer.
 * `/styles` -- contains `theme.json` which is the customized theme that I created for this project.
 
-```md
-📦components
- ┣ 📂blog
- ┃ ┣ 📂indexPage            <!-- components for: /blog -->
- ┃ ┣ 📂postDetailsPage      <!-- components for: /blog/[postDetails] ->
- ┣ 📂error                  <!-- components for: /errorPage -->
- ┣ 📂home                   <!-- components for: / -->
- ┣ 📂layout
- ┣ 📂mail                   <!-- components for: /mail -->
- ┣ 📂styles
- ┣ 📂work
- ┃ ┣ 📂indexPage            <!-- components for: /work -->
- ┃ ┣ 📂projectDetails       <!-- components for: /work/[projectDetails] -->
- ┣ 📜AvatarStamp.js         <!-- All files in the root of /components are shared -->
- ┣ 📜CenteredImage.js
- ┣ 📜CodeBlock.js
- ┣ 📜CustomDate.js
- ┣ 📜Logo.js
- ┣ 📜MarkdownRenderer.js
- ┣ 📜MuiLink.js
- ┣ 📜PageIntro.js
- ┗ 📜Video.js
+```
+components
+ ┣blog
+ ┃ ┣indexPage            // components for: /blog
+ ┃ ┣postDetailsPage      // components for: /blog/[postDetails] ->
+ ┣error                  // components for: /errorPage
+ ┣home                   // components for: /
+ ┣layout
+ ┣mail                   // components for: /mail
+ ┣styles
+ ┣work
+ ┃ ┣indexPage            // components for: /work
+ ┃ ┣projectDetails       // components for: /work/[projectDetails]
+ ┣AvatarStamp.js         // All files in the root of /components are shared
+ ┣CenteredImage.js
+ ┣CodeBlock.js
+ ┣CustomDate.js
+ ┣Logo.js
+ ┣MarkdownRenderer.js
+ ┣MuiLink.js
+ ┣PageIntro.js
+ ┗Video.js
 ```
 
 ## License
