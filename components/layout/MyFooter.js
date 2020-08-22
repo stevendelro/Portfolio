@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
+import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 
@@ -32,6 +33,18 @@ const useStyles = makeStyles(theme => ({
   },
   footer__nameDate: {
     paddingTop: theme.spacing(1),
+  },
+  footer__socials: {
+    padding: theme.spacing(0, 1),
+    transition: 'all .2s ease-in-out',
+    '&:hover': {
+      cursor: 'pointer',
+      transform: 'scale(1.1)',
+      color:
+        theme.palette.type === 'dark'
+          ? theme.palette.secondary.light
+          : theme.palette.primary.light,
+    },
   },
 }))
 
@@ -71,6 +84,30 @@ export default function MyFooter(props) {
               {' '}
               &copy; {`${new Date().getFullYear()}.`}
             </Typography>
+          </Grid>
+          {/* SOCIALS */}
+          <Grid container direction='row' justify='center' alignItems='center'>
+            <Box
+              onClick={() =>
+                (window.location.href = `https://www.linkedin.com/in/stevendelro/`)
+              }
+              className={classes.footer__socials}>
+              LINKEDIN
+            </Box>
+            <Box
+              onClick={() =>
+                (window.location.href = `https://docs.google.com/document/d/1i_B7K2Z8k36Lu-Na-iVy2tfwYKN5Flnppr79UeMFu7s/edit?usp=sharing`)
+              }
+              className={classes.footer__socials}>
+              RESUME
+            </Box>
+            <Box
+              onClick={() =>
+                (window.location.href = `https://github.com/stevendelro`)
+              }
+              className={classes.footer__socials}>
+              GITHUB
+            </Box>
           </Grid>
         </Grid>
       </AppBar>
