@@ -72,8 +72,8 @@ most of it. Each day, the hours seem to literally melt away as I solve
 problem after problem. Web development is unlike anything I've ever done.
 I’m glad you’re able to see this portfolio. It’s been a labor of love, but
 if it’s anything like writing, I’ll look back on this in a few months and
-cringe. Anyway, head over to Mail to find my contact info. Feel free to
-hit me up. Enjoy.
+cringe. Anyway, checkout the footer to find my contact info. Feel free to
+hit up Mail and say hello. Enjoy.
 `
 
 const defaultParagraph = `
