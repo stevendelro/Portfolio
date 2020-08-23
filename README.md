@@ -178,7 +178,6 @@ We'll step out of the /pages folder and back into the root of the project. Now, 
 - [Formik](https://formik.org/) - An open source form library for React and React Native.
 - [SendGrid](https://sendgrid.com/) - Send emails with Javascript
 - [PrismJS](https://prismjs.com/) - Prism is a lightweight, extensible syntax highlighter, built with modern web standards in mind.
-- [VideoJS](https://videojs.com/) - HTML5 video player framework. I used this for all my demos.
 - [octokit/request](https://github.com/octokit/request.js) - Send parameterized requests to GitHub’s APIs with sensible defaults in browsers and Node
 - [markdown-to-jsx](https://github.com/probablyup/markdown-to-jsx) - The most lightweight, customizable React markdown component.
 - [reading-time](https://github.com/ngryman/reading-time) - Estimates how long an article will take to read. It works perfectly with plain text, but also with markdown or html.
