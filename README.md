@@ -77,7 +77,7 @@ Contentful was the clear winner, plus if I ever wanted to freelance, I felt conf
 
 Creating the blog was the cornerstone of this entire project.
 
-I had implemented a personal blog with [Ghost](https://ghost.org/) at one point and I had a really good experience. The visual everall composition between their images and text, along with the page layout of each individual blog post in their default [Casper Theme](https://demo.ghost.io/) resonated with me.
+I had implemented a personal blog with [Ghost](https://ghost.org/) at one point and I had a really good experience. The visual composition between their images and text, along with the page layout of each individual blog post in their default [Casper Theme](https://demo.ghost.io/) resonated with me.
 
 Also, I wanted to incorporate some features that I liked from [Medium](https://medium.com/). In particular, I like how Medium felt light and airy. They kept the use of dividers and borders to a minimum. I also liked how all posts had an estimated reading time.
 
