@@ -42,13 +42,12 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function PostDetailsPage({ post, morePosts, preview }) {
+export default function PostDetailsPage({ post, morePosts, preview = false }) {
   const classes = useStyles()
   const router = useRouter()
   if (!router.isFallback && !post) {
     return <ErrorPage statusCode={404} />
   }
-
   return (
     <>
       {router.isFallback ? (

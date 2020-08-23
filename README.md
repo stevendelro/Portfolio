@@ -16,7 +16,7 @@
 
 ## About the project
 
-I just completed the final prototype of my weather app: [Weathernaut](https://www.stevenlives.com/work/Weathernaut), which was my first NextJS project and I really enjoyed it. While developing the weather app, [NextJS 9.3](https://nextjs.org/blog/next-9-3) was released—and with it, the ability to opt-in for Static Site Generation on a page-by-page basis.
+I just completed the final prototype of my weather app: [Weathernaut](https://www.stevenlives.com/work/Weathernaut), which was my first NextJS project and I really enjoyed it. While developing the weather app, [NextJS 9.3](https://nextjs.org/blog/next-9-3) was released--and with it, the ability to opt-in for Static Site Generation on a page-by-page basis.
 
 Stoked, I decided that it was time to build a new portfolio.
 
@@ -55,7 +55,7 @@ I had no clue how I wanted the portfolio to look and feel, so I jotted down a fe
 
 I decided to do some research. I scoured over a ton of different portfolios, most of them from graphic designers and advanced UI/UX developers. None of them really felt like anything that I was leaning towards. Until, I found this dude's site: [https://adamwathan.me/](https://adamwathan.me/)
 
-Concise, simple, and timeless. It looked fairly easy to create—and most importantly—it wasn't _distracting_.
+Concise, simple, and timeless. It looked fairly easy to create--and most importantly--it wasn't _distracting_.
 
 #### Choosing a Content Management System.
 
@@ -156,64 +156,18 @@ It was perfect. This idea really excited me and propelled me to drive the projec
 
 In the root of this project there are only four folders:
 
-```md
-📦Portfolio
-┣ 📂components ← individual components for each page
-┣ 📂contentful-cli-setup ← scripts to install a Contentful account
-┣ 📂pages ← individual pages of the site
-┣ 📂public ← static media: imgs, favicons, etc
-```
+![](https://arbletur.sirv.com/Images/1.png)
 
 Now, let's take a look at the /pages folder. Here, I'll show the individual files as each file corresponds with an entire page on the front end. The /api folder contains all the backend code.
 
-```md
-📂pages
-┣ 📂api ← backend
-┃ ┣ 📂contentful
-┃ ┃ ┗ 📜index.js ← contentful backend
-┃ ┣ 📂github
-┃ ┃ ┗ 📜index.js ← github backend
-┃ ┗ 📜preview.js ← contentful "preview post before publishing" code
-┣ 📂blog
-┃ ┣ 📜[postDetails].js ← /blog/[postDetails] (individual blog post page)
-┃ ┗ 📜index.js ← /blog (BLOG page)
-┣ 📂work
-┃ ┣ 📜[projectDetails].js ← /work/[projectDetails] (individual project page)
-┃ ┗ 📜index.js ← /work (WORK page)
-┣ 📜_app.js
-┣ 📜_document.js
-┣ 📜index.js ← / (HOME page)
-┗ 📜mail.js ← /mail (MAIL page)
-```
+![](https://arbletur.sirv.com/Images/2.png)
 
 We'll step out of the /pages folder and back into the root of the project. Now, let's checkout what the /components folder looks like. Each folder within the /components folder contains all the components for that specific page. The two exceptions to this would be:
 
-- /layout — contains all components regarding navigation and footer.
-- /styles — contains theme.json which is the customized theme that I created for this project.
+- /layout -- contains all components regarding navigation and footer.
+- /styles -- contains theme.json which is the customized theme that I created for this project.
 
-```
- 📂 components
- ┣ 📂blog
- ┃ ┣ 📂indexPage            ← components for: /blog
- ┃ ┣ 📂postDetailsPage      ← components for: /blog/[postDetails]
- ┣ 📂error                  ← components for: /errorPage
- ┣ 📂home                   ← components for: /
- ┣ 📂layout
- ┣ 📂mail                   ← components for: /mail
- ┣ 📂styles
- ┣ 📂work
- ┃ ┣ 📂indexPage            ← components for: /work
- ┃ ┣ 📂projectDetails       ← components for: /work/[projectDetails]
- ┣ 📜AvatarStamp.js         ← All files in the root of /components are shared
- ┣ 📜CenteredImage.js
- ┣ 📜CodeBlock.js
- ┣ 📜CustomDate.js
- ┣ 📜Logo.js
- ┣ 📜MarkdownRenderer.js
- ┣ 📜MuiLink.js
- ┣ 📜PageIntro.js
- ┗ 📜Video.js
-```
+![](https://arbletur.sirv.com/Images/3.png)
 
 ## Built With
 
