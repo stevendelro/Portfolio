@@ -136,7 +136,7 @@ useEffect(() => {
 }, [route, query])
 ```
 
-If you're viewing this on GitHub, of course you aren't going to see the correct syntax highlighting. Head over to: https://stevenlives.com/work and checkout the write up for Portfolio if you're interested to see how it came out.
+If you're viewing this on GitHub, of course you aren't going to see the correct syntax highlighting. Head over to: https://www.stevenlives.com/work/portfolio#syntax-highlighting-with-prismjs if you're interested to see how it came out.
 
 Having said that, this leads me to my next topic:
 
