@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
   excerpt: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(2,2,2,5),
     fontSize: '1.3rem',
     [theme.breakpoints.only('sm')]: {
       fontSize: '1.1rem',
