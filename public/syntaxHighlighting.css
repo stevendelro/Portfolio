@@ -10,7 +10,7 @@ pre[class*='language-'] {
   color: #fff;
   background: none;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: 'Operator Mono', Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   direction: ltr;
   font-size: 1em;
   text-align: left;
@@ -30,17 +30,17 @@ pre[class*='language-'] {
   hyphens: none;
 }
 
-pre[class*="language-"]::selection,
-code[class*="language-"]::selection,
-pre[class*="language-"]::mozselection,
-code[class*="language-"]::mozselection {
+pre[class*='language-']::selection,
+code[class*='language-']::selection,
+pre[class*='language-']::mozselection,
+code[class*='language-']::mozselection {
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-  background: #313A3A;
+  background: #313a3a;
 }
 
 @media print {
-  pre[class*="language-"],
-  code[class*="language-"] {
+  pre[class*='language-'],
+  code[class*='language-'] {
     text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   }
 }
@@ -130,12 +130,13 @@ pre[class*='language-'] {
 
 .token.attr-name,
 .token.keyword {
+  font-family: 'Operator Mono Italic';
   color: #c792ea;
 }
 
 .token.regex,
 .token.important {
-  color: #FF5370
+  color: #ff5370;
 }
 
 .token.important,
@@ -154,7 +155,7 @@ pre[class*='language-'] {
 pre[data-line] {
   position: relative;
 }
-pre[class*="language-"] > code[class*="language-"] {
+pre[class*='language-'] > code[class*='language-'] {
   position: relative;
   z-index: 1;
 }

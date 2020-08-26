@@ -13,6 +13,7 @@ import MobileNav from '../components/layout/MobileNav'
 import MyAppBar from '../components/layout/MyAppBar'
 import MyFooter from '../components/layout/MyFooter'
 
+import '../public/fonts.css'
 import '../public/syntaxHighlighting.css'
 
 const useStyles = makeStyles(theme => ({

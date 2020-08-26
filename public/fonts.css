@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Operator Mono'; /*a name to be used later*/
+  src: url('https://arbletur.sirv.com/gifs/fonts/OperatorMonoLig-Book.otf'); /*URL to font*/
+}
+@font-face {
+  font-family: 'Operator Mono Italic'; /*a name to be used later*/
+  src: url('https://arbletur.sirv.com/gifs/fonts/OperatorMonoLig-BookItalic.otf'); /*URL to font*/
+}
+@font-face {
+  font-family: 'Operator Mono Bold'; /*a name to be used later*/
+  src: url('https://arbletur.sirv.com/gifs/fonts/OperatorMonoLig-Medium.otf'); /*URL to font*/
+}
+@font-face {
+  font-family: 'Operator Mono Bold Italic'; /*a name to be used later*/
+  src: url('https://arbletur.sirv.com/gifs/fonts/OperatorMonoLig-MediumItalic.otf'); /*URL to font*/
+}

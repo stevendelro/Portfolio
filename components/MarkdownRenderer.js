@@ -2,9 +2,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import Checkbox from '@material-ui/core/Checkbox'
 import Markdown from 'markdown-to-jsx'
 
+import { primaryColor, secondaryColor } from '../pages/_app'
 import CenteredImage from './CenteredImage'
 import CodeBlock from './CodeBlock'
-import { primaryColor, secondaryColor } from '../pages/_app'
 
 /**
  * Initial boilerplate styles came from Material-UI's documentation markdown component.
@@ -37,12 +37,15 @@ const useStyles = makeStyles(theme => ({
      ****** BLOCK CODE CONTAINER ******
      **********************************/
 
+    // NOTE: Colors for code block syntax highlighting are
+    // located in: /public/syntaxHighlighting.css
+
     '& code': {
       direction: 'ltr',
       lineHeight: 1.4,
       backgroundColor: '#272822',
       display: 'inline-block',
-      fontFamily: 'Fira Code, "Liberation Mono", Menlo, Courier, monospace',
+      fontFamily: 'Operator Mono, Fira Code, "Liberation Mono", monospace',
       WebkitFontSmoothing: 'subpixel-antialiased',
       fontSize: '.85em',
       borderRadius: 2,
@@ -77,7 +80,7 @@ const useStyles = makeStyles(theme => ({
     '& pre': {
       direction: 'ltr',
       margin: theme.spacing(3, 'auto'),
-      padding: theme.spacing(2),
+      padding: theme.spacing(),
       backgroundColor: '#272822',
       border: 0,
       borderRadius: theme.shape.borderRadius,
@@ -94,27 +97,64 @@ const useStyles = makeStyles(theme => ({
      ********** INLINE CODE ***********
      **********************************/
 
-    '& p code[class*="language-"]': {
-      backgroundColor: '#272822',
-      color: '#fff',
+    // variable names
+    '& p code[class*=" language-"]': {
+      textShadow: theme.palette.type === 'dark' ? '#000' : 'none',
+      fontStyle: 'bold',
+      color: theme.palette.type === 'dark' ? '#fff' : '#5e5e5e',
+      backgroundColor: theme.palette.type === 'dark' ? '#292929' : '#e4e4e4',
       lineHeight: 1.5, // Avoid layout jump after hydration (style injected by prism)
     },
-    '& p code[class*="language-"]': {
-      // inline code within lists
-    },
 
+    // Font styles
     '& p code': {
       direction: 'ltr',
       lineHeight: 1.4,
-
       display: 'inline-block',
-      fontFamily: 'Fira Code, "Liberation Mono", Menlo, Courier, monospace',
+      fontFamily: 'Operator Mono Bold, Fira Code, "Liberation Mono", monospace',
       WebkitFontSmoothing: 'subpixel-antialiased',
-      padding: '0px 5px',
+      padding: '0px 3px',
       fontSize: '.85em',
       fontStyle: 'bold',
       border: 0,
       borderRadius: 1,
+    },
+
+    // Operators
+    '& p code span.token.operator': {
+      color: theme.palette.type === 'dark' ? '#89ddff' : '#5e5e5e',
+      backgroundColor: theme.palette.type === 'dark' ? '#292929' : '#e4e4e4',
+    },
+
+    // Keywords
+    '& p code span.token.keyword': {
+      fontFamily: 'Operator Mono Bold Italic',
+      color: theme.palette.type === 'dark' ? '#c792ea' : '#6f42c1',
+    },
+
+    // Strings
+    '& p code span.token.string': {
+      color: theme.palette.type === 'dark' ? '#91b859' : '#28a745',
+    },
+
+    // Numbers
+    '& p code span.token.number': {
+      color: theme.palette.type === 'dark' ? '#ff5370' : '#d73a49',
+    },
+
+    // Booleans
+    '& p code span.token.boolean': {
+      color: theme.palette.type === 'dark' ? '#ff9100' : '#ff8000',
+    },
+
+    // Functions
+    '& p code span.token.function': {
+      color: theme.palette.type === 'dark' ? '#82aaff' : '#0366d6',
+    },
+
+    // Punctuation Marks
+    '& p code span.token.punctuation': {
+      color: theme.palette.type === 'dark' ? '#fff' : '#5e5e5e',
     },
 
     /**********************************
