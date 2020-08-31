@@ -38,13 +38,13 @@ export const primaryColor = '#144d53'
 export const secondaryColor = '#ff9100'
 
 export default function MyApp(props) {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
   const classes = useStyles()
   const { Component, pageProps } = props
-  const [darkMode, setDarkMode] = useState(
-    // This will check the user/system settings to see if dark mode is preferred.
-    useMediaQuery('(prefers-color-scheme: dark)')
-  )
+  const [darkMode, setDarkMode] = useState(false)
   const handleDarkMode = darkMode ? secondaryColor : primaryColor
+
+
   const theme = useMemo(
     () =>
       createMuiTheme({
@@ -103,6 +103,11 @@ export default function MyApp(props) {
       jssStyles.parentElement.removeChild(jssStyles)
     }
   }, [])
+
+  // Checks user settings for dark mode preference
+  useEffect(() => {
+    prefersDarkMode ? setDarkMode(true) : setDarkMode(false)
+  }, [prefersDarkMode])
 
   useEffect(() => {
     Prism.highlightAll() // syntax highlighting for code
