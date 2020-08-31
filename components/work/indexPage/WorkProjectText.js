@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down('sm')]: {
       textAlign: 'center',
-      paddingTop: theme.spacing(7),
+      marginTop: theme.spacing(7),
     },
     [theme.breakpoints.between(360, 600)]: {
       fontSize: theme.typography.pxToRem(55),
@@ -85,12 +85,19 @@ const defaultText = `
   blandit.
 `
 
-// Custom tooltip
+// Custom tooltips
 const LightTooltip = withStyles(theme => ({
   tooltip: {
     backgroundColor: theme.palette.grey[50],
     color: theme.palette.primary.main,
-    boxShadow: theme.shadows[1],
+    boxShadow: theme.shadows[7],
+    fontSize: 11,
+  },
+}))(Tooltip)
+
+const DarkTooltip = withStyles(theme => ({
+  tooltip: {
+    boxShadow: theme.shadows[7],
     fontSize: 11,
   },
 }))(Tooltip)
@@ -128,7 +135,7 @@ export default function WorkProjectText({
   const isDarkMode = theme.palette.type === 'dark' ? true : false
 
   // Handle tooltip styles for dark mode.
-  const ThemedTooltip = isDarkMode ? Tooltip : LightTooltip
+  const ThemedTooltip = isDarkMode ? DarkTooltip : LightTooltip
 
   return (
     <section id='projectText'>

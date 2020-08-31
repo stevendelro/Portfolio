@@ -1,6 +1,7 @@
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Head from 'next/head'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import { DevelopDark, DevelopLight } from '../../components/work/Develop'
 import { projectInformation } from '../../components/work/ProjectInformation'
@@ -32,18 +33,22 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const workPageIntro = `
-Click or tap on a project to discover detailed write-ups where I go in-depth about
-the problems I encountered, the solutions I’ve implemented, and the thoughts and
-decisions that led to production-ready code.
-`
-
 export default function WorkPage() {
   const classes = useStyles()
   const theme = useTheme()
   const isDarkMode = theme.palette.type === 'dark' ? true : false
   // Step 2a. See instructions in components/work/ProjectInformation.js
   const { weathernautInfo, portfolioInfo } = projectInformation
+
+  const isTabletScreenDown = useMediaQuery(theme.breakpoints.down(1025))
+  const methodOfInteraction = isTabletScreenDown ? 'Tap' : 'Click'
+
+  const workPageIntro = `
+  ${methodOfInteraction} on a project to discover detailed write-ups where I go in-depth about
+  the problems I encountered, the solutions I’ve implemented, and the thoughts and
+  decisions that led to production-ready code.
+  `
+
   return (
     <article>
       <Head>

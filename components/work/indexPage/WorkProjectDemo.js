@@ -28,12 +28,19 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-// Custom tooltip
+// Custom tooltips
 const LightTooltip = withStyles(theme => ({
   tooltip: {
     backgroundColor: theme.palette.grey[50],
     color: theme.palette.primary.main,
-    boxShadow: theme.shadows[1],
+    boxShadow: theme.shadows[7],
+    fontSize: 11,
+  },
+}))(Tooltip)
+
+const DarkTooltip = withStyles(theme => ({
+  tooltip: {
+    boxShadow: theme.shadows[7],
     fontSize: 11,
   },
 }))(Tooltip)
@@ -53,7 +60,7 @@ export default function WorkProjectDemo({
   const isDarkMode = theme.palette.type === 'dark' ? true : false
 
   // Handle tooltip styles for dark mode.
-  const ThemedTooltip = isDarkMode ? Tooltip : LightTooltip
+  const ThemedTooltip = isDarkMode ? DarkTooltip : LightTooltip
 
   const demoWithLink = (
     <MuiLink
@@ -93,7 +100,7 @@ export default function WorkProjectDemo({
       <ThemedTooltip
         disableFocusListener
         title={`${methodOfInteraction} for more details`}
-        placement={isTabletScreenDown ? 'top' : 'bottom'}
+        placement='top'
         aria-label='more details'>
         {isPhoneScreenDown ? demoWithoutLink : demoWithLink}
       </ThemedTooltip>
