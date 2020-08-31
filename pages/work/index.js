@@ -33,17 +33,15 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const workPageIntro = `
-Although not every project that I've created is listed here, this section is
-reserved for projects that I want to bring more attention towards. I have them
-listed in reverse-chronological order, with the most recently created project on
-top.
+Click or tap on a project to discover detailed write-ups where I go in-depth about
+the problems I encountered, the solutions I’ve implemented, and the thoughts and
+decisions that led to production-ready code.
 `
 
 export default function WorkPage() {
   const classes = useStyles()
   const theme = useTheme()
-  const type = theme.palette.type
-  const isDarkMode = type === 'dark' ? true : false
+  const isDarkMode = theme.palette.type === 'dark' ? true : false
   // Step 2a. See instructions in components/work/ProjectInformation.js
   const { weathernautInfo, portfolioInfo } = projectInformation
   return (

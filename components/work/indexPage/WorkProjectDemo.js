@@ -1,5 +1,6 @@
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { makeStyles, withStyles, useTheme } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
+import Tooltip from '@material-ui/core/Tooltip'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import MuiLink from '../../MuiLink'
@@ -27,6 +28,16 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+// Custom tooltip
+const LightTooltip = withStyles(theme => ({
+  tooltip: {
+    backgroundColor: theme.palette.grey[50],
+    color: theme.palette.primary.main,
+    boxShadow: theme.shadows[1],
+    fontSize: 11,
+  },
+}))(Tooltip)
+
 export default function WorkProjectDemo({
   imageRight,
   isSmallScreen,
@@ -34,8 +45,15 @@ export default function WorkProjectDemo({
 }) {
   const classes = useStyles()
   const theme = useTheme()
-  const isTinyScreenDown = useMediaQuery(theme.breakpoints.down('xs'))
+  const isPhoneScreenDown = useMediaQuery(theme.breakpoints.down('xs'))
+  const isTabletScreenDown = useMediaQuery(theme.breakpoints.down('md'))
   const { videoPath, imagePath, name } = projectInfo
+
+  const methodOfInteraction = isTabletScreenDown ? 'Tap' : 'Click'
+  const isDarkMode = theme.palette.type === 'dark' ? true : false
+
+  // Handle tooltip styles for dark mode.
+  const ThemedTooltip = isDarkMode ? Tooltip : LightTooltip
 
   const demoWithLink = (
     <MuiLink
@@ -72,7 +90,13 @@ export default function WorkProjectDemo({
   )
   return (
     <section id='project__ProjectDemo'>
-      {isTinyScreenDown ? demoWithoutLink : demoWithLink}
+      <ThemedTooltip
+        disableFocusListener
+        title={`${methodOfInteraction} for more details`}
+        placement={isTabletScreenDown ? 'top' : 'bottom'}
+        aria-label='more details'>
+        {isPhoneScreenDown ? demoWithoutLink : demoWithLink}
+      </ThemedTooltip>
     </section>
   )
 }

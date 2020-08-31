@@ -1,9 +1,11 @@
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, withStyles, useTheme } from '@material-ui/core/styles'
 import { v4 as uuidv4 } from 'uuid'
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import React from 'react'
+import Tooltip from '@material-ui/core/Tooltip'
 import Typography from '@material-ui/core/Typography'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import DemoSourceLinks from '../DemoSourceLinks'
 import MuiLink from '../../MuiLink'
@@ -83,12 +85,23 @@ const defaultText = `
   blandit.
 `
 
+// Custom tooltip
+const LightTooltip = withStyles(theme => ({
+  tooltip: {
+    backgroundColor: theme.palette.grey[50],
+    color: theme.palette.primary.main,
+    boxShadow: theme.shadows[1],
+    fontSize: 11,
+  },
+}))(Tooltip)
+
 export default function WorkProjectText({
   imageRight,
   isSmallScreen,
   rowDirection,
   projectInfo,
 }) {
+  const theme = useTheme()
   const classes = useStyles()
   const {
     name,
@@ -109,29 +122,43 @@ export default function WorkProjectText({
     ['Technologies', techText],
   ]
 
+  const isTabletScreenDown = useMediaQuery(theme.breakpoints.down('md'))
+  const methodOfInteraction = isTabletScreenDown ? 'Tap' : 'Click'
+
+  const isDarkMode = theme.palette.type === 'dark' ? true : false
+
+  // Handle tooltip styles for dark mode.
+  const ThemedTooltip = isDarkMode ? Tooltip : LightTooltip
+
   return (
     <section id='projectText'>
-      <section id='workProjectText__titleArea'>
-        <MuiLink
-          style={{ textDecoration: 'none' }}
-          as={`/work/${name}`}
-          href='/work/[projectDetails]'
-          naked>
-          <Typography
-            className={
-              imageRight && !isSmallScreen
-                ? classes.workProjectText__title && classes.textAlign_R
-                : classes.workProjectText__title
-            }
-            variant='h4'
-            component='h2'>
-            {name ? name : 'Project Name'}
-          </Typography>
-        </MuiLink>
-        <Box className={classes.workProjectText__demoSourceLinks}>
-          <DemoSourceLinks liveDemo={website} sourceCode={github} />
-        </Box>
-      </section>
+      <ThemedTooltip
+        disableFocusListener
+        title={`${methodOfInteraction} for more details`}
+        placement='top'
+        aria-label='more details'>
+        <section id='workProjectText__titleArea'>
+          <MuiLink
+            style={{ textDecoration: 'none' }}
+            as={`/work/${name}`}
+            href='/work/[projectDetails]'
+            naked>
+            <Typography
+              className={
+                imageRight && !isSmallScreen
+                  ? classes.workProjectText__title && classes.textAlign_R
+                  : classes.workProjectText__title
+              }
+              variant='h4'
+              component='h2'>
+              {name ? name : 'Project Name'}
+            </Typography>
+          </MuiLink>
+          <Box className={classes.workProjectText__demoSourceLinks}>
+            <DemoSourceLinks liveDemo={website} sourceCode={github} />
+          </Box>
+        </section>
+      </ThemedTooltip>
       <section id='workProjectText__keypoints'>
         <Grid
           container
