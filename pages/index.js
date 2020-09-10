@@ -52,10 +52,10 @@ for me.
 const exploreText = `
 I always find a way to balance out the time I spend sitting at a desk
 with doing something active. Back before all the travel restrictions, my
-girlfriend and I would routinely make plans to visit different cities and
-check out all the national parks. Some couples don’t travel well, but her
-and I love it. Give us a couple funny podcasts, some audiobooks, a long
-road—and we’re good to go.
+ex and I would routinely make plans to visit different cities and
+check out all the national parks. Regardless of who I'm with, give me
+some funny podcasts, an audiobook or two, and a long road—and I'm good to
+go.
 `
 const hangoutText = `
 I’m fairly inquisitive. If something piques my interest, it doesn’t take
