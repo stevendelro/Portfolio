@@ -194,7 +194,7 @@ These resources helped me immensely while developing this project:
 - [Undraw.co](https://undraw.co/) - Open source illustrations. Similar to unsplash, but with vector art.
 - [file-tree-generator](https://marketplace.visualstudio.com/items?itemName=Shinotatwu-DS.file-tree-generator) - VSCode extension that made the folder structure trees for this README.md.
 - [ES6 Import Formatter](https://marketplace.visualstudio.com/items?itemName=henry-li.vscode-import-formatter) - VSCode extension that that auto sorts my import statements.
-- [Sublime MAterial Theme - Dark](https://github.com/JarvisPrestidge/vscode-material-theme) - The VSCode color theme that I use and my inspiration for the syntax highlighting.
+- [Sublime Material Theme - Dark](https://github.com/JarvisPrestidge/vscode-material-theme) - The VSCode color theme that I use and my inspiration for the syntax highlighting.
 - [Codevolution](https://www.youtube.com/c/Codevolution/) - Youtube channel with incredible ReactJS content.
 - [Sirv](https://sirv.com/) - This was the image CDN hosting provider that I used to host images and gifs.
 - [TinyPNG](https://tinypng.com/) - Smart PNG and JPEG compression.
