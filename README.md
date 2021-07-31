@@ -199,7 +199,3 @@ These resources helped me immensely while developing this project:
 - [Sirv](https://sirv.com/) - This was the image CDN hosting provider that I used to host images and gifs.
 - [TinyPNG](https://tinypng.com/) - Smart PNG and JPEG compression.
 - [SmartConverter](https://apps.apple.com/us/app/smart-converter/id447513724?mt=12) - The fastest, easiest to use video converter on the App Store
-
-## License
-
-Do whatever you want with it.
