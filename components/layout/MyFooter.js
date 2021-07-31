@@ -96,7 +96,7 @@ export default function MyFooter(props) {
             </Box>
             <Box
               onClick={() =>
-                (window.location.href = `https://docs.google.com/document/d/1i_B7K2Z8k36Lu-Na-iVy2tfwYKN5Flnppr79UeMFu7s/edit?usp=sharing`)
+                (window.location.href = `https://docs.google.com/document/d/1FLdTpwvsDdXUxrvO_tdO3_Y9Vur7PhVDapiRF4STnbQ/edit?usp=sharing`)
               }
               className={classes.footer__socials}>
               RESUME
