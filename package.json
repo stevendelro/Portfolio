@@ -24,7 +24,7 @@
     "formik": "^2.1.5",
     "markdown-to-jsx": "^6.11.4",
     "next": "latest",
-    "prismjs": "^1.21.0",
+    "prismjs": "^1.24.0",
     "react": "latest",
     "react-dom": "latest",
     "reading-time": "^1.2.0",
