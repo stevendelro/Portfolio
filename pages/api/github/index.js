@@ -2,7 +2,6 @@ import { request } from '@octokit/request'
 import { createTokenAuth } from '@octokit/auth'
 
 const auth = createTokenAuth(process.env.GITHUB_ACCESS_TOKEN)
-
 // Set token for authenticated requests
 const requestWithAuth = request.defaults({
   headers: {

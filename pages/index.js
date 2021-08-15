@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Head from 'next/head'
+import React from 'react'
 
 import { AboutDark, AboutLight } from '../components/home/About'
 import { ExploreDark, ExploreLight } from '../components/home/Explore'
@@ -102,15 +103,15 @@ export default function Index() {
       <Head>
         <title>Steven | About Me</title>
         <meta
-          name='description'
+          name="description"
           content={`This is the About Me section of Steven Del Rosario's self-developed website`}
         />
       </Head>
-      <article id='MainIndexBody' className={classes.mainIndex__ROOT}>
-        <PageIntro title='Hello' paragraph={heroParagraph} />
+      <article id="MainIndexBody" className={classes.mainIndex__ROOT}>
+        <PageIntro title="Hello" paragraph={heroParagraph} />
         <Container
           className={classes.mainIndex__storyImageContainer}
-          maxWidth='lg'>
+          maxWidth="lg">
           {imageTextArray.map((item, index) => {
             return (
               <StoryImage

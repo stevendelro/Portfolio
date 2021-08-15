@@ -94,7 +94,7 @@ const useStyles = makeStyles(theme => ({
     },
 
     /**********************************
-     ********** INLINE CODE ***********
+     ****** INLINE CODE - P TAGS ******
      **********************************/
 
     // variable names
@@ -154,6 +154,70 @@ const useStyles = makeStyles(theme => ({
 
     // Punctuation Marks
     '& p code span.token.punctuation': {
+      color: theme.palette.type === 'dark' ? '#fff' : '#5e5e5e',
+    },
+
+    /**********************************
+     ***** INLINE CODE - li TAGS ******
+     **********************************/
+
+    // variable names
+    '& li code[class*=" language-"]': {
+      textShadow: theme.palette.type === 'dark' ? '#000' : 'none',
+      fontStyle: 'bold',
+      color: theme.palette.type === 'dark' ? '#fff' : '#5e5e5e',
+      backgroundColor: theme.palette.type === 'dark' ? '#292929' : '#e4e4e4',
+      lineHeight: 1.5, // Avoid layout jump after hydration (style injected by prism)
+    },
+
+    // Font styles
+    '& li code': {
+      direction: 'ltr',
+      lineHeight: 1.4,
+      display: 'inline-block',
+      fontFamily: 'Operator Mono Bold, Fira Code, "Liberation Mono", monospace',
+      WebkitFontSmoothing: 'subpixel-antialiased',
+      padding: '0px 3px',
+      fontSize: '.85em',
+      fontStyle: 'bold',
+      border: 0,
+      borderRadius: 1,
+    },
+
+    // Operators
+    '& li code span.token.operator': {
+      color: theme.palette.type === 'dark' ? '#89ddff' : '#5e5e5e',
+      backgroundColor: theme.palette.type === 'dark' ? '#292929' : '#e4e4e4',
+    },
+
+    // Keywords
+    '& li code span.token.keyword': {
+      fontFamily: 'Operator Mono Bold Italic',
+      color: theme.palette.type === 'dark' ? '#c792ea' : '#6f42c1',
+    },
+
+    // Strings
+    '& li code span.token.string': {
+      color: theme.palette.type === 'dark' ? '#91b859' : '#28a745',
+    },
+
+    // Numbers
+    '& li code span.token.number': {
+      color: theme.palette.type === 'dark' ? '#ff5370' : '#d73a49',
+    },
+
+    // Booleans
+    '& li code span.token.boolean': {
+      color: theme.palette.type === 'dark' ? '#ff9100' : '#ff8000',
+    },
+
+    // Functions
+    '& li code span.token.function': {
+      color: theme.palette.type === 'dark' ? '#82aaff' : '#0366d6',
+    },
+
+    // Punctuation Marks
+    '& li code span.token.punctuation': {
       color: theme.palette.type === 'dark' ? '#fff' : '#5e5e5e',
     },
 

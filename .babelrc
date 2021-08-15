@@ -1,10 +1,19 @@
 {
-  "presets": ["next/babel"],
+  "presets": [
+    "next/babel"
+  ],
   "plugins": [
     [
       "prismjs",
       {
-        "languages": ["javascript", "css", "jsx", "tsx", "json", "md"],
+        "languages": [
+          "javascript",
+          "css",
+          "jsx",
+          "tsx",
+          "json",
+          "md"
+        ],
         "plugins": [
           "autolinker",
           "autoloader"

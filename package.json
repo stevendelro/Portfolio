@@ -9,6 +9,8 @@
     "setup": "node ./contentful/setup.js $CONTENTFUL_SPACE_ID $CONTENTFUL_MANAGEMENT_TOKEN"
   },
   "dependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
     "@contentful/rich-text-plain-text-renderer": "^14.1.1",
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.9.1",
@@ -25,7 +27,7 @@
     "markdown-to-jsx": "^6.11.4",
     "next": "latest",
     "prismjs": "^1.24.0",
-    "react": "16.13.1",
+    "react": "latest",
     "react-dom": "latest",
     "reading-time": "^1.2.0",
     "uuid": "^8.2.0",

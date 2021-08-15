@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createTheme } from '@material-ui/core/styles'
 import { makeStyles } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { useState, useEffect, useMemo, createContext } from 'react'
@@ -44,10 +44,9 @@ export default function MyApp(props) {
   const [darkMode, setDarkMode] = useState(false)
   const handleDarkMode = darkMode ? secondaryColor : primaryColor
 
-
   const theme = useMemo(
     () =>
-      createMuiTheme({
+      createTheme({
         themeName: 'greenOrange',
         palette: {
           primary: { main: primaryColor },
@@ -117,8 +116,8 @@ export default function MyApp(props) {
       <Head>
         <title>Steven's Portfolio</title>
         <meta
-          name='viewport'
-          content='minimum-scale=1, initial-scale=1, width=device-width'
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
       <ThemeProvider theme={theme}>
