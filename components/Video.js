@@ -27,16 +27,17 @@ export default function Video({
   return (
     <video
       className={classes.video__ROOT}
+      loop
       height={height}
       width={width}
       autoPlay={isTinyScreenDown ? false : true}
       muted
       controls={isTinyScreenDown ? true : false}
-      preload='auto'
+      preload="auto"
       poster={imagePath}
-      data-setup='{}'>
-      <source src={videoPath} type='video/mp4'></source>
-      <p className='vjs-no-js'>
+      data-setup="{}">
+      <source src={videoPath} type="video/mp4"></source>
+      <p className="vjs-no-js">
         To view this video please enable JavaScript, and consider upgrading to a
         web browser that supports HTML5 video. See:
         https://videojs.com/html5-video-support/
