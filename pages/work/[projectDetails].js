@@ -56,7 +56,8 @@ export default function ProjectDetailsPage({ markdown, repo }) {
   const classes = useStyles()
   const [projectInfo, setProjectInfo] = useState({})
   // Step 3a. See instructions from components/work/ProjectInformation.js
-  const { weathernautInfo, portfolioInfo } = useContext(ProjectInformation)
+  const { weathernautInfo, portfolioInfo, kur8Info } =
+    useContext(ProjectInformation)
 
   if (!markdown || !repo) {
     return <LinearProgress />
@@ -66,19 +67,19 @@ export default function ProjectDetailsPage({ markdown, repo }) {
     // Step 3b. See instructions from components/work/ProjectInformation.js
     repo.name === 'Weathernaut' && setProjectInfo(weathernautInfo)
     repo.name === 'Portfolio' && setProjectInfo(portfolioInfo)
+    repo.name === 'Kur8' && setProjectInfo(kur8Info)
   }, [repo.name])
-
   return (
     <>
       <Head>
         <title>Work | {repo.name}</title>
         <meta
-          property='description'
+          property="description"
           content={`${repo.name} repository details from Steven Del Rosario's Github.`}
         />
       </Head>
       <article className={classes.projectDetailPage__ROOT}>
-        <Grid container direction='column' justify='center' alignItems='center'>
+        <Grid container direction="column" justify="center" alignItems="center">
           <Grid
             className={classes.projectDetailPage__header}
             item
@@ -87,13 +88,13 @@ export default function ProjectDetailsPage({ markdown, repo }) {
             lg={6}
             xl={4}>
             <ProjectHeader
-              projectName={repo.name}
+              projectName={projectInfo.name}
               dateCreated={repo.dateCreated}
               lastUpdated={repo.lastUpdated}
             />
           </Grid>
         </Grid>
-        <Grid container direction='column' justify='center' alignItems='center'>
+        <Grid container direction="column" justify="center" alignItems="center">
           <Grid item xs={11} lg={10} xl={7}>
             <ProjectDemo
               videoPath={projectInfo.videoPath}
@@ -104,16 +105,19 @@ export default function ProjectDetailsPage({ markdown, repo }) {
           <Grid
             container
             className={classes.projectDetailPage__demoSourceLinks}
-            direction='row'
-            justify='center'
-            alignItems='center'>
-            <DemoSourceLinks liveDemo={repo.website} sourceCode={repo.github} />
+            direction="row"
+            justify="center"
+            alignItems="center">
+            <DemoSourceLinks
+              liveDemo={projectInfo.website}
+              sourceCode={projectInfo.github}
+            />
           </Grid>
           <Grid
             container
-            direction='column'
-            justify='center'
-            alignItems='center'>
+            direction="column"
+            justify="center"
+            alignItems="center">
             <Grid
               item
               className={classes.projectDetailPage__body}

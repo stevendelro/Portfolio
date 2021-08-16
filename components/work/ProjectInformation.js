@@ -87,8 +87,33 @@ const portfolioInfo = {
   `,
 }
 
+const kur8Info = {
+  name: 'KUR8',
+  website: 'http://kur8.io',
+  github: 'https://github.com/oslabs-beta/KUR8',
+  imagePath: '/projectMedia/kur8.jpeg',
+  videoPath: '/projectMedia/kur8.mp4',
+  summary: `
+  A Kubernetes cluster visualizer that displays the structure of your cluster topology,
+  as well as produces charts and graphs from all of your Prometheus instances.
+  `,
+  keyFeatures: `
+  Depending on how your cluster is orchestrated, the structure page will render different
+  configurations of master nodes and worker nodes. The alerts page displays all cluster alerts.
+  The metrics page displays Prometheus derived data visualizations, while the custom metrics
+  page allows you to visualize your own PromQL queries.
+  `,
+  technologies: `
+  Material-UI in conjunction with CSS-in-JS was used to develop the overall look and feel.
+  Docker was used as the primary container runtime. We used zingcharts for data visualization.
+  @kubernetes/client-node and Prometheus acted as psuedo APIs for us to get the data needed
+  to develop and render UI.
+  `,
+}
+
 // Add new projects here:
 export const projectInformation = {
   weathernautInfo,
   portfolioInfo,
+  kur8Info,
 }

@@ -23,6 +23,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   workPage__image: {
+    minHeight: '63vh',
     [theme.breakpoints.only('sm')]: {
       paddingLeft: 0,
       paddingRight: 0,
@@ -38,7 +39,7 @@ export default function WorkPage() {
   const theme = useTheme()
   const isDarkMode = theme.palette.type === 'dark' ? true : false
   // Step 2a. See instructions in components/work/ProjectInformation.js
-  const { weathernautInfo, portfolioInfo } = projectInformation
+  const { weathernautInfo, portfolioInfo, kur8Info } = projectInformation
 
   const isTabletScreenDown = useMediaQuery(theme.breakpoints.down(1025))
   const methodOfInteraction = isTabletScreenDown ? 'Tap' : 'Click'
@@ -54,20 +55,21 @@ export default function WorkPage() {
       <Head>
         <title>Work | Projects</title>
         <meta
-          property='description'
-          content='A collection of projects developed by Steven Del Rosario'
+          property="description"
+          content="A collection of projects developed by Steven Del Rosario"
         />
       </Head>
       <main className={classes.WorkPage__ROOT}>
-        <PageIntro title='Work' paragraph={workPageIntro} />
-        <Container className={classes.workPage__container} maxWidth='lg'>
-          <Container maxWidth='md' className={classes.workPage__image}>
+        <PageIntro title="Work" paragraph={workPageIntro} />
+        <Container className={classes.workPage__container} maxWidth="lg">
+          <Container maxWidth="md" className={classes.workPage__image}>
             {isDarkMode ? <DevelopDark /> : <DevelopLight />}
           </Container>
           {/* Step 2b. See instructions in components/work/ProjectInformation.js.
               alternate orientation with 'imageLeft' || 'imageRight' */}
-          <WorkProject orientation='imageLeft' projectInfo={portfolioInfo} />
-          <WorkProject orientation='imageRight' projectInfo={weathernautInfo} />
+          <WorkProject orientation="imageRight" projectInfo={kur8Info} />
+          <WorkProject orientation="imageLeft" projectInfo={portfolioInfo} />
+          <WorkProject orientation="imageRight" projectInfo={weathernautInfo} />
         </Container>
       </main>
     </article>
