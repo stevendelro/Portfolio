@@ -7,43 +7,65 @@ import theme from '../components/styles/theme'
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang='en'>
+      <Html lang="en">
         <Head>
           {/* PWA primary color */}
-          <meta name='theme-color' content={theme.palette.primary.main} />
-          <link
-            rel='stylesheet'
-            href='https://fonts.googleapis.com/css?family=Roboto:200,300,400,500&display=swap'
-          />
-          <link
-            rel='stylesheet'
-            href='https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&display=swap'
-          />
-          <link
-            rel='stylesheet'
-            href='https://fonts.googleapis.com/css2?family=Calistoga&display=swap'
-          />
-          <link
-            rel='apple-touch-icon'
-            sizes='180x180'
-            href='/apple-touch-icon.png'
-          />
-          <link
-            rel='icon'
-            type='image/png'
-            sizes='32x32'
-            href='/favicon-32x32.png'
-          />
-          <link
-            rel='icon'
-            type='image/png'
-            sizes='16x16'
-            href='/favicon-16x16.png'
-          />
-          <link rel='manifest' href='/site.webmanifest' />
-          <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#5bbad5' />
+          <meta name="theme-color" content={theme.palette.primary.main} />
           <meta
-            name='msapplication-TileColor'
+            name="description"
+            content="Built with Next.js, React, Material UI, Contentful CMS, and the Github API."
+          />
+          <meta
+            name="title"
+            property="og:title"
+            content="Steven Del Rosario's Portfolio"
+          />
+          <meta property="og:type" content="website" />
+          <meta
+            name="image"
+            property="og:image"
+            content="https://priontyl.sirv.com/Images/portfolio-screenshot.png"
+          />
+          <meta
+            name="description"
+            property="og:description"
+            content="ShowCasr is now Steven's Portfolio"
+          />
+          <meta name="author" content="Steven Del Rosario" />
+
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500&display=swap"
+          />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&display=swap"
+          />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Calistoga&display=swap"
+          />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          />
+          <link rel="manifest" href="/site.webmanifest" />
+          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+          <meta
+            name="msapplication-TileColor"
             content={theme.palette.secondary.main}
           />
         </Head>
