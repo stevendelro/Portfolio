@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
           <meta
             name="image"
             property="og:image"
-            content="https://priontyl.sirv.com/Images/portfolio-img.png"
+            content="https://priontyl.sirv.com/Images/portfolio.png"
           />
           <meta
             name="description"
