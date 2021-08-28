@@ -32,6 +32,7 @@ You just found the front page of my life. Chances are, if you're reading
 this—it may already be too late. Or maybe not. Maybe this is the right
 time and it was all meant to be. Regardless, I made this for you.
 `
+
 const aboutText = `
 I’m Steven. I designed and developed this site. Here’s a quick rundown:
 the two big pages in this portfolio are Work and Blog. I customized the
@@ -41,6 +42,7 @@ headless CMS and its design was heavily influenced by Ghost and Medium.
 All vector art comes from Katerina Limpitsouni's Undraw.co community. Kudos
 to her, for real. An open source community for designers. What a great idea.
 `
+
 const partyText = `
 I’m a people person. You could put me in a multitude of situations, with
 nearly any kind of personality type, and I could develop banter, establish
@@ -50,14 +52,15 @@ a relatively small teams. If the vibe is right and everyone is driven, the
 possibility for the group to enter a state of "flow” is a huge motivator
 for me.
 `
+
 const exploreText = `
 I always find a way to balance out the time I spend sitting at a desk
-with doing something active. Back before all the travel restrictions, my
-ex and I would routinely make plans to visit different cities and
-check out all the national parks. Regardless of who I'm with, give me
-some funny podcasts, an audiobook or two, and a long road—and I'm good to
-go.
+with doing something active. Back before all the travel restrictions, I
+would routinely make plans to visit different cities and check out all the
+national parks. Regardless of who I'm with, give me some funny podcasts,
+an audiobook or two, and a long road—and I'm good to go.
 `
+
 const hangoutText = `
 I’m fairly inquisitive. If something piques my interest, it doesn’t take
 much to allow my curiosity to take over. In conversation, I enjoy quick
