@@ -105,6 +105,8 @@ Once I got it to work, I spent another two days tweaking around with my Markdown
 
 Here's a snippet from my NavCrumbs.js component:
 
+> If you're viewing this on GitHub, of course you aren't going to see the correct syntax highlighting. Head over to: https://stevendelro.com/work/Portfolio#syntax-highlighting-with-prismjs if you're interested to see how it came out.
+
 ```jsx
 useEffect(() => {
   // Handle first crumb, clean up second and third crumbs
@@ -136,10 +138,6 @@ useEffect(() => {
 }, [route, query])
 ```
 
-If you're viewing this on GitHub, of course you aren't going to see the correct syntax highlighting. Head over to: https://www.stevenlives.com/work/portfolio#syntax-highlighting-with-prismjs if you're interested to see how it came out.
-
-Having said that, this leads me to my next topic:
-
 #### Using the Github API as a pseudo CMS to showcase my projects.
 
 I struggled to come up with what I should do with my Work page.
@@ -152,7 +150,7 @@ It was perfect. This idea really excited me and propelled me to drive the projec
 
 ### Folder structure
 
-> The folder structure in which I organized everything is fairly straight forward. In order to keep things visually simplified, I'm **not** going to include the files within each folder, only the folders themselves. If you're not familiar with NextJS's file-based routing via the /pages directory, read [this](https://nextjs.org/docs/routing/introduction) before continuing.
+The folder structure in which I organized everything is fairly straight forward. In order to keep things visually simplified, I'm **not** going to include the files within each folder, only the folders themselves. If you're not familiar with NextJS's file-based routing via the /pages directory, read [this](https://nextjs.org/docs/routing/introduction) before continuing.
 
 In the root of this project there are only four folders:
 
