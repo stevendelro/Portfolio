@@ -80,15 +80,15 @@ cringe. Anyway, checkout the footer to find my contact info. Feel free to
 hit up Mail and say hello. Enjoy.
 `
 
-const defaultParagraph = `
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua.
-Rhoncus dolor purus non enim praesent elementum facilisis leo vel.
-Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-gravida rutrum quisque non tellus. Convallis convallis tellus id
-interdum velit laoreet id donec ultrices. Odio morbi quis commodo
-odio aenean sed adipiscing.
-`
+// const defaultParagraph = `
+// Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+// eiusmod tempor incididunt ut labore et dolore magna aliqua.
+// Rhoncus dolor purus non enim praesent elementum facilisis leo vel.
+// Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
+// gravida rutrum quisque non tellus. Convallis convallis tellus id
+// interdum velit laoreet id donec ultrices. Odio morbi quis commodo
+// odio aenean sed adipiscing.
+// `
 
 const imageTextArray = [
   [<AboutDark />, <AboutLight />, aboutText],
@@ -106,15 +106,15 @@ export default function Index() {
       <Head>
         <title>Steven | About Me</title>
         <meta
-          name="description"
+          name='description'
           content={`This is the About Me section of Steven Del Rosario's self-developed website`}
         />
       </Head>
-      <article id="MainIndexBody" className={classes.mainIndex__ROOT}>
-        <PageIntro title="Hello" paragraph={heroParagraph} />
+      <article id='MainIndexBody' className={classes.mainIndex__ROOT}>
+        <PageIntro title='Hello' paragraph={heroParagraph} />
         <Container
           className={classes.mainIndex__storyImageContainer}
-          maxWidth="lg">
+          maxWidth='lg'>
           {imageTextArray.map((item, index) => {
             return (
               <StoryImage
